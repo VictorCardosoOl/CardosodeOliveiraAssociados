@@ -12,6 +12,9 @@ import { SectorGroups } from "./components/sections/SectorGroups";
 import { Professionals } from "./components/sections/Professionals";
 import { Culture } from "./components/sections/Culture";
 import { SocialResponsibility } from "./components/sections/SocialResponsibility";
+import { Testimonials } from "./components/sections/Testimonials";
+import { Insights } from "./components/sections/Insights";
+import { Contact } from "./components/sections/Contact";
 import { Footer } from "./components/layout/Footer";
 
 export default function App() {
@@ -26,6 +29,9 @@ export default function App() {
         <Professionals />
         <Culture />
         <SocialResponsibility />
+        <Testimonials />
+        <Insights />
+        <Contact />
       </main>
       <Footer />
     </SmoothScrollWrapper>

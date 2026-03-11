@@ -9,7 +9,8 @@ const navItems = [
   { name: "Setores", href: "#setores" },
   { name: "Profissionais", href: "#profissionais" },
   { name: "Cultura", href: "#cultura" },
-  { name: "Responsabilidade Social", href: "#responsabilidade-social" },
+  { name: "Insights", href: "#insights" },
+  { name: "Depoimentos", href: "#depoimentos" },
   { name: "Contato", href: "#contato" },
 ];
 

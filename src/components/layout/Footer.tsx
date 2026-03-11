@@ -87,7 +87,7 @@ export function Footer() {
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-600 mb-8 block">Navegação</span>
             <nav className="mb-16">
               <ul className="space-y-3">
-                {["O Escritório", "Áreas de Atuação", "Setores", "Profissionais", "Cultura"].map((item) => (
+                {["O Escritório", "Áreas de Atuação", "Setores", "Profissionais", "Cultura", "Insights", "Depoimentos", "Contato"].map((item) => (
                   <li key={item}>
                     <a 
                       href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}

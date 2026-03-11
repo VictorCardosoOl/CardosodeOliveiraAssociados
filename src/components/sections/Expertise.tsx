@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Scale, ShieldCheck, Users, Briefcase } from "lucide-react";
+import { Scale, ShieldCheck, Users, Briefcase, ArrowRight } from "lucide-react";
 
 const areas = [
   {
@@ -65,26 +65,42 @@ export function Expertise() {
   }, { scope: containerRef });
 
   return (
-    <section id="areas-de-atuacao" ref={containerRef} className="py-24 md:py-32 bg-primary text-secondary">
+    <section id="areas-de-atuacao" ref={containerRef} className="py-24 md:py-40 bg-primary text-secondary overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="expertise-header max-w-3xl mb-16 md:mb-24">
-          <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Nossa Expertise</h2>
-          <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight">
-            Especialistas em proteger o seu patrimônio e os seus direitos.
-          </h3>
+        <div className="expertise-header flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+          <div className="max-w-3xl">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Nossa Expertise</h2>
+            <h3 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight">
+              Proteção patrimonial e <span className="italic">segurança jurídica</span>.
+            </h3>
+          </div>
+          <p className="text-secondary/40 max-w-xs text-sm leading-relaxed">
+            Soluções estratégicas desenhadas sob medida para as necessidades mais complexas do direito contemporâneo.
+          </p>
         </div>
 
-        <div className="expertise-grid grid md:grid-cols-2 gap-8 md:gap-12">
+        <div className="expertise-grid grid md:grid-cols-2 gap-6 md:gap-8">
           {areas.map((area, index) => (
             <div 
               key={index} 
-              className="expertise-card group border border-secondary/20 p-8 md:p-12 rounded-2xl hover:bg-secondary/5 transition-colors duration-500"
+              className="expertise-card group relative bg-secondary/5 p-10 md:p-16 rounded-[3rem] border border-secondary/10 hover:border-accent/30 transition-all duration-700 overflow-hidden"
             >
-              <area.icon className="w-12 h-12 text-accent mb-8 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
-              <h4 className="font-serif text-2xl mb-4">{area.title}</h4>
-              <p className="text-secondary/70 leading-relaxed">
-                {area.description}
-              </p>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:bg-accent/10 transition-colors duration-700" />
+              
+              <div className="relative z-10">
+                <div className="bg-accent/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-accent group-hover:rotate-6 transition-all duration-500">
+                  <area.icon className="w-8 h-8 text-accent group-hover:text-primary transition-colors duration-500" strokeWidth={1.5} />
+                </div>
+                <h4 className="font-serif text-3xl mb-6 group-hover:text-accent transition-colors duration-300">{area.title}</h4>
+                <p className="text-secondary/60 leading-relaxed text-lg font-light">
+                  {area.description}
+                </p>
+                
+                <div className="mt-12 flex items-center gap-3 text-accent opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0">
+                  <span className="text-[10px] uppercase tracking-widest font-bold">Saiba mais</span>
+                  <ArrowRight size={14} />
+                </div>
+              </div>
             </div>
           ))}
         </div>
