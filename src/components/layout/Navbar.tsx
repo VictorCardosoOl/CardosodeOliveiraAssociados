@@ -4,42 +4,35 @@ import { cn } from "@/lib/utils";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 
 const navItems = [
-  { name: "O Escritório", href: "#o-escritório" },
-  { name: "Áreas de Atuação", href: "#áreas-de-atuação" },
-  { name: "Setores", href: "#setores" },
-  { name: "Profissionais", href: "#profissionais" },
-  { name: "Cultura", href: "#cultura" },
-  { name: "Insights", href: "#insights" },
-  { name: "Depoimentos", href: "#depoimentos" },
-  { name: "Contato", href: "#contato" },
+  { name: "Home", href: "#" },
+  { name: "Services", href: "#areas-de-atuacao" },
+  { name: "Pricing", href: "#" },
+  { name: "About us", href: "#o-escritorio" },
+  { name: "Pages", href: "#" },
 ];
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollDirection, isAtTop } = useScrollDirection();
 
-  // Logic: Hide if scrolling down AND not at the very top.
-  // Show if scrolling up OR at the top.
   const isVisible = isAtTop || scrollDirection === "up";
 
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out",
-        // Visibility logic
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-secondary border-b border-primary/5",
         isVisible ? "translate-y-0" : "-translate-y-full",
-        // Background logic
-        isAtTop ? "bg-transparent py-8" : "bg-secondary/95 backdrop-blur-md shadow-sm py-4"
+        isAtTop ? "py-6" : "py-4 shadow-sm"
       )}
     >
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="container mx-auto px-6 md:px-12 3xl:px-24 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex flex-col">
-          <span className="font-serif text-xl md:text-2xl font-semibold tracking-tight text-primary">
-            Cardoso de Oliveira
-          </span>
-          <span className="text-[9px] uppercase tracking-[0.3em] text-accent font-bold">
-            Associados
+        <div className="flex items-center gap-2">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4H20V8H12V12H18V16H12V20H8V4Z" fill="currentColor"/>
+          </svg>
+          <span className="font-sans text-xl font-semibold tracking-tight text-primary">
+            Firmo
           </span>
         </div>
 
@@ -49,17 +42,23 @@ export function Navbar() {
             <a
               key={item.name}
               href={item.href}
-              className="text-[11px] uppercase tracking-widest font-semibold text-primary/80 hover:text-accent transition-colors relative group"
+              className="text-sm font-medium text-primary/70 hover:text-primary transition-colors"
             >
               {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
 
+        {/* CTA Button */}
+        <div className="hidden lg:block">
+          <a href="#contato" className="bg-primary text-secondary px-6 py-3 text-sm font-medium hover:bg-primary/90 transition-colors">
+            Buy Template
+          </a>
+        </div>
+
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden text-primary p-2 hover:bg-primary/5 rounded-full transition-colors"
+          className="lg:hidden text-primary p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle Menu"
         >
@@ -70,7 +69,7 @@ export function Navbar() {
       {/* Mobile Nav Overlay */}
       <div
         className={cn(
-          "fixed inset-0 bg-secondary z-40 flex flex-col items-center justify-center gap-8 transition-all duration-500 lg:hidden",
+          "fixed inset-0 bg-secondary z-40 flex flex-col items-center justify-center gap-8 transition-all duration-300 lg:hidden",
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
@@ -79,7 +78,7 @@ export function Navbar() {
             key={item.name}
             href={item.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="font-serif text-2xl text-primary hover:text-accent transition-colors"
+            className="font-serif text-2xl text-primary hover:text-primary/70 transition-colors"
           >
             {item.name}
           </a>

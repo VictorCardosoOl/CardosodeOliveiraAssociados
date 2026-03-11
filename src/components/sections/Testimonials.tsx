@@ -42,16 +42,21 @@ export function Testimonials() {
   }, { scope: containerRef });
 
   return (
-    <section id="depoimentos" ref={containerRef} className="py-24 md:py-40 bg-secondary overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="mb-16 md:mb-24 text-center">
-          <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Depoimentos</h2>
-          <h3 className="font-serif text-4xl md:text-6xl text-primary leading-tight">
-            A voz de quem <span className="italic">confia</span> em nós.
-          </h3>
+    <section id="depoimentos" ref={containerRef} className="py-24 md:py-40 3xl:py-64 bg-secondary overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 3xl:px-24">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+          <div className="max-w-2xl 3xl:max-w-4xl">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Depoimentos</h2>
+            <h3 className="font-serif text-4xl md:text-6xl 3xl:text-7xl text-primary leading-tight">
+              A voz de quem <span className="italic">confia</span> em nós.
+            </h3>
+          </div>
+          <p className="text-primary/40 max-w-xs text-sm leading-relaxed">
+            Relatos de quem encontrou no nosso escritório a segurança e o suporte necessários para seus desafios.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 3xl:gap-12">
           {testimonials.map((t, i) => (
             <div 
               key={i} 

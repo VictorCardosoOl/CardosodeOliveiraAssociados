@@ -34,12 +34,12 @@ export function SectorGroups() {
   }, { scope: containerRef });
 
   return (
-    <section id="setores" className="py-24 md:py-40 bg-secondary overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12" ref={containerRef}>
+    <section id="setores" className="py-24 md:py-40 3xl:py-64 bg-secondary overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 3xl:px-24" ref={containerRef}>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl 3xl:max-w-4xl">
             <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Grupos Setoriais</h2>
-            <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-primary leading-tight">
+            <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-primary leading-tight">
               Expertise em <span className="italic">mercados estratégicos</span>.
             </h3>
           </div>
@@ -48,7 +48,7 @@ export function SectorGroups() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 3xl:gap-10">
           {sectors.map((sector, index) => (
             <div
               key={index}

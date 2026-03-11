@@ -38,11 +38,11 @@ export function Contact() {
   }, { scope: containerRef });
 
   return (
-    <section id="contato" ref={containerRef} className="py-24 md:py-40 bg-primary text-secondary overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-24 items-center">
-        <div>
+    <section id="contato" ref={containerRef} className="py-24 md:py-40 3xl:py-64 bg-primary text-secondary overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-2 gap-24 3xl:gap-40 items-center">
+        <div className="max-w-2xl 3xl:max-w-3xl">
           <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-8">Contato</h2>
-          <h3 className="font-serif text-5xl md:text-7xl leading-tight mb-12">
+          <h3 className="font-serif text-5xl md:text-7xl 3xl:text-8xl leading-tight mb-12">
             Vamos <span className="italic">conversar</span> sobre o seu caso.
           </h3>
           

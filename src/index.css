@@ -2,13 +2,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1a1a1a;
-  --color-secondary: #f4f1eb;
-  --color-accent: #b8906f;
-  --color-accent-light: #d4b89f;
+  --color-primary: #111111;
+  --color-secondary: #ffffff;
+  --color-muted: #f4f3ec;
+  --color-accent: #111111;
+  --color-accent-light: #666666;
   
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2560px;
+}
+
+@layer base {
+  .container {
+    @apply mx-auto px-6 md:px-12;
+    max-width: 100%;
+  }
+
+  @media (min-width: 640px) { .container { max-width: 640px; } }
+  @media (min-width: 768px) { .container { max-width: 768px; } }
+  @media (min-width: 1024px) { .container { max-width: 1024px; } }
+  @media (min-width: 1280px) { .container { max-width: 1280px; } }
+  @media (min-width: 1536px) { .container { max-width: 1440px; } }
+  @media (min-width: 1920px) { .container { max-width: 1800px; } }
+  @media (min-width: 2560px) { .container { max-width: 2400px; } }
 }
 
 body {

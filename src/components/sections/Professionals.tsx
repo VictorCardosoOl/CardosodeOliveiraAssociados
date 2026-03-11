@@ -48,12 +48,12 @@ export function Professionals() {
   }, { scope: containerRef });
 
   return (
-    <section id="profissionais" className="py-24 md:py-40 bg-secondary overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12" ref={containerRef}>
+    <section id="profissionais" className="py-24 md:py-40 3xl:py-64 bg-secondary overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 3xl:px-24" ref={containerRef}>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl 3xl:max-w-4xl">
             <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Nossa Liderança</h2>
-            <h3 className="font-serif text-4xl md:text-6xl text-primary leading-tight">
+            <h3 className="font-serif text-4xl md:text-6xl 3xl:text-7xl text-primary leading-tight">
               Excelência técnica com <span className="italic">olhar humano</span>.
             </h3>
           </div>
@@ -62,7 +62,7 @@ export function Professionals() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 3xl:gap-20">
           {professionals.map((prof, index) => (
             <div key={index} className="professional-card group">
               <div className="relative aspect-[3/4] overflow-hidden rounded-[2rem] mb-8 shadow-2xl transition-all duration-700 group-hover:-translate-y-4">

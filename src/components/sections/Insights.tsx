@@ -45,12 +45,12 @@ export function Insights() {
   }, { scope: containerRef });
 
   return (
-    <section id="insights" ref={containerRef} className="py-24 md:py-40 bg-secondary overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12">
+    <section id="insights" ref={containerRef} className="py-24 md:py-40 3xl:py-64 bg-secondary overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 3xl:px-24">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl 3xl:max-w-4xl">
             <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Insights</h2>
-            <h3 className="font-serif text-4xl md:text-6xl text-primary leading-tight">
+            <h3 className="font-serif text-4xl md:text-6xl 3xl:text-7xl text-primary leading-tight">
               Conhecimento que <span className="italic">protege</span> e orienta.
             </h3>
           </div>
@@ -60,7 +60,7 @@ export function Insights() {
           </button>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-3 gap-12 3xl:gap-20">
           {articles.map((article, i) => (
             <div key={i} className="insight-card group cursor-pointer">
               <div className="relative aspect-[16/10] overflow-hidden rounded-3xl mb-8 shadow-lg">

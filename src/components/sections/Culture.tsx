@@ -39,17 +39,17 @@ export function Culture() {
   }, { scope: containerRef });
 
   return (
-    <section id="cultura" className="py-24 md:py-40 bg-primary text-secondary overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16 items-center" ref={containerRef}>
-        <div className="culture-content max-w-2xl">
+    <section id="cultura" className="py-24 md:py-40 3xl:py-64 bg-primary text-secondary overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-2 gap-16 3xl:gap-32 items-center" ref={containerRef}>
+        <div className="culture-content max-w-2xl 3xl:max-w-3xl">
           <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-8">Nossa Cultura</h2>
-          <h3 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-none mb-10">
+          <h3 className="font-serif text-5xl md:text-7xl lg:text-8xl 3xl:text-9xl leading-none mb-10">
             A força do <span className="italic text-accent">feminino</span> na advocacia.
           </h3>
-          <p className="text-lg md:text-xl text-secondary/70 leading-relaxed mb-12">
+          <p className="text-lg md:text-xl text-secondary/70 leading-relaxed mb-12 font-light">
             Nossa cultura é baseada na colaboração, no respeito mútuo e na busca incessante pela justiça. Como um escritório feminino, trazemos uma perspectiva única para o direito: combinamos o rigor técnico com uma sensibilidade aguçada para as nuances de cada caso.
           </p>
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-8 3xl:gap-16">
             <div>
               <h4 className="font-serif text-2xl mb-2">Propósito</h4>
               <p className="text-secondary/50 text-sm">Transformar a vida de nossos clientes através de uma advocacia ética e empática.</p>

@@ -43,16 +43,21 @@ export function SocialResponsibility() {
   }, { scope: containerRef });
 
   return (
-    <section id="responsabilidade-social" className="py-24 md:py-32 bg-secondary text-primary">
-      <div className="container mx-auto px-6 md:px-12" ref={containerRef}>
-        <div className="mb-16 md:mb-24">
-          <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Responsabilidade Social</h2>
-          <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl max-w-3xl">
-            Nosso compromisso vai além do escritório.
-          </h3>
+    <section id="responsabilidade-social" className="py-24 md:py-40 3xl:py-64 bg-secondary text-primary overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 3xl:px-24" ref={containerRef}>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+          <div className="max-w-3xl 3xl:max-w-4xl">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Responsabilidade Social</h2>
+            <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl leading-tight">
+              Nosso compromisso vai <span className="italic">além do escritório</span>.
+            </h3>
+          </div>
+          <p className="text-primary/40 max-w-xs text-sm leading-relaxed">
+            Acreditamos no poder transformador do direito como ferramenta de impacto social e equidade.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 3xl:gap-12">
           {initiatives.map((item, index) => (
             <div 
               key={index} 
