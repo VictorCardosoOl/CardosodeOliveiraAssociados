@@ -4,20 +4,28 @@
  */
 
 import { SmoothScrollWrapper } from "./components/layout/SmoothScrollWrapper";
-import { Header } from "./components/layout/Header";
+import { Navbar } from "./components/layout/Navbar";
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
 import { Expertise } from "./components/sections/Expertise";
+import { SectorGroups } from "./components/sections/SectorGroups";
+import { Professionals } from "./components/sections/Professionals";
+import { Culture } from "./components/sections/Culture";
+import { SocialResponsibility } from "./components/sections/SocialResponsibility";
 import { Footer } from "./components/layout/Footer";
 
 export default function App() {
   return (
     <SmoothScrollWrapper>
-      <Header />
+      <Navbar />
       <main>
         <Hero />
         <About />
         <Expertise />
+        <SectorGroups />
+        <Professionals />
+        <Culture />
+        <SocialResponsibility />
       </main>
       <Footer />
     </SmoothScrollWrapper>
