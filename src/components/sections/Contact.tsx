@@ -1,7 +1,22 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Mail, MapPin, Phone, MessageSquare, ArrowRight } from "lucide-react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+// Fix for default marker icon in react-leaflet
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
+L.Marker.prototype.options.icon = DefaultIcon;
 
 export function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -75,6 +90,21 @@ export function Contact() {
                 <p className="text-xs uppercase tracking-widest text-accent font-bold mb-2">Endereço</p>
                 <p className="text-xl md:text-2xl font-serif text-secondary leading-relaxed">Av. Paulista, 1000 — 12º Andar<br />Jardins, São Paulo — SP</p>
               </div>
+            </div>
+
+            <div className="contact-item mt-12 w-full h-64 md:h-80 relative z-0 border border-secondary/10">
+              <MapContainer center={[-23.5641095, -46.6524099]} zoom={15} scrollWheelZoom={false} className="w-full h-full z-0">
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[-23.5641095, -46.6524099]}>
+                  <Popup>
+                    <span className="font-serif font-bold text-primary">Cardoso de Oliveira Associados</span><br />
+                    Av. Paulista, 1000 — 12º Andar
+                  </Popup>
+                </Marker>
+              </MapContainer>
             </div>
           </div>
         </div>
