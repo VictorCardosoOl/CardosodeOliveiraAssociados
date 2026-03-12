@@ -45,7 +45,7 @@ export function Insights() {
   }, { scope: containerRef });
 
   return (
-    <section id="insights" ref={containerRef} className="py-24 md:py-40 3xl:py-64 bg-secondary overflow-hidden">
+    <section id="insights" ref={containerRef} className="py-24 md:py-40 3xl:py-64 bg-muted overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 3xl:px-24">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
@@ -63,18 +63,18 @@ export function Insights() {
         <div className="grid md:grid-cols-3 gap-12 3xl:gap-20">
           {articles.map((article, i) => (
             <div key={i} className="insight-card group cursor-pointer">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-3xl mb-8 shadow-lg">
+              <div className="relative aspect-[16/10] overflow-hidden mb-8">
                 <img 
                   src={article.image} 
                   alt={article.title} 
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full">
+                <div className="absolute top-6 left-6 bg-secondary/90 backdrop-blur-md px-4 py-2">
                   <span className="text-[10px] uppercase tracking-widest font-bold text-primary">{article.category}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-3 text-primary/40 text-[10px] uppercase tracking-widest font-bold mb-4">
+              <div className="flex items-center gap-3 text-primary/50 text-[10px] uppercase tracking-widest font-bold mb-4">
                 <Calendar size={12} />
                 <span>{article.date}</span>
               </div>

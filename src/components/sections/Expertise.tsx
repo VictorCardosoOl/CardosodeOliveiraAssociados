@@ -5,15 +5,15 @@ import { ArrowRight } from "lucide-react";
 
 const cases = [
   {
-    tags: ["Corporate", "Finance", "Tax"],
-    title: "Inaccurate credit reporting alone does not confer",
-    subtitle: "Senior Litigation Attorney",
+    tags: ["Societário", "Financeiro", "Tributário"],
+    title: "Resolução de litígios complexos em relatórios de crédito corporativo",
+    subtitle: "Sócio de Contencioso",
     image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop"
   },
   {
-    tags: ["Real Estate", "Civil"],
-    title: "Resolving complex property disputes efficiently",
-    subtitle: "Managing Partner",
+    tags: ["Imobiliário", "Cível"],
+    title: "Resolução eficiente de disputas de propriedade complexas",
+    subtitle: "Sócio-Diretor",
     image: "https://images.unsplash.com/photo-1505664173696-0746f4856282?q=80&w=800&auto=format&fit=crop"
   }
 ];
@@ -46,7 +46,7 @@ export function Expertise() {
         {/* Left Column */}
         <div className="lg:col-span-4">
           <span className="case-elem text-xs uppercase tracking-[0.2em] font-semibold text-primary/50">
-            Case Studies
+            Casos de Sucesso
           </span>
         </div>
 

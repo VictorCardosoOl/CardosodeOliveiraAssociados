@@ -30,15 +30,15 @@ export function About() {
         {/* Left Column */}
         <div className="lg:col-span-4 flex flex-col justify-between h-full">
           <span className="about-elem text-xs uppercase tracking-[0.2em] font-semibold text-primary/50 mb-12 lg:mb-0">
-            Firmo
+            O Escritório
           </span>
           
           <div className="mt-auto">
             <p className="about-elem text-sm text-primary/60 leading-relaxed mb-8 max-w-xs">
-              To simplify the complexities of law. To provide our clients with peace of mind. To foster growth and success by alleviating legal pressures.
+              Simplificar as complexidades do direito. Proporcionar tranquilidade aos nossos clientes. Fomentar o crescimento e o sucesso aliviando pressões jurídicas.
             </p>
             <button className="about-elem bg-primary text-secondary px-8 py-4 text-sm font-medium hover:bg-primary/90 transition-colors">
-              Free consultation
+              Fale Conosco
             </button>
           </div>
         </div>
@@ -46,13 +46,13 @@ export function About() {
         {/* Right Column */}
         <div className="lg:col-span-8">
           <h2 className="about-elem font-serif text-4xl md:text-5xl lg:text-6xl text-primary leading-[1.1] mb-12 max-w-3xl tracking-tight">
-            For over 25 years, we've been helping clients navigate their legal challenges.
+            Há mais de 25 anos, ajudamos clientes a navegar por seus desafios jurídicos com segurança.
           </h2>
           
           <div className="about-elem w-full aspect-video overflow-hidden mb-16 bg-secondary">
             <img 
               src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop" 
-              alt="Legal Team" 
+              alt="Equipe Jurídica" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -60,15 +60,15 @@ export function About() {
           <div className="grid grid-cols-3 gap-8 border-t border-primary/10 pt-12">
             <div className="about-elem">
               <h3 className="font-serif text-4xl md:text-5xl text-primary mb-3">10k</h3>
-              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Clients worldwide</p>
+              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Clientes globais</p>
             </div>
             <div className="about-elem">
               <h3 className="font-serif text-4xl md:text-5xl text-primary mb-3">20+</h3>
-              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Team experts</p>
+              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Especialistas</p>
             </div>
             <div className="about-elem">
               <h3 className="font-serif text-4xl md:text-5xl text-primary mb-3">50+</h3>
-              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Awards & honors</p>
+              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Prêmios e honrarias</p>
             </div>
           </div>
         </div>

@@ -24,7 +24,7 @@ export function Culture() {
 
     gsap.fromTo(
       imageRef.current,
-      { scale: 1.1, opacity: 0 },
+      { scale: 1.05, opacity: 0 },
       {
         scale: 1,
         opacity: 1,
@@ -51,17 +51,17 @@ export function Culture() {
           </p>
           <div className="grid grid-cols-2 gap-8 3xl:gap-16">
             <div>
-              <h4 className="font-serif text-2xl mb-2">Propósito</h4>
-              <p className="text-secondary/50 text-sm">Transformar a vida de nossos clientes através de uma advocacia ética e empática.</p>
+              <h4 className="font-serif text-2xl mb-2 text-accent">Propósito</h4>
+              <p className="text-secondary/60 text-sm">Transformar a vida de nossos clientes através de uma advocacia ética e empática.</p>
             </div>
             <div>
-              <h4 className="font-serif text-2xl mb-2">Valores</h4>
-              <p className="text-secondary/50 text-sm">Transparência, excelência técnica e compromisso com a equidade.</p>
+              <h4 className="font-serif text-2xl mb-2 text-accent">Valores</h4>
+              <p className="text-secondary/60 text-sm">Transparência, excelência técnica e compromisso com a equidade.</p>
             </div>
           </div>
         </div>
 
-        <div className="relative h-[60vh] lg:h-[80vh] w-full rounded-3xl overflow-hidden shadow-2xl">
+        <div className="relative h-[60vh] lg:h-[80vh] w-full overflow-hidden">
           <div 
             ref={imageRef}
             className="absolute inset-0 bg-cover bg-center"

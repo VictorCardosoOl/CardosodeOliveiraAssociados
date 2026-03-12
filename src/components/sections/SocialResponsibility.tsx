@@ -52,7 +52,7 @@ export function SocialResponsibility() {
               Nosso compromisso vai <span className="italic">além do escritório</span>.
             </h3>
           </div>
-          <p className="text-primary/40 max-w-xs text-sm leading-relaxed">
+          <p className="text-primary/60 max-w-xs text-sm leading-relaxed">
             Acreditamos no poder transformador do direito como ferramenta de impacto social e equidade.
           </p>
         </div>
@@ -61,7 +61,7 @@ export function SocialResponsibility() {
           {initiatives.map((item, index) => (
             <div 
               key={index} 
-              className="initiative-card group p-10 bg-white border border-primary/5 rounded-3xl hover:border-accent/30 transition-all duration-500 hover:shadow-2xl"
+              className="initiative-card group p-10 bg-muted border border-primary/5 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2"
             >
               <item.icon className="w-12 h-12 text-accent mb-8 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
               <h4 className="font-serif text-2xl mb-4">{item.title}</h4>

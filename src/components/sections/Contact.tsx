@@ -48,7 +48,7 @@ export function Contact() {
           
           <div className="space-y-12">
             <div className="contact-item flex items-start gap-6 group">
-              <div className="bg-secondary/10 p-4 rounded-2xl group-hover:bg-accent transition-colors duration-500">
+              <div className="bg-secondary/10 p-4 group-hover:bg-accent transition-colors duration-500">
                 <Phone className="text-accent group-hover:text-primary transition-colors duration-500" size={24} />
               </div>
               <div>
@@ -58,7 +58,7 @@ export function Contact() {
             </div>
 
             <div className="contact-item flex items-start gap-6 group">
-              <div className="bg-secondary/10 p-4 rounded-2xl group-hover:bg-accent transition-colors duration-500">
+              <div className="bg-secondary/10 p-4 group-hover:bg-accent transition-colors duration-500">
                 <Mail className="text-accent group-hover:text-primary transition-colors duration-500" size={24} />
               </div>
               <div>
@@ -68,7 +68,7 @@ export function Contact() {
             </div>
 
             <div className="contact-item flex items-start gap-6 group">
-              <div className="bg-secondary/10 p-4 rounded-2xl group-hover:bg-accent transition-colors duration-500">
+              <div className="bg-secondary/10 p-4 group-hover:bg-accent transition-colors duration-500">
                 <MapPin className="text-accent group-hover:text-primary transition-colors duration-500" size={24} />
               </div>
               <div>
@@ -79,7 +79,7 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="contact-form bg-secondary p-12 md:p-16 rounded-[3rem] shadow-2xl">
+        <div className="contact-form bg-secondary p-12 md:p-16">
           <h4 className="font-serif text-3xl text-primary mb-10">Envie uma mensagem</h4>
           <form className="space-y-8">
             <div className="space-y-2">
@@ -106,7 +106,7 @@ export function Contact() {
                 placeholder="Descreva brevemente sua necessidade..."
               />
             </div>
-            <button className="group w-full flex items-center justify-between bg-primary text-secondary px-10 py-6 rounded-full hover:bg-accent transition-all duration-500">
+            <button className="group w-full flex items-center justify-between bg-primary text-secondary px-10 py-6 hover:bg-accent transition-all duration-500">
               <span className="font-medium uppercase tracking-widest text-sm">Enviar Mensagem</span>
               <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" />
             </button>

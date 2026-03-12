@@ -51,7 +51,7 @@ export function Testimonials() {
               A voz de quem <span className="italic">confia</span> em nós.
             </h3>
           </div>
-          <p className="text-primary/40 max-w-xs text-sm leading-relaxed">
+          <p className="text-primary/60 max-w-xs text-sm leading-relaxed">
             Relatos de quem encontrou no nosso escritório a segurança e o suporte necessários para seus desafios.
           </p>
         </div>
@@ -60,7 +60,7 @@ export function Testimonials() {
           {testimonials.map((t, i) => (
             <div 
               key={i} 
-              className="testimonial-card bg-white p-10 rounded-3xl shadow-sm border border-primary/5 flex flex-col justify-between hover:shadow-xl transition-all duration-500 group"
+              className="testimonial-card bg-muted p-10 border border-primary/5 flex flex-col justify-between hover:border-accent/30 transition-all duration-500 group"
             >
               <div>
                 <Quote className="text-accent mb-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500" size={40} />

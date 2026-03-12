@@ -57,7 +57,7 @@ export function Professionals() {
               Excelência técnica com <span className="italic">olhar humano</span>.
             </h3>
           </div>
-          <p className="text-primary/50 max-w-xs text-sm leading-relaxed">
+          <p className="text-primary/60 max-w-xs text-sm leading-relaxed">
             Uma equipe multidisciplinar dedicada a oferecer soluções jurídicas personalizadas com o mais alto rigor ético.
           </p>
         </div>
@@ -65,19 +65,19 @@ export function Professionals() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 3xl:gap-20">
           {professionals.map((prof, index) => (
             <div key={index} className="professional-card group">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-[2rem] mb-8 shadow-2xl transition-all duration-700 group-hover:-translate-y-4">
+              <div className="relative aspect-[3/4] overflow-hidden mb-8 transition-all duration-700 group-hover:-translate-y-4">
                 <img
                   src={prof.image}
                   alt={prof.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center p-8">
                   <div className="flex gap-4">
-                    <a href="#" className="bg-white/20 backdrop-blur-md p-3 rounded-full text-white hover:bg-accent transition-colors">
+                    <a href="#" className="bg-white/10 backdrop-blur-md p-3 text-white hover:bg-accent transition-colors">
                       <Linkedin size={18} />
                     </a>
-                    <a href="#" className="bg-white/20 backdrop-blur-md p-3 rounded-full text-white hover:bg-accent transition-colors">
+                    <a href="#" className="bg-white/10 backdrop-blur-md p-3 text-white hover:bg-accent transition-colors">
                       <Mail size={18} />
                     </a>
                   </div>
@@ -85,7 +85,7 @@ export function Professionals() {
               </div>
               <div className="text-center md:text-left">
                 <h4 className="font-serif text-2xl text-primary mb-2 group-hover:text-accent transition-colors duration-300">{prof.name}</h4>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-accent font-bold">{prof.role}</p>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-primary/50 font-bold">{prof.role}</p>
               </div>
             </div>
           ))}
