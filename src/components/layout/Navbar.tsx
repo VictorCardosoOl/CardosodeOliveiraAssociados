@@ -28,11 +28,8 @@ export function Navbar() {
       <div className="container mx-auto px-6 md:px-12 3xl:px-24 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4H20V8H12V12H18V16H12V20H8V4Z" fill="currentColor"/>
-          </svg>
-          <span className="font-sans text-xl font-semibold tracking-tight text-primary">
-            Firmo
+          <span className="font-serif text-xl font-semibold tracking-tight text-primary">
+            Cardoso de Oliveira Associados
           </span>
         </div>
 

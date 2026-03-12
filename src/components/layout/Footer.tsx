@@ -23,8 +23,8 @@ export function Footer() {
 
       {/* 2. Background Typography */}
       <div className="absolute bottom-[-5%] left-0 w-full pointer-events-none select-none z-0 overflow-hidden">
-        <h2 className="font-serif text-[18vw] leading-none text-secondary/5 whitespace-nowrap tracking-tighter">
-          Firmo Advogados
+        <h2 className="font-serif text-[12vw] leading-none text-secondary/5 whitespace-nowrap tracking-tighter">
+          Cardoso de Oliveira Associados
         </h2>
       </div>
 
@@ -34,7 +34,7 @@ export function Footer() {
           {/* Col 1: Identity */}
           <div className="lg:pr-12 lg:border-r border-secondary/10">
             <div className="mb-8">
-              <h3 className="font-serif text-3xl text-secondary mb-2">Firmo Advogados</h3>
+              <h3 className="font-serif text-3xl text-secondary mb-2">Cardoso de Oliveira Associados</h3>
               <p className="font-serif italic text-secondary/50 text-lg">Advocacia de Excelência</p>
             </div>
             <p className="text-sm leading-relaxed text-secondary/60 max-w-xs">
@@ -67,7 +67,7 @@ export function Footer() {
                 { name: "Instagram", icon: Instagram, href: "#" },
                 { name: "LinkedIn", icon: Linkedin, href: "#" },
                 { name: "WhatsApp", icon: MessageCircle, href: "#" },
-                { name: "E-mail", icon: Mail, href: "mailto:contato@firmo.adv.br" },
+                { name: "E-mail", icon: Mail, href: "mailto:contato@cardoso.adv.br" },
               ].map((social) => (
                 <li key={social.name}>
                   <a 
@@ -101,7 +101,7 @@ export function Footer() {
             </nav>
             <div className="pt-8 border-t border-secondary/10">
               <p className="text-[10px] uppercase tracking-widest text-secondary/40 mb-2">
-                © {currentYear} Firmo Advogados
+                © {currentYear} Cardoso de Oliveira Associados
               </p>
               <p className="text-[10px] uppercase tracking-widest text-secondary/30">
                 Design by <span className="text-secondary/50 hover:text-secondary cursor-pointer transition-colors">Wise System</span>
