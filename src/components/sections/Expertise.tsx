@@ -5,15 +5,15 @@ import { ArrowRight } from "lucide-react";
 
 const cases = [
   {
-    tags: ["Societário", "Financeiro", "Tributário"],
-    title: "Resolução de litígios complexos em relatórios de crédito corporativo",
-    subtitle: "Sócio de Contencioso",
+    tags: ["Consultivo", "Preventivo"],
+    title: "Assessoria Jurídica Empresarial",
+    subtitle: "Acompanhamento próximo para estruturação e segurança do seu negócio.",
     image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop"
   },
   {
-    tags: ["Imobiliário", "Cível"],
-    title: "Resolução eficiente de disputas de propriedade complexas",
-    subtitle: "Sócio-Diretor",
+    tags: ["Contratos", "Negociações"],
+    title: "Elaboração e Revisão de Contratos",
+    subtitle: "Garantia de segurança jurídica em todas as suas relações comerciais.",
     image: "https://images.unsplash.com/photo-1505664173696-0746f4856282?q=80&w=800&auto=format&fit=crop"
   }
 ];
@@ -40,13 +40,13 @@ export function Expertise() {
   }, { scope: containerRef });
 
   return (
-    <section id="areas-de-atuacao" ref={containerRef} className="py-24 md:py-32 bg-secondary">
+    <section id="areas-de-atuacao" ref={containerRef} className="min-h-screen flex items-center py-24 bg-secondary">
       <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-12 gap-12 lg:gap-24">
         
         {/* Left Column */}
         <div className="lg:col-span-4">
           <span className="case-elem text-xs uppercase tracking-[0.2em] font-semibold text-primary/50">
-            Casos de Sucesso
+            Áreas de Foco
           </span>
         </div>
 

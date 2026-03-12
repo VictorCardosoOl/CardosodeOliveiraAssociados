@@ -24,7 +24,7 @@ export function About() {
   }, { scope: containerRef });
 
   return (
-    <section id="o-escritorio" ref={containerRef} className="py-24 md:py-32 bg-muted">
+    <section id="o-escritorio" ref={containerRef} className="min-h-screen flex items-center py-24 bg-muted">
       <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-12 gap-12 lg:gap-24">
         
         {/* Left Column */}
@@ -35,7 +35,7 @@ export function About() {
           
           <div className="mt-auto">
             <p className="about-elem text-sm text-primary/60 leading-relaxed mb-8 max-w-xs">
-              Simplificar as complexidades do direito. Proporcionar tranquilidade aos nossos clientes. Fomentar o crescimento e o sucesso aliviando pressões jurídicas.
+              Simplificar as complexidades do direito. Proporcionar tranquilidade aos nossos clientes. Fomentar o crescimento e o sucesso aliviando pressões jurídicas com dedicação total.
             </p>
             <button className="about-elem bg-primary text-secondary px-8 py-4 text-sm font-medium hover:bg-primary/90 transition-colors">
               Fale Conosco
@@ -46,7 +46,7 @@ export function About() {
         {/* Right Column */}
         <div className="lg:col-span-8">
           <h2 className="about-elem font-serif text-4xl md:text-5xl lg:text-6xl text-primary leading-[1.1] mb-12 max-w-3xl tracking-tight">
-            Há mais de 25 anos, ajudamos clientes a navegar por seus desafios jurídicos com segurança.
+            Uma advocacia moderna, focada em atendimento exclusivo e soluções sob medida.
           </h2>
           
           <div className="about-elem w-full aspect-video overflow-hidden mb-16 bg-secondary">
@@ -57,18 +57,14 @@ export function About() {
             />
           </div>
 
-          <div className="grid grid-cols-3 gap-8 border-t border-primary/10 pt-12">
+          <div className="grid grid-cols-2 gap-8 border-t border-primary/10 pt-12">
             <div className="about-elem">
-              <h3 className="font-serif text-4xl md:text-5xl text-primary mb-3">10k</h3>
-              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Clientes globais</p>
+              <h3 className="font-serif text-2xl text-primary mb-3">Atendimento Pessoal</h3>
+              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Direto com a fundadora</p>
             </div>
             <div className="about-elem">
-              <h3 className="font-serif text-4xl md:text-5xl text-primary mb-3">20+</h3>
-              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Especialistas</p>
-            </div>
-            <div className="about-elem">
-              <h3 className="font-serif text-4xl md:text-5xl text-primary mb-3">50+</h3>
-              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Prêmios e honrarias</p>
+              <h3 className="font-serif text-2xl text-primary mb-3">Foco no Cliente</h3>
+              <p className="text-xs text-primary/50 uppercase tracking-widest font-medium">Soluções artesanais</p>
             </div>
           </div>
         </div>

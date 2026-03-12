@@ -39,7 +39,7 @@ export function Culture() {
   }, { scope: containerRef });
 
   return (
-    <section id="cultura" className="py-24 md:py-40 3xl:py-64 bg-primary text-secondary overflow-hidden">
+    <section id="cultura" className="min-h-screen flex items-center py-24 bg-primary text-secondary overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-2 gap-16 3xl:gap-32 items-center" ref={containerRef}>
         <div className="culture-content max-w-2xl 3xl:max-w-3xl">
           <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-8">Nossa Cultura</h2>

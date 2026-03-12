@@ -7,7 +7,7 @@ const navItems = [
   { name: "Início", href: "#" },
   { name: "O Escritório", href: "#o-escritorio" },
   { name: "Áreas de Atuação", href: "#areas-de-atuacao" },
-  { name: "Profissionais", href: "#profissionais" },
+  { name: "A Fundadora", href: "#profissionais" },
   { name: "Contato", href: "#contato" },
 ];
 
@@ -20,7 +20,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-secondary border-b border-primary/5",
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-secondary/90 backdrop-blur-md border-b border-primary/5",
         isVisible ? "translate-y-0" : "-translate-y-full",
         isAtTop ? "py-6" : "py-4 shadow-sm"
       )}

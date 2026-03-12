@@ -34,7 +34,7 @@ export function SectorGroups() {
   }, { scope: containerRef });
 
   return (
-    <section id="setores" className="py-24 md:py-40 3xl:py-64 bg-muted overflow-hidden">
+    <section id="setores" className="min-h-screen flex items-center py-24 bg-muted overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 3xl:px-24" ref={containerRef}>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">

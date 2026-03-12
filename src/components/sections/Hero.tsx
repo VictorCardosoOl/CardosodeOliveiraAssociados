@@ -21,7 +21,7 @@ export function Hero() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-secondary">
+    <section ref={containerRef} className="relative min-h-screen flex items-center pt-24 pb-16 bg-secondary">
       <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         <div className="max-w-xl">
           <span className="hero-elem inline-block text-xs uppercase tracking-[0.2em] font-semibold text-primary/50 mb-6">
