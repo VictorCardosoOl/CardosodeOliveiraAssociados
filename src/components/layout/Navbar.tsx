@@ -6,6 +6,7 @@ import { useScrollDirection } from "@/hooks/useScrollDirection";
 const navItems = [
   { name: "Início", href: "#" },
   { name: "O Escritório", href: "#o-escritorio" },
+  { name: "Serviços", href: "#servicos" },
   { name: "Áreas de Atuação", href: "#areas-de-atuacao" },
   { name: "A Fundadora", href: "#profissionais" },
   { name: "Contato", href: "#contato" },
@@ -48,7 +49,7 @@ export function Navbar() {
 
         {/* CTA Button */}
         <div className="hidden lg:block">
-          <a href="#contato" className="bg-primary text-secondary px-6 py-3 text-sm font-medium hover:bg-primary/90 transition-colors">
+          <a href="#contato" className="bg-primary text-secondary px-6 py-3 text-sm font-medium hover:bg-primary/90 transition-colors rounded-full">
             Agendar Consulta
           </a>
         </div>

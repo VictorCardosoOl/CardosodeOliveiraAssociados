@@ -7,6 +7,7 @@ import { SmoothScrollWrapper } from "./components/layout/SmoothScrollWrapper";
 import { Navbar } from "./components/layout/Navbar";
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
+import { Services } from "./components/sections/Services";
 import { Expertise } from "./components/sections/Expertise";
 import { SectorGroups } from "./components/sections/SectorGroups";
 import { Professionals } from "./components/sections/Professionals";
@@ -23,6 +24,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <Services />
         <Expertise />
         <SectorGroups />
         <Professionals />

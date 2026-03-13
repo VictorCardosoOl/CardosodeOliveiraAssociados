@@ -57,13 +57,13 @@ export function Contact() {
       <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-2 gap-24 3xl:gap-40 items-center">
         <div className="max-w-2xl 3xl:max-w-3xl">
           <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-8">Contato</h2>
-          <h3 className="font-serif text-5xl md:text-7xl 3xl:text-8xl leading-tight mb-12">
-            Vamos <span className="italic">conversar</span> sobre o seu caso.
+          <h3 className="font-serif text-5xl md:text-7xl 3xl:text-8xl leading-[0.9] tracking-tighter mb-12">
+            Vamos <br/><span className="italic text-secondary/80">conversar</span> sobre o seu caso.
           </h3>
           
           <div className="space-y-12">
             <div className="contact-item flex items-start gap-6 group">
-              <div className="bg-secondary/10 p-4 group-hover:bg-accent transition-colors duration-500">
+              <div className="bg-secondary/10 p-4 rounded-full group-hover:bg-accent transition-colors duration-500">
                 <Phone className="text-accent group-hover:text-primary transition-colors duration-500" size={24} />
               </div>
               <div>
@@ -73,7 +73,7 @@ export function Contact() {
             </div>
 
             <div className="contact-item flex items-start gap-6 group">
-              <div className="bg-secondary/10 p-4 group-hover:bg-accent transition-colors duration-500">
+              <div className="bg-secondary/10 p-4 rounded-full group-hover:bg-accent transition-colors duration-500">
                 <Mail className="text-accent group-hover:text-primary transition-colors duration-500" size={24} />
               </div>
               <div>
@@ -83,7 +83,7 @@ export function Contact() {
             </div>
 
             <div className="contact-item flex items-start gap-6 group">
-              <div className="bg-secondary/10 p-4 group-hover:bg-accent transition-colors duration-500">
+              <div className="bg-secondary/10 p-4 rounded-full group-hover:bg-accent transition-colors duration-500">
                 <MapPin className="text-accent group-hover:text-primary transition-colors duration-500" size={24} />
               </div>
               <div>
@@ -92,7 +92,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="contact-item mt-12 w-full h-64 md:h-80 relative z-0 border border-secondary/10">
+            <div className="contact-item mt-12 w-full h-64 md:h-80 relative z-0 border border-secondary/10 rounded-2xl overflow-hidden">
               <MapContainer center={[-23.5641095, -46.6524099]} zoom={15} scrollWheelZoom={false} className="w-full h-full z-0">
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -109,8 +109,8 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="contact-form bg-secondary p-12 md:p-16">
-          <h4 className="font-serif text-3xl text-primary mb-10">Envie uma mensagem</h4>
+        <div className="contact-form bg-secondary p-12 md:p-16 rounded-3xl">
+          <h4 className="font-serif text-4xl text-primary mb-10">Envie uma mensagem</h4>
           <form className="space-y-8">
             <div className="space-y-2">
               <label className="text-[10px] uppercase tracking-widest text-primary/50 font-bold">Nome Completo</label>
@@ -136,7 +136,7 @@ export function Contact() {
                 placeholder="Descreva brevemente sua necessidade..."
               />
             </div>
-            <button className="group w-full flex items-center justify-between bg-primary text-secondary px-10 py-6 hover:bg-accent transition-all duration-500">
+            <button className="group w-full flex items-center justify-between bg-primary text-secondary px-10 py-6 hover:bg-accent transition-all duration-500 rounded-2xl mt-8">
               <span className="font-medium uppercase tracking-widest text-sm">Enviar Mensagem</span>
               <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" />
             </button>

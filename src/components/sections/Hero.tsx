@@ -28,22 +28,22 @@ export function Hero() {
             Consultoria Jurídica
           </span>
           
-          <h1 className="hero-elem font-serif text-5xl md:text-6xl lg:text-7xl text-primary leading-[1.05] mb-8 tracking-tight">
-            Somos especialistas no campo jurídico.
+          <h1 className="hero-elem font-serif text-6xl md:text-8xl lg:text-[7rem] text-primary leading-[0.9] mb-8 tracking-tighter">
+            Especialistas no <br/><span className="italic text-primary/80">campo jurídico.</span>
           </h1>
           
-          <p className="hero-elem text-base md:text-lg text-primary/60 mb-10 leading-relaxed max-w-md">
-            Nossos serviços abrangem uma ampla gama de necessidades jurídicas, desde a elaboração e negociação de contratos até fusões e aquisições complexas.
+          <p className="hero-elem text-base md:text-lg text-primary/60 mb-10 leading-relaxed max-w-md font-light">
+            Nossos serviços abrangem uma ampla gama de necessidades jurídicas, desde a elaboração e negociação de contratos até soluções complexas.
           </p>
 
           <div className="hero-elem">
-            <button className="bg-primary text-secondary px-8 py-4 text-sm font-medium hover:bg-primary/90 transition-colors">
+            <button className="bg-primary text-secondary px-8 py-4 text-sm font-medium hover:bg-primary/90 transition-colors rounded-full">
               Agendar Consulta
             </button>
           </div>
         </div>
 
-        <div className="hero-image relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] overflow-hidden bg-muted">
+        <div className="hero-image relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] overflow-hidden bg-muted rounded-2xl">
           <img 
             src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1000&auto=format&fit=crop" 
             alt="Profissional Jurídico" 

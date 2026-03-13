@@ -37,35 +37,36 @@ export function Professionals() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
             <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">A Fundadora</h2>
-            <h3 className="font-serif text-4xl md:text-6xl 3xl:text-7xl text-primary leading-tight">
-              Excelência técnica com <span className="italic">olhar humano</span>.
+            <h3 className="font-serif text-5xl md:text-7xl 3xl:text-8xl text-primary leading-[0.9] tracking-tighter">
+              Excelência técnica com <br/><span className="italic text-primary/80">olhar humano</span>.
             </h3>
           </div>
-          <p className="text-primary/60 max-w-xs text-sm leading-relaxed">
+          <p className="text-primary/60 max-w-xs text-sm leading-relaxed font-light">
             Atendimento direto e personalizado, garantindo que cada detalhe do seu caso seja tratado com o mais alto rigor ético.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 3xl:gap-20 items-center">
-          <div className="professional-card group">
-            <div className="relative aspect-[4/5] overflow-hidden mb-8 transition-all duration-700">
-              <img
-                src={professional.image}
-                alt={professional.name}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                referrerPolicy="no-referrer"
-              />
-            </div>
+        <div className="relative flex flex-col lg:flex-row items-center justify-center lg:justify-start mt-20">
+          {/* Image Card */}
+          <div className="professional-card relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-xl z-0">
+            <img
+              src={professional.image}
+              alt={professional.name}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+              referrerPolicy="no-referrer"
+            />
           </div>
-          <div className="professional-card flex flex-col justify-center">
-            <h4 className="font-serif text-4xl md:text-5xl text-primary mb-4">{professional.name}</h4>
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/50 font-bold mb-8">{professional.role}</p>
-            <p className="text-lg text-primary/70 leading-relaxed mb-12 max-w-xl">{professional.bio}</p>
+
+          {/* Text Card Overlapping */}
+          <div className="professional-card relative z-10 w-full max-w-lg bg-primary text-secondary p-10 md:p-16 rounded-2xl shadow-2xl -mt-20 lg:-mt-0 lg:-ml-32">
+            <h4 className="font-serif text-4xl md:text-5xl mb-2">{professional.name}</h4>
+            <p className="text-xs uppercase tracking-[0.2em] text-secondary/50 font-bold mb-8">{professional.role}</p>
+            <p className="text-base text-secondary/80 leading-relaxed mb-10 font-light">{professional.bio}</p>
             <div className="flex gap-4">
-              <a href="#" className="bg-primary/5 p-4 text-primary hover:bg-accent hover:text-secondary transition-colors">
+              <a href="#" className="bg-secondary/10 p-4 rounded-full text-secondary hover:bg-secondary hover:text-primary transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="bg-primary/5 p-4 text-primary hover:bg-accent hover:text-secondary transition-colors">
+              <a href="#" className="bg-secondary/10 p-4 rounded-full text-secondary hover:bg-secondary hover:text-primary transition-colors">
                 <Mail size={20} />
               </a>
             </div>
