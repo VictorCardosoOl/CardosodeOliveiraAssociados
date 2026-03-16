@@ -21,54 +21,55 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-secondary/90 backdrop-blur-md border-b border-primary/5",
-        isVisible ? "translate-y-0" : "-translate-y-full",
-        isAtTop ? "py-6" : "py-4 shadow-sm"
+        "fixed top-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-5xl z-50 transition-all duration-500 ease-in-out rounded-full bg-white/80 backdrop-blur-xl border border-black/5 shadow-sm",
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0 pointer-events-none",
+        "py-3 px-6 flex items-center justify-between"
       )}
     >
-      <div className="container mx-auto px-6 md:px-12 3xl:px-24 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <span className="font-serif text-xl font-semibold tracking-tight text-primary">
-            Cardoso de Oliveira Associados
-          </span>
-        </div>
-
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-primary/70 hover:text-primary transition-colors"
-            >
-              {item.name}
-            </a>
-          ))}
-        </nav>
-
-        {/* CTA Button */}
-        <div className="hidden lg:block">
-          <a href="#contato" className="bg-primary text-secondary px-6 py-3 text-sm font-medium hover:bg-primary/90 transition-colors rounded-full">
-            Agendar Consulta
-          </a>
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          className="lg:hidden text-primary p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+      {/* Logo */}
+      <div className="flex items-center gap-2">
+        <span className="font-sans text-lg font-bold tracking-tight text-black flex items-center gap-2">
+          <div className="w-6 h-6 bg-black rounded-full flex items-center justify-center">
+            <div className="w-2 h-2 bg-white rounded-full"></div>
+          </div>
+          Cardoso
+        </span>
       </div>
+
+      {/* Desktop Nav */}
+      <nav className="hidden lg:flex items-center gap-8">
+        {navItems.map((item) => (
+          <a
+            key={item.name}
+            href={item.href}
+            className="text-[13px] font-medium text-black/60 hover:text-black transition-colors"
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+
+      {/* CTA Button */}
+      <div className="hidden lg:block">
+        <a href="#contato" className="bg-black text-white px-6 py-2.5 text-[13px] font-medium hover:bg-black/80 transition-colors rounded-full">
+          Get Started
+        </a>
+      </div>
+
+      {/* Mobile Menu Toggle */}
+      <button
+        className="lg:hidden text-black p-2"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle Menu"
+      >
+        {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
 
       {/* Mobile Nav Overlay */}
       <div
         className={cn(
-          "fixed inset-0 bg-secondary z-40 flex flex-col items-center justify-center gap-8 transition-all duration-300 lg:hidden",
-          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          "fixed inset-x-0 top-[calc(100%+1rem)] bg-white rounded-3xl border border-black/5 shadow-xl p-6 flex flex-col gap-4 transition-all duration-300 lg:hidden",
+          isMobileMenuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"
         )}
       >
         {navItems.map((item) => (
@@ -76,7 +77,7 @@ export function Navbar() {
             key={item.name}
             href={item.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="font-serif text-2xl text-primary hover:text-primary/70 transition-colors"
+            className="font-sans text-lg font-medium text-black hover:text-black/70 transition-colors"
           >
             {item.name}
           </a>
