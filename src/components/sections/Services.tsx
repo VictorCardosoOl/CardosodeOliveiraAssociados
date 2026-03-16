@@ -55,8 +55,8 @@ export function Services() {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider mb-8 rounded-sm">
               <span>Nossos Serviços</span>
             </div>
-            <h3 className="font-sans text-5xl md:text-6xl 3xl:text-7xl text-primary leading-[0.95] tracking-tighter font-bold">
-              Atuação <br/><span className="text-accent">especializada</span>.
+            <h3 className="font-serif text-5xl md:text-6xl 3xl:text-7xl text-primary leading-[0.95] tracking-tighter font-bold">
+              Excelência e <br/><span className="text-accent">sofisticação</span>.
             </h3>
           </div>
           <p className="text-primary/70 max-w-sm text-base leading-relaxed font-medium">
@@ -68,15 +68,15 @@ export function Services() {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="service-card group bg-white p-10 rounded-sm border border-gray-200 hover:border-accent hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col relative overflow-hidden"
+              className="service-card group bg-secondary p-10 rounded-sm border border-primary/5 hover:border-accent hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col relative overflow-hidden"
             >
               {/* Subtle accent line on top */}
               <div className="absolute top-0 left-0 w-full h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
               
               <div className="w-14 h-14 bg-accent/10 rounded-sm flex items-center justify-center mb-8 group-hover:bg-accent transition-colors duration-500">
-                <service.icon className="w-6 h-6 text-accent group-hover:text-white transition-colors duration-500" strokeWidth={2} />
+                <service.icon className="w-6 h-6 text-accent group-hover:text-secondary transition-colors duration-500" strokeWidth={2} />
               </div>
-              <h4 className="font-sans font-bold text-2xl text-primary mb-4 leading-tight">{service.title}</h4>
+              <h4 className="font-serif font-bold text-2xl text-primary mb-4 leading-tight">{service.title}</h4>
               <p className="text-primary/60 text-sm leading-relaxed font-medium mt-auto">
                 {service.description}
               </p>

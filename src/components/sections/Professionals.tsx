@@ -32,14 +32,14 @@ export function Professionals() {
   }, { scope: containerRef });
 
   return (
-    <section id="profissionais" className="min-h-screen flex items-center py-24 2xl:py-40 bg-white overflow-hidden">
+    <section id="profissionais" className="min-h-screen flex items-center py-24 2xl:py-40 bg-secondary overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 3xl:px-24" ref={containerRef}>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider mb-8 rounded-sm">
               <span>A Fundadora</span>
             </div>
-            <h3 className="font-sans text-5xl md:text-7xl 3xl:text-8xl text-primary leading-[0.95] tracking-tighter font-bold">
+            <h3 className="font-serif text-5xl md:text-7xl 3xl:text-8xl text-primary leading-[0.95] tracking-tighter font-bold">
               Excelência técnica com <br/><span className="text-accent">olhar humano</span>.
             </h3>
           </div>
@@ -64,15 +64,15 @@ export function Professionals() {
           </div>
 
           {/* Text Card Overlapping */}
-          <div className="professional-card relative z-10 w-full max-w-lg 3xl:max-w-2xl bg-primary text-white p-10 md:p-16 3xl:p-20 rounded-sm shadow-2xl -mt-20 lg:-mt-0 lg:-ml-32 3xl:-ml-40 border-l-4 border-accent">
-            <h4 className="font-sans font-bold text-4xl md:text-5xl mb-2">{professional.name}</h4>
+          <div className="professional-card relative z-10 w-full max-w-lg 3xl:max-w-2xl bg-primary text-secondary p-10 md:p-16 3xl:p-20 rounded-sm shadow-2xl -mt-20 lg:-mt-0 lg:-ml-32 3xl:-ml-40 border-l-4 border-accent">
+            <h4 className="font-serif font-bold text-4xl md:text-5xl mb-2">{professional.name}</h4>
             <p className="text-xs uppercase tracking-widest text-accent font-bold mb-8">{professional.role}</p>
-            <p className="text-base text-white/80 leading-relaxed mb-10 font-medium">{professional.bio}</p>
+            <p className="text-base text-secondary/80 leading-relaxed mb-10 font-medium">{professional.bio}</p>
             <div className="flex gap-4">
-              <a href="#" className="bg-white/10 p-4 rounded-sm text-white hover:bg-accent hover:text-white transition-colors">
+              <a href="#" className="bg-secondary/10 p-4 rounded-sm text-secondary hover:bg-accent hover:text-secondary transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="bg-white/10 p-4 rounded-sm text-white hover:bg-accent hover:text-white transition-colors">
+              <a href="#" className="bg-secondary/10 p-4 rounded-sm text-secondary hover:bg-accent hover:text-secondary transition-colors">
                 <Mail size={20} />
               </a>
             </div>

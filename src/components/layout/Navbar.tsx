@@ -22,16 +22,16 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] md:w-[calc(100%-6rem)] max-w-[1800px] z-50 transition-all duration-500 ease-in-out rounded-sm bg-white/90 backdrop-blur-xl border border-gray-200 shadow-lg",
+        "fixed top-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] md:w-[calc(100%-6rem)] max-w-[1800px] z-50 transition-all duration-500 ease-in-out rounded-sm bg-secondary/90 backdrop-blur-xl border border-primary/10 shadow-lg",
         isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0 pointer-events-none",
         "py-4 px-8 flex items-center justify-between"
       )}
     >
       {/* Logo */}
       <div className="flex items-center gap-2">
-        <span className="font-sans text-lg font-bold tracking-tight text-black flex items-center gap-2">
-          <div className="w-6 h-6 bg-black rounded-full flex items-center justify-center">
-            <div className="w-2 h-2 bg-white rounded-full"></div>
+        <span className="font-serif text-xl font-bold tracking-tight text-primary flex items-center gap-2">
+          <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+            <div className="w-2 h-2 bg-secondary rounded-full"></div>
           </div>
           Cardoso
         </span>
@@ -43,7 +43,7 @@ export function Navbar() {
           <a
             key={item.name}
             href={item.href}
-            className="text-[13px] font-medium text-black/60 hover:text-black transition-colors"
+            className="text-[13px] font-medium text-primary/60 hover:text-primary transition-colors"
           >
             {item.name}
           </a>
@@ -52,14 +52,14 @@ export function Navbar() {
 
       {/* CTA Button */}
       <div className="hidden lg:block">
-        <a href="#contato" className="bg-accent text-white px-6 py-2.5 text-[13px] font-bold hover:bg-accent-light transition-colors rounded-sm">
+        <a href="#contato" className="bg-accent text-secondary px-6 py-2.5 text-[13px] font-bold hover:bg-accent-light transition-colors rounded-sm">
           Agendar Consulta
         </a>
       </div>
 
       {/* Mobile Menu Toggle */}
       <button
-        className="lg:hidden text-black p-2"
+        className="lg:hidden text-primary p-2"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         aria-label="Toggle Menu"
       >
@@ -69,7 +69,7 @@ export function Navbar() {
       {/* Mobile Nav Overlay */}
       <div
         className={cn(
-          "fixed inset-x-0 top-[calc(100%+1rem)] bg-white rounded-3xl border border-black/5 shadow-xl p-6 flex flex-col gap-4 transition-all duration-300 lg:hidden",
+          "fixed inset-x-0 top-[calc(100%+1rem)] bg-secondary rounded-3xl border border-primary/5 shadow-xl p-6 flex flex-col gap-4 transition-all duration-300 lg:hidden",
           isMobileMenuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"
         )}
       >
@@ -78,7 +78,7 @@ export function Navbar() {
             key={item.name}
             href={item.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="font-sans text-lg font-medium text-black hover:text-black/70 transition-colors"
+            className="font-sans text-lg font-medium text-primary hover:text-primary/70 transition-colors"
           >
             {item.name}
           </a>

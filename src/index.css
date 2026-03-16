@@ -2,14 +2,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #111827;
-  --color-secondary: #ffffff;
-  --color-muted: #f3f4f6;
-  --color-accent: #4338CA; /* Ultramarine Blue */
-  --color-accent-light: #6366F1;
+  --color-primary: #1A1A1A; /* Pantone 19-4005 TCX Stretch Limo */
+  --color-secondary: #FDFBF7; /* Pantone 11-0104 TCX Off-White */
+  --color-muted: #F3EFEA; /* Pantone 13-0905 TCX Birch */
+  --color-accent: #C8B598; /* Pantone 15-1214 TCX Warm Sand / Champagne */
+  --color-accent-light: #D9CBB4;
   
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
 
   --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;

@@ -27,7 +27,7 @@ export function Hero() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative min-h-[100vh] flex items-center pt-32 pb-20 2xl:pt-48 2xl:pb-32 bg-white overflow-hidden">
+    <section ref={containerRef} className="relative min-h-[100vh] flex items-center pt-32 pb-20 2xl:pt-48 2xl:pb-32 bg-secondary overflow-hidden">
       {/* Background Accent Block */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-muted/50 -z-10 hidden lg:block"></div>
 
@@ -35,40 +35,40 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 3xl:gap-32 items-center">
           
           {/* Left Column: Text */}
-          <div className="flex flex-col items-start text-left order-2 lg:order-1">
+          <div className="flex flex-col items-start text-left order-1">
             <div className="hero-elem inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider mb-8 rounded-sm">
               <Sparkles size={14} className="text-accent" />
-              <span>Advocacia Especializada</span>
+              <span>Liderança Feminina no Direito</span>
             </div>
 
-            <h1 className="hero-elem font-sans text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-primary leading-[0.95] tracking-tighter font-bold mb-8">
+            <h1 className="hero-elem font-serif text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-primary leading-[0.95] tracking-tighter font-bold mb-8">
               Estratégia <br />
               <span className="text-accent">Jurídica</span>
             </h1>
             
             <p className="hero-elem text-lg md:text-xl 3xl:text-2xl text-primary/60 leading-relaxed max-w-lg 3xl:max-w-2xl font-medium mb-10 3xl:mb-14">
-              Focada no seu negócio, entrego resultados que impulsionam o seu crescimento. Atendimento exclusivo e personalizado para demandas complexas.
+              Comandado por mulheres, nosso escritório entrega resultados que impulsionam o seu crescimento. Atendimento exclusivo e personalizado para demandas complexas.
             </p>
 
             <div className="hero-elem flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-              <button className="bg-accent text-white px-8 py-4 rounded-sm text-sm font-bold hover:bg-accent-light transition-all flex items-center justify-center gap-2 group w-full sm:w-auto">
+              <button className="bg-accent text-secondary px-8 py-4 rounded-sm text-sm font-bold hover:bg-accent-light transition-all flex items-center justify-center gap-2 group w-full sm:w-auto">
                 Agendar Consulta
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="bg-white text-primary border-2 border-gray-200 px-8 py-4 rounded-sm text-sm font-bold hover:border-accent hover:text-accent transition-all flex items-center justify-center w-full sm:w-auto">
+              <button className="bg-secondary text-primary border-2 border-primary/10 px-8 py-4 rounded-sm text-sm font-bold hover:border-accent hover:text-accent transition-all flex items-center justify-center w-full sm:w-auto">
                 Minha Trajetória
               </button>
             </div>
           </div>
 
           {/* Right Column: Image */}
-          <div className="hero-image-container relative w-full max-w-md mx-auto lg:max-w-none 3xl:max-w-[800px] order-1 lg:order-2 mt-10 lg:mt-0">
+          <div className="hero-image-container relative w-full max-w-md mx-auto lg:max-w-none 3xl:max-w-[800px] order-2 mt-10 lg:mt-0">
             {/* Geometric Accent Behind Image */}
             <div className="absolute -inset-4 bg-accent rounded-sm -z-10 translate-x-4 translate-y-4 hidden md:block"></div>
             
-            <div className="w-full aspect-[4/5] overflow-hidden bg-gray-100 rounded-sm shadow-2xl relative">
+            <div className="w-full aspect-[4/5] overflow-hidden bg-muted rounded-sm shadow-2xl relative">
               <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1000&auto=format&fit=crop" 
                 alt="Advogada Especialista" 
                 className="w-full h-full object-cover grayscale contrast-125"
               />
@@ -77,14 +77,14 @@ export function Hero() {
             </div>
             
             {/* Floating Card - Overlapping left side */}
-            <div className="hero-floating-card absolute -left-4 md:-left-12 bottom-12 bg-white p-6 rounded-sm shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-gray-100 max-w-[260px] text-left z-10 hidden sm:block">
+            <div className="hero-floating-card absolute -left-4 md:-left-12 bottom-12 bg-secondary p-6 rounded-sm shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-primary/5 max-w-[260px] text-left z-10 hidden sm:block">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-accent">Experiência</span>
                 <div className="w-8 h-8 bg-accent/10 flex items-center justify-center rounded-sm">
                   <TrendingUp size={14} className="text-accent" />
                 </div>
               </div>
-              <h3 className="font-sans font-bold text-lg leading-tight mb-2 text-primary">Atendimento Exclusivo</h3>
+              <h3 className="font-serif font-bold text-lg leading-tight mb-2 text-primary">Atendimento Exclusivo</h3>
               <p className="text-xs text-primary/60 leading-relaxed mb-4 font-medium">
                 Mais de 15 anos dedicados a soluções jurídicas de alta complexidade.
               </p>
