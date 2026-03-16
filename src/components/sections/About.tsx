@@ -24,8 +24,8 @@ export function About() {
   }, { scope: containerRef });
 
   return (
-    <section id="o-escritorio" ref={containerRef} className="min-h-screen flex items-center py-24 bg-white">
-      <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-12 gap-12 lg:gap-24">
+    <section id="o-escritorio" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-40 bg-white">
+      <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-12 gap-12 lg:gap-24 3xl:gap-32">
         
         {/* Left Column */}
         <div className="lg:col-span-4 flex flex-col justify-between h-full">
@@ -34,7 +34,7 @@ export function About() {
           </div>
           
           <div className="mt-auto">
-            <p className="about-elem text-base text-primary/70 leading-relaxed mb-8 max-w-sm font-medium">
+            <p className="about-elem text-base 3xl:text-lg text-primary/70 leading-relaxed mb-8 3xl:mb-12 max-w-sm 3xl:max-w-md font-medium">
               Simplificar as complexidades do direito. Proporcionar tranquilidade aos nossos clientes. Fomentar o crescimento e o sucesso aliviando pressões jurídicas com dedicação total.
             </p>
             <button className="about-elem bg-primary text-white px-8 py-4 text-sm font-bold hover:bg-accent transition-colors rounded-sm">
@@ -45,11 +45,11 @@ export function About() {
 
         {/* Right Column */}
         <div className="lg:col-span-8">
-          <h2 className="about-elem font-sans text-4xl md:text-5xl lg:text-6xl text-primary leading-[1.1] mb-16 max-w-3xl tracking-tighter font-bold">
+          <h2 className="about-elem font-sans text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-primary leading-[1.1] mb-16 3xl:mb-24 max-w-3xl 3xl:max-w-5xl tracking-tighter font-bold">
             Uma advocacia moderna, focada em <span className="text-accent">atendimento exclusivo</span> e soluções sob medida.
           </h2>
 
-          <div className="about-elem relative w-full aspect-video mb-16">
+          <div className="about-elem relative w-full aspect-video mb-16 3xl:mb-24">
             {/* Geometric Accent */}
             <div className="absolute -inset-4 bg-muted rounded-sm -z-10 translate-x-4 translate-y-4 hidden md:block"></div>
             <div className="w-full h-full overflow-hidden bg-gray-100 rounded-sm relative">

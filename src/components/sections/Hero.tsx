@@ -27,12 +27,12 @@ export function Hero() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative min-h-[100vh] flex items-center pt-32 pb-20 bg-white overflow-hidden">
+    <section ref={containerRef} className="relative min-h-[100vh] flex items-center pt-32 pb-20 2xl:pt-48 2xl:pb-32 bg-white overflow-hidden">
       {/* Background Accent Block */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-muted/50 -z-10 hidden lg:block"></div>
 
       <div className="container mx-auto px-6 md:px-12 3xl:px-24">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 3xl:gap-32 items-center">
           
           {/* Left Column: Text */}
           <div className="flex flex-col items-start text-left order-2 lg:order-1">
@@ -46,7 +46,7 @@ export function Hero() {
               <span className="text-accent">Jurídica</span>
             </h1>
             
-            <p className="hero-elem text-lg md:text-xl text-primary/60 leading-relaxed max-w-lg font-medium mb-10">
+            <p className="hero-elem text-lg md:text-xl 3xl:text-2xl text-primary/60 leading-relaxed max-w-lg 3xl:max-w-2xl font-medium mb-10 3xl:mb-14">
               Focada no seu negócio, entrego resultados que impulsionam o seu crescimento. Atendimento exclusivo e personalizado para demandas complexas.
             </p>
 
@@ -62,7 +62,7 @@ export function Hero() {
           </div>
 
           {/* Right Column: Image */}
-          <div className="hero-image-container relative w-full max-w-md mx-auto lg:max-w-none order-1 lg:order-2 mt-10 lg:mt-0">
+          <div className="hero-image-container relative w-full max-w-md mx-auto lg:max-w-none 3xl:max-w-[800px] order-1 lg:order-2 mt-10 lg:mt-0">
             {/* Geometric Accent Behind Image */}
             <div className="absolute -inset-4 bg-accent rounded-sm -z-10 translate-x-4 translate-y-4 hidden md:block"></div>
             

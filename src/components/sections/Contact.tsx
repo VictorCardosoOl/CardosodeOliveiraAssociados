@@ -53,7 +53,7 @@ export function Contact() {
   }, { scope: containerRef });
 
   return (
-    <section id="contato" ref={containerRef} className="min-h-screen flex items-center py-24 bg-primary text-white overflow-hidden">
+    <section id="contato" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-40 bg-primary text-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-2 gap-24 3xl:gap-40 items-center">
         <div className="max-w-2xl 3xl:max-w-3xl">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 text-accent text-xs font-bold uppercase tracking-wider mb-8 rounded-sm">
@@ -94,7 +94,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="contact-item mt-12 w-full h-64 md:h-80 relative z-0 border border-white/10 rounded-sm overflow-hidden">
+            <div className="contact-item mt-12 3xl:mt-16 w-full h-64 md:h-80 3xl:h-96 relative z-0 border border-white/10 rounded-sm overflow-hidden">
               <MapContainer center={[-23.5641095, -46.6524099]} zoom={15} scrollWheelZoom={false} className="w-full h-full z-0 grayscale contrast-125">
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

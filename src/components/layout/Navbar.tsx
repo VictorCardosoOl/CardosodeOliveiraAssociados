@@ -22,7 +22,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-5xl z-50 transition-all duration-500 ease-in-out rounded-sm bg-white/90 backdrop-blur-xl border border-gray-200 shadow-lg",
+        "fixed top-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] md:w-[calc(100%-6rem)] max-w-[1800px] z-50 transition-all duration-500 ease-in-out rounded-sm bg-white/90 backdrop-blur-xl border border-gray-200 shadow-lg",
         isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0 pointer-events-none",
         "py-4 px-8 flex items-center justify-between"
       )}

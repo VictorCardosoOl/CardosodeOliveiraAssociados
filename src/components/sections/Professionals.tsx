@@ -32,7 +32,7 @@ export function Professionals() {
   }, { scope: containerRef });
 
   return (
-    <section id="profissionais" className="min-h-screen flex items-center py-24 bg-white overflow-hidden">
+    <section id="profissionais" className="min-h-screen flex items-center py-24 2xl:py-40 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 3xl:px-24" ref={containerRef}>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
@@ -48,9 +48,9 @@ export function Professionals() {
           </p>
         </div>
 
-        <div className="relative flex flex-col lg:flex-row items-center justify-center lg:justify-start mt-20">
+        <div className="relative flex flex-col lg:flex-row items-center justify-center lg:justify-start mt-20 3xl:mt-32">
           {/* Image Card */}
-          <div className="professional-card relative w-full max-w-md aspect-[3/4] rounded-sm overflow-hidden shadow-2xl z-0">
+          <div className="professional-card relative w-full max-w-md 3xl:max-w-lg aspect-[3/4] rounded-sm overflow-hidden shadow-2xl z-0">
             {/* Geometric Accent Behind Image */}
             <div className="absolute -inset-4 bg-accent rounded-sm -z-10 -translate-x-4 translate-y-4 hidden md:block"></div>
             
@@ -64,7 +64,7 @@ export function Professionals() {
           </div>
 
           {/* Text Card Overlapping */}
-          <div className="professional-card relative z-10 w-full max-w-lg bg-primary text-white p-10 md:p-16 rounded-sm shadow-2xl -mt-20 lg:-mt-0 lg:-ml-32 border-l-4 border-accent">
+          <div className="professional-card relative z-10 w-full max-w-lg 3xl:max-w-2xl bg-primary text-white p-10 md:p-16 3xl:p-20 rounded-sm shadow-2xl -mt-20 lg:-mt-0 lg:-ml-32 3xl:-ml-40 border-l-4 border-accent">
             <h4 className="font-sans font-bold text-4xl md:text-5xl mb-2">{professional.name}</h4>
             <p className="text-xs uppercase tracking-widest text-accent font-bold mb-8">{professional.role}</p>
             <p className="text-base text-white/80 leading-relaxed mb-10 font-medium">{professional.bio}</p>

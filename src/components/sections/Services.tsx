@@ -48,9 +48,9 @@ export function Services() {
   }, { scope: containerRef });
 
   return (
-    <section id="servicos" ref={containerRef} className="min-h-screen flex items-center py-24 bg-muted/30">
+    <section id="servicos" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-40 bg-muted/30">
       <div className="container mx-auto px-6 md:px-12 3xl:px-24">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 3xl:mb-32 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider mb-8 rounded-sm">
               <span>Nossos Serviços</span>
