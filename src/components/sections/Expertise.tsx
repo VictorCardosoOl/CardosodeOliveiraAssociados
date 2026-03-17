@@ -76,7 +76,7 @@ export function Expertise() {
           {cases.map((item, index) => (
             <div 
               key={index} 
-              className={`case-elem group relative overflow-hidden rounded-[2rem] p-8 md:p-12 flex flex-col justify-between min-h-[400px] ${item.colSpan} ${item.bg}`}
+              className={`case-elem group relative overflow-hidden rounded-sm p-8 md:p-12 flex flex-col justify-between min-h-[400px] ${item.colSpan} ${item.bg}`}
             >
               {/* Background Image for some cards (optional, but let's keep it clean like the bento box) */}
               {item.bg === "bg-primary text-secondary" ? (

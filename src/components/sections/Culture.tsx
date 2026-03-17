@@ -41,7 +41,7 @@ export function Culture() {
   return (
     <section id="cultura" className="min-h-screen flex items-center py-24 2xl:py-48 3xl:py-64 bg-primary text-secondary overflow-hidden">
       <div className="container grid lg:grid-cols-2 gap-16 3xl:gap-32 items-center" ref={containerRef}>
-        <div className="culture-content max-w-2xl 3xl:max-w-3xl relative z-10 bg-primary p-8 md:p-12 rounded-3xl lg:-mr-32 mt-12 lg:mt-0 shadow-2xl">
+        <div className="culture-content max-w-2xl 3xl:max-w-3xl relative z-10 bg-primary p-8 md:p-12 rounded-sm lg:-mr-32 mt-12 lg:mt-0 shadow-2xl">
           <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-bold mb-8">Nossa Cultura</h2>
           <h3 className="font-serif text-5xl md:text-7xl lg:text-8xl 3xl:text-9xl leading-[0.9] mb-10 tracking-tighter font-medium">
             A força do <br/><span className="italic text-secondary/80">feminino</span> na advocacia.
@@ -61,7 +61,7 @@ export function Culture() {
           </div>
         </div>
 
-        <div className="relative h-[60vh] lg:h-[80vh] w-full overflow-hidden rounded-3xl z-0">
+        <div className="relative h-[60vh] lg:h-[80vh] w-full overflow-hidden rounded-sm z-0">
           <div 
             ref={imageRef}
             className="absolute inset-0"

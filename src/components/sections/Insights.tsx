@@ -64,7 +64,7 @@ export function Insights() {
         <div className="grid md:grid-cols-3 gap-12 3xl:gap-20">
           {articles.map((article, i) => (
             <div key={i} className="insight-card group cursor-pointer">
-              <div className="relative aspect-[16/10] overflow-hidden mb-8 rounded-2xl">
+              <div className="relative aspect-[16/10] overflow-hidden mb-8 rounded-sm">
                 <img 
                   src={article.image} 
                   alt={article.title} 

@@ -31,13 +31,13 @@ export function Hero() {
         
         {/* Left Column: Text */}
         <div className="flex flex-col justify-center items-start text-left px-6 md:px-12 lg:pl-24 2xl:pl-24 3xl:pl-32 4xl:pl-40 lg:pr-16 py-12 lg:py-32 2xl:py-48 3xl:py-64 z-10">
-          <h1 className="hero-elem font-serif text-[6rem] sm:text-[8rem] lg:text-[10rem] xl:text-[12rem] text-primary leading-[0.8] tracking-tighter font-semibold mb-6 lowercase">
-            estra<br />
-            tégia.
+          <h1 className="hero-elem font-serif text-[6rem] sm:text-[8rem] lg:text-[10rem] xl:text-[12rem] text-primary leading-[0.85] tracking-tighter font-medium mb-8 lowercase">
+            visão<br />
+            singular.
           </h1>
           
-          <h2 className="hero-elem font-sans text-xl md:text-2xl xl:text-3xl font-medium uppercase tracking-tight text-primary mb-6">
-            Liderança feminina no direito!
+          <h2 className="hero-elem font-sans text-lg md:text-xl xl:text-2xl font-medium uppercase tracking-[0.15em] text-primary mb-6">
+            Liderança feminina no direito
           </h2>
           
           <p className="hero-elem text-base md:text-lg xl:text-xl text-primary/70 leading-relaxed max-w-md font-light mb-10">
@@ -55,7 +55,7 @@ export function Hero() {
         {/* Right Column: Image */}
         <div className="relative w-full h-[50vh] lg:h-auto min-h-[400px] lg:min-h-[600px]">
           <div className="absolute inset-0 lg:pt-24 lg:pb-8 lg:pr-8">
-            <div className="w-full h-full relative overflow-hidden rounded-t-3xl lg:rounded-t-none lg:rounded-tl-[3rem] lg:rounded-bl-[3rem] lg:rounded-tr-[3rem] lg:rounded-br-[3rem] shadow-2xl">
+            <div className="w-full h-full relative overflow-hidden rounded-sm shadow-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop" 
                 alt="Advogada Especialista" 
@@ -63,14 +63,6 @@ export function Hero() {
                 loading="lazy"
               />
             </div>
-          </div>
-          
-          {/* Floating Badge */}
-          <div className="hero-badge absolute top-0 lg:top-1/2 left-8 lg:-left-16 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 bg-[#FFD700] rounded-full flex items-center justify-center text-center p-4 transform -rotate-12 z-20 shadow-xl border-[6px] border-secondary">
-            <div className="absolute inset-1 border border-dashed border-primary/30 rounded-full"></div>
-            <span className="font-sans font-black text-primary text-xs md:text-sm uppercase leading-tight tracking-wider z-10">
-              Agende<br/>Sua<br/>Consulta
-            </span>
           </div>
         </div>
 
