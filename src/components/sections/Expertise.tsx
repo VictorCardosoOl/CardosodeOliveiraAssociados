@@ -60,8 +60,8 @@ export function Expertise() {
   }, { scope: containerRef });
 
   return (
-    <section id="areas-de-atuacao" ref={containerRef} className="min-h-screen flex flex-col justify-center py-24 bg-secondary">
-      <div className="container mx-auto px-6 md:px-12 3xl:px-24">
+    <section id="areas-de-atuacao" ref={containerRef} className="min-h-screen flex flex-col justify-center py-24 2xl:py-48 3xl:py-64 bg-secondary">
+      <div className="container">
         
         <div className="mb-16">
           <span className="case-elem text-xs uppercase tracking-[0.2em] font-bold text-primary/50 block mb-4">

@@ -27,7 +27,7 @@ export function Navbar() {
       )}
     >
       {/* Main Navbar */}
-      <div className="w-full bg-secondary/90 backdrop-blur-xl border-b border-primary/10 py-4 px-6 md:px-12 flex items-center justify-between">
+      <div className="w-full bg-secondary/90 backdrop-blur-xl border-b border-primary/10 py-4 px-6 md:px-12 2xl:px-24 3xl:px-32 4xl:px-40 flex items-center justify-between">
         {/* Logo */}
       <div className="flex items-center gap-2">
         <span className="font-serif text-xl font-bold tracking-tight text-primary flex items-center gap-2">

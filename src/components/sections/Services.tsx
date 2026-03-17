@@ -77,8 +77,8 @@ export function Services() {
   }, { scope: containerRef });
 
   return (
-    <section id="servicos" ref={containerRef} className="py-24 2xl:py-32 bg-secondary text-primary border-t border-primary/20">
-      <div className="container mx-auto px-6 md:px-12 3xl:px-24">
+    <section id="servicos" ref={containerRef} className="py-24 2xl:py-48 3xl:py-64 bg-secondary text-primary border-t border-primary/20">
+      <div className="container">
         
         <div className="grid lg:grid-cols-[1fr_350px] xl:grid-cols-[1fr_400px] gap-12 lg:gap-0">
           

@@ -55,8 +55,8 @@ export function Contact() {
   }, { scope: containerRef });
 
   return (
-    <section id="contato" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-40 bg-primary text-secondary overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-2 gap-24 3xl:gap-40 items-center">
+    <section id="contato" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-48 3xl:py-64 bg-primary text-secondary overflow-hidden">
+      <div className="container grid lg:grid-cols-2 gap-24 3xl:gap-40 items-center">
         <div className="max-w-2xl 3xl:max-w-3xl">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 text-accent text-xs font-bold uppercase tracking-wider mb-8 rounded-sm">
             <span>Contato</span>

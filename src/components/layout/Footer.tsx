@@ -5,7 +5,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-primary text-secondary/60 py-24 md:py-40 3xl:py-64 overflow-hidden border-t border-secondary/10">
+    <footer className="relative bg-primary text-secondary/60 py-24 md:py-40 2xl:py-48 3xl:py-64 overflow-hidden border-t border-secondary/10">
       {/* 1. Noise Texture Layer */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay z-10">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -28,7 +28,7 @@ export function Footer() {
         </h2>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 3xl:px-24 relative z-20">
+      <div className="container relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0 3xl:gap-16">
           
           {/* Col 1: Identity */}

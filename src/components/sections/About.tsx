@@ -24,8 +24,8 @@ export function About() {
   }, { scope: containerRef });
 
   return (
-    <section id="o-escritorio" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-40 bg-secondary">
-      <div className="container mx-auto px-6 md:px-12 3xl:px-24 grid lg:grid-cols-12 gap-12 lg:gap-24 3xl:gap-32">
+    <section id="o-escritorio" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-48 3xl:py-64 bg-secondary">
+      <div className="container grid lg:grid-cols-12 gap-12 lg:gap-24 3xl:gap-32">
         
         {/* Left Column */}
         <div className="lg:col-span-4 flex flex-col justify-between h-full">

@@ -30,7 +30,7 @@ export function Hero() {
       <div className="flex-1 grid lg:grid-cols-2 w-full">
         
         {/* Left Column: Text */}
-        <div className="flex flex-col justify-center items-start text-left px-6 md:px-12 lg:pl-24 3xl:pl-32 lg:pr-16 py-12 lg:py-32 z-10">
+        <div className="flex flex-col justify-center items-start text-left px-6 md:px-12 lg:pl-24 2xl:pl-24 3xl:pl-32 4xl:pl-40 lg:pr-16 py-12 lg:py-32 2xl:py-48 3xl:py-64 z-10">
           <h1 className="hero-elem font-serif text-[6rem] sm:text-[8rem] lg:text-[10rem] xl:text-[12rem] text-primary leading-[0.8] tracking-tighter font-semibold mb-6 lowercase">
             estra<br />
             tégia.

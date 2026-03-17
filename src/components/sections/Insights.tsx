@@ -46,8 +46,8 @@ export function Insights() {
   }, { scope: containerRef });
 
   return (
-    <section id="insights" ref={containerRef} className="min-h-screen flex items-center py-24 bg-muted overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 3xl:px-24">
+    <section id="insights" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-48 3xl:py-64 bg-muted overflow-hidden">
+      <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
             <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-bold mb-4">Insights</h2>
