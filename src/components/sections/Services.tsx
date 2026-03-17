@@ -47,12 +47,12 @@ export function Services() {
     const elements = gsap.utils.toArray('.service-item');
     
     gsap.fromTo(elements, 
-      { y: 30, opacity: 0 },
+      { y: 20, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 0.8,
-        stagger: 0.1,
+        duration: 1.2,
+        stagger: 0.05,
         ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -62,11 +62,11 @@ export function Services() {
     );
 
     gsap.fromTo('.services-sidebar',
-      { x: 30, opacity: 0 },
+      { x: 20, opacity: 0 },
       {
         x: 0,
         opacity: 1,
-        duration: 0.8,
+        duration: 1.2,
         ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -106,7 +106,7 @@ export function Services() {
                     <h3 className="text-2xl font-sans font-medium mb-4 leading-tight whitespace-pre-line">
                       {service.title}
                     </h3>
-                    <p className="text-sm text-primary/70 leading-relaxed">
+                    <p className="text-sm text-primary/70 leading-relaxed font-light">
                       {service.description}
                     </p>
                   </div>
@@ -119,12 +119,12 @@ export function Services() {
           <div className="services-sidebar lg:border-l border-primary/20 lg:pl-12 xl:pl-20 pt-10 lg:pt-14">
             <div className="sticky top-32">
               <h2 className="text-3xl md:text-4xl font-sans font-medium mb-6">Nossa Atuação</h2>
-              <p className="text-sm md:text-base text-primary/70 leading-relaxed mb-10">
+              <p className="text-sm md:text-base text-primary/70 leading-relaxed mb-10 font-light">
                 Oferecemos assessoria jurídica personalizada em um ambiente seguro e estratégico, especializando-nos em demandas corporativas complexas para ajudar sua empresa a navegar pelos desafios do mercado com resiliência e clareza.
               </p>
               <a 
                 href="#contato"
-                className="inline-block bg-[#6B7254] text-white px-8 py-3.5 rounded-lg font-medium hover:bg-[#5a6146] transition-colors text-sm"
+                className="inline-block bg-[#6B7254] text-white px-8 py-3.5 rounded-full font-medium hover:bg-[#5a6146] transition-colors text-sm"
               >
                 Agendar uma consulta
               </a>

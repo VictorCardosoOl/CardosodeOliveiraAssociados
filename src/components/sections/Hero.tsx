@@ -6,47 +6,47 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
     tl.fromTo(
       ".hero-elem",
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, stagger: 0.15, delay: 0.2 }
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.2, stagger: 0.1, delay: 0.1 }
     ).fromTo(
       ".hero-image",
-      { scale: 1.05, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1.5, ease: "power2.out" },
-      "-=0.8"
+      { scale: 1.02, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1.8, ease: "power2.out" },
+      "-=1"
     ).fromTo(
       ".hero-badge",
-      { scale: 0, rotation: -45 },
-      { scale: 1, rotation: -12, duration: 0.8, ease: "back.out(1.5)" },
-      "-=1"
+      { scale: 0.9, rotation: -15, opacity: 0 },
+      { scale: 1, rotation: -12, opacity: 1, duration: 1.2, ease: "power2.out" },
+      "-=1.2"
     );
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex flex-col bg-secondary overflow-hidden pt-[104px]">
+    <section ref={containerRef} className="relative min-h-screen flex flex-col bg-secondary overflow-hidden pt-20">
       <div className="flex-1 grid lg:grid-cols-2 w-full">
         
         {/* Left Column: Text */}
         <div className="flex flex-col justify-center items-start text-left px-6 md:px-12 lg:pl-24 3xl:pl-32 lg:pr-16 py-12 lg:py-32 z-10">
-          <h1 className="hero-elem font-serif text-[6rem] sm:text-[8rem] lg:text-[10rem] xl:text-[12rem] text-primary leading-[0.8] tracking-tighter font-black mb-6 lowercase">
+          <h1 className="hero-elem font-serif text-[6rem] sm:text-[8rem] lg:text-[10rem] xl:text-[12rem] text-primary leading-[0.8] tracking-tighter font-semibold mb-6 lowercase">
             estra<br />
             tégia.
           </h1>
           
-          <h2 className="hero-elem font-sans text-xl md:text-2xl xl:text-3xl font-black uppercase tracking-tight text-primary mb-6">
+          <h2 className="hero-elem font-sans text-xl md:text-2xl xl:text-3xl font-medium uppercase tracking-tight text-primary mb-6">
             Liderança feminina no direito!
           </h2>
           
-          <p className="hero-elem text-base md:text-lg xl:text-xl text-primary/80 leading-relaxed max-w-md font-medium mb-10">
+          <p className="hero-elem text-base md:text-lg xl:text-xl text-primary/70 leading-relaxed max-w-md font-light mb-10">
             Comandado por mulheres, nosso escritório entrega resultados que impulsionam o seu crescimento. Atendimento exclusivo e personalizado para demandas complexas.
           </p>
 
           <a 
             href="#contato"
-            className="hero-elem inline-flex items-center justify-center gap-2 bg-primary text-secondary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary/90 transition-all hover:scale-105"
+            className="hero-elem inline-flex items-center justify-center gap-2 bg-primary text-secondary px-8 py-4 rounded-full font-medium text-lg hover:bg-primary/80 transition-colors"
           >
             Falar com Especialista
           </a>

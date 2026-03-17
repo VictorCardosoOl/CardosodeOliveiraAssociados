@@ -30,12 +30,13 @@ export function Insights() {
   useGSAP(() => {
     gsap.fromTo(
       ".insight-card",
-      { y: 50, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 1,
-        stagger: 0.2,
+        duration: 1.2,
+        stagger: 0.1,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 80%",
@@ -49,14 +50,14 @@ export function Insights() {
       <div className="container mx-auto px-6 md:px-12 3xl:px-24">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Insights</h2>
-            <h3 className="font-serif text-5xl md:text-6xl 3xl:text-7xl text-primary leading-[0.9] tracking-tighter">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-bold mb-4">Insights</h2>
+            <h3 className="font-serif text-5xl md:text-6xl 3xl:text-7xl text-primary leading-[0.9] tracking-tighter font-medium">
               Conhecimento que <br/><span className="italic text-primary/80">protege e orienta</span>.
             </h3>
           </div>
           <button className="group flex items-center gap-3 text-primary hover:text-accent transition-colors duration-300">
-            <span className="text-xs uppercase tracking-widest font-bold">Ver todos os artigos</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            <span className="text-xs uppercase tracking-widest font-medium">Ver todos os artigos</span>
+            <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
@@ -75,15 +76,15 @@ export function Insights() {
                 </div>
               </div>
               <div className="flex items-center gap-3 text-primary/50 text-[10px] uppercase tracking-widest font-bold mb-4">
-                <Calendar size={12} />
+                <Calendar size={12} strokeWidth={1.5} />
                 <span>{article.date}</span>
               </div>
-              <h4 className="font-serif text-3xl text-primary mb-6 leading-tight group-hover:text-accent transition-colors duration-300">
+              <h4 className="font-serif text-3xl text-primary mb-6 leading-tight group-hover:text-accent transition-colors duration-300 font-medium">
                 {article.title}
               </h4>
               <div className="flex items-center gap-2 text-accent opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0">
                 <span className="text-[10px] uppercase tracking-widest font-bold">Ler Artigo</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={14} strokeWidth={1.5} />
               </div>
             </div>
           ))}

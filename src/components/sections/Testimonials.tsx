@@ -27,12 +27,13 @@ export function Testimonials() {
   useGSAP(() => {
     gsap.fromTo(
       ".testimonial-card",
-      { y: 50, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 1,
-        stagger: 0.2,
+        duration: 1.2,
+        stagger: 0.1,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 80%",
@@ -46,12 +47,12 @@ export function Testimonials() {
       <div className="container mx-auto px-6 md:px-12 3xl:px-24">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Depoimentos</h2>
-            <h3 className="font-serif text-4xl md:text-6xl 3xl:text-7xl text-primary leading-tight">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-bold mb-4">Depoimentos</h2>
+            <h3 className="font-serif text-4xl md:text-6xl 3xl:text-7xl text-primary leading-tight font-medium">
               A voz de quem <span className="italic">confia</span> em nós.
             </h3>
           </div>
-          <p className="text-primary/60 max-w-xs text-sm leading-relaxed">
+          <p className="text-primary/60 max-w-xs text-sm leading-relaxed font-light">
             Relatos de quem encontrou no nosso escritório a segurança e o suporte necessários para seus desafios.
           </p>
         </div>
@@ -63,14 +64,14 @@ export function Testimonials() {
               className="testimonial-card bg-muted p-10 border border-primary/5 flex flex-col justify-between hover:border-accent/30 transition-all duration-500 group"
             >
               <div>
-                <Quote className="text-accent mb-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500" size={40} />
-                <p className="text-primary/80 text-lg leading-relaxed mb-8 italic">
+                <Quote className="text-accent mb-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500" size={40} strokeWidth={1} />
+                <p className="text-primary/80 text-lg leading-relaxed mb-8 italic font-light">
                   "{t.quote}"
                 </p>
               </div>
               <div>
-                <h4 className="font-serif text-xl text-primary">{t.author}</h4>
-                <p className="text-xs uppercase tracking-widest text-accent font-semibold mt-1">{t.role}</p>
+                <h4 className="font-serif text-xl text-primary font-medium">{t.author}</h4>
+                <p className="text-[10px] uppercase tracking-widest text-accent font-bold mt-1">{t.role}</p>
               </div>
             </div>
           ))}

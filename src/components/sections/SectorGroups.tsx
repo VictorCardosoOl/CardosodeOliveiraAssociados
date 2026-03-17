@@ -18,11 +18,11 @@ export function SectorGroups() {
   useGSAP(() => {
     gsap.fromTo(
       ".sector-item",
-      { y: 30, opacity: 0 },
+      { y: 20, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 1,
+        duration: 1.2,
         stagger: 0.1,
         ease: "power2.out",
         scrollTrigger: {
@@ -38,8 +38,8 @@ export function SectorGroups() {
       <div className="container mx-auto px-6 md:px-12 3xl:px-24" ref={containerRef}>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Grupos Setoriais</h2>
-            <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl text-primary leading-[0.9] tracking-tighter">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-bold mb-4">Grupos Setoriais</h2>
+            <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl text-primary leading-[0.9] tracking-tighter font-medium">
               Expertise em <br/><span className="italic text-primary/80">mercados estratégicos</span>.
             </h3>
           </div>
@@ -55,9 +55,9 @@ export function SectorGroups() {
               className="sector-item group flex flex-col items-center justify-center p-10 bg-secondary border border-primary/5 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2 rounded-3xl"
             >
               <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors duration-500">
-                <sector.icon className="w-8 h-8 text-accent group-hover:scale-110 transition-transform duration-500" strokeWidth={1.2} />
+                <sector.icon className="w-8 h-8 text-accent group-hover:scale-110 transition-transform duration-500" strokeWidth={1} />
               </div>
-              <span className="text-xs uppercase tracking-[0.2em] font-bold text-primary/60 group-hover:text-primary transition-colors text-center">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary/60 group-hover:text-primary transition-colors text-center">
                 {sector.name}
               </span>
             </div>

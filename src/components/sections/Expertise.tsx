@@ -44,13 +44,13 @@ export function Expertise() {
   useGSAP(() => {
     gsap.fromTo(
       ".case-elem",
-      { y: 30, opacity: 0 },
+      { y: 20, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 1,
+        duration: 1.2,
         stagger: 0.1,
-        ease: "power3.out",
+        ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 75%",
@@ -64,10 +64,10 @@ export function Expertise() {
       <div className="container mx-auto px-6 md:px-12 3xl:px-24">
         
         <div className="mb-16">
-          <span className="case-elem text-xs uppercase tracking-[0.2em] font-semibold text-primary/50 block mb-4">
+          <span className="case-elem text-xs uppercase tracking-[0.2em] font-bold text-primary/50 block mb-4">
             Áreas de Foco
           </span>
-          <h2 className="case-elem font-serif text-4xl md:text-6xl text-primary leading-tight max-w-2xl">
+          <h2 className="case-elem font-serif text-4xl md:text-6xl text-primary leading-tight max-w-2xl font-medium">
             Soluções jurídicas <span className="italic">sob medida</span> para suas necessidades.
           </h2>
         </div>
@@ -90,7 +90,7 @@ export function Expertise() {
                   {item.tags.map(tag => (
                     <span 
                       key={tag} 
-                      className={`text-[10px] uppercase tracking-wider font-medium px-3 py-1.5 rounded-full ${
+                      className={`text-[10px] uppercase tracking-wider font-bold px-3 py-1.5 rounded-full ${
                         item.bg === "bg-primary text-secondary" 
                           ? "bg-secondary/20 text-secondary" 
                           : "bg-secondary text-primary/70"
@@ -100,12 +100,12 @@ export function Expertise() {
                     </span>
                   ))}
                 </div>
-                <h3 className={`font-serif text-3xl md:text-4xl leading-tight mb-4 ${
+                <h3 className={`font-serif text-3xl md:text-4xl leading-tight mb-4 font-medium ${
                   item.bg === "bg-primary text-secondary" ? "text-secondary" : "text-primary"
                 }`}>
                   {item.title}
                 </h3>
-                <p className={`text-sm max-w-md ${
+                <p className={`text-sm max-w-md font-light ${
                   item.bg === "bg-primary text-secondary" ? "text-secondary/70" : "text-primary/60"
                 }`}>
                   {item.subtitle}
@@ -116,7 +116,7 @@ export function Expertise() {
                 <button className={`w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110 ${
                   item.bg === "bg-primary text-secondary" ? "bg-secondary text-primary" : "bg-primary text-secondary"
                 }`}>
-                  <ArrowRight size={20} className="group-hover:-rotate-45 transition-transform duration-500" />
+                  <ArrowRight size={20} strokeWidth={1.5} className="group-hover:-rotate-45 transition-transform duration-500" />
                 </button>
               </div>
             </div>

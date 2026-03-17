@@ -16,12 +16,12 @@ export function Professionals() {
   useGSAP(() => {
     gsap.fromTo(
       ".professional-card",
-      { y: 50, opacity: 0 },
+      { y: 20, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 1.2,
-        stagger: 0.15,
+        stagger: 0.1,
         ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -39,11 +39,11 @@ export function Professionals() {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider mb-8 rounded-sm">
               <span>A Fundadora</span>
             </div>
-            <h3 className="font-serif text-5xl md:text-7xl 3xl:text-8xl text-primary leading-[0.95] tracking-tighter font-bold">
+            <h3 className="font-serif text-5xl md:text-7xl 3xl:text-8xl text-primary leading-[0.95] tracking-tighter font-medium">
               Excelência técnica com <br/><span className="text-accent">olhar humano</span>.
             </h3>
           </div>
-          <p className="text-primary/70 max-w-sm text-base leading-relaxed font-medium">
+          <p className="text-primary/70 max-w-sm text-base leading-relaxed font-light">
             Atendimento direto e personalizado, garantindo que cada detalhe do seu caso seja tratado com o mais alto rigor ético.
           </p>
         </div>
@@ -57,7 +57,7 @@ export function Professionals() {
             <img
               src={professional.image}
               alt={professional.name}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-105 grayscale contrast-125"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-accent/10 mix-blend-multiply"></div>
@@ -65,15 +65,15 @@ export function Professionals() {
 
           {/* Text Card Overlapping */}
           <div className="professional-card relative z-10 w-full max-w-lg 3xl:max-w-2xl bg-primary text-secondary p-10 md:p-16 3xl:p-20 rounded-sm shadow-2xl -mt-20 lg:-mt-0 lg:-ml-32 3xl:-ml-40 border-l-4 border-accent">
-            <h4 className="font-serif font-bold text-4xl md:text-5xl mb-2">{professional.name}</h4>
+            <h4 className="font-serif font-medium text-4xl md:text-5xl mb-2">{professional.name}</h4>
             <p className="text-xs uppercase tracking-widest text-accent font-bold mb-8">{professional.role}</p>
-            <p className="text-base text-secondary/80 leading-relaxed mb-10 font-medium">{professional.bio}</p>
+            <p className="text-base text-secondary/80 leading-relaxed mb-10 font-light">{professional.bio}</p>
             <div className="flex gap-4">
-              <a href="#" className="bg-secondary/10 p-4 rounded-sm text-secondary hover:bg-accent hover:text-secondary transition-colors">
-                <Linkedin size={20} />
+              <a href="#" className="bg-secondary/10 p-4 rounded-full text-secondary hover:bg-accent hover:text-primary transition-colors">
+                <Linkedin size={20} strokeWidth={1.5} />
               </a>
-              <a href="#" className="bg-secondary/10 p-4 rounded-sm text-secondary hover:bg-accent hover:text-secondary transition-colors">
-                <Mail size={20} />
+              <a href="#" className="bg-secondary/10 p-4 rounded-full text-secondary hover:bg-accent hover:text-primary transition-colors">
+                <Mail size={20} strokeWidth={1.5} />
               </a>
             </div>
           </div>

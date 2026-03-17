@@ -37,7 +37,7 @@ export function Footer() {
               <h3 className="font-serif text-3xl text-secondary mb-2">Cardoso de Oliveira Associados</h3>
               <p className="font-serif italic text-secondary/50 text-lg">Advocacia de Excelência</p>
             </div>
-            <p className="text-sm leading-relaxed text-secondary/60 max-w-xs">
+            <p className="text-sm leading-relaxed text-secondary/60 max-w-xs font-light">
               Comprometidas com a justiça e a equidade, transformando desafios jurídicos em soluções estratégicas e humanas.
             </p>
           </div>
@@ -45,7 +45,7 @@ export function Footer() {
           {/* Col 2: Local/CTA */}
           <div className="lg:px-12 lg:border-r border-secondary/10">
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-secondary/40 mb-8 block">Localização</span>
-            <address className="not-italic text-secondary/80 mb-8 leading-relaxed">
+            <address className="not-italic text-secondary/80 mb-8 leading-relaxed font-light">
               Av. Paulista, 1000 — 12º Andar<br />
               Jardins, São Paulo — SP<br />
               01310-100
@@ -75,7 +75,7 @@ export function Footer() {
                     className="flex items-center gap-3 text-secondary/60 hover:text-secondary transition-colors duration-300 group"
                   >
                     <social.icon size={18} strokeWidth={1.5} />
-                    <span className="text-sm font-medium tracking-wide">{social.name}</span>
+                    <span className="text-sm font-light tracking-wide">{social.name}</span>
                   </a>
                 </li>
               ))}
@@ -91,7 +91,7 @@ export function Footer() {
                   <li key={item}>
                     <a 
                       href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="inline-block text-sm text-secondary/60 hover:text-secondary hover:translate-x-2 transition-all duration-300"
+                      className="inline-block text-sm font-light text-secondary/60 hover:text-secondary hover:translate-x-2 transition-all duration-300"
                     >
                       {item}
                     </a>
@@ -100,10 +100,10 @@ export function Footer() {
               </ul>
             </nav>
             <div className="pt-8 border-t border-secondary/10">
-              <p className="text-[10px] uppercase tracking-widest text-secondary/40 mb-2">
+              <p className="text-[10px] uppercase tracking-widest text-secondary/40 mb-2 font-medium">
                 © {currentYear} Cardoso de Oliveira Associados
               </p>
-              <p className="text-[10px] uppercase tracking-widest text-secondary/30">
+              <p className="text-[10px] uppercase tracking-widest text-secondary/30 font-medium">
                 Design by <span className="text-secondary/50 hover:text-secondary cursor-pointer transition-colors">Wise System</span>
               </p>
             </div>

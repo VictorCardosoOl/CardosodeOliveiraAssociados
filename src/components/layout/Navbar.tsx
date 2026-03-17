@@ -26,11 +26,6 @@ export function Navbar() {
         isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
       )}
     >
-      {/* Top Banner */}
-      <div className="w-full bg-[#22C55E] text-white py-2 px-4 text-center text-xs md:text-sm font-bold tracking-wide">
-        Atendimento especializado em todo o Brasil! <a href="#contato" className="underline underline-offset-2 hover:text-white/80">Agende Agora</a>
-      </div>
-
       {/* Main Navbar */}
       <div className="w-full bg-secondary/90 backdrop-blur-xl border-b border-primary/10 py-4 px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
@@ -49,7 +44,7 @@ export function Navbar() {
           <a
             key={item.name}
             href={item.href}
-            className="text-[13px] font-medium text-primary/60 hover:text-primary transition-colors"
+            className="text-[13px] font-light text-primary/60 hover:text-primary transition-colors"
           >
             {item.name}
           </a>
@@ -58,7 +53,7 @@ export function Navbar() {
 
       {/* CTA Button */}
       <div className="hidden lg:block">
-        <a href="#contato" className="bg-accent text-secondary px-6 py-2.5 text-[13px] font-bold hover:bg-accent-light transition-colors rounded-sm">
+        <a href="#contato" className="bg-accent text-secondary px-6 py-2.5 text-[13px] font-medium hover:bg-accent-light transition-colors rounded-full">
           Agendar Consulta
         </a>
       </div>
