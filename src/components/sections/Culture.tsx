@@ -64,11 +64,14 @@ export function Culture() {
         <div className="relative h-[60vh] lg:h-[80vh] w-full overflow-hidden rounded-3xl z-0">
           <div 
             ref={imageRef}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ 
-              backgroundImage: "url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2000&auto=format&fit=crop')" 
-            }}
+            className="absolute inset-0"
           >
+            <img 
+              src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2000&auto=format&fit=crop"
+              alt="Cultura"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
             <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
           </div>
         </div>

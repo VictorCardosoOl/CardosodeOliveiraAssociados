@@ -37,7 +37,7 @@ export function About() {
             <p className="about-elem text-base 3xl:text-lg text-primary/70 leading-relaxed mb-8 3xl:mb-12 max-w-sm 3xl:max-w-md font-light">
               Simplificar as complexidades do direito. Proporcionar tranquilidade aos nossos clientes. Fomentar o crescimento e o sucesso aliviando pressões jurídicas com dedicação total.
             </p>
-            <button className="about-elem bg-primary text-secondary px-8 py-4 text-sm font-medium hover:bg-primary/80 transition-colors rounded-full">
+            <button className="about-elem bg-primary text-secondary px-8 py-4 text-sm font-medium hover:bg-primary/90 hover:scale-105 active:scale-95 hover:shadow-xl transition-all duration-300 rounded-full">
               Fale Conosco
             </button>
           </div>
@@ -57,6 +57,7 @@ export function About() {
                 src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1200&auto=format&fit=crop" 
                 alt="Escritório de Advocacia" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-accent/5 mix-blend-multiply"></div>
             </div>

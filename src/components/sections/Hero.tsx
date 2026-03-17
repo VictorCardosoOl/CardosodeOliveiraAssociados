@@ -46,7 +46,7 @@ export function Hero() {
 
           <a 
             href="#contato"
-            className="hero-elem inline-flex items-center justify-center gap-2 bg-primary text-secondary px-8 py-4 rounded-full font-medium text-lg hover:bg-primary/80 transition-colors"
+            className="hero-elem inline-flex items-center justify-center gap-2 bg-primary text-secondary px-8 py-4 rounded-full font-medium text-lg hover:bg-primary/90 hover:scale-105 active:scale-95 hover:shadow-xl transition-all duration-300"
           >
             Falar com Especialista
           </a>
@@ -60,6 +60,7 @@ export function Hero() {
                 src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop" 
                 alt="Advogada Especialista" 
                 className="hero-image w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </div>
@@ -78,7 +79,7 @@ export function Hero() {
       {/* Logo Ticker */}
       <div className="w-full border-t border-primary/10 bg-secondary py-6 overflow-hidden flex items-center mt-auto">
         <div className="flex whitespace-nowrap animate-marquee items-center">
-          {[...Array(4)].map((_, i) => (
+          {[...Array(8)].map((_, i) => (
             <div key={i} className="flex items-center gap-16 md:gap-32 px-8 md:px-16">
               <span className="font-serif text-2xl md:text-3xl font-bold text-primary">Forbes</span>
               <span className="font-serif text-2xl md:text-3xl font-bold text-primary">VOGUE</span>

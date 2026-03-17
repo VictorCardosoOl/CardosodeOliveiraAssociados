@@ -70,6 +70,7 @@ export function Insights() {
                   alt={article.title} 
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
                 <div className="absolute top-6 left-6 bg-secondary/90 backdrop-blur-md px-4 py-2 rounded-full">
                   <span className="text-[10px] uppercase tracking-widest font-bold text-primary">{article.category}</span>

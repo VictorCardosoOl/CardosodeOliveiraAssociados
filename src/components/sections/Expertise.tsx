@@ -81,7 +81,7 @@ export function Expertise() {
               {/* Background Image for some cards (optional, but let's keep it clean like the bento box) */}
               {item.bg === "bg-primary text-secondary" ? (
                 <div className="absolute inset-0 opacity-10 mix-blend-overlay">
-                  <img src={item.image} alt="" className="w-full h-full object-cover" />
+                  <img src={item.image} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </div>
               ) : null}
 
