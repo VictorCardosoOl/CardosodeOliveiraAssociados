@@ -30,6 +30,15 @@
   @media (min-width: 2560px) { .container { max-width: 2400px; } }
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
 body {
   background-color: var(--color-secondary);
   color: var(--color-primary);

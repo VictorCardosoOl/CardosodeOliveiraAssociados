@@ -16,18 +16,24 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollDirection, isAtTop } = useScrollDirection();
 
-  // Hide when at the very top. Show only when scrolling UP and NOT at top.
-  const isVisible = !isAtTop && scrollDirection === "up";
+  // Visible at top, or when scrolling up
+  const isVisible = isAtTop || scrollDirection === "up";
 
   return (
     <header
       className={cn(
-        "fixed top-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] md:w-[calc(100%-6rem)] max-w-[1800px] z-50 transition-all duration-500 ease-in-out rounded-sm bg-secondary/90 backdrop-blur-xl border border-primary/10 shadow-lg",
-        isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0 pointer-events-none",
-        "py-4 px-8 flex items-center justify-between"
+        "fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out flex flex-col",
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
       )}
     >
-      {/* Logo */}
+      {/* Top Banner */}
+      <div className="w-full bg-[#22C55E] text-white py-2 px-4 text-center text-xs md:text-sm font-bold tracking-wide">
+        Atendimento especializado em todo o Brasil! <a href="#contato" className="underline underline-offset-2 hover:text-white/80">Agende Agora</a>
+      </div>
+
+      {/* Main Navbar */}
+      <div className="w-full bg-secondary/90 backdrop-blur-xl border-b border-primary/10 py-4 px-6 md:px-12 flex items-center justify-between">
+        {/* Logo */}
       <div className="flex items-center gap-2">
         <span className="font-serif text-xl font-bold tracking-tight text-primary flex items-center gap-2">
           <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
@@ -65,6 +71,7 @@ export function Navbar() {
       >
         {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
+      </div>
 
       {/* Mobile Nav Overlay */}
       <div
