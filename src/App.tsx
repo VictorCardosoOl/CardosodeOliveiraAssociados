@@ -14,6 +14,7 @@ import { Professionals } from "./components/sections/Professionals";
 import { Culture } from "./components/sections/Culture";
 import { SocialResponsibility } from "./components/sections/SocialResponsibility";
 import { Insights } from "./components/sections/Insights";
+import { FAQ } from "./components/sections/FAQ";
 import { Contact } from "./components/sections/Contact";
 import { Footer } from "./components/layout/Footer";
 
@@ -31,6 +32,7 @@ export default function App() {
         <Culture />
         <SocialResponsibility />
         <Insights />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

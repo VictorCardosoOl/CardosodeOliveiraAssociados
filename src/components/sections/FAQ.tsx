@@ -1,0 +1,145 @@
+import { useState, useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { Plus } from 'lucide-react';
+
+const FAQ_ITEMS = [
+  { 
+    id: 1, 
+    question: "Como funciona a primeira consulta?", 
+    answer: "A primeira consulta é um momento de escuta ativa e análise estratégica. Entendemos a fundo o seu cenário, identificamos os riscos e oportunidades, e desenhamos um plano de ação preliminar. É uma reunião focada em trazer clareza e direcionamento." 
+  },
+  { 
+    id: 2, 
+    question: "Quais áreas do direito vocês atendem?", 
+    answer: "Nossa expertise abrange o Direito Empresarial (consultivo e contratos), Direito de Família e Sucessões, e Contencioso Cível Estratégico. Atuamos em demandas complexas que exigem alta especialização e visão de negócios." 
+  },
+  { 
+    id: 3, 
+    question: "Como é cobrado o valor dos honorários?", 
+    answer: "Trabalhamos com total transparência. Os honorários são definidos após a análise do caso, considerando a complexidade, o tempo estimado e o valor envolvido. Oferecemos propostas personalizadas que alinham nossos interesses aos resultados do cliente." 
+  },
+  { 
+    id: 4, 
+    question: "Vocês atendem clientes de outros estados?", 
+    answer: "Sim. Nossa estrutura tecnológica nos permite atender clientes em todo o Brasil e no exterior com a mesma proximidade e eficiência de um atendimento presencial, através de reuniões virtuais e gestão digital de processos." 
+  },
+  { 
+    id: 5, 
+    question: "Qual o diferencial de um escritório feminino?", 
+    answer: "Combinamos o rigor técnico e a agressividade estratégica necessários no direito com uma sensibilidade aguçada para negociações e resolução de conflitos. Nossa liderança feminina traz uma perspectiva inovadora, focada em eficiência, empatia e resultados sustentáveis." 
+  },
+];
+
+export function FAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const toggleItem = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  useGSAP(() => {
+    // Check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      gsap.set(".sticky-content, .faq-item", { opacity: 1, y: 0 });
+      return;
+    }
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 75%",
+      }
+    });
+
+    // 1. Animar .sticky-content (Esquerda)
+    tl.fromTo(
+      ".sticky-content",
+      { y: 80, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.4, ease: "power4.out" }
+    );
+
+    // 2. Animar .faq-item (Direita) com stagger e delay
+    tl.fromTo(
+      ".faq-item",
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out" },
+      "-=1" // Começa um pouco antes da animação da esquerda terminar
+    );
+  }, { scope: containerRef });
+
+  return (
+    <section id="faq" ref={containerRef} className="py-24 2xl:py-48 3xl:py-64 bg-secondary text-primary border-t border-primary/10">
+      <div className="container grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0">
+        
+        {/* COLUNA ESQUERDA (Sticky) */}
+        <div className="lg:col-span-4 relative">
+          <div className="sticky-content lg:sticky lg:top-32">
+            <span className="text-xs font-bold tracking-widest uppercase mb-6 block text-accent">Suporte</span>
+            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl mb-8 leading-[0.85] tracking-tighter font-medium">
+              Dúvidas <br/> <span className="italic text-primary/50">Frequentes</span>
+            </h2>
+            <p className="text-primary/70 font-light max-w-sm mb-10 text-sm md:text-base leading-relaxed">
+              Encontre respostas para as principais dúvidas sobre nossa forma de atuação e contratação.
+            </p>
+            <a 
+              href="#contato"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-secondary px-8 py-4 rounded-full font-medium text-sm hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all duration-300"
+            >
+              Falar com Especialista
+            </a>
+          </div>
+        </div>
+
+        {/* ESPAÇO NEGATIVO (Gap) - Coluna 5 vazia */}
+        
+        {/* COLUNA DIREITA (Lista) */}
+        <div className="lg:col-span-7 lg:col-start-6 mt-12 lg:mt-0">
+          <div className="border-t border-primary/10">
+            {FAQ_ITEMS.map((item, idx) => {
+              const isOpen = openIndex === idx;
+              return (
+                <div key={item.id} className="faq-item border-b border-primary/10">
+                  <button 
+                    onClick={() => toggleItem(idx)}
+                    className="w-full py-8 md:py-10 flex justify-between items-center text-left group"
+                    aria-expanded={isOpen}
+                  >
+                    <h3 className={`text-2xl md:text-3xl font-serif transition-all duration-500 pr-8 ${
+                      isOpen ? 'translate-x-4 text-primary' : 'text-primary/70 group-hover:text-primary'
+                    }`}>
+                      {item.question}
+                    </h3>
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center transition-all duration-500 ${
+                      isOpen ? 'bg-primary text-secondary rotate-45 border-primary' : 'text-primary group-hover:border-primary'
+                    }`}>
+                      <Plus size={20} strokeWidth={1.5} />
+                    </div>
+                  </button>
+                  
+                  {/* Área de Resposta (Expandable using CSS Grid) */}
+                  <div 
+                    className="grid transition-all duration-500 ease-in-out"
+                    style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+                  >
+                    <div className="overflow-hidden">
+                      <p className={`text-base md:text-lg text-primary/70 font-light max-w-2xl leading-relaxed pb-10 transition-all duration-500 delay-100 ${
+                        isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                      }`}>
+                        {item.answer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
