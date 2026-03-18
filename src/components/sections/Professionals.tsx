@@ -16,12 +16,11 @@ export function Professionals() {
   useGSAP(() => {
     gsap.fromTo(
       ".professional-card",
-      { y: 20, opacity: 0 },
+      { y: 40, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 1.2,
-        stagger: 0.1,
         ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -32,52 +31,48 @@ export function Professionals() {
   }, { scope: containerRef });
 
   return (
-    <section id="profissionais" className="flex items-center py-[var(--spacing-section-y)] bg-secondary overflow-hidden">
+    <section id="profissionais" className="py-24 2xl:py-48 3xl:py-64 bg-secondary overflow-hidden">
       <div className="container" ref={containerRef}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-[var(--spacing-gap)]">
-          <div className="max-w-2xl 3xl:max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent text-[clamp(0.75rem,1vw,0.875rem)] font-bold uppercase tracking-wider mb-8 rounded-sm">
+        
+        <div className="professional-card bg-primary rounded-[2rem] md:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+          
+          {/* Text Content */}
+          <div className="w-full lg:w-1/2 p-10 md:p-16 lg:p-20 3xl:p-24 flex flex-col justify-center text-secondary">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider mb-8 rounded-full w-fit">
               <span>A Fundadora</span>
             </div>
-            <h3 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-[0.95] tracking-tighter font-medium">
-              Excelência técnica com <br/><span className="text-accent">olhar humano</span>.
-            </h3>
-          </div>
-          <p className="text-primary/70 max-w-sm text-[var(--text-fluid-p)] leading-relaxed font-light">
-            Atendimento direto e personalizado, garantindo que cada detalhe do seu caso seja tratado com o mais alto rigor ético.
-          </p>
-        </div>
-
-        <div className="relative flex flex-col lg:flex-row items-center justify-center lg:justify-start mt-20 3xl:mt-32">
-          {/* Image Card */}
-          <div className="professional-card relative w-full max-w-md 3xl:max-w-lg aspect-[3/4] rounded-sm overflow-hidden shadow-2xl z-0">
-            {/* Geometric Accent Behind Image */}
-            <div className="absolute -inset-4 bg-accent rounded-sm -z-10 -translate-x-4 translate-y-4 hidden md:block"></div>
             
-            <img
-              src={professional.image}
-              alt={professional.name}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-accent/10 mix-blend-multiply"></div>
-          </div>
-
-          {/* Text Card Overlapping */}
-          <div className="professional-card relative z-10 w-full max-w-lg 3xl:max-w-2xl bg-primary text-secondary p-10 md:p-16 3xl:p-20 rounded-sm shadow-2xl -mt-20 lg:-mt-0 lg:-ml-32 3xl:-ml-40 border-l-4 border-accent">
-            <h4 className="font-serif font-medium text-[var(--text-fluid-h3)] mb-2">{professional.name}</h4>
-            <p className="text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-widest text-accent font-bold mb-8">{professional.role}</p>
-            <p className="text-[var(--text-fluid-p)] text-secondary/80 leading-relaxed mb-10 font-light">{professional.bio}</p>
-            <div className="flex gap-4">
-              <a href="#" className="bg-secondary/10 p-4 rounded-full text-secondary hover:bg-accent hover:text-primary transition-colors">
+            <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-secondary leading-[1.1] tracking-tighter font-medium mb-4">
+              {professional.name}
+            </h3>
+            <p className="text-sm uppercase tracking-widest text-accent font-bold mb-8">{professional.role}</p>
+            
+            <p className="text-base md:text-lg text-secondary/80 leading-relaxed mb-10 font-light max-w-md">
+              {professional.bio}
+            </p>
+            
+            <div className="flex gap-4 mt-auto">
+              <a href="#" className="bg-secondary/10 p-4 rounded-full text-secondary hover:bg-secondary hover:text-primary transition-colors">
                 <Linkedin size={20} strokeWidth={1.5} />
               </a>
-              <a href="#" className="bg-secondary/10 p-4 rounded-full text-secondary hover:bg-accent hover:text-primary transition-colors">
+              <a href="#" className="bg-secondary/10 p-4 rounded-full text-secondary hover:bg-secondary hover:text-primary transition-colors">
                 <Mail size={20} strokeWidth={1.5} />
               </a>
             </div>
           </div>
+
+          {/* Image */}
+          <div className="w-full lg:w-1/2 min-h-[400px] lg:min-h-full relative">
+            <img
+              src={professional.image}
+              alt={professional.name}
+              className="absolute inset-0 w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+
         </div>
+
       </div>
     </section>
   );

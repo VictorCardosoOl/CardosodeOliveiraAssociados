@@ -4,12 +4,12 @@ import gsap from "gsap";
 import { Car, Leaf, Building2, Zap, HeartPulse, Landmark } from "lucide-react";
 
 const sectors = [
-  { name: "Automotivo", icon: Car },
-  { name: "Bioenergia", icon: Leaf },
-  { name: "Imobiliário", icon: Building2 },
-  { name: "Energia", icon: Zap },
-  { name: "Saúde", icon: HeartPulse },
-  { name: "Bancário", icon: Landmark },
+  { name: "Automotivo", icon: Car, desc: "Inovação e conformidade regulatória para montadoras e fornecedores." },
+  { name: "Bioenergia", icon: Leaf, desc: "Sustentabilidade, transição energética e regulação ambiental." },
+  { name: "Imobiliário", icon: Building2, desc: "Estruturação de grandes empreendimentos e fundos imobiliários." },
+  { name: "Energia", icon: Zap, desc: "Regulação, contratos complexos e leilões no setor elétrico." },
+  { name: "Saúde", icon: HeartPulse, desc: "Compliance, ANS e fusões no setor de saúde e farmacêutico." },
+  { name: "Bancário", icon: Landmark, desc: "Operações financeiras, fintechs e mercado de capitais." },
 ];
 
 export function SectorGroups() {
@@ -18,7 +18,7 @@ export function SectorGroups() {
   useGSAP(() => {
     gsap.fromTo(
       ".sector-item",
-      { y: 20, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
         y: 0,
         opacity: 1,
@@ -27,39 +27,42 @@ export function SectorGroups() {
         ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 85%",
+          start: "top 70%",
         },
       }
     );
   }, { scope: containerRef });
 
   return (
-    <section id="setores" className="flex items-center py-[var(--spacing-section-y)] bg-muted overflow-hidden">
+    <section id="setores" className="py-24 2xl:py-48 3xl:py-64 bg-muted overflow-hidden">
       <div className="container" ref={containerRef}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-[var(--spacing-gap)]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-bold mb-4">Grupos Setoriais</h2>
-            <h3 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-[0.9] tracking-tighter font-medium">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-bold mb-4">Grupos Setoriais</h2>
+            <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl text-primary leading-[0.9] tracking-tighter font-medium">
               Expertise em <br/><span className="italic text-primary/80">mercados estratégicos</span>.
             </h3>
           </div>
-          <p className="text-primary/60 max-w-xs text-[var(--text-fluid-p)] leading-relaxed font-light">
+          <p className="text-primary/60 max-w-xs text-sm leading-relaxed font-light">
             Nossa atuação é segmentada por setores para garantir um entendimento profundo das dinâmicas de cada negócio.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 3xl:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 3xl:gap-10">
           {sectors.map((sector, index) => (
             <div
               key={index}
-              className="sector-item group flex flex-col items-center justify-center p-10 bg-secondary border border-primary/5 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2 rounded-sm"
+              className="sector-item group flex flex-col items-start p-8 md:p-10 bg-secondary rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-primary/5"
             >
-              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors duration-500">
-                <sector.icon className="w-8 h-8 text-accent group-hover:scale-110 transition-transform duration-500" strokeWidth={1} />
+              <div className="w-14 h-14 bg-muted rounded-full flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-500">
+                <sector.icon className="w-6 h-6 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1.5} />
               </div>
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary/60 group-hover:text-primary transition-colors text-center">
+              <span className="font-serif text-2xl md:text-3xl font-medium text-primary mb-4 group-hover:text-accent transition-colors">
                 {sector.name}
               </span>
+              <p className="text-sm text-primary/60 leading-relaxed font-light">
+                {sector.desc}
+              </p>
             </div>
           ))}
         </div>
