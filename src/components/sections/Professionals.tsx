@@ -32,18 +32,18 @@ export function Professionals() {
   }, { scope: containerRef });
 
   return (
-    <section id="profissionais" className="flex items-center py-[var(--spacing-section-y)] bg-secondary overflow-hidden">
+    <section id="profissionais" className="min-h-screen flex items-center py-24 2xl:py-48 3xl:py-64 bg-secondary overflow-hidden">
       <div className="container" ref={containerRef}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-[var(--spacing-gap)]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent text-[clamp(0.75rem,1vw,0.875rem)] font-bold uppercase tracking-wider mb-8 rounded-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider mb-8 rounded-sm">
               <span>A Fundadora</span>
             </div>
-            <h3 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-[0.95] tracking-tighter font-medium">
+            <h3 className="font-serif text-5xl md:text-7xl 3xl:text-8xl text-primary leading-[0.95] tracking-tighter font-medium">
               Excelência técnica com <br/><span className="text-accent">olhar humano</span>.
             </h3>
           </div>
-          <p className="text-primary/70 max-w-sm text-[var(--text-fluid-p)] leading-relaxed font-light">
+          <p className="text-primary/70 max-w-sm text-base leading-relaxed font-light">
             Atendimento direto e personalizado, garantindo que cada detalhe do seu caso seja tratado com o mais alto rigor ético.
           </p>
         </div>
@@ -65,9 +65,9 @@ export function Professionals() {
 
           {/* Text Card Overlapping */}
           <div className="professional-card relative z-10 w-full max-w-lg 3xl:max-w-2xl bg-primary text-secondary p-10 md:p-16 3xl:p-20 rounded-sm shadow-2xl -mt-20 lg:-mt-0 lg:-ml-32 3xl:-ml-40 border-l-4 border-accent">
-            <h4 className="font-serif font-medium text-[var(--text-fluid-h3)] mb-2">{professional.name}</h4>
-            <p className="text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-widest text-accent font-bold mb-8">{professional.role}</p>
-            <p className="text-[var(--text-fluid-p)] text-secondary/80 leading-relaxed mb-10 font-light">{professional.bio}</p>
+            <h4 className="font-serif font-medium text-4xl md:text-5xl mb-2">{professional.name}</h4>
+            <p className="text-xs uppercase tracking-widest text-accent font-bold mb-8">{professional.role}</p>
+            <p className="text-base text-secondary/80 leading-relaxed mb-10 font-light">{professional.bio}</p>
             <div className="flex gap-4">
               <a href="#" className="bg-secondary/10 p-4 rounded-full text-secondary hover:bg-accent hover:text-primary transition-colors">
                 <Linkedin size={20} strokeWidth={1.5} />

@@ -43,16 +43,16 @@ export function Testimonials() {
   }, { scope: containerRef });
 
   return (
-    <section id="depoimentos" ref={containerRef} className="py-[var(--spacing-section-y)] bg-secondary overflow-hidden">
+    <section id="depoimentos" ref={containerRef} className="py-24 md:py-40 2xl:py-48 3xl:py-64 bg-secondary overflow-hidden">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-[var(--spacing-gap)]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-bold mb-4">Depoimentos</h2>
-            <h3 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-tight font-medium">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-bold mb-4">Depoimentos</h2>
+            <h3 className="font-serif text-4xl md:text-6xl 3xl:text-7xl text-primary leading-tight font-medium">
               A voz de quem <span className="italic">confia</span> em nós.
             </h3>
           </div>
-          <p className="text-primary/60 max-w-xs text-[var(--text-fluid-p)] leading-relaxed font-light">
+          <p className="text-primary/60 max-w-xs text-sm leading-relaxed font-light">
             Relatos de quem encontrou no nosso escritório a segurança e o suporte necessários para seus desafios.
           </p>
         </div>
@@ -70,7 +70,7 @@ export function Testimonials() {
                 </p>
               </div>
               <div>
-                <h4 className="font-serif text-[var(--text-fluid-h4)] text-primary font-medium">{t.author}</h4>
+                <h4 className="font-serif text-xl text-primary font-medium">{t.author}</h4>
                 <p className="text-[10px] uppercase tracking-widest text-accent font-bold mt-1">{t.role}</p>
               </div>
             </div>
