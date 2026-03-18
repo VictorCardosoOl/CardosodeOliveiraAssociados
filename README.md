@@ -1,20 +1,30 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Projeto de Advocacia
 
-# Run and deploy your AI Studio app
+Este é um projeto de landing page moderna e elegante para um escritório de advocacia, desenvolvido com React, Vite, Tailwind CSS e animações GSAP.
 
-This contains everything you need to run your app locally.
+## Paleta de Cores
 
-View your app in AI Studio: https://ai.studio/apps/584f0918-6b10-480c-a264-2574ee595eb7
+O design visual do site foi cuidadosamente refatorado para utilizar cores baseadas no sistema Pantone, garantindo uma identidade visual sofisticada e marcante:
 
-## Run Locally
+- **Cloud Dancer (Pantone 11-4201)**: Utilizada como a cor de fundo principal (substituindo o branco padrão), trazendo um tom off-white quente e acolhedor.
+- **Viva Magenta (Pantone 18-1750)**: Utilizada como a cor de destaque (accent), substituindo os tons dourados anteriores. É uma cor vibrante que traz energia, força e modernidade ao design.
 
-**Prerequisites:**  Node.js
+## Tecnologias Utilizadas
 
+- React 19
+- Vite
+- Tailwind CSS v4
+- GSAP (GreenSock Animation Platform) para animações de scroll
+- Lucide React para ícones
+- Lenis para smooth scrolling
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Como Executar
+
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
