@@ -27,45 +27,47 @@ export function Navbar() {
       )}
     >
       {/* Main Navbar */}
-      <div className="w-full bg-secondary/90 backdrop-blur-xl border-b border-primary/10 py-4 px-6 md:px-12 2xl:px-24 3xl:px-32 4xl:px-40 flex items-center justify-between">
-        {/* Logo */}
-      <div className="flex items-center gap-2">
-        <span className="font-serif text-xl font-bold tracking-tight text-primary flex items-center gap-2">
-          <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-            <div className="w-2 h-2 bg-secondary rounded-full"></div>
+      <div className="w-full bg-secondary/90 backdrop-blur-xl border-b border-primary/10">
+        <div className="container py-4 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <span className="font-serif text-xl font-bold tracking-tight text-primary flex items-center gap-2">
+              <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+                <div className="w-2 h-2 bg-secondary rounded-full"></div>
+              </div>
+              Cardoso
+            </span>
           </div>
-          Cardoso
-        </span>
-      </div>
 
-      {/* Desktop Nav */}
-      <nav className="hidden lg:flex items-center gap-8">
-        {navItems.map((item) => (
-          <a
-            key={item.name}
-            href={item.href}
-            className="text-[13px] font-light text-primary/60 hover:text-primary transition-colors"
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-[13px] font-light text-primary/60 hover:text-primary transition-colors"
+              >
+                {item.name}
+              </a>
+            ))}
+          </nav>
+
+          {/* CTA Button */}
+          <div className="hidden lg:block">
+            <a href="#contato" className="bg-accent text-secondary px-6 py-2.5 text-[13px] font-medium hover:bg-accent-light transition-colors rounded-full">
+              Agendar Consulta
+            </a>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="lg:hidden text-primary p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
           >
-            {item.name}
-          </a>
-        ))}
-      </nav>
-
-      {/* CTA Button */}
-      <div className="hidden lg:block">
-        <a href="#contato" className="bg-accent text-secondary px-6 py-2.5 text-[13px] font-medium hover:bg-accent-light transition-colors rounded-full">
-          Agendar Consulta
-        </a>
-      </div>
-
-      {/* Mobile Menu Toggle */}
-      <button
-        className="lg:hidden text-primary p-2"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        aria-label="Toggle Menu"
-      >
-        {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-      </button>
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav Overlay */}

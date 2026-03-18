@@ -34,16 +34,16 @@ export function SectorGroups() {
   }, { scope: containerRef });
 
   return (
-    <section id="setores" className="min-h-screen flex items-center py-24 2xl:py-48 3xl:py-64 bg-muted overflow-hidden">
+    <section id="setores" className="flex items-center py-[var(--spacing-section-y)] bg-muted overflow-hidden">
       <div className="container" ref={containerRef}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-[var(--spacing-gap)]">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-bold mb-4">Grupos Setoriais</h2>
-            <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl text-primary leading-[0.9] tracking-tighter font-medium">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-bold mb-4">Grupos Setoriais</h2>
+            <h3 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-[0.9] tracking-tighter font-medium">
               Expertise em <br/><span className="italic text-primary/80">mercados estratégicos</span>.
             </h3>
           </div>
-          <p className="text-primary/60 max-w-xs text-sm leading-relaxed font-light">
+          <p className="text-primary/60 max-w-xs text-[var(--text-fluid-p)] leading-relaxed font-light">
             Nossa atuação é segmentada por setores para garantir um entendimento profundo das dinâmicas de cada negócio.
           </p>
         </div>
@@ -52,7 +52,7 @@ export function SectorGroups() {
           {sectors.map((sector, index) => (
             <div
               key={index}
-              className="sector-item group flex flex-col items-center justify-center p-10 bg-secondary border border-primary/5 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2 rounded-3xl"
+              className="sector-item group flex flex-col items-center justify-center p-10 bg-secondary border border-primary/5 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2 rounded-sm"
             >
               <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors duration-500">
                 <sector.icon className="w-8 h-8 text-accent group-hover:scale-110 transition-transform duration-500" strokeWidth={1} />

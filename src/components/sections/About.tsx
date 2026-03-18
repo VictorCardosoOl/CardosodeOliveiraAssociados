@@ -24,8 +24,8 @@ export function About() {
   }, { scope: containerRef });
 
   return (
-    <section id="o-escritorio" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-48 3xl:py-64 bg-secondary">
-      <div className="container grid lg:grid-cols-12 gap-12 lg:gap-24 3xl:gap-32">
+    <section id="o-escritorio" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-secondary">
+      <div className="container grid lg:grid-cols-12 gap-[var(--spacing-gap)]">
         
         {/* Left Column */}
         <div className="lg:col-span-4 flex flex-col justify-between h-full">
@@ -34,7 +34,7 @@ export function About() {
           </div>
           
           <div className="mt-auto">
-            <p className="about-elem text-base 3xl:text-lg text-primary/70 leading-relaxed mb-8 3xl:mb-12 max-w-sm 3xl:max-w-md font-light">
+            <p className="about-elem text-[var(--text-fluid-p)] text-primary/70 leading-relaxed mb-8 3xl:mb-12 max-w-sm 3xl:max-w-md font-light">
               Simplificar as complexidades do direito. Proporcionar tranquilidade aos nossos clientes. Fomentar o crescimento e o sucesso aliviando pressões jurídicas com dedicação total.
             </p>
             <button className="about-elem bg-primary text-secondary px-8 py-4 text-sm font-medium hover:bg-primary/90 hover:scale-105 active:scale-95 hover:shadow-xl transition-all duration-300 rounded-full">
@@ -45,7 +45,7 @@ export function About() {
 
         {/* Right Column */}
         <div className="lg:col-span-8">
-          <h2 className="about-elem font-serif text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-primary leading-[1.1] mb-16 3xl:mb-24 max-w-3xl 3xl:max-w-5xl tracking-tighter font-medium">
+          <h2 className="about-elem font-serif text-[var(--text-fluid-h2)] text-primary leading-[1.1] mb-16 3xl:mb-24 max-w-3xl 3xl:max-w-5xl tracking-tighter font-medium">
             Uma advocacia feminina e moderna, focada em <span className="text-accent">atendimento exclusivo</span> e soluções sob medida.
           </h2>
 
@@ -76,8 +76,8 @@ export function About() {
               ].map((item, i) => (
                 <div key={i} className="about-elem group flex flex-col md:flex-row md:items-center gap-4 md:gap-12 py-8 border-t border-primary/10 hover:border-accent transition-colors">
                   <span className="font-sans font-medium text-lg text-accent/50 group-hover:text-accent transition-colors">{item.num}</span>
-                  <h3 className="font-serif text-3xl md:text-5xl tracking-tighter text-primary font-medium group-hover:translate-x-4 transition-transform duration-500">{item.title}</h3>
-                  <p className="md:ml-auto text-sm text-primary/60 max-w-xs font-light">{item.desc}</p>
+                  <h3 className="font-serif text-[var(--text-fluid-h3)] tracking-tighter text-primary font-medium group-hover:translate-x-4 transition-transform duration-500">{item.title}</h3>
+                  <p className="md:ml-auto text-[var(--text-fluid-p)] text-primary/60 max-w-xs font-light">{item.desc}</p>
                 </div>
               ))}
               <div className="border-t border-primary/10"></div>

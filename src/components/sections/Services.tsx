@@ -103,10 +103,10 @@ export function Services() {
                 <div className="flex items-start gap-6">
                   <service.icon className="w-10 h-10 text-primary shrink-0 mt-1" strokeWidth={1} />
                   <div>
-                    <h3 className="text-2xl font-sans font-medium mb-4 leading-tight whitespace-pre-line">
+                    <h3 className="text-[var(--text-fluid-h3)] font-serif font-medium mb-4 leading-tight whitespace-pre-line">
                       {service.title}
                     </h3>
-                    <p className="text-sm text-primary/70 leading-relaxed font-light">
+                    <p className="text-[var(--text-fluid-p)] text-primary/70 leading-relaxed font-light">
                       {service.description}
                     </p>
                   </div>
@@ -118,8 +118,8 @@ export function Services() {
           {/* Right Side: Sidebar */}
           <div className="services-sidebar lg:border-l border-primary/20 lg:pl-12 xl:pl-20 pt-10 lg:pt-14">
             <div className="sticky top-32">
-              <h2 className="text-3xl md:text-4xl font-sans font-medium mb-6">Nossa Atuação</h2>
-              <p className="text-sm md:text-base text-primary/70 leading-relaxed mb-10 font-light">
+              <h2 className="text-[var(--text-fluid-h2)] font-serif font-medium mb-6">Nossa Atuação</h2>
+              <p className="text-[var(--text-fluid-p)] text-primary/70 leading-relaxed mb-10 font-light">
                 Oferecemos assessoria jurídica personalizada em um ambiente seguro e estratégico, especializando-nos em demandas corporativas complexas para ajudar sua empresa a navegar pelos desafios do mercado com resiliência e clareza.
               </p>
               <a 

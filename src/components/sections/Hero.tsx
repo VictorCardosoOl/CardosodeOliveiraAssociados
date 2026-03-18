@@ -26,21 +26,21 @@ export function Hero() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex flex-col bg-secondary overflow-hidden pt-20">
+    <section ref={containerRef} className="relative min-h-[100svh] flex flex-col bg-secondary overflow-hidden pt-20">
       <div className="flex-1 grid lg:grid-cols-2 w-full">
         
         {/* Left Column: Text */}
-        <div className="flex flex-col justify-center items-start text-left px-6 md:px-12 lg:pl-24 2xl:pl-24 3xl:pl-32 4xl:pl-40 lg:pr-16 py-12 lg:py-32 2xl:py-48 3xl:py-64 z-10">
-          <h1 className="hero-elem font-serif text-[6rem] sm:text-[8rem] lg:text-[10rem] xl:text-[12rem] text-primary leading-[0.85] tracking-tighter font-medium mb-8 lowercase">
+        <div className="flex flex-col justify-center items-start text-left px-6 md:px-12 lg:pl-24 2xl:pl-24 3xl:pl-32 4xl:pl-40 lg:pr-16 py-[var(--spacing-section-y)] z-10">
+          <h1 className="hero-elem font-serif text-[var(--text-fluid-hero)] text-primary leading-[0.85] tracking-tighter font-medium mb-8 lowercase">
             visão<br />
             singular.
           </h1>
           
-          <h2 className="hero-elem font-sans text-lg md:text-xl xl:text-2xl font-medium uppercase tracking-[0.15em] text-primary mb-6">
+          <h2 className="hero-elem font-sans text-[clamp(1.125rem,2vw,1.5rem)] font-medium uppercase tracking-[0.15em] text-primary mb-6">
             Liderança feminina no direito
           </h2>
           
-          <p className="hero-elem text-base md:text-lg xl:text-xl text-primary/70 leading-relaxed max-w-md font-light mb-10">
+          <p className="hero-elem text-[var(--text-fluid-p)] text-primary/70 leading-relaxed max-w-md font-light mb-10">
             Comandado por mulheres, nosso escritório entrega resultados que impulsionam o seu crescimento. Atendimento exclusivo e personalizado para demandas complexas.
           </p>
 
@@ -53,9 +53,9 @@ export function Hero() {
         </div>
 
         {/* Right Column: Image */}
-        <div className="relative w-full h-[50vh] lg:h-auto min-h-[400px] lg:min-h-[600px]">
-          <div className="absolute inset-0 lg:pt-24 lg:pb-8 lg:pr-8">
-            <div className="w-full h-full relative overflow-hidden rounded-sm shadow-2xl">
+        <div className="relative w-full min-h-[50vh] lg:min-h-full flex items-stretch">
+          <div className="absolute inset-0 lg:p-12 2xl:p-24">
+            <div className="w-full h-full relative overflow-hidden lg:rounded-sm shadow-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop" 
                 alt="Advogada Especialista" 

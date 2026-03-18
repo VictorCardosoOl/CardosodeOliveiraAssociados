@@ -60,14 +60,14 @@ export function Expertise() {
   }, { scope: containerRef });
 
   return (
-    <section id="areas-de-atuacao" ref={containerRef} className="min-h-screen flex flex-col justify-center py-24 2xl:py-48 3xl:py-64 bg-secondary">
+    <section id="areas-de-atuacao" ref={containerRef} className="flex flex-col justify-center py-[var(--spacing-section-y)] bg-secondary">
       <div className="container">
         
         <div className="mb-16">
-          <span className="case-elem text-xs uppercase tracking-[0.2em] font-bold text-primary/50 block mb-4">
+          <span className="case-elem text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-[0.2em] font-bold text-primary/50 block mb-4">
             Áreas de Foco
           </span>
-          <h2 className="case-elem font-serif text-4xl md:text-6xl text-primary leading-tight max-w-2xl font-medium">
+          <h2 className="case-elem font-serif text-[var(--text-fluid-h2)] text-primary leading-tight max-w-3xl font-medium">
             Soluções jurídicas <span className="italic">sob medida</span> para suas necessidades.
           </h2>
         </div>
@@ -100,12 +100,12 @@ export function Expertise() {
                     </span>
                   ))}
                 </div>
-                <h3 className={`font-serif text-3xl md:text-4xl leading-tight mb-4 font-medium ${
+                <h3 className={`font-serif text-[var(--text-fluid-h3)] leading-tight mb-4 font-medium ${
                   item.bg === "bg-primary text-secondary" ? "text-secondary" : "text-primary"
                 }`}>
                   {item.title}
                 </h3>
-                <p className={`text-sm max-w-md font-light ${
+                <p className={`text-[var(--text-fluid-p)] max-w-md font-light ${
                   item.bg === "bg-primary text-secondary" ? "text-secondary/70" : "text-primary/60"
                 }`}>
                   {item.subtitle}

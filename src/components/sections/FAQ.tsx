@@ -72,17 +72,17 @@ export function FAQ() {
   }, { scope: containerRef });
 
   return (
-    <section id="faq" ref={containerRef} className="py-24 2xl:py-48 3xl:py-64 bg-secondary text-primary border-t border-primary/10">
+    <section id="faq" ref={containerRef} className="py-[var(--spacing-section-y)] bg-secondary text-primary border-t border-primary/10">
       <div className="container grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0">
         
         {/* COLUNA ESQUERDA (Sticky) */}
         <div className="lg:col-span-4 relative">
           <div className="sticky-content lg:sticky lg:top-32">
-            <span className="text-xs font-bold tracking-widest uppercase mb-6 block text-accent">Suporte</span>
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl mb-8 leading-[0.85] tracking-tighter font-medium">
+            <span className="text-[clamp(0.75rem,1vw,0.875rem)] font-bold tracking-widest uppercase mb-6 block text-accent">Suporte</span>
+            <h2 className="font-serif text-[var(--text-fluid-h2)] mb-8 leading-[0.85] tracking-tighter font-medium">
               Dúvidas <br/> <span className="italic text-primary/50">Frequentes</span>
             </h2>
-            <p className="text-primary/70 font-light max-w-sm mb-10 text-sm md:text-base leading-relaxed">
+            <p className="text-primary/70 font-light max-w-sm mb-10 text-[var(--text-fluid-p)] leading-relaxed">
               Encontre respostas para as principais dúvidas sobre nossa forma de atuação e contratação.
             </p>
             <a 
@@ -108,7 +108,7 @@ export function FAQ() {
                     className="w-full py-8 md:py-10 flex justify-between items-center text-left group"
                     aria-expanded={isOpen}
                   >
-                    <h3 className={`text-2xl md:text-3xl font-serif transition-all duration-500 pr-8 ${
+                    <h3 className={`text-[var(--text-fluid-h3)] font-serif transition-all duration-500 pr-8 ${
                       isOpen ? 'translate-x-4 text-primary' : 'text-primary/70 group-hover:text-primary'
                     }`}>
                       {item.question}
@@ -126,7 +126,7 @@ export function FAQ() {
                     style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
                   >
                     <div className="overflow-hidden">
-                      <p className={`text-base md:text-lg text-primary/70 font-light max-w-2xl leading-relaxed pb-10 transition-all duration-500 delay-100 ${
+                      <p className={`text-[var(--text-fluid-p)] text-primary/70 font-light max-w-2xl leading-relaxed pb-10 transition-all duration-500 delay-100 ${
                         isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                       }`}>
                         {item.answer}

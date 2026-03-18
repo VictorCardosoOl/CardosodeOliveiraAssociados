@@ -46,12 +46,12 @@ export function Insights() {
   }, { scope: containerRef });
 
   return (
-    <section id="insights" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-48 3xl:py-64 bg-muted overflow-hidden">
+    <section id="insights" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-muted overflow-hidden">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-[var(--spacing-gap)]">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-bold mb-4">Insights</h2>
-            <h3 className="font-serif text-5xl md:text-6xl 3xl:text-7xl text-primary leading-[0.9] tracking-tighter font-medium">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-bold mb-4">Insights</h2>
+            <h3 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-[0.9] tracking-tighter font-medium">
               Conhecimento que <br/><span className="italic text-primary/80">protege e orienta</span>.
             </h3>
           </div>
@@ -80,7 +80,7 @@ export function Insights() {
                 <Calendar size={12} strokeWidth={1.5} />
                 <span>{article.date}</span>
               </div>
-              <h4 className="font-serif text-3xl text-primary mb-6 leading-tight group-hover:text-accent transition-colors duration-300 font-medium">
+              <h4 className="font-serif text-[var(--text-fluid-h3)] text-primary mb-6 leading-tight group-hover:text-accent transition-colors duration-300 font-medium">
                 {article.title}
               </h4>
               <div className="flex items-center gap-2 text-accent opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0">
