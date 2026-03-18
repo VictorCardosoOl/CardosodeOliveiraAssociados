@@ -55,13 +55,13 @@ export function Contact() {
   }, { scope: containerRef });
 
   return (
-    <section id="contato" ref={containerRef} className="min-h-screen flex items-center py-24 2xl:py-48 3xl:py-64 bg-primary text-secondary overflow-hidden">
-      <div className="container grid lg:grid-cols-2 gap-24 3xl:gap-40 items-center">
+    <section id="contato" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
+      <div className="container grid lg:grid-cols-2 gap-[var(--spacing-gap)] items-center">
         <div className="max-w-2xl 3xl:max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 text-accent text-xs font-bold uppercase tracking-wider mb-8 rounded-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 text-accent text-[clamp(0.75rem,1vw,0.875rem)] font-bold uppercase tracking-wider mb-8 rounded-sm">
             <span>Contato</span>
           </div>
-          <h3 className="font-serif font-medium text-5xl md:text-7xl 3xl:text-8xl leading-[0.95] tracking-tighter mb-12">
+          <h3 className="font-serif font-medium text-[var(--text-fluid-h2)] leading-[0.95] tracking-tighter mb-12">
             Vamos <br/><span className="text-accent">conversar</span> sobre o seu caso.
           </h3>
           
@@ -113,8 +113,8 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="contact-form bg-secondary p-12 md:p-16 rounded-sm border-t-4 border-accent">
-          <h4 className="font-serif font-medium text-4xl text-primary mb-10">Envie uma mensagem</h4>
+        <div className="contact-form bg-secondary p-8 md:p-12 lg:p-16 rounded-sm border-t-4 border-accent">
+          <h4 className="font-serif font-medium text-[var(--text-fluid-h3)] text-primary mb-10">Envie uma mensagem</h4>
           <form className="space-y-8">
             <div className="space-y-2">
               <label className="text-[10px] uppercase tracking-widest text-primary/50 font-bold">Nome Completo</label>
