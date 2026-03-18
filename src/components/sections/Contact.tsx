@@ -140,7 +140,7 @@ export function Contact() {
                 placeholder="Descreva brevemente sua necessidade..."
               />
             </div>
-            <button className="group w-full flex items-center justify-between bg-accent text-secondary px-10 py-6 hover:bg-accent-light transition-all duration-500 rounded-full mt-8">
+            <button className="group w-full flex items-center justify-between bg-accent text-secondary px-10 py-6 hover:bg-accent-dark transition-all duration-500 rounded-full mt-8">
               <span className="font-medium uppercase tracking-widest text-sm">Enviar Mensagem</span>
               <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" />
             </button>

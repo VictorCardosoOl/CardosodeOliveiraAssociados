@@ -2,11 +2,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1C1B1A; /* Rich warm black */
+  --color-primary: #151414; /* Deep sophisticated ink black */
   --color-secondary: #F0EEE9; /* Pantone 11-4201 Cloud Dancer */
-  --color-muted: #E4E1DA; /* Slightly darker Cloud Dancer */
+  --color-muted: #E5E2DB; /* Refined muted Cloud Dancer */
   --color-accent: #BE3455; /* Pantone 18-1750 Viva Magenta */
-  --color-accent-light: #D95C7A; /* Lighter Viva Magenta */
+  --color-accent-light: #D4506E; /* Harmonious lighter Viva Magenta */
+  --color-accent-dark: #982641; /* Deep Viva Magenta for hover states */
   
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;

@@ -54,7 +54,7 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <a href="#contato" className="bg-accent text-secondary px-6 py-2.5 text-[13px] font-medium hover:bg-accent-light transition-colors rounded-full">
+            <a href="#contato" className="bg-accent text-secondary px-6 py-2.5 text-[13px] font-medium hover:bg-accent-dark transition-colors rounded-full">
               Agendar Consulta
             </a>
           </div>

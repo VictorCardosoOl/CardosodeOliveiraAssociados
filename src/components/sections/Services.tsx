@@ -124,7 +124,7 @@ export function Services() {
               </p>
               <a 
                 href="#contato"
-                className="inline-block bg-accent text-secondary px-8 py-3.5 rounded-full font-medium hover:bg-accent-light transition-colors text-sm"
+                className="inline-block bg-accent text-secondary px-8 py-3.5 rounded-full font-medium hover:bg-accent-dark transition-colors text-sm"
               >
                 Agendar uma consulta
               </a>
