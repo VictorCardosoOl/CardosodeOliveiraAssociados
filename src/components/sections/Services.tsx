@@ -91,19 +91,21 @@ export function Services() {
               <div 
                 key={index}
                 className={cn(
-                  "service-item py-10 md:py-14",
+                  "service-item py-10 md:py-14 group",
                   // Add padding right for left column, padding left for right column
                   index % 2 === 0 ? "md:pr-12" : "md:pl-12",
                   // Add bottom border to all except the last row
-                  index < services.length - 2 ? "border-b border-primary/20" : "",
+                  index < services.length - 2 ? "border-b border-primary/10" : "",
                   // On mobile, add bottom border to the second to last item
-                  index === services.length - 2 ? "border-b md:border-b-0 border-primary/20" : ""
+                  index === services.length - 2 ? "border-b md:border-b-0 border-primary/10" : ""
                 )}
               >
                 <div className="flex items-start gap-6">
-                  <service.icon className="w-10 h-10 text-primary shrink-0 mt-1" strokeWidth={1} />
+                  <div className="w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors duration-500">
+                    <service.icon className="w-6 h-6 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
+                  </div>
                   <div>
-                    <h3 className="text-2xl font-sans font-medium mb-4 leading-tight whitespace-pre-line">
+                    <h3 className="text-2xl font-serif font-medium mb-4 leading-tight whitespace-pre-line group-hover:text-accent transition-colors duration-500">
                       {service.title}
                     </h3>
                     <p className="text-sm text-primary/70 leading-relaxed font-light">

@@ -31,8 +31,8 @@ export function Navbar() {
         <div className="container py-4 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <span className="font-serif text-xl font-bold tracking-tight text-primary flex items-center gap-2">
-              <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+            <span className="font-serif text-xl font-medium tracking-tight text-primary flex items-center gap-2">
+              <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
                 <div className="w-2 h-2 bg-secondary rounded-full"></div>
               </div>
               Cardoso

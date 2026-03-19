@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #151414; /* Deep sophisticated ink black */
+  --color-primary: #2A1F20; /* Deep warm plum/espresso for a softer, organic contrast */
   --color-secondary: #F0EEE9; /* Pantone 11-4201 Cloud Dancer */
   --color-muted: #E5E2DB; /* Refined muted Cloud Dancer */
   --color-accent: #BE3455; /* Pantone 18-1750 Viva Magenta */
@@ -10,7 +10,7 @@
   --color-accent-dark: #982641; /* Deep Viva Magenta for hover states */
   
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
 
   --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;

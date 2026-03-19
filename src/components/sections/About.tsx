@@ -53,7 +53,7 @@ export function About() {
               O Escritório
             </h2>
             
-            <h3 className="about-elem font-serif text-4xl md:text-5xl lg:text-6xl text-primary leading-[1.1] tracking-tighter font-medium mb-8">
+            <h3 className="about-elem font-serif text-4xl md:text-5xl lg:text-6xl text-primary leading-[1.1] tracking-tighter font-light mb-8">
               Uma advocacia <span className="italic text-accent">feminina</span> e moderna, focada em atendimento exclusivo.
             </h3>
             
@@ -71,7 +71,7 @@ export function About() {
 
           {/* Right Column */}
           <div className="lg:col-span-7 mt-12 lg:mt-0">
-            <div className="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3] mb-20 overflow-hidden rounded-sm">
+            <div className="relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] mb-20 overflow-hidden rounded-t-full rounded-b-[3rem] shadow-xl">
               <img 
                 src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1200&auto=format&fit=crop" 
                 alt="Escritório de Advocacia" 

@@ -4,7 +4,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-primary text-secondary/60 pt-[var(--spacing-section-y)] pb-12 md:pb-24 overflow-hidden border-t border-secondary/10">
+    <footer className="relative bg-primary text-secondary/60 pt-[var(--spacing-section-y)] pb-12 md:pb-24 overflow-hidden rounded-t-[3rem] border-t border-secondary/10">
       {/* 1. Noise Texture Layer */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.05] mix-blend-overlay z-10">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">

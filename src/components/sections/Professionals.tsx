@@ -42,7 +42,7 @@ export function Professionals() {
               <span>A Fundadora</span>
             </div>
             
-            <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-secondary leading-[1.1] tracking-tighter font-medium mb-4">
+            <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-secondary leading-[1.1] tracking-tighter font-light mb-4">
               {professional.name}
             </h3>
             <p className="text-sm uppercase tracking-widest text-accent font-bold mb-8">{professional.role}</p>
@@ -62,11 +62,11 @@ export function Professionals() {
           </div>
 
           {/* Image */}
-          <div className="w-full lg:w-1/2 min-h-[400px] lg:min-h-full relative">
+          <div className="w-full lg:w-1/2 min-h-[400px] lg:min-h-full relative p-4 md:p-8">
             <img
               src={professional.image}
               alt={professional.name}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-4 md:inset-8 w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] h-[calc(100%-2rem)] md:h-[calc(100%-4rem)] object-cover rounded-t-full rounded-b-[3rem]"
               referrerPolicy="no-referrer"
             />
           </div>

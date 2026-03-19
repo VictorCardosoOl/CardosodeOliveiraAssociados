@@ -52,10 +52,10 @@ export function SectorGroups() {
           {sectors.map((sector, index) => (
             <div
               key={index}
-              className="sector-item group flex flex-col items-start p-8 md:p-10 bg-secondary rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-primary/5"
+              className="sector-item group flex flex-col items-start p-10 md:p-12 bg-secondary rounded-[3rem] rounded-tr-3xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-primary/5"
             >
-              <div className="w-14 h-14 bg-muted rounded-full flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-500">
-                <sector.icon className="w-6 h-6 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-500">
+                <sector.icon className="w-7 h-7 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
               </div>
               <span className="font-serif text-2xl md:text-3xl font-medium text-primary mb-4 group-hover:text-accent transition-colors">
                 {sector.name}

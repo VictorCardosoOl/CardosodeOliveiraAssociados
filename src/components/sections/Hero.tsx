@@ -31,12 +31,12 @@ export function Hero() {
         
         {/* Left Column: Text */}
         <div className="flex flex-col justify-center items-start text-left px-6 md:px-12 lg:pl-24 2xl:pl-24 3xl:pl-32 4xl:pl-40 lg:pr-16 py-[var(--spacing-section-y)] z-10">
-          <h1 className="hero-elem font-serif text-[var(--text-fluid-hero)] text-primary leading-[0.85] tracking-tighter font-medium mb-8 lowercase">
+          <h1 className="hero-elem font-serif text-[var(--text-fluid-hero)] text-primary leading-[0.85] tracking-tighter font-light mb-8 lowercase">
             visão<br />
-            singular.
+            <span className="italic">singular.</span>
           </h1>
           
-          <h2 className="hero-elem font-sans text-[clamp(1.125rem,2vw,1.5rem)] font-medium uppercase tracking-[0.15em] text-primary mb-6">
+          <h2 className="hero-elem font-sans text-[clamp(1rem,1.5vw,1.25rem)] font-light uppercase tracking-[0.2em] text-primary mb-6">
             Liderança feminina no direito
           </h2>
           
@@ -46,16 +46,16 @@ export function Hero() {
 
           <a 
             href="#contato"
-            className="hero-elem inline-flex items-center justify-center gap-2 bg-primary text-secondary px-8 py-4 rounded-full font-medium text-lg hover:bg-primary/90 hover:scale-105 active:scale-95 hover:shadow-xl transition-all duration-300"
+            className="hero-elem inline-flex items-center justify-center gap-2 bg-accent text-secondary px-10 py-5 rounded-full font-medium text-sm tracking-widest uppercase hover:bg-accent-dark hover:scale-105 active:scale-95 hover:shadow-xl transition-all duration-300"
           >
             Falar com Especialista
           </a>
         </div>
 
         {/* Right Column: Image */}
-        <div className="relative w-full min-h-[50vh] lg:min-h-full flex items-stretch">
-          <div className="absolute inset-0 lg:p-12 2xl:p-24">
-            <div className="w-full h-full relative overflow-hidden lg:rounded-sm shadow-2xl">
+        <div className="relative w-full min-h-[50vh] lg:min-h-full flex items-center justify-center lg:justify-end">
+          <div className="absolute inset-0 lg:p-12 2xl:p-24 flex items-center justify-center">
+            <div className="w-full max-w-lg lg:max-w-none h-[80%] lg:h-[90%] relative overflow-hidden rounded-t-full rounded-b-[3rem] shadow-2xl border-4 border-secondary/50">
               <img 
                 src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop" 
                 alt="Advogada Especialista" 
