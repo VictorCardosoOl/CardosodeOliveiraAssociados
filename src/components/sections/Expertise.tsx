@@ -88,16 +88,24 @@ export function Expertise() {
               <div className="relative z-10">
                 <div className="flex flex-wrap gap-2 mb-8">
                   {item.tags.map(tag => (
-                    <span 
-                      key={tag} 
-                      className={`text-[10px] uppercase tracking-wider font-bold px-3 py-1.5 rounded-full ${
-                        item.bg === "bg-primary text-secondary" 
-                          ? "bg-secondary/20 text-secondary" 
-                          : "bg-secondary text-primary/70"
-                      }`}
-                    >
-                      {tag}
-                    </span>
+                    <div key={tag} className="relative group/tag flex items-center justify-center">
+                      <span 
+                        className={`text-[10px] uppercase tracking-wider font-bold px-3 py-1.5 rounded-full cursor-default ${
+                          item.bg === "bg-primary text-secondary" 
+                            ? "bg-secondary/20 text-secondary" 
+                            : "bg-secondary text-primary/70"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                      {/* Tooltip */}
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-secondary/95 text-primary text-xs md:text-sm font-medium rounded shadow-md border border-primary/5 opacity-0 invisible group-hover/tag:opacity-100 group-hover/tag:visible group-hover/tag:-translate-y-1 transition-all duration-300 whitespace-nowrap z-50 backdrop-blur-sm pointer-events-none">
+                        {tag}
+                        {/* Tooltip Arrow */}
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-primary/5"></div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 border-[3px] border-transparent border-t-secondary/95 -mt-[2px]"></div>
+                      </div>
+                    </div>
                   ))}
                 </div>
                 <h3 className={`font-serif text-3xl md:text-4xl leading-tight mb-4 font-medium ${
