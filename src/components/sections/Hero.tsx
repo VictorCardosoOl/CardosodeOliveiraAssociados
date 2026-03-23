@@ -8,21 +8,31 @@ export function Hero() {
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-    tl.fromTo(
-      ".hero-elem",
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, stagger: 0.1, delay: 0.1 }
-    ).fromTo(
-      ".hero-image",
-      { scale: 1.02, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1.8, ease: "power2.out" },
-      "-=1"
-    ).fromTo(
-      ".hero-badge",
-      { scale: 0.9, rotation: -15, opacity: 0 },
-      { scale: 1, rotation: -12, opacity: 1, duration: 1.2, ease: "power2.out" },
-      "-=1.2"
-    );
+    if (document.querySelector('.hero-elem')) {
+      tl.fromTo(
+        ".hero-elem",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, stagger: 0.1, delay: 0.1 }
+      );
+    }
+
+    if (document.querySelector('.hero-image')) {
+      tl.fromTo(
+        ".hero-image",
+        { scale: 1.02, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.8, ease: "power2.out" },
+        "-=1"
+      );
+    }
+
+    if (document.querySelector('.hero-badge')) {
+      tl.fromTo(
+        ".hero-badge",
+        { scale: 0.9, rotation: -15, opacity: 0 },
+        { scale: 1, rotation: -12, opacity: 1, duration: 1.2, ease: "power2.out" },
+        "-=1.2"
+      );
+    }
   }, { scope: containerRef });
 
   return (
@@ -63,6 +73,14 @@ export function Hero() {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-accent/5 mix-blend-multiply pointer-events-none"></div>
+            </div>
+            
+            {/* Hero Badge */}
+            <div className="hero-badge absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 w-32 h-32 md:w-44 md:h-44 bg-accent rounded-full flex flex-col items-center justify-center text-secondary shadow-2xl z-20 border-4 border-secondary">
+              <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">Excelência</span>
+              <div className="w-8 md:w-12 h-px bg-secondary/30 mb-2"></div>
+              <span className="font-serif text-2xl md:text-4xl font-bold italic">15+</span>
+              <span className="text-[8px] md:text-[10px] uppercase tracking-tighter font-medium">Anos de Atuação</span>
             </div>
           </div>
         </div>

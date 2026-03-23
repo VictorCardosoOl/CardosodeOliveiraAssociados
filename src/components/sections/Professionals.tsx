@@ -14,20 +14,22 @@ export function Professionals() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".professional-card",
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%",
-        },
-      }
-    );
+    if (document.querySelector('.professional-card')) {
+      gsap.fromTo(
+        ".professional-card",
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+          },
+        }
+      );
+    }
   }, { scope: containerRef });
 
   return (

@@ -11,34 +11,38 @@ export function About() {
   useGSAP(() => {
     const elements = gsap.utils.toArray('.about-elem');
     
-    gsap.fromTo(elements, 
-      { y: 30, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%",
+    if (elements.length > 0) {
+      gsap.fromTo(elements, 
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+          }
         }
-      }
-    );
+      );
+    }
 
-    gsap.fromTo('.about-image',
-      { scale: 1.05, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1.5,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%",
+    if (document.querySelector('.about-image')) {
+      gsap.fromTo('.about-image',
+        { scale: 1.05, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.5,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+          }
         }
-      }
-    );
+      );
+    }
   }, { scope: containerRef });
 
   return (

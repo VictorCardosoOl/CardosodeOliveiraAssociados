@@ -16,21 +16,23 @@ export function SectorGroups() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".sector-item",
-      { y: 30, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-        },
-      }
-    );
+    if (document.querySelector('.sector-item')) {
+      gsap.fromTo(
+        ".sector-item",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+          },
+        }
+      );
+    }
   }, { scope: containerRef });
 
   return (

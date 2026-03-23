@@ -7,35 +7,39 @@ export function Culture() {
   const imageRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".culture-content",
-      { x: -30, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-        },
-      }
-    );
+    if (document.querySelector('.culture-content')) {
+      gsap.fromTo(
+        ".culture-content",
+        { x: -30, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+          },
+        }
+      );
+    }
 
-    gsap.fromTo(
-      imageRef.current,
-      { scale: 1.05, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1.5,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-        },
-      }
-    );
+    if (imageRef.current) {
+      gsap.fromTo(
+        imageRef.current,
+        { scale: 1.05, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.5,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+          },
+        }
+      );
+    }
   }, { scope: containerRef });
 
   return (

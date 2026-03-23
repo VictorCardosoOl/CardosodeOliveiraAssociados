@@ -22,36 +22,40 @@ export function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".contact-item",
-      { x: -30, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-        },
-      }
-    );
+    if (document.querySelector('.contact-item')) {
+      gsap.fromTo(
+        ".contact-item",
+        { x: -30, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+    }
 
-    gsap.fromTo(
-      ".contact-form",
-      { x: 30, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-        },
-      }
-    );
+    if (document.querySelector('.contact-form')) {
+      gsap.fromTo(
+        ".contact-form",
+        { x: 30, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+    }
   }, { scope: containerRef });
 
   return (

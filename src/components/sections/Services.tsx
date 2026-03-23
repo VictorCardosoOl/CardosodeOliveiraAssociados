@@ -46,34 +46,38 @@ export function Services() {
   useGSAP(() => {
     const elements = gsap.utils.toArray('.service-item');
     
-    gsap.fromTo(elements, 
-      { y: 20, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: 0.05,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%",
+    if (elements.length > 0) {
+      gsap.fromTo(elements, 
+        { y: 20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          stagger: 0.05,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+          }
         }
-      }
-    );
+      );
+    }
 
-    gsap.fromTo('.services-sidebar',
-      { x: 20, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%",
+    if (document.querySelector('.services-sidebar')) {
+      gsap.fromTo('.services-sidebar',
+        { x: 20, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+          }
         }
-      }
-    );
+      );
+    }
   }, { scope: containerRef });
 
   return (
