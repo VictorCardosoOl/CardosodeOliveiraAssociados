@@ -78,8 +78,8 @@ export function FAQ() {
         {/* COLUNA ESQUERDA (Sticky) */}
         <div className="lg:col-span-4 relative">
           <div className="sticky-content lg:sticky lg:top-32">
-            <span className="text-[clamp(0.75rem,1vw,0.875rem)] font-bold tracking-widest uppercase mb-6 block text-accent">Suporte</span>
-            <h2 className="font-serif text-[var(--text-fluid-h2)] mb-8 leading-[0.85] tracking-tighter font-medium">
+            <span className="text-[clamp(0.75rem,1vw,0.875rem)] font-medium tracking-widest uppercase mb-6 block text-accent">Suporte</span>
+            <h2 className="font-serif text-[var(--text-fluid-h2)] mb-8 leading-[0.85] tracking-tighter font-light">
               Dúvidas <br/> <span className="italic text-primary/50">Frequentes</span>
             </h2>
             <p className="text-primary/70 font-light max-w-sm mb-10 text-[var(--text-fluid-p)] leading-relaxed">
@@ -87,7 +87,7 @@ export function FAQ() {
             </p>
             <a 
               href="#contato"
-              className="inline-flex items-center justify-center gap-2 bg-primary text-secondary px-8 py-4 rounded-full font-medium text-sm hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 bg-accent text-secondary px-10 py-5 rounded-full font-medium text-sm tracking-widest uppercase hover:bg-accent-dark hover:scale-105 active:scale-95 transition-all duration-300"
             >
               Falar com Especialista
             </a>
@@ -108,15 +108,15 @@ export function FAQ() {
                     className="w-full py-8 md:py-10 flex justify-between items-center text-left group"
                     aria-expanded={isOpen}
                   >
-                    <h3 className={`text-[var(--text-fluid-h3)] font-serif transition-all duration-500 pr-8 ${
-                      isOpen ? 'translate-x-4 text-primary' : 'text-primary/70 group-hover:text-primary'
+                    <h3 className={`text-[var(--text-fluid-h3)] font-serif transition-all duration-500 pr-8 font-medium ${
+                      isOpen ? 'translate-x-4 text-accent' : 'text-primary/80 group-hover:text-primary'
                     }`}>
                       {item.question}
                     </h3>
-                    <div className={`flex-shrink-0 w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center transition-all duration-500 ${
-                      isOpen ? 'bg-primary text-secondary rotate-45 border-primary' : 'text-primary group-hover:border-primary'
+                    <div className={`flex-shrink-0 w-12 h-12 rounded-full border flex items-center justify-center transition-all duration-500 ${
+                      isOpen ? 'bg-accent text-secondary rotate-45 border-accent' : 'border-primary/10 text-primary group-hover:border-primary/30'
                     }`}>
-                      <Plus size={20} strokeWidth={1.5} />
+                      <Plus size={20} strokeWidth={1} />
                     </div>
                   </button>
                   

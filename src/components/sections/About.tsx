@@ -63,7 +63,7 @@ export function About() {
 
             <a 
               href="#contato"
-              className="about-elem inline-flex items-center justify-center gap-2 bg-primary text-secondary px-8 py-4 rounded-full font-medium text-sm hover:bg-primary/90 hover:scale-105 active:scale-95 hover:shadow-xl transition-all duration-300 w-fit"
+              className="about-elem inline-flex items-center justify-center gap-2 bg-accent text-secondary px-10 py-5 rounded-full font-medium text-sm tracking-widest uppercase hover:bg-accent-dark hover:scale-105 active:scale-95 hover:shadow-xl transition-all duration-300 w-fit"
             >
               Fale Conosco
             </a>
@@ -71,14 +71,14 @@ export function About() {
 
           {/* Right Column */}
           <div className="lg:col-span-7 mt-12 lg:mt-0">
-            <div className="relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] mb-20 overflow-hidden rounded-t-full rounded-b-[3rem] shadow-xl">
+            <div className="relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] mb-20 overflow-hidden rounded-t-full rounded-b-[3rem] shadow-xl border border-primary/10 p-2">
               <img 
                 src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1200&auto=format&fit=crop" 
                 alt="Escritório de Advocacia" 
-                className="about-image w-full h-full object-cover"
+                className="about-image w-full h-full object-cover rounded-t-full rounded-b-[2.5rem]"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-accent/5 mix-blend-multiply"></div>
+              <div className="absolute inset-2 rounded-t-full rounded-b-[2.5rem] bg-accent/5 mix-blend-multiply pointer-events-none"></div>
             </div>
 
             <div>
@@ -92,7 +92,7 @@ export function About() {
                   { num: "02", title: "Atendimento", desc: "Contato direto e pessoal com a fundadora em todas as etapas." },
                   { num: "03", title: "Resultado", desc: "Foco incansável na resolução eficiente e favorável do seu caso." }
                 ].map((item, i) => (
-                  <div key={i} className="about-elem group flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-12 py-8 border-t border-primary/20 hover:border-accent transition-colors">
+                  <div key={i} className="about-elem group flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-12 py-8 border-t border-primary/10 hover:border-accent transition-colors">
                     <span className="font-sans text-sm font-medium text-accent tracking-widest pt-1">{item.num}</span>
                     <div className="flex-1">
                       <h5 className="font-serif text-3xl text-primary font-medium mb-3 group-hover:text-accent transition-colors">{item.title}</h5>
@@ -102,7 +102,7 @@ export function About() {
                     </div>
                   </div>
                 ))}
-                <div className="border-t border-primary/20"></div>
+                <div className="border-t border-primary/10"></div>
               </div>
             </div>
           </div>

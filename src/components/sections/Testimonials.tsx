@@ -47,8 +47,8 @@ export function Testimonials() {
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-[var(--spacing-gap)]">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-bold mb-4">Depoimentos</h2>
-            <h3 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-tight font-medium">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-medium mb-4">Depoimentos</h2>
+            <h3 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-tight font-light">
               A voz de quem <span className="italic">confia</span> em nós.
             </h3>
           </div>
@@ -61,7 +61,7 @@ export function Testimonials() {
           {testimonials.map((t, i) => (
             <div 
               key={i} 
-              className="testimonial-card bg-muted p-10 border border-primary/5 flex flex-col justify-between hover:border-accent/30 transition-all duration-500 group"
+              className="testimonial-card bg-muted p-10 md:p-12 border border-primary/5 flex flex-col justify-between hover:border-accent/30 transition-all duration-500 group rounded-[3rem] rounded-tr-3xl"
             >
               <div>
                 <Quote className="text-accent mb-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500" size={40} strokeWidth={1} />
@@ -69,9 +69,9 @@ export function Testimonials() {
                   "{t.quote}"
                 </p>
               </div>
-              <div>
+              <div className="pt-8 border-t border-primary/10">
                 <h4 className="font-serif text-[var(--text-fluid-h4)] text-primary font-medium">{t.author}</h4>
-                <p className="text-[10px] uppercase tracking-widest text-accent font-bold mt-1">{t.role}</p>
+                <p className="text-[10px] uppercase tracking-widest text-accent font-medium mt-2">{t.role}</p>
               </div>
             </div>
           ))}

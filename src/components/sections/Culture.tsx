@@ -41,8 +41,8 @@ export function Culture() {
   return (
     <section id="cultura" className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
       <div className="container grid lg:grid-cols-2 gap-[var(--spacing-gap)] items-center" ref={containerRef}>
-        <div className="culture-content max-w-2xl 3xl:max-w-3xl relative z-10 bg-primary p-8 md:p-12 rounded-[3rem] lg:-mr-32 mt-12 lg:mt-0 shadow-2xl">
-          <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-bold mb-8">Nossa Cultura</h2>
+        <div className="culture-content max-w-2xl 3xl:max-w-3xl relative z-10 bg-primary p-8 md:p-12 rounded-[3rem] lg:-mr-32 mt-12 lg:mt-0 shadow-2xl border border-secondary/10">
+          <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-medium mb-8">Nossa Cultura</h2>
           <h3 className="font-serif text-[var(--text-fluid-h2)] leading-[0.9] mb-10 tracking-tighter font-light">
             A força do <br/><span className="italic text-secondary/80">feminino</span> na advocacia.
           </h3>
@@ -61,10 +61,10 @@ export function Culture() {
           </div>
         </div>
 
-        <div className="relative h-[60vh] lg:h-[80vh] w-full overflow-hidden rounded-t-[10rem] rounded-b-[3rem] z-0">
+        <div className="relative h-[60vh] lg:h-[80vh] w-full overflow-hidden rounded-t-[10rem] rounded-b-[3rem] z-0 p-2 border border-secondary/20">
           <div 
             ref={imageRef}
-            className="absolute inset-0"
+            className="absolute inset-2 rounded-t-[9.5rem] rounded-b-[2.5rem] overflow-hidden"
           >
             <img 
               src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2000&auto=format&fit=crop"

@@ -38,14 +38,14 @@ export function Professionals() {
           
           {/* Text Content */}
           <div className="w-full lg:w-1/2 p-10 md:p-16 lg:p-20 3xl:p-24 flex flex-col justify-center text-secondary">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider mb-8 rounded-full w-fit">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary text-xs font-medium uppercase tracking-wider mb-8 rounded-full w-fit">
               <span>A Fundadora</span>
             </div>
             
             <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-secondary leading-[1.1] tracking-tighter font-light mb-4">
               {professional.name}
             </h3>
-            <p className="text-sm uppercase tracking-widest text-accent font-bold mb-8">{professional.role}</p>
+            <p className="text-sm uppercase tracking-widest text-accent font-medium mb-8">{professional.role}</p>
             
             <p className="text-base md:text-lg text-secondary/80 leading-relaxed mb-10 font-light max-w-md">
               {professional.bio}
@@ -63,12 +63,14 @@ export function Professionals() {
 
           {/* Image */}
           <div className="w-full lg:w-1/2 min-h-[400px] lg:min-h-full relative p-4 md:p-8">
-            <img
-              src={professional.image}
-              alt={professional.name}
-              className="absolute inset-4 md:inset-8 w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] h-[calc(100%-2rem)] md:h-[calc(100%-4rem)] object-cover rounded-t-full rounded-b-[3rem]"
-              referrerPolicy="no-referrer"
-            />
+            <div className="absolute inset-4 md:inset-8 w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] h-[calc(100%-2rem)] md:h-[calc(100%-4rem)] rounded-t-full rounded-b-[3rem] border border-secondary/20 p-2">
+              <img
+                src={professional.image}
+                alt={professional.name}
+                className="w-full h-full object-cover rounded-t-full rounded-b-[2.5rem]"
+                referrerPolicy="no-referrer"
+              />
+            </div>
           </div>
 
         </div>

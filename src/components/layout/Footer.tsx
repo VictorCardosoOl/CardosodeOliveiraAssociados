@@ -28,8 +28,15 @@ export function Footer() {
           
           {/* Col 1: Identity */}
           <div className="flex flex-col lg:pr-12">
-            <span className="text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-widest font-bold text-accent mb-6 block">Escritório</span>
-            <h3 className="font-serif text-[clamp(2rem,3vw,2.5rem)] text-secondary mb-2">Estratégia</h3>
+            <span className="text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-widest font-medium text-accent mb-6 block">Escritório</span>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="font-serif text-[clamp(2rem,3vw,2.5rem)] text-secondary flex items-center gap-2">
+                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                  <div className="w-2.5 h-2.5 bg-secondary rounded-full"></div>
+                </div>
+                Cardoso
+              </span>
+            </div>
             <p className="font-serif italic text-[clamp(1.125rem,2vw,1.5rem)] text-secondary/80 mb-6">
               Visão singular no direito.
             </p>
@@ -40,7 +47,7 @@ export function Footer() {
 
           {/* Col 2: Location/CTA */}
           <div className="flex flex-col lg:px-12">
-            <span className="text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-widest font-bold text-accent mb-6 block">Contato</span>
+            <span className="text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-widest font-medium text-accent mb-6 block">Contato</span>
             <div className="flex items-start gap-3 mb-8">
               <MapPin size={18} className="text-accent shrink-0 mt-1" />
               <p className="text-[var(--text-fluid-p)] leading-relaxed font-light">
@@ -57,7 +64,7 @@ export function Footer() {
 
           {/* Col 3: Social */}
           <div className="flex flex-col lg:px-12">
-            <span className="text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-widest font-bold text-accent mb-6 block">Social</span>
+            <span className="text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-widest font-medium text-accent mb-6 block">Social</span>
             <div className="flex flex-col gap-4">
               <a href="#" className="group flex items-center gap-3 text-secondary/60 hover:text-secondary transition-colors w-fit">
                 <Instagram size={18} className="group-hover:scale-110 transition-transform" />
@@ -76,7 +83,7 @@ export function Footer() {
 
           {/* Col 4: Menu/Credits */}
           <div className="flex flex-col lg:pl-12">
-            <span className="text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-widest font-bold text-accent mb-6 block">Navegação</span>
+            <span className="text-[clamp(0.75rem,1vw,0.875rem)] uppercase tracking-widest font-medium text-accent mb-6 block">Navegação</span>
             <nav className="flex flex-col gap-3 mb-12">
               {['O Escritório', 'Áreas de Atuação', 'Profissionais', 'Cultura', 'Insights'].map((item) => (
                 <a key={item} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-[var(--text-fluid-p)] font-light text-secondary/60 hover:text-secondary hover:translate-x-2 transition-all w-fit">
