@@ -53,15 +53,16 @@ export function Hero() {
         </div>
 
         {/* Right Column: Image */}
-        <div className="relative w-full min-h-[50vh] lg:min-h-full flex items-center justify-center lg:justify-end">
-          <div className="absolute inset-0 lg:p-12 2xl:p-24 flex items-center justify-center">
-            <div className="w-full max-w-lg lg:max-w-none h-[80%] lg:h-[90%] relative overflow-hidden rounded-t-full rounded-b-[3rem] shadow-2xl border-4 border-secondary/50">
+        <div className="relative w-full min-h-[60vh] lg:min-h-full flex items-center justify-center lg:justify-end lg:pr-12 2xl:pr-24 py-12 lg:py-0">
+          <div className="w-[85%] sm:w-[70%] md:w-[60%] lg:w-full max-w-md lg:max-w-lg xl:max-w-xl aspect-[3/4] relative p-2 md:p-3 border border-primary/10 rounded-t-full rounded-b-[3rem] shadow-2xl">
+            <div className="w-full h-full relative overflow-hidden rounded-t-full rounded-b-[2.5rem]">
               <img 
                 src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop" 
                 alt="Advogada Especialista" 
                 className="hero-image w-full h-full object-cover"
                 loading="lazy"
               />
+              <div className="absolute inset-0 bg-accent/5 mix-blend-multiply pointer-events-none"></div>
             </div>
           </div>
         </div>
