@@ -59,17 +59,17 @@ export function SocialResponsibility() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 3xl:gap-12">
+        <div className="grid md:grid-cols-3 gap-8 3xl:gap-12 4xl:gap-16">
           {initiatives.map((item, index) => (
             <div 
               key={index} 
-              className="initiative-card group p-10 md:p-12 bg-muted border border-primary/5 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2 rounded-[3rem] rounded-tl-3xl"
+              className="initiative-card group p-10 md:p-12 3xl:p-16 4xl:p-20 bg-muted border border-primary/5 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2 rounded-[3rem] rounded-tl-3xl"
             >
-              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-8 group-hover:bg-accent transition-colors duration-500">
-                <item.icon className="w-7 h-7 text-accent group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
+              <div className="w-16 h-16 3xl:w-24 3xl:h-24 bg-secondary rounded-full flex items-center justify-center mb-8 3xl:mb-12 group-hover:bg-accent transition-colors duration-500">
+                <item.icon className="w-7 h-7 3xl:w-10 3xl:h-10 text-accent group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
               </div>
               <h4 className="font-serif text-[var(--text-fluid-h3)] mb-4 font-medium">{item.title}</h4>
-              <p className="text-primary/60 leading-relaxed font-light text-[var(--text-fluid-p)]">
+              <p className="text-primary/60 leading-relaxed font-light text-[var(--text-fluid-p)] max-w-xs 3xl:max-w-md">
                 {item.description}
               </p>
             </div>

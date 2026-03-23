@@ -63,7 +63,7 @@ export function Insights() {
           </button>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 3xl:gap-20">
+        <div className="grid md:grid-cols-3 gap-12 3xl:gap-20 4xl:gap-32">
           {articles.map((article, i) => (
             <div key={i} className="insight-card group cursor-pointer">
               <div className="relative aspect-[4/5] overflow-hidden mb-8 rounded-[3rem] rounded-tr-3xl">
@@ -74,20 +74,20 @@ export function Insights() {
                   referrerPolicy="no-referrer"
                   loading="lazy"
                 />
-                <div className="absolute top-6 left-6 bg-secondary/90 backdrop-blur-md px-4 py-2 rounded-full">
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-primary">{article.category}</span>
+                <div className="absolute top-6 left-6 3xl:top-10 3xl:left-10 bg-secondary/90 backdrop-blur-md px-4 py-2 3xl:px-6 3xl:py-3 rounded-full">
+                  <span className="text-[10px] 3xl:text-xs uppercase tracking-widest font-bold text-primary">{article.category}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-3 text-primary/50 text-[10px] uppercase tracking-widest font-bold mb-4">
-                <Calendar size={12} strokeWidth={1.5} />
+              <div className="flex items-center gap-3 text-primary/50 text-[10px] 3xl:text-xs uppercase tracking-widest font-bold mb-4">
+                <Calendar size={12} strokeWidth={1.5} className="3xl:w-4 3xl:h-4" />
                 <span>{article.date}</span>
               </div>
-              <h4 className="font-serif text-[var(--text-fluid-h3)] text-primary mb-6 leading-tight group-hover:text-accent transition-colors duration-300 font-medium">
+              <h4 className="font-serif text-[var(--text-fluid-h3)] text-primary mb-6 leading-tight group-hover:text-accent transition-colors duration-300 font-medium max-w-sm 3xl:max-w-md">
                 {article.title}
               </h4>
               <div className="flex items-center gap-2 text-accent opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0">
-                <span className="text-[10px] uppercase tracking-widest font-bold">Ler Artigo</span>
-                <ArrowRight size={14} strokeWidth={1.5} />
+                <span className="text-[10px] 3xl:text-xs uppercase tracking-widest font-bold">Ler Artigo</span>
+                <ArrowRight size={14} strokeWidth={1.5} className="3xl:w-4 3xl:h-4" />
               </div>
             </div>
           ))}

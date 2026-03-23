@@ -62,23 +62,23 @@ export function Expertise() {
   }, { scope: containerRef });
 
   return (
-    <section id="areas-de-atuacao" ref={containerRef} className="min-h-screen flex flex-col justify-center py-24 2xl:py-48 3xl:py-64 bg-secondary">
+    <section id="areas-de-atuacao" ref={containerRef} className="min-h-screen flex flex-col justify-center py-[var(--spacing-section-y)] bg-secondary">
       <div className="container">
         
-        <div className="mb-16">
+        <div className="mb-16 md:mb-24">
           <span className="case-elem text-xs uppercase tracking-[0.2em] font-bold text-primary/50 block mb-4">
             Áreas de Foco
           </span>
-          <h2 className="case-elem font-serif text-4xl md:text-6xl text-primary leading-tight max-w-2xl font-light">
+          <h2 className="case-elem font-serif text-4xl md:text-6xl 3xl:text-8xl text-primary leading-tight max-w-4xl font-light">
             Soluções jurídicas <span className="italic">sob medida</span> para suas necessidades.
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 3xl:gap-10">
           {cases.map((item, index) => (
             <div 
               key={index} 
-              className={`case-elem group relative overflow-hidden rounded-[3rem] ${index % 2 === 0 ? 'rounded-tr-3xl' : 'rounded-tl-3xl'} p-8 md:p-12 flex flex-col justify-between min-h-[400px] ${item.colSpan} ${item.bg}`}
+              className={`case-elem group relative overflow-hidden rounded-[3rem] ${index % 2 === 0 ? 'rounded-tr-3xl' : 'rounded-tl-3xl'} p-8 md:p-12 3xl:p-16 flex flex-col justify-between min-h-[400px] 3xl:min-h-[500px] ${item.colSpan} ${item.bg}`}
             >
               {/* Background Image for some cards (optional, but let's keep it clean like the bento box) */}
               {item.bg === "bg-primary text-secondary" ? (
@@ -92,7 +92,7 @@ export function Expertise() {
                   {item.tags.map(tag => (
                     <div key={tag} className="relative group/tag flex items-center justify-center">
                       <span 
-                        className={`text-[10px] uppercase tracking-wider font-medium px-4 py-2 rounded-full cursor-default transition-colors duration-300 ${
+                        className={`text-[10px] 3xl:text-xs uppercase tracking-wider font-medium px-4 py-2 rounded-full cursor-default transition-colors duration-300 ${
                           item.bg === "bg-primary text-secondary" 
                             ? "bg-secondary/10 text-secondary hover:bg-secondary/20" 
                             : "bg-secondary text-primary/70 hover:bg-primary/5"
@@ -101,7 +101,7 @@ export function Expertise() {
                         {tag}
                       </span>
                       {/* Tooltip */}
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-2 bg-secondary/95 text-primary text-xs md:text-sm font-medium rounded-xl shadow-md border border-primary/5 opacity-0 invisible group-hover/tag:opacity-100 group-hover/tag:visible group-hover/tag:-translate-y-1 transition-all duration-300 whitespace-nowrap z-50 backdrop-blur-sm pointer-events-none">
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-2 bg-secondary/95 text-primary text-xs md:text-sm 3xl:text-base font-medium rounded-xl shadow-md border border-primary/5 opacity-0 invisible group-hover/tag:opacity-100 group-hover/tag:visible group-hover/tag:-translate-y-1 transition-all duration-300 whitespace-nowrap z-50 backdrop-blur-sm pointer-events-none">
                         {tag}
                         {/* Tooltip Arrow */}
                         <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-primary/5"></div>
@@ -110,12 +110,12 @@ export function Expertise() {
                     </div>
                   ))}
                 </div>
-                <h3 className={`font-serif text-3xl md:text-4xl leading-tight mb-4 font-medium ${
+                <h3 className={`font-serif text-3xl md:text-4xl 3xl:text-6xl leading-tight mb-4 font-medium ${
                   item.bg === "bg-primary text-secondary" ? "text-secondary" : "text-primary"
                 }`}>
                   {item.title}
                 </h3>
-                <p className={`text-sm max-w-md font-light ${
+                <p className={`text-sm 3xl:text-xl max-w-md 3xl:max-w-xl font-light ${
                   item.bg === "bg-primary text-secondary" ? "text-secondary/70" : "text-primary/60"
                 }`}>
                   {item.subtitle}
@@ -123,10 +123,10 @@ export function Expertise() {
               </div>
 
               <div className="relative z-10 mt-12 flex justify-end">
-                <button className={`w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110 ${
+                <button className={`w-12 h-12 3xl:w-16 3xl:h-16 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110 ${
                   item.bg === "bg-primary text-secondary" ? "bg-secondary text-primary" : "bg-primary text-secondary"
                 }`}>
-                  <ArrowRight size={20} strokeWidth={1.5} className="group-hover:-rotate-45 transition-transform duration-500" />
+                  <ArrowRight size={20} strokeWidth={1.5} className="group-hover:-rotate-45 transition-transform duration-500 3xl:w-6 3xl:h-6" />
                 </button>
               </div>
             </div>

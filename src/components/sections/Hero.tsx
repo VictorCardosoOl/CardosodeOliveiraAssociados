@@ -40,17 +40,17 @@ export function Hero() {
       <div className="flex-1 grid lg:grid-cols-2 w-full">
         
         {/* Left Column: Text */}
-        <div className="flex flex-col justify-center items-start text-left px-6 md:px-12 lg:pl-24 2xl:pl-24 3xl:pl-32 4xl:pl-40 lg:pr-16 py-[var(--spacing-section-y)] z-10">
+        <div className="flex flex-col justify-center items-start text-left px-6 md:px-12 lg:pl-16 2xl:pl-20 3xl:pl-24 4xl:pl-32 lg:pr-16 py-[var(--spacing-section-y)] z-10">
           <h1 className="hero-elem font-serif text-[var(--text-fluid-hero)] text-primary leading-[0.85] tracking-tighter font-light mb-8 lowercase">
             visão<br />
             <span className="italic">singular.</span>
           </h1>
           
-          <h2 className="hero-elem font-sans text-[clamp(1rem,1.5vw,1.25rem)] font-light uppercase tracking-[0.2em] text-primary mb-6">
+          <h2 className="hero-elem font-sans text-[clamp(1rem,1.5vw,1.5rem)] font-light uppercase tracking-[0.2em] text-primary mb-6">
             Liderança feminina no direito
           </h2>
           
-          <p className="hero-elem text-[var(--text-fluid-p)] text-primary/70 leading-relaxed max-w-md font-light mb-10">
+          <p className="hero-elem text-[var(--text-fluid-p)] text-primary/70 leading-relaxed max-w-2xl 3xl:max-w-3xl font-light mb-10">
             Comandado por mulheres, nosso escritório entrega resultados que impulsionam o seu crescimento. Atendimento exclusivo e personalizado para demandas complexas.
           </p>
 
@@ -63,8 +63,8 @@ export function Hero() {
         </div>
 
         {/* Right Column: Image */}
-        <div className="relative w-full min-h-[60vh] lg:min-h-full flex items-center justify-center lg:justify-end lg:pr-12 2xl:pr-24 py-12 lg:py-0">
-          <div className="w-[85%] sm:w-[70%] md:w-[60%] lg:w-full max-w-md lg:max-w-lg xl:max-w-xl aspect-[3/4] relative p-2 md:p-3 border border-primary/10 rounded-t-full rounded-b-[3rem] shadow-2xl">
+        <div className="relative w-full min-h-[60vh] lg:min-h-full flex items-center justify-center lg:justify-end lg:pr-12 2xl:pr-16 3xl:pr-20 4xl:pr-24 py-12 lg:py-0">
+          <div className="w-[85%] sm:w-[70%] md:w-[60%] lg:w-full max-w-md lg:max-w-xl xl:max-w-2xl 3xl:max-w-3xl 4xl:max-w-4xl aspect-[3/4] relative p-2 md:p-3 border border-primary/10 rounded-t-full rounded-b-[3rem] shadow-2xl">
             <div className="w-full h-full relative overflow-hidden rounded-t-full rounded-b-[2.5rem]">
               <img 
                 src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop" 

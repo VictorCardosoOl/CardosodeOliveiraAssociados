@@ -46,10 +46,10 @@ export function About() {
   }, { scope: containerRef });
 
   return (
-    <section id="o-escritorio" ref={containerRef} className="py-24 2xl:py-48 3xl:py-64 bg-secondary border-t border-primary/20 overflow-hidden">
+    <section id="o-escritorio" ref={containerRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/20 overflow-hidden">
       <div className="container">
         
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 3xl:gap-32 items-start">
           
           {/* Left Column */}
           <div className="lg:col-span-5 lg:sticky lg:top-32">
@@ -57,11 +57,11 @@ export function About() {
               O Escritório
             </h2>
             
-            <h3 className="about-elem font-serif text-4xl md:text-5xl lg:text-6xl text-primary leading-[1.1] tracking-tighter font-light mb-8">
+            <h3 className="about-elem font-serif text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl 4xl:text-8xl text-primary leading-[1.1] tracking-tighter font-light mb-8">
               Uma advocacia <span className="italic text-accent">feminina</span> e moderna, focada em atendimento exclusivo.
             </h3>
             
-            <p className="about-elem text-base md:text-lg text-primary/70 leading-relaxed font-light mb-10 max-w-md">
+            <p className="about-elem text-base md:text-lg 3xl:text-xl text-primary/70 leading-relaxed font-light mb-10 max-w-xl 3xl:max-w-2xl">
               Simplificar as complexidades do direito. Proporcionar tranquilidade aos nossos clientes. Fomentar o crescimento e o sucesso aliviando pressões jurídicas com dedicação total e soluções sob medida.
             </p>
 

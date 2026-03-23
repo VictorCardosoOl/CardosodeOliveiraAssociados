@@ -36,16 +36,16 @@ export function SectorGroups() {
   }, { scope: containerRef });
 
   return (
-    <section id="setores" className="py-24 2xl:py-48 3xl:py-64 bg-muted overflow-hidden">
+    <section id="setores" className="py-[var(--spacing-section-y)] bg-muted overflow-hidden">
       <div className="container" ref={containerRef}>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-sm font-bold mb-4">Grupos Setoriais</h2>
-            <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl text-primary leading-[0.9] tracking-tighter font-medium">
+            <h2 className="text-accent uppercase tracking-[0.2em] text-sm md:text-base font-bold mb-4">Grupos Setoriais</h2>
+            <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl 4xl:text-9xl text-primary leading-[0.9] tracking-tighter font-medium">
               Expertise em <br/><span className="italic text-primary/80">mercados estratégicos</span>.
             </h3>
           </div>
-          <p className="text-primary/60 max-w-xs text-sm leading-relaxed font-light">
+          <p className="text-primary/60 max-w-xs 3xl:max-w-md text-sm md:text-base 3xl:text-xl leading-relaxed font-light">
             Nossa atuação é segmentada por setores para garantir um entendimento profundo das dinâmicas de cada negócio.
           </p>
         </div>
@@ -54,15 +54,15 @@ export function SectorGroups() {
           {sectors.map((sector, index) => (
             <div
               key={index}
-              className="sector-item group flex flex-col items-start p-10 md:p-12 bg-secondary rounded-[3rem] rounded-tr-3xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-primary/5"
+              className="sector-item group flex flex-col items-start p-10 md:p-12 3xl:p-16 bg-secondary rounded-[3rem] rounded-tr-3xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-primary/5"
             >
-              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-500">
-                <sector.icon className="w-7 h-7 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
+              <div className="w-16 h-16 3xl:w-24 3xl:h-24 bg-muted rounded-full flex items-center justify-center mb-8 3xl:mb-12 group-hover:bg-primary transition-colors duration-500">
+                <sector.icon className="w-7 h-7 3xl:w-10 3xl:h-10 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
               </div>
-              <span className="font-serif text-2xl md:text-3xl font-medium text-primary mb-4 group-hover:text-accent transition-colors">
+              <span className="font-serif text-2xl md:text-3xl 3xl:text-5xl font-medium text-primary mb-4 group-hover:text-accent transition-colors">
                 {sector.name}
               </span>
-              <p className="text-sm text-primary/60 leading-relaxed font-light">
+              <p className="text-sm 3xl:text-lg text-primary/60 leading-relaxed font-light max-w-xs 3xl:max-w-md">
                 {sector.desc}
               </p>
             </div>
