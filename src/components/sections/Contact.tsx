@@ -108,7 +108,7 @@ export function Contact() {
                 />
                 <Marker position={[-23.5641095, -46.6524099]}>
                   <Popup>
-                    <span className="font-sans font-bold text-primary">Cardoso de Oliveira Associados</span><br />
+                    <span className="font-sans font-bold text-primary">Tayna C. B. Oliveira Advocacia</span><br />
                     Av. Paulista, 1000 — 12º Andar
                   </Popup>
                 </Marker>

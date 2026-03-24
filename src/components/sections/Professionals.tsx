@@ -4,9 +4,9 @@ import gsap from "gsap";
 import { Linkedin, Mail } from "lucide-react";
 
 const professional = {
-  name: "Dra. Helena Cardoso",
+  name: "Tayna C. B. Oliveira",
   role: "Sócia-Fundadora",
-  bio: "Com uma visão inovadora e dedicação exclusiva, Dra. Helena fundou o escritório com o propósito de oferecer uma advocacia artesanal, onde cada cliente recebe atenção total e estratégias personalizadas para suas demandas jurídicas.",
+  bio: "Com uma visão inovadora e dedicação exclusiva, Tayna fundou o escritório com o propósito de oferecer uma advocacia artesanal, onde cada cliente recebe atenção total e estratégias personalizadas para suas demandas jurídicas.",
   image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
 };
 

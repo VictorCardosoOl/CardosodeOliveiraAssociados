@@ -34,7 +34,7 @@ export function Footer() {
                 <div className="w-8 h-8 3xl:w-12 3xl:h-12 bg-accent rounded-full flex items-center justify-center">
                   <div className="w-2.5 h-2.5 3xl:w-4 3xl:h-4 bg-secondary rounded-full"></div>
                 </div>
-                Cardoso
+                Tayna C. B. Oliveira
               </span>
             </div>
             <p className="font-serif italic text-[clamp(1.125rem,2vw,1.5rem)] 3xl:text-3xl 4xl:text-4xl text-secondary/80 mb-6">

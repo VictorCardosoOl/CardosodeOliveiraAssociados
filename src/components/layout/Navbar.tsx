@@ -35,7 +35,7 @@ export function Navbar() {
               <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
                 <div className="w-2 h-2 bg-secondary rounded-full"></div>
               </div>
-              Cardoso
+              Tayna C. B. Oliveira
             </span>
           </div>
 

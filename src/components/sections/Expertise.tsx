@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "motion/react";
 import { createPortal } from "react-dom";
 import Lenis from "lenis";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 
 const cases = [
   {
@@ -10,90 +10,94 @@ const cases = [
     title: "Assessoria Jurídica Empresarial",
     subtitle: "Acompanhamento próximo para estruturação e segurança do seu negócio.",
     image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop",
-    content: "Detalhes completos sobre a Assessoria Jurídica Empresarial..."
+    content: "Detalhes completos sobre a Assessoria Jurídica Empresarial...",
+    tags: ["Consultivo", "Preventivo"],
+    theme: "light",
+    colSpan: "md:col-span-12 lg:col-span-8"
   },
   {
     id: "2",
     title: "Elaboração e Revisão de Contratos",
     subtitle: "Garantia de segurança jurídica em todas as suas relações comerciais.",
     image: "https://images.unsplash.com/photo-1505664173696-0746f4856282?q=80&w=800&auto=format&fit=crop",
-    content: "Detalhes completos sobre a Elaboração e Revisão de Contratos..."
+    content: "Detalhes completos sobre a Elaboração e Revisão de Contratos...",
+    tags: ["Contratos", "Negociações"],
+    theme: "dark",
+    colSpan: "md:col-span-12 lg:col-span-4"
   },
   {
     id: "3",
     title: "Direito de Família e Sucessões",
     subtitle: "Atendimento humanizado e discreto para questões familiares complexas.",
     image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=800&auto=format&fit=crop",
-    content: "Detalhes completos sobre Direito de Família e Sucessões..."
+    content: "Detalhes completos sobre Direito de Família e Sucessões...",
+    tags: ["Família", "Sucessões"],
+    theme: "light",
+    colSpan: "md:col-span-12 lg:col-span-4"
   },
   {
     id: "4",
     title: "Contencioso Cível Estratégico",
     subtitle: "Defesa assertiva dos seus interesses em litígios de alta complexidade.",
     image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop",
-    content: "Detalhes completos sobre o Contencioso Cível Estratégico..."
+    content: "Detalhes completos sobre o Contencioso Cível Estratégico...",
+    tags: ["Contencioso", "Estratégico"],
+    theme: "light",
+    colSpan: "md:col-span-12 lg:col-span-8"
   }
 ];
 
 interface CardItemProps {
   item: any;
   onClick: () => void;
+  className?: string;
   key?: string | number;
 }
 
-const CardItem = ({ item, onClick }: CardItemProps) => {
-  const containerRef = useRef(null);
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+const CardItem = ({ item, onClick, className }: CardItemProps) => {
+  const isDark = item.theme === 'dark';
   
-  // 1. Detectar Scroll
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 0.9", "start 0.2"]
-  });
-
-  // 2. Suavizar Física
-  const smoothProgress = useSpring(scrollYProgress, {
-    damping: 20, stiffness: 100, mass: 0.5
-  });
-  
-  // 3. Transformações Visuais
-  const clipPath = useTransform(
-    smoothProgress,
-    [0, 1],
-    ["inset(15% 10% 15% 10% round 4px)", "inset(0% 0% 0% 0% round 0px)"]
-  );
-  const scale = useTransform(smoothProgress, [0, 1], [0.95, 1.05]);
-  const yParallax = useTransform(smoothProgress, [0, 1], isMobile ? ["0%", "0%"] : ["-30%", "30%"]);
-
   return (
-    <div ref={containerRef} onClick={onClick} className="group cursor-pointer py-12">
-      {/* Wrapper com ClipPath Animado */}
-      <motion.div style={{ clipPath: isMobile ? undefined : clipPath }} className="relative aspect-video overflow-hidden">
-        
-        {/* Imagem com Parallax e LayoutId */}
-        <motion.div className="w-full h-full relative overflow-hidden">
-           <motion.img 
-              layoutId={`image-${item.id}`}
-              src={item.image} 
-              style={{ scale: 1.35, y: yParallax }} 
-              className="w-full h-full object-cover"
-           />
-        </motion.div>
+    <motion.div 
+      layoutId={`modal-container-${item.id}`}
+      onClick={onClick} 
+      className={`group cursor-pointer flex flex-col justify-between p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] min-h-[400px] md:min-h-[480px] transition-transform hover:scale-[1.02] duration-300 ${
+        isDark ? 'bg-[#2A2522] text-[#EAE8E0]' : 'bg-[#EAE8E0] text-[#2A2522]'
+      } ${className || ''}`}
+    >
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2 md:gap-3 mb-8">
+        {item.tags.map((tag: string, i: number) => (
+          <span 
+            key={i} 
+            className={`text-[10px] md:text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full ${
+              isDark ? 'bg-white/10 text-white/80' : 'bg-white/60 text-black/50'
+            }`}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
 
-        {/* Botão Hover */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 bg-black/20">
-           <div className="bg-secondary text-primary p-4 rounded-full">
-             <ArrowUpRight />
-           </div>
+      {/* Content */}
+      <div className="mt-auto mb-8 md:mb-12">
+        <motion.h3 layoutId={`title-${item.id}`} className="text-3xl md:text-4xl lg:text-5xl font-serif leading-[1.1] mb-4 md:mb-6">
+           {item.title}
+        </motion.h3>
+        <p className={`text-sm md:text-base leading-relaxed max-w-md font-light ${isDark ? 'text-white/70' : 'text-black/60'}`}>
+          {item.subtitle}
+        </p>
+      </div>
+
+      {/* Arrow Button */}
+      <div className="flex justify-end">
+        <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 ${
+          isDark ? 'bg-[#EAE8E0] text-[#2A2522]' : 'bg-[#2A2522] text-[#EAE8E0]'
+        }`}>
+          <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform duration-300" />
         </div>
-      </motion.div>
-
-      {/* Título com LayoutId */}
-      <motion.h3 layoutId={`title-${item.id}`} className="text-3xl md:text-4xl font-serif mt-6 text-primary">
-         {item.title}
-      </motion.h3>
-      <p className="text-primary/70 mt-2 font-light">{item.subtitle}</p>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
@@ -195,9 +199,14 @@ export function Expertise() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
           {cases.map((item) => (
-            <CardItem key={item.id} item={item} onClick={() => setSelectedId(item.id)} />
+            <CardItem 
+              key={item.id} 
+              item={item} 
+              onClick={() => setSelectedId(item.id)} 
+              className={item.colSpan}
+            />
           ))}
         </div>
       </div>
