@@ -35,12 +35,12 @@ export function Insights() {
         {
           y: 0,
           opacity: 1,
-          duration: 1.2,
-          stagger: 0.1,
+          duration: 0.8,
+          stagger: 0.05,
           ease: "power2.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 80%",
+            start: "top 90%",
           },
         }
       );
@@ -66,7 +66,7 @@ export function Insights() {
         <div className="grid md:grid-cols-3 gap-12 3xl:gap-20 4xl:gap-32">
           {articles.map((article, i) => (
             <div key={i} className="insight-card group cursor-pointer">
-              <div className="relative aspect-[4/5] overflow-hidden mb-8 rounded-[3rem] rounded-tr-3xl">
+              <div className="relative aspect-[4/5] overflow-hidden mb-8 rounded-xl">
                 <img 
                   src={article.image} 
                   alt={article.title} 

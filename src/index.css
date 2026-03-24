@@ -12,11 +12,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #2A1F20; /* Deep warm plum/espresso for a softer, organic contrast */
-  --color-secondary: #F0EEE9; /* Pantone 11-4201 Cloud Dancer */
-  --color-muted: #E5E2DB; /* Refined muted Cloud Dancer */
-  --color-accent: #BE3455; /* Pantone 18-1750 Viva Magenta */
-  --color-accent-dark: #982641; /* Deep Viva Magenta for hover states */
+  --color-primary: #111111; /* Elegant almost black */
+  --color-secondary: #FAFAFA; /* Off-white */
+  --color-muted: #F0F0F0; /* Light gray */
+  --color-accent: #000000; /* Pure black */
+  --color-accent-dark: #333333; /* Dark gray for hover states */
   
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
@@ -32,9 +32,9 @@
   --text-fluid-h4: clamp(1.5rem, 3vw + 1rem, 3rem);
   --text-fluid-p: clamp(1rem, 0.6vw + 0.875rem, 1.25rem);
 
-  /* Fluid Spacing - More aggressive for 'Premium' feel */
-  --spacing-section-y: clamp(6rem, 15vw, 24rem);
-  --spacing-gap: clamp(2rem, 8vw, 12rem);
+  /* Fluid Spacing - Reduced for better adaptation on large monitors */
+  --spacing-section-y: clamp(4rem, 5vw, 6rem);
+  --spacing-gap: clamp(2rem, 3vw, 3rem);
 }
 
 @layer base {

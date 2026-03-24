@@ -14,11 +14,11 @@ export function Culture() {
         {
           x: 0,
           opacity: 1,
-          duration: 1.2,
+          duration: 0.8,
           ease: "power2.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 70%",
+            start: "top 90%",
           },
         }
       );
@@ -31,11 +31,11 @@ export function Culture() {
         {
           scale: 1,
           opacity: 1,
-          duration: 1.5,
+          duration: 1.0,
           ease: "power2.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 70%",
+            start: "top 90%",
           },
         }
       );
@@ -45,7 +45,7 @@ export function Culture() {
   return (
     <section id="cultura" className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
       <div className="container grid lg:grid-cols-2 gap-[var(--spacing-gap)] items-center" ref={containerRef}>
-        <div className="culture-content max-w-2xl 3xl:max-w-4xl relative z-10 bg-primary p-8 md:p-12 3xl:p-16 4xl:p-24 rounded-[3rem] lg:-mr-16 3xl:-mr-24 4xl:-mr-32 mt-12 lg:mt-0 shadow-2xl border border-secondary/10">
+        <div className="culture-content max-w-2xl 3xl:max-w-4xl relative z-10 bg-primary p-8 md:p-12 3xl:p-16 4xl:p-24 rounded-xl lg:-mr-16 3xl:-mr-24 4xl:-mr-32 mt-12 lg:mt-0 shadow-2xl border border-secondary/10">
           <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-medium mb-8">Nossa Cultura</h2>
           <h3 className="font-serif text-[var(--text-fluid-h2)] leading-[0.9] mb-10 tracking-tighter font-light">
             A força do <br/><span className="italic text-secondary/80">feminino</span> na advocacia.
@@ -65,10 +65,10 @@ export function Culture() {
           </div>
         </div>
 
-        <div className="relative h-[60vh] lg:h-[80vh] 3xl:h-[90vh] w-full overflow-hidden rounded-t-[10rem] 3xl:rounded-t-[15rem] rounded-b-[3rem] 3xl:rounded-b-[5rem] z-0 p-2 border border-secondary/20">
+        <div className="relative h-[60vh] lg:h-[80vh] 3xl:h-[90vh] w-full overflow-hidden rounded-xl z-0 p-2 border border-secondary/20">
           <div 
             ref={imageRef}
-            className="absolute inset-2 rounded-t-[9.5rem] 3xl:rounded-t-[14.5rem] rounded-b-[2.5rem] 3xl:rounded-b-[4.5rem] overflow-hidden"
+            className="absolute inset-2 rounded-lg overflow-hidden"
           >
             <img 
               src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2000&auto=format&fit=crop"

@@ -34,7 +34,7 @@ export function Contact() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 80%",
+            start: "top 90%",
           },
         }
       );
@@ -51,7 +51,7 @@ export function Contact() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 80%",
+            start: "top 90%",
           },
         }
       );
@@ -100,7 +100,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="contact-item mt-12 3xl:mt-16 w-full h-64 md:h-80 3xl:h-[500px] relative z-0 border border-secondary/10 rounded-[3rem] rounded-tr-3xl overflow-hidden">
+            <div className="contact-item mt-12 3xl:mt-16 w-full h-64 md:h-80 3xl:h-[500px] relative z-0 border border-secondary/10 rounded-xl overflow-hidden">
               <MapContainer center={[-23.5641095, -46.6524099]} zoom={15} scrollWheelZoom={false} className="w-full h-full z-0 grayscale contrast-125">
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -117,7 +117,7 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="contact-form bg-secondary p-8 md:p-12 lg:p-16 3xl:p-24 4xl:p-32 rounded-[3rem] rounded-tl-3xl border-t-4 border-accent">
+        <div className="contact-form bg-secondary p-8 md:p-12 lg:p-16 3xl:p-24 4xl:p-32 rounded-xl border-t-4 border-accent">
           <h4 className="font-serif font-medium text-[var(--text-fluid-h3)] text-primary mb-10">Envie uma mensagem</h4>
           <form className="space-y-8 3xl:space-y-12">
             <div className="space-y-2">
