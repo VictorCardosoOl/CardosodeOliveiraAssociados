@@ -4,6 +4,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.config({ force3D: true }); // Força aceleração de hardware globalmente
 
 interface SmoothScrollWrapperProps {
   children: ReactNode;
@@ -20,10 +21,11 @@ export function SmoothScrollWrapper({ children }: SmoothScrollWrapperProps) {
       return; // Desativa o smooth scroll para quem prefere movimento reduzido
     }
 
-    // Inicializa o Lenis com um damping (lerp) elegante e natural
+    // Inicializa o Lenis com um damping (lerp) mais responsivo para evitar sensação de "peso"
     const lenis = new Lenis({
-      lerp: 0.07, // Amortecimento suave e natural
+      lerp: 0.1, // Valor padrão (0.1) é mais responsivo e leve que 0.07
       wheelMultiplier: 1,
+      smoothWheel: true,
     });
 
     lenisRef.current = lenis;

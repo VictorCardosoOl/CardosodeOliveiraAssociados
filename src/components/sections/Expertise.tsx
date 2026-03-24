@@ -312,7 +312,7 @@ export function Expertise() {
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
           {cases.map((item) => (
-            <div key={item.id} className={`expertise-elem ${item.colSpan}`}>
+            <div key={item.id} className={item.colSpan}>
               <CardItem 
                 item={item} 
                 onClick={() => setSelectedId(item.id)} 

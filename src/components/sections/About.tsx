@@ -94,10 +94,10 @@ export function About() {
               <img 
                 src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1200&auto=format&fit=crop" 
                 alt="Escritório de Advocacia" 
-                className="about-image w-full h-full object-cover"
+                className="about-image w-full h-full object-cover will-change-transform"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-primary/5 mix-blend-multiply pointer-events-none"></div>
+              <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
             </div>
 
             <div className="pl-0 md:pl-12 lg:pl-24">

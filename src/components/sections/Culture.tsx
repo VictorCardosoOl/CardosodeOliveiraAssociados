@@ -73,10 +73,10 @@ export function Culture() {
             <img 
               src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2000&auto=format&fit=crop"
               alt="Cultura"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover will-change-transform"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
         </div>
       </div>

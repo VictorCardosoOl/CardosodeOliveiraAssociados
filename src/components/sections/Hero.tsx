@@ -93,10 +93,10 @@ export function Hero() {
                 ref={imageRef}
                 src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop" 
                 alt="Advogada Especialista" 
-                className="w-full h-full object-cover origin-top"
+                className="w-full h-full object-cover origin-top will-change-transform"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-accent/5 mix-blend-multiply pointer-events-none"></div>
+              <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
             </div>
           </div>
         </div>
