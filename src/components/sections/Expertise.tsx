@@ -49,12 +49,12 @@ export function Expertise() {
         {
           y: 0,
           opacity: 1,
-          duration: 1.2,
-          stagger: 0.1,
+          duration: 0.8,
+          stagger: 0.05,
           ease: "power2.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 75%",
+            start: "top 90%",
           },
         }
       );
