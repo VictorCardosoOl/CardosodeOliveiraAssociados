@@ -25,16 +25,16 @@ export function Contact() {
     if (document.querySelector('.contact-item')) {
       gsap.fromTo(
         ".contact-item",
-        { x: -30, opacity: 0 },
+        { y: 40, opacity: 0 },
         {
-          x: 0,
+          y: 0,
           opacity: 1,
           duration: 1.2,
           stagger: 0.1,
-          ease: "power2.out",
+          ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 90%",
+            start: "top 85%",
           },
         }
       );
@@ -43,15 +43,15 @@ export function Contact() {
     if (document.querySelector('.contact-form')) {
       gsap.fromTo(
         ".contact-form",
-        { x: 30, opacity: 0 },
+        { y: 40, opacity: 0 },
         {
-          x: 0,
+          y: 0,
           opacity: 1,
           duration: 1.2,
-          ease: "power2.out",
+          ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 90%",
+            start: "top 85%",
           },
         }
       );
