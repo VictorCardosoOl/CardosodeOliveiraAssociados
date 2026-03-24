@@ -65,11 +65,11 @@ export function Professionals() {
 
           {/* Image */}
           <div className="w-full lg:w-1/2 min-h-[400px] lg:min-h-full relative p-4 md:p-8 3xl:p-12 4xl:p-16">
-            <div className="absolute inset-4 md:inset-8 3xl:inset-12 4xl:inset-16 w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] 3xl:w-[calc(100%-6rem)] 4xl:w-[calc(100%-8rem)] h-[calc(100%-2rem)] md:h-[calc(100%-4rem)] 3xl:h-[calc(100%-6rem)] 4xl:h-[calc(100%-8rem)] rounded-t-full rounded-b-[3rem] 3xl:rounded-b-[5rem] border border-secondary/20 p-2 3xl:p-4">
+            <div className="absolute inset-4 md:inset-8 3xl:inset-12 4xl:inset-16 w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] 3xl:w-[calc(100%-6rem)] 4xl:w-[calc(100%-8rem)] h-[calc(100%-2rem)] md:h-[calc(100%-4rem)] 3xl:h-[calc(100%-6rem)] 4xl:h-[calc(100%-8rem)] rounded-[3rem] 3xl:rounded-[5rem] border border-secondary/20 p-2 3xl:p-4">
               <img
                 src={professional.image}
                 alt={professional.name}
-                className="w-full h-full object-cover rounded-t-full rounded-b-[2.5rem] 3xl:rounded-b-[4.5rem]"
+                className="w-full h-full object-cover rounded-[2.5rem] 3xl:rounded-[4.5rem]"
                 referrerPolicy="no-referrer"
               />
             </div>

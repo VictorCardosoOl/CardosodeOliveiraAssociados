@@ -75,14 +75,14 @@ export function About() {
 
           {/* Right Column */}
           <div className="lg:col-span-7 mt-12 lg:mt-0">
-            <div className="relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] mb-20 overflow-hidden rounded-t-full rounded-b-[3rem] shadow-xl border border-primary/10 p-2">
+            <div className="relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] mb-20 overflow-hidden rounded-[3rem] shadow-xl border border-primary/10 p-2">
               <img 
                 src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1200&auto=format&fit=crop" 
                 alt="Escritório de Advocacia" 
-                className="about-image w-full h-full object-cover rounded-t-full rounded-b-[2.5rem]"
+                className="about-image w-full h-full object-cover rounded-[2.5rem]"
                 loading="lazy"
               />
-              <div className="absolute inset-2 rounded-t-full rounded-b-[2.5rem] bg-accent/5 mix-blend-multiply pointer-events-none"></div>
+              <div className="absolute inset-2 rounded-[2.5rem] bg-accent/5 mix-blend-multiply pointer-events-none"></div>
             </div>
 
             <div>
