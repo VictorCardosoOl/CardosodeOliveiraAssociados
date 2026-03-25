@@ -1,13 +1,10 @@
+import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { createPortal } from "react-dom";
 import Lenis from "lenis";
 import { ArrowRight, X } from "lucide-react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const cases = [
   {
@@ -277,42 +274,23 @@ export function Expertise() {
   const selectedItem = cases.find(c => c.id === selectedId);
   const sectionRef = useRef<HTMLElement>(null);
 
-  useGSAP(() => {
-    const elements = gsap.utils.toArray('.expertise-elem');
-    
-    if (elements.length > 0) {
-      gsap.fromTo(elements, 
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 85%",
-          }
-        }
-      );
-    }
-  }, { scope: sectionRef });
+  usePremiumAnimation(sectionRef);
 
   return (
     <section id="areas-de-atuacao" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary">
       <div className="container">
         <div className="mb-16 md:mb-24">
-          <span className="expertise-elem text-xs uppercase tracking-[0.2em] font-bold text-primary/50 block mb-4">
+          <span className="anim-stagger-item text-xs uppercase tracking-[0.2em] font-bold text-primary/50 block mb-4">
             Áreas de Foco
           </span>
-          <h2 className="expertise-elem font-serif text-4xl md:text-6xl 3xl:text-8xl text-primary leading-tight max-w-4xl font-light">
+          <h2 className="anim-title anim-stagger-item font-serif text-4xl md:text-6xl 3xl:text-8xl text-primary leading-tight max-w-4xl font-light">
             Soluções jurídicas <span className="italic">sob medida</span> para suas necessidades.
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+        <div className="anim-stagger-container grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
           {cases.map((item) => (
-            <div key={item.id} className={item.colSpan}>
+            <div key={item.id} className={`anim-stagger-item ${item.colSpan}`}>
               <CardItem 
                 item={item} 
                 onClick={() => setSelectedId(item.id)} 

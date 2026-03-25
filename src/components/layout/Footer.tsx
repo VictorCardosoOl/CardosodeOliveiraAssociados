@@ -1,35 +1,13 @@
 import { ArrowRight, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
 
-  useGSAP(() => {
-    const elements = gsap.utils.toArray('.footer-elem');
-    
-    if (elements.length > 0) {
-      gsap.fromTo(elements, 
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: footerRef.current,
-            start: "top 90%",
-          }
-        }
-      );
-    }
-  }, { scope: footerRef });
+  usePremiumAnimation(footerRef);
 
   return (
     <footer ref={footerRef} className="relative bg-primary text-secondary/60 pt-[var(--spacing-section-y)] pb-12 md:pb-24 overflow-hidden rounded-t-[3rem] border-t border-secondary/10">
@@ -43,10 +21,10 @@ export function Footer() {
 
       {/* 3. Main Content Grid */}
       <div className="container relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 md:gap-y-20 lg:gap-y-0 lg:divide-x lg:divide-secondary/10">
+        <div className="anim-stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 md:gap-y-20 lg:gap-y-0 lg:divide-x lg:divide-secondary/10">
           
           {/* Col 1: Identity */}
-          <div className="footer-elem flex flex-col lg:pr-12 xl:pr-16 3xl:pr-20 4xl:pr-24">
+          <div className="anim-stagger-item flex flex-col lg:pr-12 xl:pr-16 3xl:pr-20 4xl:pr-24">
             <span className="text-[clamp(0.75rem,1vw,0.875rem)] 3xl:text-base uppercase tracking-widest font-medium text-accent mb-6 block">Escritório</span>
             <div className="flex items-center gap-2 mb-2">
               <span className="font-serif text-[clamp(2rem,3vw,2.5rem)] 3xl:text-5xl 4xl:text-6xl text-secondary flex items-center gap-2">
@@ -65,7 +43,7 @@ export function Footer() {
           </div>
 
           {/* Col 2: Location/CTA */}
-          <div className="footer-elem flex flex-col lg:px-12 xl:px-16 3xl:px-20 4xl:px-24">
+          <div className="anim-stagger-item flex flex-col lg:px-12 xl:px-16 3xl:px-20 4xl:px-24">
             <span className="text-[clamp(0.75rem,1vw,0.875rem)] 3xl:text-base uppercase tracking-widest font-medium text-accent mb-6 block">Contato</span>
             <div className="flex items-start gap-3 mb-8">
               <MapPin size={18} className="text-accent shrink-0 mt-1 3xl:w-6 3xl:h-6" />
@@ -82,7 +60,7 @@ export function Footer() {
           </div>
 
           {/* Col 3: Social */}
-          <div className="footer-elem flex flex-col lg:px-12 xl:px-16 3xl:px-20 4xl:px-24">
+          <div className="anim-stagger-item flex flex-col lg:px-12 xl:px-16 3xl:px-20 4xl:px-24">
             <span className="text-[clamp(0.75rem,1vw,0.875rem)] 3xl:text-base uppercase tracking-widest font-medium text-accent mb-6 block">Social</span>
             <div className="flex flex-col gap-4 3xl:gap-6">
               <a href="#" className="group flex items-center gap-3 text-secondary/60 hover:text-secondary transition-colors w-fit">
@@ -101,7 +79,7 @@ export function Footer() {
           </div>
 
           {/* Col 4: Menu/Credits */}
-          <div className="footer-elem flex flex-col lg:pl-12 xl:pl-16 3xl:pl-20 4xl:pl-24">
+          <div className="anim-stagger-item flex flex-col lg:pl-12 xl:pl-16 3xl:pl-20 4xl:pl-24">
             <span className="text-[clamp(0.75rem,1vw,0.875rem)] 3xl:text-base uppercase tracking-widest font-medium text-accent mb-6 block">Navegação</span>
             <nav className="flex flex-col gap-3 3xl:gap-5 mb-12">
               {['O Escritório', 'Áreas de Atuação', 'Profissionais', 'Cultura', 'Insights'].map((item) => (

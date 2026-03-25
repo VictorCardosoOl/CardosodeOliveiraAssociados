@@ -1,6 +1,5 @@
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { Mail, MapPin, Phone, ArrowRight } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -21,42 +20,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 export function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    if (document.querySelector('.contact-item')) {
-      gsap.fromTo(
-        ".contact-item",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 85%",
-          },
-        }
-      );
-    }
-
-    if (document.querySelector('.contact-form')) {
-      gsap.fromTo(
-        ".contact-form",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 85%",
-          },
-        }
-      );
-    }
-  }, { scope: containerRef });
+  usePremiumAnimation(containerRef);
 
   return (
     <section id="contato" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
@@ -65,12 +29,12 @@ export function Contact() {
           <div className="inline-flex items-center gap-2 px-4 py-2 3xl:px-6 3xl:py-3 bg-accent/20 text-accent text-[clamp(0.75rem,1vw,0.875rem)] font-bold uppercase tracking-wider mb-8 rounded-sm">
             <span>Contato</span>
           </div>
-          <h3 className="font-serif font-medium text-[var(--text-fluid-h2)] leading-[0.95] tracking-tighter mb-12">
+          <h3 className="anim-title font-serif font-medium text-[var(--text-fluid-h2)] leading-[0.95] tracking-tighter mb-12">
             Vamos <br/><span className="text-accent">conversar</span> sobre o seu caso.
           </h3>
           
-          <div className="space-y-12 3xl:space-y-20">
-            <div className="contact-item flex items-start gap-6 3xl:gap-10 group">
+          <div className="anim-stagger-container space-y-12 3xl:space-y-20">
+            <div className="anim-stagger-item flex items-start gap-6 3xl:gap-10 group">
               <div className="bg-secondary/5 p-4 3xl:p-6 rounded-full group-hover:bg-accent transition-colors duration-500">
                 <Phone className="text-accent group-hover:text-primary transition-colors duration-500 3xl:w-8 3xl:h-8" size={24} strokeWidth={1.5} />
               </div>
@@ -80,7 +44,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="contact-item flex items-start gap-6 3xl:gap-10 group">
+            <div className="anim-stagger-item flex items-start gap-6 3xl:gap-10 group">
               <div className="bg-secondary/5 p-4 3xl:p-6 rounded-full group-hover:bg-accent transition-colors duration-500">
                 <Mail className="text-accent group-hover:text-primary transition-colors duration-500 3xl:w-8 3xl:h-8" size={24} strokeWidth={1.5} />
               </div>
@@ -90,7 +54,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="contact-item flex items-start gap-6 3xl:gap-10 group">
+            <div className="anim-stagger-item flex items-start gap-6 3xl:gap-10 group">
               <div className="bg-secondary/5 p-4 3xl:p-6 rounded-full group-hover:bg-accent transition-colors duration-500">
                 <MapPin className="text-accent group-hover:text-primary transition-colors duration-500 3xl:w-8 3xl:h-8" size={24} strokeWidth={1.5} />
               </div>
@@ -117,7 +81,7 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="contact-form bg-secondary p-8 md:p-12 lg:p-16 3xl:p-24 4xl:p-32 rounded-xl border-t-4 border-accent">
+        <div className="anim-fade-up bg-secondary p-8 md:p-12 lg:p-16 3xl:p-24 4xl:p-32 rounded-xl border-t-4 border-accent">
           <h4 className="font-serif font-medium text-[var(--text-fluid-h3)] text-primary mb-10">Envie uma mensagem</h4>
           <form className="space-y-8 3xl:space-y-12">
             <div className="space-y-2">

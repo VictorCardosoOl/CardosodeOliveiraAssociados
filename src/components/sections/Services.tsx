@@ -1,11 +1,8 @@
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { Layout, Aperture, Target, Infinity, Layers, Hexagon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
@@ -43,42 +40,7 @@ const services = [
 export function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const elements = gsap.utils.toArray('.service-item');
-    
-    if (elements.length > 0) {
-      gsap.fromTo(elements, 
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 85%",
-          }
-        }
-      );
-    }
-
-    if (document.querySelector('.services-sidebar')) {
-      gsap.fromTo('.services-sidebar',
-        { x: 30, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 85%",
-          }
-        }
-      );
-    }
-  }, { scope: containerRef });
+  usePremiumAnimation(containerRef);
 
   return (
     <section id="servicos" ref={containerRef} className="py-[var(--spacing-section-y)] bg-secondary text-primary border-t border-primary/20">
@@ -87,7 +49,7 @@ export function Services() {
         <div className="grid lg:grid-cols-[1fr_350px] xl:grid-cols-[1fr_400px] 3xl:grid-cols-[1fr_500px] 4xl:grid-cols-[1fr_600px] gap-12 lg:gap-0">
           
           {/* Left Side: Services Grid */}
-          <div className="grid md:grid-cols-2 relative lg:pr-12 xl:pr-16 3xl:pr-20 4xl:pr-24">
+          <div className="anim-stagger-container grid md:grid-cols-2 relative lg:pr-12 xl:pr-16 3xl:pr-20 4xl:pr-24">
             {/* Vertical Divider for Desktop */}
             <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-primary/20 -translate-x-1/2"></div>
             
@@ -95,7 +57,7 @@ export function Services() {
               <div 
                 key={index}
                 className={cn(
-                  "service-item py-10 md:py-14 3xl:py-20 group",
+                  "anim-stagger-item py-10 md:py-14 3xl:py-20 group",
                   // Add padding right for left column, padding left for right column
                   index % 2 === 0 ? "md:pr-12 3xl:pr-16" : "md:pl-12 3xl:pl-16",
                   // Add bottom border to all except the last row
@@ -122,9 +84,9 @@ export function Services() {
           </div>
 
           {/* Right Side: Sidebar */}
-          <div className="services-sidebar lg:border-l border-primary/20 lg:pl-12 xl:pl-16 3xl:pl-20 4xl:pl-24 pt-10 lg:pt-14">
+          <div className="anim-fade-up lg:border-l border-primary/20 lg:pl-12 xl:pl-16 3xl:pl-20 4xl:pl-24 pt-10 lg:pt-14">
             <div className="sticky top-32">
-              <h2 className="text-3xl md:text-4xl 3xl:text-6xl font-sans font-medium mb-6">Nossa Atuação</h2>
+              <h2 className="anim-title text-3xl md:text-4xl 3xl:text-6xl font-sans font-medium mb-6">Nossa Atuação</h2>
               <p className="text-sm md:text-base 3xl:text-xl text-primary/70 leading-relaxed mb-10 font-light max-w-md 3xl:max-w-xl">
                 Oferecemos assessoria jurídica personalizada em um ambiente seguro e estratégico, especializando-nos em demandas corporativas complexas para ajudar sua empresa a navegar pelos desafios do mercado com resiliência e clareza.
               </p>

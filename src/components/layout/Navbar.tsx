@@ -16,8 +16,8 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollDirection, isAtTop } = useScrollDirection();
 
-  // Visible at top, or when scrolling up
-  const isVisible = isAtTop || scrollDirection === "up";
+  // Visible at top, or when scrolling up, or if mobile menu is open
+  const isVisible = isAtTop || scrollDirection === "up" || isMobileMenuOpen;
 
   return (
     <header

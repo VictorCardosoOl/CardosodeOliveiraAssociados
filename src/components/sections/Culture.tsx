@@ -1,52 +1,17 @@
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 
 export function Culture() {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    if (document.querySelector('.culture-content')) {
-      gsap.fromTo(
-        ".culture-content",
-        { x: -30, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 90%",
-          },
-        }
-      );
-    }
-
-    if (imageRef.current) {
-      gsap.fromTo(
-        imageRef.current,
-        { scale: 1.05, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 1.0,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 90%",
-          },
-        }
-      );
-    }
-  }, { scope: containerRef });
+  usePremiumAnimation(containerRef);
 
   return (
     <section id="cultura" className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
       <div className="container grid lg:grid-cols-2 gap-[var(--spacing-gap)] items-center" ref={containerRef}>
-        <div className="culture-content max-w-2xl 3xl:max-w-4xl relative z-10 bg-primary p-8 md:p-12 3xl:p-16 4xl:p-24 rounded-xl lg:-mr-16 3xl:-mr-24 4xl:-mr-32 mt-12 lg:mt-0 shadow-2xl border border-secondary/10">
-          <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-medium mb-8">Nossa Cultura</h2>
+        <div className="anim-fade-up max-w-2xl 3xl:max-w-4xl relative z-10 bg-primary p-8 md:p-12 3xl:p-16 4xl:p-24 rounded-xl lg:-mr-16 3xl:-mr-24 4xl:-mr-32 mt-12 lg:mt-0 shadow-2xl border border-secondary/10">
+          <h2 className="anim-title text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-medium mb-8">Nossa Cultura</h2>
           <h3 className="font-serif text-[var(--text-fluid-h2)] leading-[0.9] mb-10 tracking-tighter font-light">
             A força do <br/><span className="italic text-secondary/80">feminino</span> na advocacia.
           </h3>
@@ -65,7 +30,7 @@ export function Culture() {
           </div>
         </div>
 
-        <div className="relative h-[60vh] lg:h-[80vh] 3xl:h-[90vh] w-full overflow-hidden rounded-xl z-0 p-2 border border-secondary/20">
+        <div className="anim-image-wrapper relative h-[60vh] lg:h-[80vh] 3xl:h-[90vh] w-full overflow-hidden rounded-xl z-0 p-2 border border-secondary/20">
           <div 
             ref={imageRef}
             className="absolute inset-2 rounded-lg overflow-hidden"

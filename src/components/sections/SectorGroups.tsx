@@ -1,6 +1,5 @@
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { Car, Leaf, Building2, Zap, HeartPulse, Landmark } from "lucide-react";
 
 const sectors = [
@@ -15,32 +14,14 @@ const sectors = [
 export function SectorGroups() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    if (document.querySelector('.sector-item')) {
-      gsap.fromTo(
-        ".sector-item",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 85%",
-          },
-        }
-      );
-    }
-  }, { scope: containerRef });
+  usePremiumAnimation(containerRef);
 
   return (
     <section id="setores" className="py-[var(--spacing-section-y)] bg-muted overflow-hidden">
       <div className="container" ref={containerRef}>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-sm md:text-base font-bold mb-4">Grupos Setoriais</h2>
+            <h2 className="anim-title text-accent uppercase tracking-[0.2em] text-sm md:text-base font-bold mb-4">Grupos Setoriais</h2>
             <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl 4xl:text-9xl text-primary leading-[0.9] tracking-tighter font-medium">
               Expertise em <br/><span className="italic text-primary/80">mercados estratégicos</span>.
             </h3>
@@ -50,11 +31,11 @@ export function SectorGroups() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 3xl:gap-10">
+        <div className="anim-stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 3xl:gap-10">
           {sectors.map((sector, index) => (
             <div
               key={index}
-              className="sector-item group flex flex-col items-start p-10 md:p-12 3xl:p-16 bg-secondary rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-primary/5"
+              className="anim-stagger-item group flex flex-col items-start p-10 md:p-12 3xl:p-16 bg-secondary rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-primary/5"
             >
               <div className="w-16 h-16 3xl:w-24 3xl:h-24 bg-muted rounded-full flex items-center justify-center mb-8 3xl:mb-12 group-hover:bg-primary transition-colors duration-500">
                 <sector.icon className="w-7 h-7 3xl:w-10 3xl:h-10 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />

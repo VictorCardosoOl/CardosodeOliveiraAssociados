@@ -1,6 +1,5 @@
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { Linkedin, Mail } from "lucide-react";
 
 const professional = {
@@ -13,30 +12,13 @@ const professional = {
 export function Professionals() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    if (document.querySelector('.professional-card')) {
-      gsap.fromTo(
-        ".professional-card",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 90%",
-          },
-        }
-      );
-    }
-  }, { scope: containerRef });
+  usePremiumAnimation(containerRef);
 
   return (
     <section id="profissionais" className="py-[var(--spacing-section-y)] bg-secondary overflow-hidden">
       <div className="container" ref={containerRef}>
         
-        <div className="professional-card bg-primary rounded-xl md:rounded-2xl 3xl:rounded-3xl overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+        <div className="anim-fade-up bg-primary rounded-xl md:rounded-2xl 3xl:rounded-3xl overflow-hidden flex flex-col lg:flex-row shadow-2xl">
           
           {/* Text Content */}
           <div className="w-full lg:w-1/2 p-10 md:p-16 lg:p-20 3xl:p-24 4xl:p-32 flex flex-col justify-center text-secondary">

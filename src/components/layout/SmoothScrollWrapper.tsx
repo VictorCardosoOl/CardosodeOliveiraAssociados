@@ -34,18 +34,18 @@ export function SmoothScrollWrapper({ children }: SmoothScrollWrapperProps) {
     lenis.on("scroll", ScrollTrigger.update);
 
     // Conecta o loop de requestAnimationFrame (raf) do GSAP ao Lenis
-    gsap.ticker.add((time) => {
+    const updateLenis = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
+    
+    gsap.ticker.add(updateLenis);
 
     // Desativa o lag smoothing do GSAP para evitar conflitos de tempo com o Lenis
     gsap.ticker.lagSmoothing(0);
 
     return () => {
       lenis.destroy();
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000);
-      });
+      gsap.ticker.remove(updateLenis);
     };
   }, []);
 

@@ -1,3 +1,4 @@
+import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { useState, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -39,37 +40,7 @@ export function FAQ() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  useGSAP(() => {
-    // Check for prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    if (prefersReducedMotion) {
-      gsap.set(".sticky-content, .faq-item", { opacity: 1, y: 0 });
-      return;
-    }
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 90%",
-      }
-    });
-
-    // 1. Animar .sticky-content (Esquerda)
-    tl.fromTo(
-      ".sticky-content",
-      { y: 80, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.4, ease: "power4.out" }
-    );
-
-    // 2. Animar .faq-item (Direita) com stagger e delay
-    tl.fromTo(
-      ".faq-item",
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out" },
-      "-=1" // Começa um pouco antes da animação da esquerda terminar
-    );
-  }, { scope: containerRef });
+  usePremiumAnimation(containerRef);
 
   return (
     <section id="faq" ref={containerRef} className="py-[var(--spacing-section-y)] bg-secondary text-primary border-t border-primary/10">
@@ -77,9 +48,9 @@ export function FAQ() {
         
         {/* COLUNA ESQUERDA (Sticky) */}
         <div className="lg:col-span-4 relative">
-          <div className="sticky-content lg:sticky lg:top-32">
+          <div className="anim-fade-up lg:sticky lg:top-32">
             <span className="text-[clamp(0.75rem,1vw,0.875rem)] font-medium tracking-widest uppercase mb-6 block text-accent">Suporte</span>
-            <h2 className="font-serif text-[var(--text-fluid-h2)] mb-8 leading-[0.85] tracking-tighter font-light">
+            <h2 className="anim-title font-serif text-[var(--text-fluid-h2)] mb-8 leading-[0.85] tracking-tighter font-light">
               Dúvidas <br/> <span className="italic text-primary/50">Frequentes</span>
             </h2>
             <p className="text-primary/70 font-light max-w-sm mb-10 text-[var(--text-fluid-p)] leading-relaxed">
@@ -98,11 +69,11 @@ export function FAQ() {
         
         {/* COLUNA DIREITA (Lista) */}
         <div className="lg:col-span-7 lg:col-start-6 mt-12 lg:mt-0">
-          <div className="border-t border-primary/10">
+          <div className="anim-stagger-container border-t border-primary/10">
             {FAQ_ITEMS.map((item, idx) => {
               const isOpen = openIndex === idx;
               return (
-                <div key={item.id} className="faq-item border-b border-primary/10">
+                <div key={item.id} className="anim-stagger-item border-b border-primary/10">
                   <button 
                     onClick={() => toggleItem(idx)}
                     className="w-full py-8 md:py-10 flex justify-between items-center text-left group"

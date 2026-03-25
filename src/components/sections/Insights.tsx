@@ -1,6 +1,5 @@
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { ArrowRight, Calendar } from "lucide-react";
 
 const articles = [
@@ -27,32 +26,14 @@ const articles = [
 export function Insights() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    if (document.querySelector('.insight-card')) {
-      gsap.fromTo(
-        ".insight-card",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.05,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 90%",
-          },
-        }
-      );
-    }
-  }, { scope: containerRef });
+  usePremiumAnimation(containerRef);
 
   return (
     <section id="insights" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-muted overflow-hidden">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-[var(--spacing-gap)]">
           <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-bold mb-4">Insights</h2>
+            <h2 className="anim-title text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-bold mb-4">Insights</h2>
             <h3 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-[0.9] tracking-tighter font-medium">
               Conhecimento que <br/><span className="italic text-primary/80">protege e orienta</span>.
             </h3>
@@ -63,9 +44,9 @@ export function Insights() {
           </button>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 3xl:gap-20 4xl:gap-32">
+        <div className="anim-stagger-container grid md:grid-cols-3 gap-12 3xl:gap-20 4xl:gap-32">
           {articles.map((article, i) => (
-            <div key={i} className="insight-card group cursor-pointer">
+            <div key={i} className="anim-stagger-item group cursor-pointer">
               <div className="relative aspect-[4/5] overflow-hidden mb-8 rounded-xl">
                 <img 
                   src={article.image} 
