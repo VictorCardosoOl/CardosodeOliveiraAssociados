@@ -15,7 +15,7 @@ import { ErrorBoundary } from "./components/common/ErrorBoundary";
 
 // Lazy Loading: O React só carrega estes ficheiros quando forem necessários
 const About = React.lazy(() => import("./components/sections/About").then(m => ({ default: m.About })));
-const Expertise = React.lazy(() => import("./components/sections/Expertise").then(m => ({ default: m.Expertise })));
+const AreasDeAtuacao = React.lazy(() => import("./components/sections/AreasDeAtuacao").then(m => ({ default: m.AreasDeAtuacao })));
 const Professionals = React.lazy(() => import("./components/sections/Professionals").then(m => ({ default: m.Professionals })));
 const Insights = React.lazy(() => import("./components/sections/Insights").then(m => ({ default: m.Insights })));
 const Contact = React.lazy(() => import("./components/sections/Contact").then(m => ({ default: m.Contact })));
@@ -38,7 +38,7 @@ export default function App() {
             {/* As restantes secções são encapsuladas num Suspense */}
             <Suspense fallback={<SectionLoader />}>
               <About />
-              <Expertise />
+              <AreasDeAtuacao />
               <Professionals />
               <Insights />
               <Contact />

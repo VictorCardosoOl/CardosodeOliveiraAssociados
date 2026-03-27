@@ -30,36 +30,36 @@ export function Contact() {
             <span>Contato</span>
           </div>
           <h3 className="anim-title font-editorial text-[clamp(3rem,6vw,6rem)] leading-[0.85] tracking-tighter uppercase mb-16">
-            Vamos <br/><span className="italic text-accent">conversar</span> sobre o seu caso.
+            Vamos <br/><span className="italic text-secondary">conversar</span> sobre o seu caso.
           </h3>
           
           <div className="anim-stagger-container space-y-12">
             <div className="anim-stagger-item flex items-start gap-6 group">
-              <div className="border border-secondary/20 p-4 group-hover:bg-accent group-hover:border-accent transition-colors duration-500">
+              <div className="border border-secondary/20 p-4 group-hover:bg-secondary group-hover:border-secondary transition-colors duration-500">
                 <Phone className="text-secondary group-hover:text-primary transition-colors duration-500" size={24} strokeWidth={1} />
               </div>
               <div>
-                <p className="micro-text text-accent mb-2">Telefone</p>
-                <p className="text-xl md:text-2xl font-sans font-light text-secondary hover:text-accent transition-colors cursor-pointer">+55 (11) 99999-9999</p>
+                <p className="micro-text text-secondary/70 mb-2">Telefone</p>
+                <p className="text-xl md:text-2xl font-sans font-light text-secondary hover:text-secondary/70 transition-colors cursor-pointer">+55 (11) 99999-9999</p>
               </div>
             </div>
 
             <div className="anim-stagger-item flex items-start gap-6 group">
-              <div className="border border-secondary/20 p-4 group-hover:bg-accent group-hover:border-accent transition-colors duration-500">
+              <div className="border border-secondary/20 p-4 group-hover:bg-secondary group-hover:border-secondary transition-colors duration-500">
                 <Mail className="text-secondary group-hover:text-primary transition-colors duration-500" size={24} strokeWidth={1} />
               </div>
               <div>
-                <p className="micro-text text-accent mb-2">E-mail</p>
-                <p className="text-xl md:text-2xl font-sans font-light text-secondary hover:text-accent transition-colors cursor-pointer">contato@cardoso.adv.br</p>
+                <p className="micro-text text-secondary/70 mb-2">E-mail</p>
+                <p className="text-xl md:text-2xl font-sans font-light text-secondary hover:text-secondary/70 transition-colors cursor-pointer">contato@cardoso.adv.br</p>
               </div>
             </div>
 
             <div className="anim-stagger-item flex items-start gap-6 group">
-              <div className="border border-secondary/20 p-4 group-hover:bg-accent group-hover:border-accent transition-colors duration-500">
+              <div className="border border-secondary/20 p-4 group-hover:bg-secondary group-hover:border-secondary transition-colors duration-500">
                 <MapPin className="text-secondary group-hover:text-primary transition-colors duration-500" size={24} strokeWidth={1} />
               </div>
               <div>
-                <p className="micro-text text-accent mb-2">Endereço</p>
+                <p className="micro-text text-secondary/70 mb-2">Endereço</p>
                 <p className="text-xl md:text-2xl font-sans font-light text-secondary leading-relaxed">Av. Paulista, 1000 — 12º Andar<br />Jardins, São Paulo — SP</p>
               </div>
             </div>
@@ -88,7 +88,7 @@ export function Contact() {
               <label className="micro-text text-muted">Nome Completo</label>
               <input 
                 type="text" 
-                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-accent outline-none transition-colors font-light text-lg"
+                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors font-light text-lg"
                 placeholder="Como podemos te chamar?"
               />
             </div>
@@ -96,7 +96,7 @@ export function Contact() {
               <label className="micro-text text-muted">E-mail</label>
               <input 
                 type="email" 
-                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-accent outline-none transition-colors font-light text-lg"
+                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors font-light text-lg"
                 placeholder="seu@email.com"
               />
             </div>
@@ -104,7 +104,7 @@ export function Contact() {
               <label className="micro-text text-muted">Mensagem</label>
               <textarea 
                 rows={4}
-                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-accent outline-none transition-colors resize-none font-light text-lg"
+                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors resize-none font-light text-lg"
                 placeholder="Descreva brevemente sua necessidade..."
               />
             </div>

@@ -269,7 +269,7 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
   );
 };
 
-export function Expertise() {
+export function AreasDeAtuacao() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selectedItem = cases.find(c => c.id === selectedId);
   const sectionRef = useRef<HTMLElement>(null);
@@ -277,7 +277,7 @@ export function Expertise() {
   usePremiumAnimation(sectionRef);
 
   return (
-    <section id="expertise" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10">
+    <section id="areas-de-atuacao" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10">
       <div className="container">
         <div className="mb-16 md:mb-24">
           <span className="anim-stagger-item micro-text text-muted block mb-6">

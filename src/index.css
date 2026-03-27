@@ -2,11 +2,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #111111;
-  --color-secondary: #FAFAFA;
-  --color-muted: #777777;
-  --color-accent: #111111;
-  --color-footer: #F0F0F0;
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-muted: #666666;
+  --color-accent: #000000;
+  --color-footer: #f5f5f5;
   
   --font-sans: "Montserrat", sans-serif;
   --font-editorial: "Cormorant Garamond", serif;
@@ -80,7 +80,7 @@ body {
 }
 
 ::selection {
-  background-color: rgba(17, 17, 17, 0.1);
+  background-color: rgba(0, 0, 0, 0.15);
   color: var(--color-primary);
 }
 

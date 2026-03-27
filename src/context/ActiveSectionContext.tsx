@@ -9,6 +9,7 @@ const ActiveSectionContext = createContext<ActiveSectionContextType | undefined>
 export function ActiveSectionProvider({ children }: { children: React.ReactNode }) {
   const [activeSection, setActiveSection] = useState<string>('');
   const observer = useRef<IntersectionObserver | null>(null);
+  const observedElements = useRef<Set<Element>>(new Set());
 
   useEffect(() => {
     observer.current = new IntersectionObserver(
@@ -20,15 +21,38 @@ export function ActiveSectionProvider({ children }: { children: React.ReactNode 
         });
       },
       {
-        rootMargin: '-20% 0% -70% 0%', // Trigger when section is in the upper part of the viewport
+        rootMargin: '-20% 0% -40% 0%', // Trigger when section is in the upper/middle part of the viewport
         threshold: 0,
       }
     );
 
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach((section) => observer.current?.observe(section));
+    const observeSections = () => {
+      const sections = document.querySelectorAll('section[id]');
+      sections.forEach((section) => {
+        if (!observedElements.current.has(section)) {
+          observer.current?.observe(section);
+          observedElements.current.add(section);
+        }
+      });
+    };
 
-    return () => observer.current?.disconnect();
+    // Initial observation
+    observeSections();
+
+    // Observe future DOM changes (lazy loaded sections)
+    const mutationObserver = new MutationObserver(() => {
+      observeSections();
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      observer.current?.disconnect();
+      mutationObserver.disconnect();
+    };
   }, []);
 
   return (

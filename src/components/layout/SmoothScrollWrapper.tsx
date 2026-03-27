@@ -20,12 +20,11 @@ export function SmoothScrollWrapper({ children }: SmoothScrollWrapperProps) {
       return; 
     }
 
-    // Correção: Removemos o 'duration' e aumentamos o 'lerp' para 0.1 (padrão recomendado)
-    // Removemos também o 'syncTouch' para evitar bugs no mobile.
     const lenis = new Lenis({
-      lerp: 0.1, // Controla a suavidade (0.1 é natural, 0.05 era muito "flutuante")
-      wheelMultiplier: 1, // Reduzido de 1.1 para 1 para evitar aceleração excessiva
+      lerp: 0.08,
+      wheelMultiplier: 1,
       smoothWheel: true,
+      autoResize: true,
     });
 
     lenisRef.current = lenis;

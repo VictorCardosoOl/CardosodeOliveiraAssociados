@@ -29,7 +29,7 @@ export function Professionals() {
             <h3 className="font-editorial text-[clamp(3rem,6vw,6rem)] text-secondary leading-[0.85] tracking-tighter uppercase mb-6">
               {professional.name}
             </h3>
-            <p className="micro-text text-accent mb-10">{professional.role}</p>
+            <p className="micro-text text-secondary/70 mb-10">{professional.role}</p>
             
             <p className="micro-text normal-case tracking-normal leading-relaxed text-secondary/70 mb-12 max-w-md">
               {professional.bio}

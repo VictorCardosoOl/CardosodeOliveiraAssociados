@@ -7,7 +7,7 @@ import { useActiveSection } from "@/context/ActiveSectionContext";
 const navItems = [
   { name: "Início", href: "#inicio" },
   { name: "O Escritório", href: "#o-escritorio" },
-  { name: "Expertise", href: "#expertise" },
+  { name: "Áreas de Atuação", href: "#areas-de-atuacao" },
   { name: "Profissionais", href: "#profissionais" },
   { name: "Insights", href: "#insights" },
   { name: "Contato", href: "#contato" },
