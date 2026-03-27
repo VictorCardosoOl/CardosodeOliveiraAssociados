@@ -65,10 +65,10 @@ const CardItem = ({ item, onClick, className }: CardItemProps) => {
     <motion.div 
       layoutId={`modal-container-${item.id}`}
       transition={springTransition}
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: 0.98 }}
       onClick={onClick} 
-      className={`group cursor-pointer flex flex-col justify-between p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] min-h-[400px] md:min-h-[480px] ${
-        isDark ? 'bg-[#2A2522] text-[#EAE8E0]' : 'bg-[#EAE8E0] text-[#2A2522]'
+      className={`group cursor-pointer flex flex-col justify-between p-8 md:p-12 min-h-[400px] md:min-h-[480px] border ${
+        isDark ? 'bg-primary text-secondary border-primary' : 'bg-secondary text-primary border-primary/10'
       } ${className || ''}`}
     >
       {/* Tags */}
@@ -76,8 +76,8 @@ const CardItem = ({ item, onClick, className }: CardItemProps) => {
         {item.tags.map((tag: string, i: number) => (
           <span 
             key={i} 
-            className={`text-[10px] md:text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full ${
-              isDark ? 'bg-white/10 text-white/80' : 'bg-white/60 text-black/50'
+            className={`micro-text px-4 py-2 border ${
+              isDark ? 'border-secondary/20 text-secondary/80' : 'border-primary/20 text-primary/70'
             }`}
           >
             {tag}
@@ -90,11 +90,11 @@ const CardItem = ({ item, onClick, className }: CardItemProps) => {
         <motion.h3 
           layoutId={`title-${item.id}`} 
           transition={springTransition}
-          className="text-3xl md:text-4xl lg:text-5xl font-serif leading-[1.1] mb-4 md:mb-6"
+          className="text-3xl md:text-4xl lg:text-5xl font-editorial uppercase tracking-tighter leading-[0.9] mb-4 md:mb-6"
         >
            {item.title}
         </motion.h3>
-        <p className={`text-sm md:text-base leading-relaxed max-w-md font-light ${isDark ? 'text-white/70' : 'text-black/60'}`}>
+        <p className={`micro-text normal-case tracking-normal leading-relaxed max-w-md ${isDark ? 'text-secondary/70' : 'text-muted'}`}>
           {item.subtitle}
         </p>
       </div>
@@ -102,9 +102,9 @@ const CardItem = ({ item, onClick, className }: CardItemProps) => {
       {/* Arrow Button */}
       <div className="flex justify-end">
         <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 ${
-          isDark ? 'bg-[#EAE8E0] text-[#2A2522]' : 'bg-[#2A2522] text-[#EAE8E0]'
+          isDark ? 'bg-secondary text-primary' : 'bg-primary text-secondary'
         }`}>
-          <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform duration-300" />
+          <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform duration-300" strokeWidth={1} />
         </div>
       </div>
     </motion.div>
@@ -176,7 +176,7 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
         <>
           <motion.div 
             onClick={onClose} 
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[9998]" 
+            className="fixed inset-0 bg-primary/40 backdrop-blur-sm z-[9998]" 
             initial={{opacity:0}} 
             animate={{opacity:1}} 
             exit={{opacity:0}} 
@@ -186,8 +186,8 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
             <motion.div
               layoutId={`modal-container-${item.id}`}
               transition={springTransition}
-              className={`pointer-events-auto w-full h-full md:rounded-[3rem] shadow-2xl overflow-hidden flex flex-col relative ${
-                isDark ? 'bg-[#2A2522] text-[#EAE8E0]' : 'bg-[#EAE8E0] text-[#2A2522]'
+              className={`pointer-events-auto w-full h-full shadow-2xl overflow-hidden flex flex-col relative ${
+                isDark ? 'bg-primary text-secondary' : 'bg-secondary text-primary'
               }`}
             >
               {/* Container de Scroll para o Lenis */}
@@ -206,8 +206,8 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
                           {item.tags.map((tag: string, i: number) => (
                             <span 
                               key={i} 
-                              className={`text-[10px] md:text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full ${
-                                isDark ? 'bg-white/10 text-white/80' : 'bg-white/60 text-black/50'
+                              className={`micro-text px-4 py-2 border ${
+                                isDark ? 'border-secondary/20 text-secondary/80' : 'border-primary/20 text-primary/70'
                               }`}
                             >
                               {tag}
@@ -218,7 +218,7 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
                         <motion.h2 
                           layoutId={`title-${item.id}`}
                           transition={springTransition}
-                          className="text-4xl md:text-6xl lg:text-7xl font-serif mb-8 md:mb-12 leading-[1.1]"
+                          className="text-4xl md:text-6xl lg:text-7xl font-editorial uppercase tracking-tighter mb-8 md:mb-12 leading-[0.9]"
                         >
                           {item.title}
                         </motion.h2>
@@ -228,17 +228,17 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ delay: 0.15, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                          className={`prose prose-lg md:prose-xl max-w-none font-light ${
-                            isDark ? 'text-white/70' : 'text-black/70'
+                          className={`prose prose-lg md:prose-xl max-w-none font-sans font-light ${
+                            isDark ? 'text-secondary/70' : 'text-primary/70'
                           }`}
                         >
-                          <p className="text-2xl md:text-3xl mb-12 leading-relaxed font-normal">
+                          <p className="text-2xl md:text-3xl mb-12 leading-relaxed font-editorial italic">
                             {item.subtitle}
                           </p>
-                          <p>
+                          <p className="text-base md:text-lg leading-relaxed">
                             {item.content}
                           </p>
-                          <p className="mt-8">
+                          <p className="mt-8 text-base md:text-lg leading-relaxed">
                             Nossa abordagem é estratégica e focada em resultados. Analisamos cada detalhe do seu caso para construir a melhor tese jurídica, sempre com transparência e proximidade.
                           </p>
                         </motion.div>
@@ -255,10 +255,10 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
                 transition={{ delay: 0.2 }}
                 onClick={onClose} 
                 className={`absolute top-6 right-6 md:top-10 md:right-10 z-50 p-3 md:p-4 rounded-full hover:scale-110 transition-transform ${
-                  isDark ? 'bg-[#EAE8E0] text-[#2A2522]' : 'bg-[#2A2522] text-[#EAE8E0]'
+                  isDark ? 'bg-secondary text-primary' : 'bg-primary text-secondary'
                 }`}
               >
-                 <X size={24} />
+                 <X size={24} strokeWidth={1} />
               </motion.button>
             </motion.div>
           </div>
@@ -277,14 +277,15 @@ export function Expertise() {
   usePremiumAnimation(sectionRef);
 
   return (
-    <section id="areas-de-atuacao" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary">
+    <section id="areas-de-atuacao" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10">
       <div className="container">
         <div className="mb-16 md:mb-24">
-          <span className="anim-stagger-item text-xs uppercase tracking-[0.2em] font-bold text-primary/50 block mb-4">
+          <span className="anim-stagger-item micro-text text-muted block mb-6">
             Áreas de Foco
           </span>
-          <h2 className="anim-title anim-stagger-item font-serif text-4xl md:text-6xl 3xl:text-8xl text-primary leading-tight max-w-4xl font-light">
-            Soluções jurídicas <span className="italic">sob medida</span> para suas necessidades.
+          <h2 className="anim-title anim-stagger-item text-[var(--text-fluid-h2)] font-editorial leading-[0.85] tracking-tighter uppercase max-w-4xl">
+            Soluções jurídicas<br/>
+            <span className="italic text-accent">sob medida</span> para suas necessidades.
           </h2>
         </div>
 

@@ -1,40 +1,28 @@
-@import "@fontsource/inter/300.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/cormorant-garamond/300.css";
-@import "@fontsource/cormorant-garamond/400.css";
-@import "@fontsource/cormorant-garamond/500.css";
-@import "@fontsource/cormorant-garamond/600.css";
-@import "@fontsource/cormorant-garamond/700.css";
-@import "@fontsource/cormorant-garamond/400-italic.css";
-@import "@fontsource/cormorant-garamond/500-italic.css";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #111111; /* Elegant almost black */
-  --color-secondary: #FAFAFA; /* Off-white */
-  --color-muted: #F0F0F0; /* Light gray */
-  --color-accent: #000000; /* Pure black */
-  --color-accent-dark: #333333; /* Dark gray for hover states */
+  --color-primary: #1A1A1A;
+  --color-secondary: #F4F3EE;
+  --color-muted: #4A4A4A;
+  --color-accent: #D96C31;
+  --color-footer: #EAE6DF;
   
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Montserrat", sans-serif;
+  --font-editorial: "Cormorant Garamond", serif;
 
   --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;
 
-  /* Fluid Typography - Slightly larger for ultra-wide */
-  --text-fluid-hero: clamp(4rem, 12vw + 1rem, 14rem);
-  --text-fluid-h1: clamp(3.5rem, 10vw + 1rem, 10rem);
-  --text-fluid-h2: clamp(2.5rem, 6vw + 1rem, 7rem);
-  --text-fluid-h3: clamp(1.75rem, 4vw + 1rem, 4rem);
-  --text-fluid-h4: clamp(1.5rem, 3vw + 1rem, 3rem);
-  --text-fluid-p: clamp(1rem, 0.6vw + 0.875rem, 1.25rem);
+  /* Fluid Typography */
+  --text-fluid-hero: clamp(4rem, 14vw, 14rem);
+  --text-fluid-h1: clamp(3.5rem, 10vw, 10rem);
+  --text-fluid-h2: clamp(2.5rem, 8vw, 8rem);
+  --text-fluid-h3: clamp(1.75rem, 6vw, 6rem);
+  --text-fluid-h4: clamp(1.5rem, 4vw, 4rem);
+  --text-fluid-p: clamp(10px, 1vw, 11px);
 
-  /* Fluid Spacing - Reduced for better adaptation on large monitors */
-  --spacing-section-y: clamp(4rem, 5vw, 6rem);
-  --spacing-gap: clamp(2rem, 3vw, 3rem);
+  --spacing-section-y: clamp(6rem, 10vw, 8rem);
 }
 
 @layer base {
@@ -52,16 +40,22 @@
   @media (min-width: 2560px) { .container { max-width: 2440px; } }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-serif);
+    font-family: var(--font-editorial);
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
   }
 
-  h1 { font-size: var(--text-fluid-h1); line-height: 1.1; }
-  h2 { font-size: var(--text-fluid-h2); line-height: 1.1; }
-  h3 { font-size: var(--text-fluid-h3); line-height: 1.2; }
-  h4 { font-size: var(--text-fluid-h4); line-height: 1.2; }
-  h5 { font-size: var(--text-fluid-h5); line-height: 1.3; }
-  h6 { font-size: var(--text-fluid-h6); line-height: 1.4; }
-  p { font-size: var(--text-fluid-p); }
+  h1 { font-size: var(--text-fluid-h1); }
+  h2 { font-size: var(--text-fluid-h2); }
+  h3 { font-size: var(--text-fluid-h3); }
+  h4 { font-size: var(--text-fluid-h4); }
+  h5 { font-size: var(--text-fluid-h5); }
+  h6 { font-size: var(--text-fluid-h6); }
+  
+  p, span, a, button, label, input, textarea {
+    font-family: var(--font-sans);
+  }
 }
 
 @keyframes marquee {
@@ -84,8 +78,16 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-accent);
-  color: var(--color-secondary);
+  background-color: rgba(217, 108, 49, 0.2);
+  color: var(--color-accent);
+}
+
+/* Micro-text utility class */
+.micro-text {
+  font-size: var(--text-fluid-p);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  line-height: 1.8;
 }
 
 html.lenis, html.lenis body {

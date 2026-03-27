@@ -5,6 +5,7 @@
 
 import { SmoothScrollWrapper } from "./components/layout/SmoothScrollWrapper";
 import { Navbar } from "./components/layout/Navbar";
+import { SideNav } from "./components/layout/SideNav";
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
 import { Services } from "./components/sections/Services";
@@ -27,6 +28,7 @@ export default function App() {
       <SmoothScrollWrapper>
         <ScrollProgressBar />
         <Navbar />
+        <SideNav />
         <main>
           <Hero />
           <About />

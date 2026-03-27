@@ -9,31 +9,33 @@ export function Culture() {
 
   return (
     <section id="cultura" className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
-      <div className="container grid lg:grid-cols-2 gap-[var(--spacing-gap)] items-center" ref={containerRef}>
-        <div className="anim-fade-up max-w-2xl 3xl:max-w-4xl relative z-10 bg-primary p-8 md:p-12 3xl:p-16 4xl:p-24 rounded-xl lg:-mr-16 3xl:-mr-24 4xl:-mr-32 mt-12 lg:mt-0 shadow-2xl border border-secondary/10">
-          <h2 className="anim-title text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-medium mb-8">Nossa Cultura</h2>
-          <h3 className="font-serif text-[var(--text-fluid-h2)] leading-[0.9] mb-10 tracking-tighter font-light">
-            A força do <br/><span className="italic text-secondary/80">feminino</span> na advocacia.
+      <div className="container grid lg:grid-cols-12 gap-12 lg:gap-24 items-center" ref={containerRef}>
+        <div className="lg:col-span-5 lg:col-start-1 anim-fade-up relative z-10">
+          <div className="inline-flex items-center gap-2 border border-secondary/20 text-secondary px-6 py-2 micro-text mb-12 w-fit">
+            <span>Nossa Cultura</span>
+          </div>
+          <h3 className="font-editorial text-[clamp(3rem,6vw,6rem)] leading-[0.85] tracking-tighter uppercase mb-12">
+            A força do <br/><span className="italic text-accent">feminino</span> na advocacia.
           </h3>
-          <p className="text-[var(--text-fluid-p)] text-secondary/70 leading-relaxed mb-12 font-light max-w-xl 3xl:max-w-2xl">
+          <p className="text-lg md:text-xl text-secondary/70 leading-relaxed mb-16 font-light">
             Nossa cultura é baseada na colaboração, no respeito mútuo e na busca incessante pela justiça. Como um escritório feminino, trazemos uma perspectiva única para o direito: combinamos o rigor técnico com uma sensibilidade aguçada para as nuances de cada caso.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 3xl:gap-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
             <div>
-              <h4 className="font-serif text-[var(--text-fluid-h3)] mb-2 text-secondary font-medium">Propósito</h4>
-              <p className="text-secondary/60 text-[var(--text-fluid-p)] font-light max-w-xs 3xl:max-w-sm">Transformar a vida de nossos clientes através de uma advocacia ética e empática.</p>
+              <h4 className="micro-text text-accent mb-4">Propósito</h4>
+              <p className="text-secondary/70 font-light leading-relaxed">Transformar a vida de nossos clientes através de uma advocacia ética e empática.</p>
             </div>
             <div>
-              <h4 className="font-serif text-[var(--text-fluid-h3)] mb-2 text-secondary font-medium">Valores</h4>
-              <p className="text-secondary/60 text-[var(--text-fluid-p)] font-light max-w-xs 3xl:max-w-sm">Transparência, excelência técnica e compromisso com a equidade.</p>
+              <h4 className="micro-text text-accent mb-4">Valores</h4>
+              <p className="text-secondary/70 font-light leading-relaxed">Transparência, excelência técnica e compromisso com a equidade.</p>
             </div>
           </div>
         </div>
 
-        <div className="anim-image-wrapper relative h-[60vh] lg:h-[80vh] 3xl:h-[90vh] w-full overflow-hidden rounded-xl z-0 p-2 border border-secondary/20">
+        <div className="lg:col-span-6 lg:col-start-7 anim-image-wrapper relative h-[60vh] lg:h-[80vh] w-full overflow-hidden p-2 border border-secondary/20">
           <div 
             ref={imageRef}
-            className="absolute inset-2 rounded-lg overflow-hidden"
+            className="absolute inset-2 overflow-hidden"
           >
             <img 
               src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2000&auto=format&fit=crop"
@@ -41,7 +43,7 @@ export function Culture() {
               className="w-full h-full object-cover will-change-transform"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-accent/20 mix-blend-multiply" />
           </div>
         </div>
       </div>

@@ -28,29 +28,31 @@ export function SocialResponsibility() {
   return (
     <section id="responsabilidade-social" className="flex items-center py-[var(--spacing-section-y)] bg-secondary text-primary overflow-hidden">
       <div className="container" ref={containerRef}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-[var(--spacing-gap)]">
-          <div className="max-w-3xl 3xl:max-w-4xl">
-            <h2 className="anim-title text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-bold mb-4">Responsabilidade Social</h2>
-            <h3 className="font-serif text-[var(--text-fluid-h2)] leading-[0.9] tracking-tighter font-medium">
-              Nosso compromisso vai <br/><span className="italic text-primary/80">além do escritório</span>.
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-12">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 border border-primary/20 text-primary px-6 py-2 micro-text mb-12 w-fit">
+              <span>Responsabilidade Social</span>
+            </div>
+            <h3 className="anim-title font-editorial text-[clamp(3rem,5vw,5rem)] leading-[0.85] tracking-tighter uppercase">
+              Nosso compromisso vai <br/><span className="italic text-accent">além do escritório</span>.
             </h3>
           </div>
-          <p className="text-primary/60 max-w-xs text-[var(--text-fluid-p)] leading-relaxed font-light">
+          <p className="text-lg text-primary/70 max-w-sm leading-relaxed font-light pb-4">
             Acreditamos no poder transformador do direito como ferramenta de impacto social e equidade.
           </p>
         </div>
 
-        <div className="anim-stagger-container grid md:grid-cols-3 gap-8 3xl:gap-12 4xl:gap-16">
+        <div className="anim-stagger-container grid md:grid-cols-3 gap-px bg-primary/10 border border-primary/10">
           {initiatives.map((item, index) => (
             <div 
               key={index} 
-              className="anim-stagger-item group p-10 md:p-12 3xl:p-16 4xl:p-20 bg-muted border border-primary/5 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2 rounded-xl"
+              className="anim-stagger-item group p-10 md:p-12 bg-secondary hover:bg-primary transition-colors duration-500"
             >
-              <div className="w-16 h-16 3xl:w-24 3xl:h-24 bg-secondary rounded-full flex items-center justify-center mb-8 3xl:mb-12 group-hover:bg-accent transition-colors duration-500">
-                <item.icon className="w-7 h-7 3xl:w-10 3xl:h-10 text-accent group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
+              <div className="w-16 h-16 border border-primary/20 flex items-center justify-center mb-12 group-hover:border-secondary/20 transition-colors duration-500">
+                <item.icon className="w-6 h-6 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
               </div>
-              <h4 className="font-serif text-[var(--text-fluid-h3)] mb-4 font-medium">{item.title}</h4>
-              <p className="text-primary/60 leading-relaxed font-light text-[var(--text-fluid-p)] max-w-xs 3xl:max-w-md">
+              <h4 className="font-editorial text-3xl uppercase tracking-tighter text-primary mb-4 group-hover:text-secondary transition-colors duration-500">{item.title}</h4>
+              <p className="text-sm text-primary/70 leading-relaxed font-light group-hover:text-secondary/70 transition-colors duration-500">
                 {item.description}
               </p>
             </div>

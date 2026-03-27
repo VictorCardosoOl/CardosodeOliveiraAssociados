@@ -3,7 +3,6 @@ import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { Layout, Aperture, Target, Infinity, Layers, Hexagon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-
 const services = [
   {
     title: "Direito\nSocietário",
@@ -43,60 +42,46 @@ export function Services() {
   usePremiumAnimation(containerRef);
 
   return (
-    <section id="servicos" ref={containerRef} className="py-[var(--spacing-section-y)] bg-secondary text-primary border-t border-primary/20">
+    <section id="servicos" ref={containerRef} className="py-[var(--spacing-section-y)] bg-secondary text-primary border-t border-primary/10">
       <div className="container">
         
-        <div className="grid lg:grid-cols-[1fr_350px] xl:grid-cols-[1fr_400px] 3xl:grid-cols-[1fr_500px] 4xl:grid-cols-[1fr_600px] gap-12 lg:gap-0">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           
-          {/* Left Side: Services Grid */}
-          <div className="anim-stagger-container grid md:grid-cols-2 relative lg:pr-12 xl:pr-16 3xl:pr-20 4xl:pr-24">
-            {/* Vertical Divider for Desktop */}
-            <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-primary/20 -translate-x-1/2"></div>
-            
+          {/* Left Side: Sidebar */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32">
+            <h2 className="anim-title anim-fade-up text-[var(--text-fluid-h2)] font-editorial leading-[0.85] tracking-tighter uppercase mb-8">
+              Nossa<br/>
+              <span className="italic text-accent">Atuação.</span>
+            </h2>
+            <p className="anim-fade-up micro-text text-muted mb-10 max-w-md">
+              Oferecemos assessoria jurídica personalizada em um ambiente seguro e estratégico, especializando-nos em demandas corporativas complexas para ajudar sua empresa a navegar pelos desafios do mercado com resiliência e clareza.
+            </p>
+            <a 
+              href="#contato"
+              className="anim-fade-up inline-flex items-center justify-center gap-2 border border-primary text-primary px-8 py-4 font-sans text-[10px] tracking-[0.2em] uppercase hover:bg-primary hover:text-secondary transition-colors duration-500 w-fit"
+            >
+              Agendar uma consulta
+            </a>
+          </div>
+
+          {/* Right Side: Services Grid */}
+          <div className="lg:col-span-7 anim-stagger-container grid sm:grid-cols-2 gap-x-12 gap-y-16 lg:pl-12 pt-12 lg:pt-0">
             {services.map((service, index) => (
               <div 
                 key={index}
-                className={cn(
-                  "anim-stagger-item py-10 md:py-14 3xl:py-20 group",
-                  // Add padding right for left column, padding left for right column
-                  index % 2 === 0 ? "md:pr-12 3xl:pr-16" : "md:pl-12 3xl:pl-16",
-                  // Add bottom border to all except the last row
-                  index < services.length - 2 ? "border-b border-primary/10" : "",
-                  // On mobile, add bottom border to the second to last item
-                  index === services.length - 2 ? "border-b md:border-b-0 border-primary/10" : ""
-                )}
+                className="anim-stagger-item group flex flex-col items-start"
               >
-                <div className="flex items-start gap-6 3xl:gap-10">
-                  <div className="w-14 h-14 3xl:w-20 3xl:h-20 rounded-full bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors duration-500">
-                    <service.icon className="w-6 h-6 3xl:w-8 3xl:h-8 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl 3xl:text-4xl font-serif font-medium mb-4 leading-tight whitespace-pre-line group-hover:text-accent transition-colors duration-500">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm 3xl:text-lg text-primary/70 leading-relaxed font-light max-w-md 3xl:max-w-xl">
-                      {service.description}
-                    </p>
-                  </div>
+                <div className="w-12 h-12 rounded-full border border-primary/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:border-accent transition-colors duration-500">
+                  <service.icon className="w-5 h-5 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
                 </div>
+                <h3 className="text-3xl font-editorial uppercase tracking-tighter mb-4 whitespace-pre-line group-hover:text-accent transition-colors duration-500">
+                  {service.title}
+                </h3>
+                <p className="micro-text text-muted normal-case tracking-normal leading-relaxed">
+                  {service.description}
+                </p>
               </div>
             ))}
-          </div>
-
-          {/* Right Side: Sidebar */}
-          <div className="anim-fade-up lg:border-l border-primary/20 lg:pl-12 xl:pl-16 3xl:pl-20 4xl:pl-24 pt-10 lg:pt-14">
-            <div className="sticky top-32">
-              <h2 className="anim-title text-3xl md:text-4xl 3xl:text-6xl font-sans font-medium mb-6">Nossa Atuação</h2>
-              <p className="text-sm md:text-base 3xl:text-xl text-primary/70 leading-relaxed mb-10 font-light max-w-md 3xl:max-w-xl">
-                Oferecemos assessoria jurídica personalizada em um ambiente seguro e estratégico, especializando-nos em demandas corporativas complexas para ajudar sua empresa a navegar pelos desafios do mercado com resiliência e clareza.
-              </p>
-              <a 
-                href="#contato"
-                className="inline-block bg-accent text-secondary px-8 py-3.5 rounded-full font-medium hover:bg-accent-dark transition-colors text-sm"
-              >
-                Agendar uma consulta
-              </a>
-            </div>
           </div>
 
         </div>

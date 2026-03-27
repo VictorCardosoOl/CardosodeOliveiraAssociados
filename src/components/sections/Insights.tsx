@@ -29,25 +29,25 @@ export function Insights() {
   usePremiumAnimation(containerRef);
 
   return (
-    <section id="insights" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-muted overflow-hidden">
+    <section id="insights" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-secondary overflow-hidden border-t border-primary/10">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-[var(--spacing-gap)]">
-          <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="anim-title text-accent uppercase tracking-[0.2em] text-[clamp(0.75rem,1vw,0.875rem)] font-bold mb-4">Insights</h2>
-            <h3 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-[0.9] tracking-tighter font-medium">
-              Conhecimento que <br/><span className="italic text-primary/80">protege e orienta</span>.
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+          <div className="max-w-2xl">
+            <h2 className="anim-title micro-text text-muted mb-6">Insights</h2>
+            <h3 className="font-editorial text-[var(--text-fluid-h2)] text-primary leading-[0.85] tracking-tighter uppercase">
+              Conhecimento que <br/><span className="italic text-accent">protege e orienta</span>.
             </h3>
           </div>
           <button className="group flex items-center gap-3 text-primary hover:text-accent transition-colors duration-300">
-            <span className="text-xs uppercase tracking-widest font-medium">Ver todos os artigos</span>
-            <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform" />
+            <span className="micro-text">Ver todos os artigos</span>
+            <ArrowRight size={16} strokeWidth={1} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        <div className="anim-stagger-container grid md:grid-cols-3 gap-12 3xl:gap-20 4xl:gap-32">
+        <div className="anim-stagger-container grid md:grid-cols-3 gap-8 lg:gap-12">
           {articles.map((article, i) => (
-            <div key={i} className="anim-stagger-item group cursor-pointer">
-              <div className="relative aspect-[4/5] overflow-hidden mb-8 rounded-xl">
+            <div key={i} className="anim-stagger-item group cursor-pointer flex flex-col">
+              <div className="relative aspect-[4/5] overflow-hidden mb-8 border border-primary/10">
                 <img 
                   src={article.image} 
                   alt={article.title} 
@@ -55,20 +55,21 @@ export function Insights() {
                   referrerPolicy="no-referrer"
                   loading="lazy"
                 />
-                <div className="absolute top-6 left-6 3xl:top-10 3xl:left-10 bg-secondary/90 backdrop-blur-md px-4 py-2 3xl:px-6 3xl:py-3 rounded-full">
-                  <span className="text-[10px] 3xl:text-xs uppercase tracking-widest font-bold text-primary">{article.category}</span>
+                <div className="absolute inset-0 bg-accent/5 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0" />
+                <div className="absolute top-6 left-6 bg-secondary px-4 py-2 border border-primary/10">
+                  <span className="micro-text text-primary">{article.category}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-3 text-primary/50 text-[10px] 3xl:text-xs uppercase tracking-widest font-bold mb-4">
-                <Calendar size={12} strokeWidth={1.5} className="3xl:w-4 3xl:h-4" />
+              <div className="flex items-center gap-3 text-muted micro-text mb-4">
+                <Calendar size={12} strokeWidth={1} />
                 <span>{article.date}</span>
               </div>
-              <h4 className="font-serif text-[var(--text-fluid-h3)] text-primary mb-6 leading-tight group-hover:text-accent transition-colors duration-300 font-medium max-w-sm 3xl:max-w-md">
+              <h4 className="font-editorial text-2xl lg:text-3xl text-primary mb-6 leading-tight uppercase tracking-tighter group-hover:text-accent transition-colors duration-300">
                 {article.title}
               </h4>
-              <div className="flex items-center gap-2 text-accent opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0">
-                <span className="text-[10px] 3xl:text-xs uppercase tracking-widest font-bold">Ler Artigo</span>
-                <ArrowRight size={14} strokeWidth={1.5} className="3xl:w-4 3xl:h-4" />
+              <div className="flex items-center gap-2 text-accent mt-auto opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0">
+                <span className="micro-text">Ler Artigo</span>
+                <ArrowRight size={14} strokeWidth={1} />
               </div>
             </div>
           ))}

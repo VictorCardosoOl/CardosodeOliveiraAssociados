@@ -24,47 +24,47 @@ export function Contact() {
 
   return (
     <section id="contato" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
-      <div className="container grid lg:grid-cols-2 gap-[var(--spacing-gap)] items-center">
-        <div className="max-w-2xl 3xl:max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-4 py-2 3xl:px-6 3xl:py-3 bg-accent/20 text-accent text-[clamp(0.75rem,1vw,0.875rem)] font-bold uppercase tracking-wider mb-8 rounded-sm">
+      <div className="container grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+        <div className="lg:col-span-6">
+          <div className="inline-flex items-center gap-2 border border-secondary/20 text-secondary px-6 py-2 micro-text mb-12 w-fit">
             <span>Contato</span>
           </div>
-          <h3 className="anim-title font-serif font-medium text-[var(--text-fluid-h2)] leading-[0.95] tracking-tighter mb-12">
-            Vamos <br/><span className="text-accent">conversar</span> sobre o seu caso.
+          <h3 className="anim-title font-editorial text-[clamp(3rem,6vw,6rem)] leading-[0.85] tracking-tighter uppercase mb-16">
+            Vamos <br/><span className="italic text-accent">conversar</span> sobre o seu caso.
           </h3>
           
-          <div className="anim-stagger-container space-y-12 3xl:space-y-20">
-            <div className="anim-stagger-item flex items-start gap-6 3xl:gap-10 group">
-              <div className="bg-secondary/5 p-4 3xl:p-6 rounded-full group-hover:bg-accent transition-colors duration-500">
-                <Phone className="text-accent group-hover:text-primary transition-colors duration-500 3xl:w-8 3xl:h-8" size={24} strokeWidth={1.5} />
+          <div className="anim-stagger-container space-y-12">
+            <div className="anim-stagger-item flex items-start gap-6 group">
+              <div className="border border-secondary/20 p-4 group-hover:bg-accent group-hover:border-accent transition-colors duration-500">
+                <Phone className="text-secondary group-hover:text-primary transition-colors duration-500" size={24} strokeWidth={1} />
               </div>
               <div>
-                <p className="text-xs 3xl:text-sm uppercase tracking-widest text-accent font-bold mb-2">Telefone</p>
-                <p className="text-xl md:text-2xl 3xl:text-4xl font-sans font-light text-secondary hover:text-accent transition-colors cursor-pointer">+55 (11) 99999-9999</p>
+                <p className="micro-text text-accent mb-2">Telefone</p>
+                <p className="text-xl md:text-2xl font-sans font-light text-secondary hover:text-accent transition-colors cursor-pointer">+55 (11) 99999-9999</p>
               </div>
             </div>
 
-            <div className="anim-stagger-item flex items-start gap-6 3xl:gap-10 group">
-              <div className="bg-secondary/5 p-4 3xl:p-6 rounded-full group-hover:bg-accent transition-colors duration-500">
-                <Mail className="text-accent group-hover:text-primary transition-colors duration-500 3xl:w-8 3xl:h-8" size={24} strokeWidth={1.5} />
+            <div className="anim-stagger-item flex items-start gap-6 group">
+              <div className="border border-secondary/20 p-4 group-hover:bg-accent group-hover:border-accent transition-colors duration-500">
+                <Mail className="text-secondary group-hover:text-primary transition-colors duration-500" size={24} strokeWidth={1} />
               </div>
               <div>
-                <p className="text-xs 3xl:text-sm uppercase tracking-widest text-accent font-bold mb-2">E-mail</p>
-                <p className="text-xl md:text-2xl 3xl:text-4xl font-sans font-light text-secondary hover:text-accent transition-colors cursor-pointer">contato@cardoso.adv.br</p>
+                <p className="micro-text text-accent mb-2">E-mail</p>
+                <p className="text-xl md:text-2xl font-sans font-light text-secondary hover:text-accent transition-colors cursor-pointer">contato@cardoso.adv.br</p>
               </div>
             </div>
 
-            <div className="anim-stagger-item flex items-start gap-6 3xl:gap-10 group">
-              <div className="bg-secondary/5 p-4 3xl:p-6 rounded-full group-hover:bg-accent transition-colors duration-500">
-                <MapPin className="text-accent group-hover:text-primary transition-colors duration-500 3xl:w-8 3xl:h-8" size={24} strokeWidth={1.5} />
+            <div className="anim-stagger-item flex items-start gap-6 group">
+              <div className="border border-secondary/20 p-4 group-hover:bg-accent group-hover:border-accent transition-colors duration-500">
+                <MapPin className="text-secondary group-hover:text-primary transition-colors duration-500" size={24} strokeWidth={1} />
               </div>
               <div>
-                <p className="text-xs 3xl:text-sm uppercase tracking-widest text-accent font-bold mb-2">Endereço</p>
-                <p className="text-xl md:text-2xl 3xl:text-4xl font-sans font-light text-secondary leading-relaxed">Av. Paulista, 1000 — 12º Andar<br />Jardins, São Paulo — SP</p>
+                <p className="micro-text text-accent mb-2">Endereço</p>
+                <p className="text-xl md:text-2xl font-sans font-light text-secondary leading-relaxed">Av. Paulista, 1000 — 12º Andar<br />Jardins, São Paulo — SP</p>
               </div>
             </div>
 
-            <div className="mt-12 3xl:mt-16 w-full h-64 md:h-80 3xl:h-[500px] relative z-0 border border-secondary/10 rounded-xl overflow-hidden">
+            <div className="mt-16 w-full h-64 md:h-80 relative z-0 border border-secondary/20 p-2">
               <MapContainer center={[-23.5641095, -46.6524099]} zoom={15} scrollWheelZoom={false} className="w-full h-full z-0 grayscale contrast-125">
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -81,36 +81,36 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="anim-fade-up bg-secondary p-8 md:p-12 lg:p-16 3xl:p-24 4xl:p-32 rounded-xl border-t-4 border-accent">
-          <h4 className="font-serif font-medium text-[var(--text-fluid-h3)] text-primary mb-10">Envie uma mensagem</h4>
-          <form className="space-y-8 3xl:space-y-12">
-            <div className="space-y-2">
-              <label className="text-[10px] 3xl:text-xs uppercase tracking-widest text-primary/50 font-bold">Nome Completo</label>
+        <div className="lg:col-span-6 anim-fade-up bg-secondary p-8 md:p-12 lg:p-16 border border-primary/10">
+          <h4 className="font-editorial text-4xl text-primary uppercase tracking-tighter mb-12">Envie uma mensagem</h4>
+          <form className="space-y-10">
+            <div className="space-y-4">
+              <label className="micro-text text-muted">Nome Completo</label>
               <input 
                 type="text" 
-                className="w-full bg-transparent border-b border-gray-200 py-4 3xl:py-6 text-primary focus:border-accent outline-none transition-colors font-light 3xl:text-xl"
+                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-accent outline-none transition-colors font-light text-lg"
                 placeholder="Como podemos te chamar?"
               />
             </div>
-            <div className="space-y-2">
-              <label className="text-[10px] 3xl:text-xs uppercase tracking-widest text-primary/50 font-bold">E-mail</label>
+            <div className="space-y-4">
+              <label className="micro-text text-muted">E-mail</label>
               <input 
                 type="email" 
-                className="w-full bg-transparent border-b border-gray-200 py-4 3xl:py-6 text-primary focus:border-accent outline-none transition-colors font-light 3xl:text-xl"
+                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-accent outline-none transition-colors font-light text-lg"
                 placeholder="seu@email.com"
               />
             </div>
-            <div className="space-y-2">
-              <label className="text-[10px] 3xl:text-xs uppercase tracking-widest text-primary/50 font-bold">Mensagem</label>
+            <div className="space-y-4">
+              <label className="micro-text text-muted">Mensagem</label>
               <textarea 
                 rows={4}
-                className="w-full bg-transparent border-b border-gray-200 py-4 3xl:py-6 text-primary focus:border-accent outline-none transition-colors resize-none font-light 3xl:text-xl"
+                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-accent outline-none transition-colors resize-none font-light text-lg"
                 placeholder="Descreva brevemente sua necessidade..."
               />
             </div>
-            <button className="group w-full flex items-center justify-between bg-accent text-secondary px-10 py-6 3xl:px-16 3xl:py-10 hover:bg-accent-dark transition-all duration-500 rounded-full mt-8">
-              <span className="font-medium uppercase tracking-widest text-sm 3xl:text-base">Enviar Mensagem</span>
-              <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500 3xl:w-6 3xl:h-6" />
+            <button className="group w-full flex items-center justify-between border border-primary text-primary px-8 py-6 hover:bg-primary hover:text-secondary transition-all duration-500 mt-12">
+              <span className="micro-text">Enviar Mensagem</span>
+              <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" strokeWidth={1} />
             </button>
           </form>
         </div>

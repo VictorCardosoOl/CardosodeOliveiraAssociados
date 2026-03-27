@@ -64,10 +64,10 @@ const ProjectCard = ({ project, index }: { project: Project; index: number; key?
   return (
     <div 
       ref={containerRef}
-      className={`relative grid lg:grid-cols-2 gap-12 lg:gap-24 items-center min-h-[60vh] py-24 ${index % 2 !== 0 ? 'lg:rtl' : ''}`}
+      className={`relative grid lg:grid-cols-12 gap-12 lg:gap-24 items-center min-h-[60vh] py-24 border-t border-primary/10`}
     >
       {/* Image Side */}
-      <div className="relative aspect-[4/5] lg:aspect-square overflow-hidden rounded-2xl ltr">
+      <div className={`relative aspect-[3/4] lg:aspect-[4/5] overflow-hidden ${index % 2 !== 0 ? 'lg:col-start-7 lg:col-span-6 lg:order-2' : 'lg:col-span-6'}`}>
         <motion.div 
           style={{ clipPath }}
           className="w-full h-full relative"
@@ -79,17 +79,17 @@ const ProjectCard = ({ project, index }: { project: Project; index: number; key?
             className="absolute inset-0 w-full h-[140%] object-cover will-change-transform"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0 bg-accent/10 mix-blend-multiply" />
         </motion.div>
       </div>
 
       {/* Text Side */}
-      <div className={`flex flex-col justify-center ltr ${index % 2 !== 0 ? 'lg:pl-12' : 'lg:pr-12'}`}>
+      <div className={`flex flex-col justify-center ${index % 2 !== 0 ? 'lg:col-start-1 lg:col-span-5 lg:order-1' : 'lg:col-start-8 lg:col-span-5'}`}>
         <motion.span 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xs uppercase tracking-[0.3em] text-accent font-bold mb-6"
+          className="micro-text text-accent mb-6"
         >
           {project.category}
         </motion.span>
@@ -98,7 +98,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number; key?
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-serif text-[clamp(2rem,4vw,4rem)] text-primary leading-[0.9] tracking-tighter mb-8"
+          className="font-editorial text-[clamp(2.5rem,5vw,5rem)] uppercase leading-[0.85] tracking-tighter mb-8"
         >
           {project.title}
         </motion.h3>
@@ -107,7 +107,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number; key?
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-[var(--text-fluid-p)] text-primary/70 font-light leading-relaxed mb-10 max-w-md"
+          className="micro-text text-muted normal-case tracking-normal leading-relaxed mb-10 max-w-md"
         >
           {project.description}
         </motion.p>
@@ -118,9 +118,9 @@ const ProjectCard = ({ project, index }: { project: Project; index: number; key?
           transition={{ duration: 0.8, delay: 0.5 }}
           className="group flex items-center gap-4 text-primary hover:text-accent transition-colors w-fit"
         >
-          <span className="text-sm uppercase tracking-widest font-bold">Explorar Caso</span>
-          <div className="w-10 h-10 rounded-full border border-primary/10 flex items-center justify-center group-hover:bg-accent group-hover:text-secondary group-hover:border-accent transition-all duration-500">
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          <span className="micro-text">Explorar Caso</span>
+          <div className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-accent group-hover:text-secondary group-hover:border-accent transition-all duration-500">
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" strokeWidth={1} />
           </div>
         </motion.button>
       </div>
@@ -130,12 +130,12 @@ const ProjectCard = ({ project, index }: { project: Project; index: number; key?
 
 export function Projects() {
   return (
-    <section id="projetos" className="py-[var(--spacing-section-y)] bg-secondary overflow-hidden">
+    <section id="projetos" className="py-[var(--spacing-section-y)] bg-secondary overflow-hidden border-t border-primary/10">
       <div className="container">
         <div className="mb-24">
-          <span className="text-xs uppercase tracking-[0.3em] text-accent font-bold mb-4 block">Casos de Sucesso</span>
-          <h2 className="font-serif text-[var(--text-fluid-h2)] text-primary leading-[0.85] tracking-tighter font-light">
-            Resultados que <br/><span className="italic text-primary/50">falam por si</span>.
+          <span className="micro-text text-muted mb-6 block">Casos de Sucesso</span>
+          <h2 className="font-editorial text-[var(--text-fluid-h2)] leading-[0.85] tracking-tighter uppercase">
+            Resultados que <br/><span className="italic text-accent">falam por si</span>.
           </h2>
         </div>
 

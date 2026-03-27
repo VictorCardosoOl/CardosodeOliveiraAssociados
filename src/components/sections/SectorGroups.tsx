@@ -19,31 +19,33 @@ export function SectorGroups() {
   return (
     <section id="setores" className="py-[var(--spacing-section-y)] bg-muted overflow-hidden">
       <div className="container" ref={containerRef}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
-          <div className="max-w-2xl 3xl:max-w-4xl">
-            <h2 className="anim-title text-accent uppercase tracking-[0.2em] text-sm md:text-base font-bold mb-4">Grupos Setoriais</h2>
-            <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl 4xl:text-9xl text-primary leading-[0.9] tracking-tighter font-medium">
-              Expertise em <br/><span className="italic text-primary/80">mercados estratégicos</span>.
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-12">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 border border-primary/20 text-primary px-6 py-2 micro-text mb-12 w-fit">
+              <span>Grupos Setoriais</span>
+            </div>
+            <h3 className="anim-title font-editorial text-[clamp(3rem,5vw,5rem)] leading-[0.85] tracking-tighter uppercase">
+              Expertise em <br/><span className="italic text-accent">mercados estratégicos</span>.
             </h3>
           </div>
-          <p className="text-primary/60 max-w-xs 3xl:max-w-md text-sm md:text-base 3xl:text-xl leading-relaxed font-light">
+          <p className="text-lg text-primary/70 max-w-sm leading-relaxed font-light pb-4">
             Nossa atuação é segmentada por setores para garantir um entendimento profundo das dinâmicas de cada negócio.
           </p>
         </div>
 
-        <div className="anim-stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 3xl:gap-10">
+        <div className="anim-stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-primary/10 border border-primary/10">
           {sectors.map((sector, index) => (
             <div
               key={index}
-              className="anim-stagger-item group flex flex-col items-start p-10 md:p-12 3xl:p-16 bg-secondary rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-primary/5"
+              className="anim-stagger-item group flex flex-col items-start p-10 md:p-12 bg-secondary hover:bg-primary transition-colors duration-500"
             >
-              <div className="w-16 h-16 3xl:w-24 3xl:h-24 bg-muted rounded-full flex items-center justify-center mb-8 3xl:mb-12 group-hover:bg-primary transition-colors duration-500">
-                <sector.icon className="w-7 h-7 3xl:w-10 3xl:h-10 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
+              <div className="w-16 h-16 border border-primary/20 flex items-center justify-center mb-12 group-hover:border-secondary/20 transition-colors duration-500">
+                <sector.icon className="w-6 h-6 text-primary group-hover:text-secondary transition-colors duration-500" strokeWidth={1} />
               </div>
-              <span className="font-serif text-2xl md:text-3xl 3xl:text-5xl font-medium text-primary mb-4 group-hover:text-accent transition-colors">
+              <span className="font-editorial text-3xl uppercase tracking-tighter text-primary mb-4 group-hover:text-secondary transition-colors duration-500">
                 {sector.name}
               </span>
-              <p className="text-sm 3xl:text-lg text-primary/60 leading-relaxed font-light max-w-xs 3xl:max-w-md">
+              <p className="text-sm text-primary/70 leading-relaxed font-light group-hover:text-secondary/70 transition-colors duration-500">
                 {sector.desc}
               </p>
             </div>
