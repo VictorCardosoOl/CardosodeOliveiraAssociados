@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
+import { useActiveSection } from "@/context/ActiveSectionContext";
 
 const navItems = [
   { name: "Início", href: "#" },
   { name: "O Escritório", href: "#o-escritorio" },
   { name: "Serviços", href: "#servicos" },
   { name: "Áreas de Atuação", href: "#areas-de-atuacao" },
+  { name: "Casos", href: "#projetos" },
   { name: "A Fundadora", href: "#profissionais" },
   { name: "Contato", href: "#contato" },
 ];
@@ -15,6 +17,7 @@ const navItems = [
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollDirection, isAtTop } = useScrollDirection();
+  const { activeSection } = useActiveSection();
 
   // Visible at top, or when scrolling up, or if mobile menu is open
   const isVisible = isAtTop || scrollDirection === "up" || isMobileMenuOpen;
@@ -41,15 +44,24 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-[13px] font-light text-primary/60 hover:text-primary transition-colors"
-              >
-                {item.name}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.replace('#', '') || (item.href === '#' && isAtTop);
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "text-[13px] font-light transition-all duration-300 relative",
+                    isActive ? "text-primary font-medium" : "text-primary/60 hover:text-primary"
+                  )}
+                >
+                  {item.name}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-accent" />
+                  )}
+                </a>
+              );
+            })}
           </nav>
 
           {/* CTA Button */}

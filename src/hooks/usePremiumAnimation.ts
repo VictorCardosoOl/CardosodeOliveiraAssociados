@@ -106,7 +106,12 @@ export function usePremiumAnimation(containerRef: React.RefObject<HTMLElement | 
           });
 
           gsap.set(wrapper, { clipPath: 'inset(100% 0% 0% 0%)' });
-          if (img) gsap.set(img, { scale: isDesktop ? 1.2 : 1.1 });
+          if (img) {
+            gsap.set(img, { 
+              scale: isDesktop ? 1.2 : 1.1,
+              willChange: "transform" 
+            });
+          }
 
           tl.to(wrapper, {
             clipPath: 'inset(0% 0% 0% 0%)',
