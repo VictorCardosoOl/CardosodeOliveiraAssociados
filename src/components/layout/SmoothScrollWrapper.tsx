@@ -21,12 +21,17 @@ export function SmoothScrollWrapper({ children }: SmoothScrollWrapperProps) {
       return; // Desativa o smooth scroll para quem prefere movimento reduzido
     }
 
-    // Inicializa o Lenis com um damping (lerp) mais responsivo para evitar sensação de "peso"
+    // Inicializa o Lenis com um damping (lerp) mais fluido para uma sensação "premium"
     const lenis = new Lenis({
-      lerp: 0.1, // Valor padrão (0.1) é mais responsivo e leve que 0.07
-      wheelMultiplier: 1,
+      duration: 1.5,
+      lerp: 0.05, 
+      wheelMultiplier: 1.1,
+      touchMultiplier: 2,
       smoothWheel: true,
+      syncTouch: true,
     });
+
+    console.log("Lenis Smooth Scroll Initialized", lenis);
 
     lenisRef.current = lenis;
 

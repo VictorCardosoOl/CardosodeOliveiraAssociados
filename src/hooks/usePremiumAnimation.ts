@@ -120,6 +120,18 @@ export function usePremiumAnimation(containerRef: React.RefObject<HTMLElement | 
               duration: isDesktop ? 1.5 : 1.2,
               ease: "power4.inOut"
             }, "<");
+
+            // Subtle Parallax Effect
+            gsap.to(img, {
+              yPercent: isDesktop ? 15 : 10,
+              ease: "none",
+              scrollTrigger: {
+                trigger: wrapper,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              }
+            });
           }
         });
       };
