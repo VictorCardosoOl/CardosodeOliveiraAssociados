@@ -3,48 +3,50 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import React, { Suspense } from 'react';
 import { SmoothScrollWrapper } from "./components/layout/SmoothScrollWrapper";
 import { Navbar } from "./components/layout/Navbar";
 import { SideNav } from "./components/layout/SideNav";
 import { Hero } from "./components/sections/Hero";
-import { About } from "./components/sections/About";
-import { Services } from "./components/sections/Services";
-import { Expertise } from "./components/sections/Expertise";
-import { Projects } from "./components/sections/Projects";
-import { SectorGroups } from "./components/sections/SectorGroups";
-import { Professionals } from "./components/sections/Professionals";
-import { Culture } from "./components/sections/Culture";
-import { SocialResponsibility } from "./components/sections/SocialResponsibility";
-import { Insights } from "./components/sections/Insights";
-import { FAQ } from "./components/sections/FAQ";
-import { Contact } from "./components/sections/Contact";
 import { Footer } from "./components/layout/Footer";
 import { ActiveSectionProvider } from "./context/ActiveSectionContext";
 import { ScrollProgressBar } from "./components/ui/ScrollProgressBar";
+import { ErrorBoundary } from "./components/common/ErrorBoundary";
+
+// Lazy Loading: O React só carrega estes ficheiros quando forem necessários
+const About = React.lazy(() => import("./components/sections/About").then(m => ({ default: m.About })));
+const Expertise = React.lazy(() => import("./components/sections/Expertise").then(m => ({ default: m.Expertise })));
+const Professionals = React.lazy(() => import("./components/sections/Professionals").then(m => ({ default: m.Professionals })));
+const Insights = React.lazy(() => import("./components/sections/Insights").then(m => ({ default: m.Insights })));
+const Contact = React.lazy(() => import("./components/sections/Contact").then(m => ({ default: m.Contact })));
+
+// Componente simples para mostrar enquanto carrega
+const SectionLoader = () => <div className="w-full h-32 flex items-center justify-center text-[10px] uppercase tracking-widest text-muted">Carregando...</div>;
 
 export default function App() {
   return (
-    <ActiveSectionProvider>
-      <SmoothScrollWrapper>
-        <ScrollProgressBar />
-        <Navbar />
-        <SideNav />
-        <main>
-          <Hero />
-          <About />
-          <Services />
-          <Expertise />
-          <Projects />
-          <SectorGroups />
-          <Professionals />
-          <Culture />
-          <SocialResponsibility />
-          <Insights />
-          <FAQ />
-          <Contact />
-        </main>
-        <Footer />
-      </SmoothScrollWrapper>
-    </ActiveSectionProvider>
+    <ErrorBoundary>
+      <ActiveSectionProvider>
+        <SmoothScrollWrapper>
+          <ScrollProgressBar />
+          <Navbar />
+          <SideNav />
+          <main>
+            {/* O Hero carrega de imediato para não atrasar a primeira impressão */}
+            <Hero />
+            
+            {/* As restantes secções são encapsuladas num Suspense */}
+            <Suspense fallback={<SectionLoader />}>
+              <About />
+              <Expertise />
+              <Professionals />
+              <Insights />
+              <Contact />
+            </Suspense>
+          </main>
+          <Footer />
+        </SmoothScrollWrapper>
+      </ActiveSectionProvider>
+    </ErrorBoundary>
   );
 }

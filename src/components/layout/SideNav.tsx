@@ -4,16 +4,10 @@ import { cn } from "@/lib/utils";
 const sections = [
   { id: "inicio", name: "Início", num: "01" },
   { id: "o-escritorio", name: "O Escritório", num: "02" },
-  { id: "servicos", name: "Serviços", num: "03" },
-  { id: "areas-de-atuacao", name: "Áreas", num: "04" },
-  { id: "projetos", name: "Casos", num: "05" },
-  { id: "setores", name: "Setores", num: "06" },
-  { id: "profissionais", name: "A Fundadora", num: "07" },
-  { id: "cultura", name: "Cultura", num: "08" },
-  { id: "responsabilidade-social", name: "Responsabilidade", num: "09" },
-  { id: "insights", name: "Insights", num: "10" },
-  { id: "faq", name: "FAQ", num: "11" },
-  { id: "contato", name: "Contato", num: "12" },
+  { id: "expertise", name: "Expertise", num: "03" },
+  { id: "profissionais", name: "Profissionais", num: "04" },
+  { id: "insights", name: "Insights", num: "05" },
+  { id: "contato", name: "Contato", num: "06" },
 ];
 
 export function SideNav() {

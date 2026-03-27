@@ -2,11 +2,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1A1A1A;
-  --color-secondary: #F4F3EE;
-  --color-muted: #4A4A4A;
-  --color-accent: #D96C31;
-  --color-footer: #EAE6DF;
+  --color-primary: #111111;
+  --color-secondary: #FAFAFA;
+  --color-muted: #777777;
+  --color-accent: #111111;
+  --color-footer: #F0F0F0;
   
   --font-sans: "Montserrat", sans-serif;
   --font-editorial: "Cormorant Garamond", serif;
@@ -44,6 +44,7 @@
     text-transform: uppercase;
     line-height: 0.85;
     letter-spacing: -0.02em;
+    font-weight: 400;
   }
 
   h1 { font-size: var(--text-fluid-h1); }
@@ -55,6 +56,7 @@
   
   p, span, a, button, label, input, textarea {
     font-family: var(--font-sans);
+    font-weight: 300;
   }
 }
 
@@ -78,8 +80,8 @@ body {
 }
 
 ::selection {
-  background-color: rgba(217, 108, 49, 0.2);
-  color: var(--color-accent);
+  background-color: rgba(17, 17, 17, 0.1);
+  color: var(--color-primary);
 }
 
 /* Micro-text utility class */
@@ -88,6 +90,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   line-height: 1.8;
+  font-weight: 400;
 }
 
 html.lenis, html.lenis body {

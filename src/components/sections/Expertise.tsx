@@ -56,7 +56,7 @@ interface CardItemProps {
   key?: string | number;
 }
 
-const springTransition = { type: "spring", damping: 30, stiffness: 300, mass: 0.8 };
+const springTransition = { type: "spring" as const, damping: 30, stiffness: 300, mass: 0.8 };
 
 const CardItem = ({ item, onClick, className }: CardItemProps) => {
   const isDark = item.theme === 'dark';
@@ -277,7 +277,7 @@ export function Expertise() {
   usePremiumAnimation(sectionRef);
 
   return (
-    <section id="areas-de-atuacao" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10">
+    <section id="expertise" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10">
       <div className="container">
         <div className="mb-16 md:mb-24">
           <span className="anim-stagger-item micro-text text-muted block mb-6">

@@ -81,7 +81,7 @@ export function Footer() {
           <div className="anim-stagger-item flex flex-col lg:pl-12 xl:pl-16">
             <span className="micro-text text-accent mb-8 block">Navegação</span>
             <nav className="flex flex-col gap-4 mb-16">
-              {['O Escritório', 'Áreas de Atuação', 'Profissionais', 'Cultura', 'Insights'].map((item) => (
+              {['O Escritório', 'Expertise', 'Profissionais', 'Insights'].map((item) => (
                 <a key={item} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-sm font-light text-muted hover:text-primary hover:translate-x-2 transition-all w-fit">
                   {item}
                 </a>

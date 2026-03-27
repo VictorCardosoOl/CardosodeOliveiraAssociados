@@ -1,30 +1,55 @@
-# Projeto de Advocacia
+# Advocacia Tayna Oliveira - Premium Web Experience
 
-Este é um projeto de landing page moderna e elegante para um escritório de advocacia, desenvolvido com React, Vite, Tailwind CSS e animações GSAP.
+Este projeto é uma demonstração de uma interface de alto padrão para advocacia, focada em performance, animações fluidas e design minimalista.
 
-## Paleta de Cores
+## 🚀 Tecnologias
 
-O design visual do site foi cuidadosamente refatorado para utilizar cores baseadas no sistema Pantone, garantindo uma identidade visual sofisticada e marcante:
+- **React 18** + **Vite**
+- **TypeScript** para segurança de tipos
+- **Tailwind CSS v4** para estilização utilitária
+- **GSAP** + **@gsap/react** para animações complexas de scroll
+- **Framer Motion** para interações de UI e parallax
+- **Lenis** para smooth scrolling
+- **Lucide React** para iconografia
 
-- **Cloud Dancer (Pantone 11-4201)**: Utilizada como a cor de fundo principal (substituindo o branco padrão), trazendo um tom off-white quente e acolhedor.
-- **Viva Magenta (Pantone 18-1750)**: Utilizada como a cor de destaque (accent), substituindo os tons dourados anteriores. É uma cor vibrante que traz energia, força e modernidade ao design.
+## 🏗️ Arquitetura
 
-## Tecnologias Utilizadas
+O projeto segue uma estrutura modular focada em escalabilidade:
 
-- React 19
-- Vite
-- Tailwind CSS v4
-- GSAP (GreenSock Animation Platform) para animações de scroll
-- Lucide React para ícones
-- Lenis para smooth scrolling
+- `src/components/layout`: Componentes estruturais (Navbar, Footer, SideNav).
+- `src/components/sections`: Seções da página principal, isoladas por contexto.
+- `src/hooks`: Hooks customizados para abstração de lógica (Animações, Scroll).
+- `src/constants`: Centralização de conteúdo e tokens para facilitar manutenção.
+- `src/lib`: Configurações de bibliotecas externas.
 
-## Como Executar
+## 🛠️ Melhores Práticas Implementadas
+
+- **Clean Code**: Funções pequenas, nomes descritivos e separação de preocupações.
+- **SOLID**: Hooks especializados (Single Responsibility) e componentes desacoplados.
+- **Performance**: 
+  - Uso de `will-change` em elementos animados.
+  - Cleanup automático de instâncias GSAP com `@gsap/react`.
+  - Lazy loading de imagens e componentes pesados.
+- **Acessibilidade**: Uso de semântica HTML5 e suporte a `prefers-reduced-motion`.
+- **Resiliência**: Implementação de `ErrorBoundary` para falhas críticas.
+
+## 📖 Como Rodar
 
 1. Instale as dependências:
    ```bash
    npm install
    ```
+
 2. Inicie o servidor de desenvolvimento:
    ```bash
    npm run dev
    ```
+
+3. Para build de produção:
+   ```bash
+   npm run build
+   ```
+
+---
+
+Desenvolvido com foco em excelência técnica e impacto visual.
