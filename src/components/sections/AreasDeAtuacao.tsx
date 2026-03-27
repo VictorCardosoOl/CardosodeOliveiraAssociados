@@ -1,10 +1,9 @@
 import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
 import Lenis from "lenis";
 import { ArrowRight, X } from "lucide-react";
-
+import gsap from "gsap";
 
 const cases = [
   {
@@ -53,21 +52,15 @@ interface CardItemProps {
   item: any;
   onClick: () => void;
   className?: string;
-  key?: string | number;
 }
-
-const springTransition = { type: "spring" as const, damping: 30, stiffness: 300, mass: 0.8 };
 
 const CardItem = ({ item, onClick, className }: CardItemProps) => {
   const isDark = item.theme === 'dark';
   
   return (
-    <motion.div 
-      layoutId={`modal-container-${item.id}`}
-      transition={springTransition}
-      whileHover={{ scale: 0.98 }}
+    <div 
       onClick={onClick} 
-      className={`group cursor-pointer flex flex-col justify-between p-8 md:p-12 min-h-[400px] md:min-h-[480px] border ${
+      className={`group cursor-pointer flex flex-col justify-between p-8 md:p-12 min-h-[400px] md:min-h-[480px] border transition-transform duration-500 hover:scale-[0.98] ${
         isDark ? 'bg-primary text-secondary border-primary' : 'bg-secondary text-primary border-primary/10'
       } ${className || ''}`}
     >
@@ -87,13 +80,9 @@ const CardItem = ({ item, onClick, className }: CardItemProps) => {
 
       {/* Content */}
       <div className="mt-auto mb-8 md:mb-12">
-        <motion.h3 
-          layoutId={`title-${item.id}`} 
-          transition={springTransition}
-          className="text-3xl md:text-4xl lg:text-5xl font-editorial uppercase tracking-tighter leading-[0.9] mb-4 md:mb-6"
-        >
+        <h3 className="text-3xl md:text-4xl lg:text-5xl font-editorial uppercase tracking-tighter leading-[0.9] mb-4 md:mb-6">
            {item.title}
-        </motion.h3>
+        </h3>
         <p className={`micro-text normal-case tracking-normal leading-relaxed max-w-md ${isDark ? 'text-secondary/70' : 'text-muted'}`}>
           {item.subtitle}
         </p>
@@ -107,37 +96,44 @@ const CardItem = ({ item, onClick, className }: CardItemProps) => {
           <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform duration-300" strokeWidth={1} />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const modalContainerRef = useRef<HTMLDivElement>(null);
   const modalContentRef = useRef<HTMLDivElement>(null);
   const scopedLenisRef = useRef<any>(null);
-  const [activeItem, setActiveItem] = useState(selectedItem);
+  const [shouldRender, setShouldRender] = useState(isOpen);
 
-  useEffect(() => {
-    if (selectedItem) {
-      setActiveItem(selectedItem);
-    }
-  }, [selectedItem]);
-
-  const item = selectedItem || activeItem;
-
-  // Lógica de Scroll Isolado (Lenis)
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden'; // Trava body
+      setShouldRender(true);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (shouldRender && isOpen) {
+      document.body.style.overflow = 'hidden';
       
-      // Inicia Lenis apenas no Modal após mount
+      const tl = gsap.timeline();
+      tl.fromTo(overlayRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" })
+        .fromTo(modalRef.current, 
+          { y: 100, opacity: 0, scale: 0.95 }, 
+          { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "expo.out" }, 
+          "-=0.3"
+        );
+
+      // Lenis Setup
       const timer = setTimeout(() => {
         if (modalContainerRef.current && modalContentRef.current) {
             const scopedLenis = new Lenis({
                 wrapper: modalContainerRef.current,
                 content: modalContentRef.current,
                 duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Ease Out Quart
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 orientation: 'vertical',
                 gestureOrientation: 'vertical',
                 touchMultiplier: 2,
@@ -150,121 +146,97 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
             }
             requestAnimationFrame(raf);
         }
-      }, 300); // Delay para permitir animação de entrada
+      }, 500);
 
-      return () => {
-         clearTimeout(timer);
-      };
-    } else {
-      document.body.style.overflow = '';
+      return () => clearTimeout(timer);
+    } else if (shouldRender && !isOpen) {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          setShouldRender(false);
+          document.body.style.overflow = '';
+        }
+      });
+      
+      tl.to(modalRef.current, { y: 50, opacity: 0, scale: 0.98, duration: 0.4, ease: "power2.in" })
+        .to(overlayRef.current, { opacity: 0, duration: 0.3 }, "-=0.2");
+      
       scopedLenisRef.current?.destroy();
     }
-    
-    return () => {
-       document.body.style.overflow = '';
-       scopedLenisRef.current?.destroy();
-    };
-  }, [isOpen]);
+  }, [isOpen, shouldRender]);
 
-  if (typeof document === 'undefined' || !item) return null;
+  if (!shouldRender || !selectedItem) return null;
 
-  const isDark = item.theme === 'dark';
+  const isDark = selectedItem.theme === 'dark';
 
   return createPortal(
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div 
-            onClick={onClose} 
-            className="fixed inset-0 bg-primary/40 backdrop-blur-sm z-[9998]" 
-            initial={{opacity:0}} 
-            animate={{opacity:1}} 
-            exit={{opacity:0}} 
-          />
-          
-          <div className="fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center md:p-10">
-            <motion.div
-              layoutId={`modal-container-${item.id}`}
-              transition={springTransition}
-              className={`pointer-events-auto w-full h-full shadow-2xl overflow-hidden flex flex-col relative ${
-                isDark ? 'bg-primary text-secondary' : 'bg-secondary text-primary'
-              }`}
-            >
-              {/* Container de Scroll para o Lenis */}
-              <div ref={modalContainerRef} className="h-full w-full overflow-y-auto">
-                 <div ref={modalContentRef} className="min-h-full flex flex-col">
-                    <div className="p-8 md:p-16 lg:p-24 flex-1 flex flex-col">
-                      <div className="max-w-4xl mx-auto w-full mt-12 md:mt-0">
-                        {/* Tags */}
-                        <motion.div 
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ delay: 0.1, duration: 0.4 }}
-                          className="flex flex-wrap gap-2 md:gap-3 mb-8 md:mb-12"
-                        >
-                          {item.tags.map((tag: string, i: number) => (
-                            <span 
-                              key={i} 
-                              className={`micro-text px-4 py-2 border ${
-                                isDark ? 'border-secondary/20 text-secondary/80' : 'border-primary/20 text-primary/70'
-                              }`}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </motion.div>
-
-                        <motion.h2 
-                          layoutId={`title-${item.id}`}
-                          transition={springTransition}
-                          className="text-4xl md:text-6xl lg:text-7xl font-editorial uppercase tracking-tighter mb-8 md:mb-12 leading-[0.9]"
-                        >
-                          {item.title}
-                        </motion.h2>
-                        
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ delay: 0.15, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                          className={`prose prose-lg md:prose-xl max-w-none font-sans font-light ${
-                            isDark ? 'text-secondary/70' : 'text-primary/70'
+    <div className="fixed inset-0 z-[9998] flex items-center justify-center">
+      <div 
+        ref={overlayRef}
+        onClick={onClose} 
+        className="absolute inset-0 bg-primary/40 backdrop-blur-sm" 
+      />
+      
+      <div className="relative z-[9999] w-full h-full md:w-[90vw] md:h-[90vh] pointer-events-none flex items-center justify-center">
+        <div
+          ref={modalRef}
+          className={`pointer-events-auto w-full h-full shadow-2xl overflow-hidden flex flex-col relative ${
+            isDark ? 'bg-primary text-secondary' : 'bg-secondary text-primary'
+          }`}
+        >
+          {/* Container de Scroll para o Lenis */}
+          <div ref={modalContainerRef} className="h-full w-full overflow-y-auto">
+             <div ref={modalContentRef} className="min-h-full flex flex-col">
+                <div className="p-8 md:p-16 lg:p-24 flex-1 flex flex-col">
+                  <div className="max-w-4xl mx-auto w-full mt-12 md:mt-0">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 md:gap-3 mb-8 md:mb-12">
+                      {selectedItem.tags.map((tag: string, i: number) => (
+                        <span 
+                          key={i} 
+                          className={`micro-text px-4 py-2 border ${
+                            isDark ? 'border-secondary/20 text-secondary/80' : 'border-primary/20 text-primary/70'
                           }`}
                         >
-                          <p className="text-2xl md:text-3xl mb-12 leading-relaxed font-editorial italic">
-                            {item.subtitle}
-                          </p>
-                          <p className="text-base md:text-lg leading-relaxed">
-                            {item.content}
-                          </p>
-                          <p className="mt-8 text-base md:text-lg leading-relaxed">
-                            Nossa abordagem é estratégica e focada em resultados. Analisamos cada detalhe do seu caso para construir a melhor tese jurídica, sempre com transparência e proximidade.
-                          </p>
-                        </motion.div>
-                      </div>
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                 </div>
-              </div>
-              
-              {/* Botão Fechar Flutuante */}
-              <motion.button 
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ delay: 0.2 }}
-                onClick={onClose} 
-                className={`absolute top-6 right-6 md:top-10 md:right-10 z-50 p-3 md:p-4 rounded-full hover:scale-110 transition-transform ${
-                  isDark ? 'bg-secondary text-primary' : 'bg-primary text-secondary'
-                }`}
-              >
-                 <X size={24} strokeWidth={1} />
-              </motion.button>
-            </motion.div>
+
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-editorial uppercase tracking-tighter mb-8 md:mb-12 leading-[0.9]">
+                      {selectedItem.title}
+                    </h2>
+                    
+                    <div className={`prose prose-lg md:prose-xl max-w-none font-sans font-light ${
+                        isDark ? 'text-secondary/70' : 'text-primary/70'
+                      }`}
+                    >
+                      <p className="text-2xl md:text-3xl mb-12 leading-relaxed font-editorial italic">
+                        {selectedItem.subtitle}
+                      </p>
+                      <p className="text-base md:text-lg leading-relaxed">
+                        {selectedItem.content}
+                      </p>
+                      <p className="mt-8 text-base md:text-lg leading-relaxed">
+                        Nossa abordagem é estratégica e focada em resultados. Analisamos cada detalhe do seu caso para construir a melhor tese jurídica, sempre com transparência e proximidade.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+             </div>
           </div>
-        </>
-      )}
-    </AnimatePresence>,
+          
+          {/* Botão Fechar Flutuante */}
+          <button 
+            onClick={onClose} 
+            className={`absolute top-6 right-6 md:top-10 md:right-10 z-50 p-3 md:p-4 rounded-full hover:scale-110 transition-transform ${
+              isDark ? 'bg-secondary text-primary' : 'bg-primary text-secondary'
+            }`}
+          >
+             <X size={24} strokeWidth={1} />
+          </button>
+        </div>
+      </div>
+    </div>,
     document.body
   );
 };

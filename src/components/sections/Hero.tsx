@@ -3,7 +3,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
-import { motion, useScroll, useTransform } from "motion/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,14 +10,9 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-
   useGSAP(() => {
+    if (!containerRef.current) return;
+
     const mm = gsap.matchMedia();
     const titleSplit = new SplitType('.hero-title', { types: 'words' });
     const subtitleSplit = new SplitType('.hero-subtitle', { types: 'words' });
@@ -33,75 +27,98 @@ export function Hero() {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       gsap.set('.hero-image-wrapper', { clipPath: 'inset(100% 0% 0% 0%)' });
-      gsap.set(imageRef.current, { scale: 1.05 });
+      gsap.set(imageRef.current, { scale: 1.1 });
       gsap.set('.hero-fade', { opacity: 0, y: 50 });
 
       tl.to('.hero-image-wrapper', {
         clipPath: 'inset(0% 0% 0% 0%)',
-        duration: 1.5,
+        duration: 1.8,
+        ease: "power4.inOut"
       })
       .to(imageRef.current, {
         scale: 1,
-        duration: 1.5,
+        duration: 1.8,
+        ease: "power4.inOut"
       }, "<")
       .from(titleSplit.words, {
-        y: 50,
+        y: 80,
         opacity: 0,
-        duration: 1,
-        stagger: 0.04,
-      }, "-=1")
+        duration: 1.2,
+        stagger: 0.05,
+        ease: "expo.out"
+      }, "-=1.2")
       .from(subtitleSplit.words, {
-        y: 50,
+        y: 30,
         opacity: 0,
         duration: 1,
         stagger: 0.02,
+        ease: "expo.out"
       }, "-=0.8")
       .to('.hero-fade', {
         opacity: 1,
         y: 0,
         duration: 1,
-        stagger: 0.1
+        stagger: 0.1,
+        ease: "expo.out"
       }, "-=0.8");
+
+      // Parallax Effect
+      gsap.to(imageRef.current, {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
     });
 
     mm.add("(max-width: 1023px)", () => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       gsap.set('.hero-image-wrapper', { clipPath: 'inset(100% 0% 0% 0%)' });
-      gsap.set(imageRef.current, { scale: 1.05 });
-      gsap.set('.hero-fade', { opacity: 0, y: 50 });
+      gsap.set(imageRef.current, { scale: 1.1 });
+      gsap.set('.hero-fade', { opacity: 0, y: 30 });
 
       tl.to('.hero-image-wrapper', {
         clipPath: 'inset(0% 0% 0% 0%)',
-        duration: 1.2,
+        duration: 1.5,
+        ease: "power4.inOut"
       })
       .to(imageRef.current, {
         scale: 1,
-        duration: 1.2,
+        duration: 1.5,
+        ease: "power4.inOut"
       }, "<")
       .from(titleSplit.words, {
-        y: 50,
+        y: 40,
         opacity: 0,
         duration: 1,
         stagger: 0.05,
-      }, "-=0.8")
+        ease: "expo.out"
+      }, "-=1")
       .from(subtitleSplit.words, {
-        y: 50,
+        y: 20,
         opacity: 0,
         duration: 1,
         stagger: 0.05,
+        ease: "expo.out"
       }, "-=0.8")
       .to('.hero-fade', {
         opacity: 1,
         y: 0,
         duration: 1,
-        stagger: 0.1
+        stagger: 0.1,
+        ease: "expo.out"
       }, "-=0.8");
     });
 
     return () => {
       titleSplit.revert();
       subtitleSplit.revert();
+      mm.revert();
     };
   }, { scope: containerRef });
 
@@ -137,9 +154,8 @@ export function Hero() {
         {/* Right Column: Image */}
         <div className="col-span-12 lg:col-span-5 relative w-full h-[50vh] lg:h-[80vh] flex items-end justify-end">
           <div className="hero-image-wrapper w-full h-full relative overflow-hidden">
-            <motion.img 
+            <img 
               ref={imageRef}
-              style={{ y }}
               src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop" 
               alt="Advogada Especialista" 
               className="w-full h-full object-cover origin-top will-change-transform"

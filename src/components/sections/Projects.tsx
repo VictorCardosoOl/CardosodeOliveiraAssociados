@@ -1,6 +1,9 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "motion/react";
+import React, { useRef, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -13,7 +16,7 @@ const projects = [
     title: "Fusão de Conglomerado",
     category: "Direito Empresarial",
     description: "Assessoria estratégica em fusão transnacional, garantindo conformidade e mitigação de riscos.",
-    image: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1505664173696-0746f4856282?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "Planejamento Sucessório",
@@ -30,36 +33,67 @@ interface Project {
   image: string;
 }
 
-const ProjectCard = ({ project, index }: { project: Project; index: number; key?: React.Key }) => {
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const maskRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
   
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+  useEffect(() => {
+    if (!containerRef.current || !imageRef.current || !maskRef.current || !textRef.current) return;
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+    const ctx = gsap.context(() => {
+      // Image Mask Reveal
+      gsap.fromTo(maskRef.current, 
+        { clipPath: "inset(100% 0% 0% 0%)" },
+        { 
+          clipPath: "inset(0% 0% 0% 0%)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+            end: "top 20%",
+            scrub: 1,
+          }
+        }
+      );
 
-  // Pattern A: Parallax Direcional
-  const yParallax = useTransform(smoothProgress, [0, 1], ["-20%", "20%"]);
-  
-  // Pattern B: Mask Reveal (Clip Path)
-  const clipPath = useTransform(
-    smoothProgress,
-    [0, 0.3, 0.7, 1],
-    [
-      "inset(100% 0% 0% 0%)",
-      "inset(0% 0% 0% 0%)",
-      "inset(0% 0% 0% 0%)",
-      "inset(0% 0% 100% 0%)"
-    ]
-  );
+      // Image Parallax & Scale
+      gsap.fromTo(imageRef.current,
+        { y: "-10%", scale: 1.2 },
+        {
+          y: "10%",
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          }
+        }
+      );
 
-  const scale = useTransform(smoothProgress, [0, 0.5, 1], [1.2, 1, 1.2]);
+      // Text Reveal
+      const textElements = textRef.current.children;
+      gsap.fromTo(textElements,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div 
@@ -68,61 +102,41 @@ const ProjectCard = ({ project, index }: { project: Project; index: number; key?
     >
       {/* Image Side */}
       <div className={`relative aspect-[3/4] lg:aspect-[4/5] overflow-hidden ${index % 2 !== 0 ? 'lg:col-start-7 lg:col-span-6 lg:order-2' : 'lg:col-span-6'}`}>
-        <motion.div 
-          style={{ clipPath }}
+        <div 
+          ref={maskRef}
           className="w-full h-full relative"
         >
-          <motion.img
+          <img
+            ref={imageRef}
             src={project.image}
             alt={project.title}
-            style={{ y: yParallax, scale }}
-            className="absolute inset-0 w-full h-[140%] object-cover will-change-transform"
+            className="absolute inset-0 w-full h-[120%] object-cover will-change-transform"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-accent/10 mix-blend-multiply" />
-        </motion.div>
+        </div>
       </div>
 
       {/* Text Side */}
-      <div className={`flex flex-col justify-center ${index % 2 !== 0 ? 'lg:col-start-1 lg:col-span-5 lg:order-1' : 'lg:col-start-8 lg:col-span-5'}`}>
-        <motion.span 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="micro-text text-accent mb-6"
-        >
+      <div ref={textRef} className={`flex flex-col justify-center ${index % 2 !== 0 ? 'lg:col-start-1 lg:col-span-5 lg:order-1' : 'lg:col-start-8 lg:col-span-5'}`}>
+        <span className="micro-text text-accent mb-6 block">
           {project.category}
-        </motion.span>
+        </span>
         
-        <motion.h3 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-editorial text-[clamp(2.5rem,5vw,5rem)] uppercase leading-[0.85] tracking-tighter mb-8"
-        >
+        <h3 className="font-editorial text-[clamp(2.5rem,5vw,5rem)] uppercase leading-[0.85] tracking-tighter mb-8">
           {project.title}
-        </motion.h3>
+        </h3>
         
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="micro-text text-muted normal-case tracking-normal leading-relaxed mb-10 max-w-md"
-        >
+        <p className="micro-text text-muted normal-case tracking-normal leading-relaxed mb-10 max-w-md">
           {project.description}
-        </motion.p>
+        </p>
         
-        <motion.button 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="group flex items-center gap-4 text-primary hover:text-accent transition-colors w-fit"
-        >
+        <button className="group flex items-center gap-4 text-primary hover:text-accent transition-colors w-fit">
           <span className="micro-text">Explorar Caso</span>
           <div className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-accent group-hover:text-secondary group-hover:border-accent transition-all duration-500">
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" strokeWidth={1} />
           </div>
-        </motion.button>
+        </button>
       </div>
     </div>
   );

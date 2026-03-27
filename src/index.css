@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -20,9 +20,9 @@
   --text-fluid-h2: clamp(2.5rem, 8vw, 8rem);
   --text-fluid-h3: clamp(1.75rem, 6vw, 6rem);
   --text-fluid-h4: clamp(1.5rem, 4vw, 4rem);
-  --text-fluid-p: clamp(10px, 1vw, 11px);
+  --text-fluid-p: clamp(10px, 0.9vw, 11px);
 
-  --spacing-section-y: clamp(6rem, 10vw, 8rem);
+  --spacing-section-y: clamp(6rem, 12vw, 10rem);
 }
 
 @layer base {
@@ -42,9 +42,9 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-editorial);
     text-transform: uppercase;
-    line-height: 0.85;
-    letter-spacing: -0.02em;
-    font-weight: 400;
+    line-height: 0.82;
+    letter-spacing: -0.04em;
+    font-weight: 300;
   }
 
   h1 { font-size: var(--text-fluid-h1); }
@@ -57,6 +57,8 @@
   p, span, a, button, label, input, textarea {
     font-family: var(--font-sans);
     font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
   }
 }
 
@@ -88,9 +90,10 @@ body {
 .micro-text {
   font-size: var(--text-fluid-p);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   line-height: 1.8;
   font-weight: 400;
+  opacity: 0.8;
 }
 
 html.lenis, html.lenis body {

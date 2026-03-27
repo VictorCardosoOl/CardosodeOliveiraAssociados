@@ -44,10 +44,13 @@ export function ActiveSectionProvider({ children }: { children: React.ReactNode 
       observeSections();
     });
 
-    mutationObserver.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
+    const mainElement = document.querySelector('main');
+    if (mainElement) {
+      mutationObserver.observe(mainElement, {
+        childList: true,
+        subtree: true,
+      });
+    }
 
     return () => {
       observer.current?.disconnect();
