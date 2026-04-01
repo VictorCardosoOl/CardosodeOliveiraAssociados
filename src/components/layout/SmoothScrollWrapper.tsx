@@ -28,12 +28,6 @@ export function SmoothScrollWrapper({ children }: SmoothScrollWrapperProps) {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Ease Out Quart
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      autoResize: true,
     });
 
     lenisRef.current = lenis;
@@ -49,16 +43,9 @@ export function SmoothScrollWrapper({ children }: SmoothScrollWrapperProps) {
     gsap.ticker.add(updateLenis);
     gsap.ticker.lagSmoothing(0);
 
-    // Refresh ScrollTrigger on window resize to prevent positioning bugs
-    const handleResize = () => {
-      ScrollTrigger.refresh();
-    };
-    window.addEventListener('resize', handleResize);
-
     return () => {
       lenis.destroy();
       gsap.ticker.remove(updateLenis);
-      window.removeEventListener('resize', handleResize);
     };
   }, []);
 

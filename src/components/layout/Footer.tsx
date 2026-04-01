@@ -13,20 +13,21 @@ export function Footer() {
   useGSAP(() => {
     const elements = gsap.utils.toArray('.anim-element');
     
-    gsap.fromTo(elements, 
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: "top 90%",
+    elements.forEach((el: any) => {
+      gsap.fromTo(el, 
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          }
         }
-      }
-    );
+      );
+    });
   }, { scope: footerRef });
 
   return (

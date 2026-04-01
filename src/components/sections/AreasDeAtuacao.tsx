@@ -130,6 +130,7 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
         );
 
       // Lenis Setup
+      let rafId: number;
       const timer = setTimeout(() => {
         if (modalContainerRef.current && modalContentRef.current) {
             const scopedLenis = new Lenis({
@@ -137,21 +138,22 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
                 content: modalContentRef.current,
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                orientation: 'vertical',
-                gestureOrientation: 'vertical',
-                touchMultiplier: 2,
             });
             scopedLenisRef.current = scopedLenis;
             
             function raf(time: number) {
                 scopedLenis.raf(time);
-                requestAnimationFrame(raf);
+                rafId = requestAnimationFrame(raf);
             }
-            requestAnimationFrame(raf);
+            rafId = requestAnimationFrame(raf);
         }
       }, 500);
 
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        if (rafId) cancelAnimationFrame(rafId);
+        scopedLenisRef.current?.destroy();
+      };
     } else if (shouldRender && !isOpen) {
       const tl = gsap.timeline({
         onComplete: () => {
@@ -252,20 +254,21 @@ export function AreasDeAtuacao() {
   useGSAP(() => {
     const elements = gsap.utils.toArray('.anim-element');
     
-    gsap.fromTo(elements, 
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
+    elements.forEach((el: any) => {
+      gsap.fromTo(el, 
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          }
         }
-      }
-    );
+      );
+    });
   }, { scope: sectionRef });
 
   return (

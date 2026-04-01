@@ -11,20 +11,21 @@ export function About() {
   useGSAP(() => {
     const elements = gsap.utils.toArray('.anim-element');
     
-    gsap.fromTo(elements, 
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
+    elements.forEach((el: any) => {
+      gsap.fromTo(el, 
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          }
         }
-      }
-    );
+      );
+    });
   }, { scope: containerRef });
 
   return (
