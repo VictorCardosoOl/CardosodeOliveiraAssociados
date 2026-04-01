@@ -62,7 +62,7 @@
   }
 }
 
-body {
+html, body {
   background-color: var(--color-secondary);
   color: var(--color-primary);
   font-family: var(--font-sans);
@@ -85,6 +85,11 @@ body {
   line-height: 1.8;
   font-weight: 400;
   opacity: 0.8;
+}
+
+/* Hardware acceleration for GSAP animations */
+.anim-element {
+  will-change: transform, opacity;
 }
 
 html.lenis, html.lenis body {

@@ -136,8 +136,7 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
             const scopedLenis = new Lenis({
                 wrapper: modalContainerRef.current,
                 content: modalContentRef.current,
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                lerp: 0.08,
             });
             scopedLenisRef.current = scopedLenis;
             
@@ -256,12 +255,12 @@ export function AreasDeAtuacao() {
     
     elements.forEach((el: any) => {
       gsap.fromTo(el, 
-        { y: 50, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
-          ease: "power3.out",
+          duration: 1.2,
+          ease: "expo.out",
           scrollTrigger: {
             trigger: el,
             start: "top 85%",

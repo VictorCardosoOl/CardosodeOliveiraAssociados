@@ -21,12 +21,12 @@ export function Professionals() {
     
     elements.forEach((el: any) => {
       gsap.fromTo(el, 
-        { y: 50, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
-          ease: "power3.out",
+          duration: 1.2,
+          ease: "expo.out",
           scrollTrigger: {
             trigger: el,
             start: "top 85%",

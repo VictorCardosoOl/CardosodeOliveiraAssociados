@@ -26,8 +26,9 @@ export function SmoothScrollWrapper({ children }: SmoothScrollWrapperProps) {
     }
 
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Ease Out Quart
+      lerp: 0.08, // The "secret sauce" for buttery smooth momentum scroll
+      smoothWheel: true,
+      wheelMultiplier: 1,
     });
 
     lenisRef.current = lenis;
