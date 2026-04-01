@@ -1,12 +1,33 @@
 import { ArrowRight, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
 import { useRef } from "react";
-import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
 
-  usePremiumAnimation(footerRef);
+  useGSAP(() => {
+    const elements = gsap.utils.toArray('.anim-element');
+    
+    gsap.fromTo(elements, 
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: "top 90%",
+        }
+      }
+    );
+  }, { scope: footerRef });
 
   return (
     <footer ref={footerRef} className="relative bg-footer text-primary pt-[var(--spacing-section-y)] pb-12 md:pb-24 overflow-hidden border-t border-primary/10">
@@ -20,10 +41,10 @@ export function Footer() {
 
       {/* Main Content Grid */}
       <div className="container relative z-20">
-        <div className="anim-stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 md:gap-y-20 lg:gap-y-0 lg:divide-x lg:divide-primary/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 md:gap-y-20 lg:gap-y-0 lg:divide-x lg:divide-primary/10">
           
           {/* Col 1: Identity */}
-          <div className="anim-stagger-item flex flex-col lg:pr-12 xl:pr-16">
+          <div className="anim-element flex flex-col lg:pr-12 xl:pr-16">
             <span className="micro-text text-accent mb-8 block">Escritório</span>
             <div className="flex items-center gap-2 mb-4">
               <span className="font-editorial text-4xl text-primary flex items-center gap-3 uppercase tracking-tighter">
@@ -42,7 +63,7 @@ export function Footer() {
           </div>
 
           {/* Col 2: Location/CTA */}
-          <div className="anim-stagger-item flex flex-col lg:px-12 xl:px-16">
+          <div className="anim-element flex flex-col lg:px-12 xl:px-16">
             <span className="micro-text text-accent mb-8 block">Contato</span>
             <div className="flex items-start gap-4 mb-12">
               <MapPin size={20} className="text-accent shrink-0 mt-1" strokeWidth={1} />
@@ -59,7 +80,7 @@ export function Footer() {
           </div>
 
           {/* Col 3: Social */}
-          <div className="anim-stagger-item flex flex-col lg:px-12 xl:px-16">
+          <div className="anim-element flex flex-col lg:px-12 xl:px-16">
             <span className="micro-text text-accent mb-8 block">Social</span>
             <div className="flex flex-col gap-6">
               <a href="#" className="group flex items-center gap-4 text-muted hover:text-primary transition-colors w-fit">
@@ -78,7 +99,7 @@ export function Footer() {
           </div>
 
           {/* Col 4: Menu/Credits */}
-          <div className="anim-stagger-item flex flex-col lg:pl-12 xl:pl-16">
+          <div className="anim-element flex flex-col lg:pl-12 xl:pl-16">
             <span className="micro-text text-accent mb-8 block">Navegação</span>
             <nav className="flex flex-col gap-4 mb-16">
               {[

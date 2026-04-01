@@ -1,6 +1,10 @@
 import { useRef } from "react";
-import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { ArrowRight, Calendar } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const articles = [
   {
@@ -26,15 +30,32 @@ const articles = [
 export function Insights() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  usePremiumAnimation(containerRef);
+  useGSAP(() => {
+    const elements = gsap.utils.toArray('.anim-element');
+    
+    gsap.fromTo(elements, 
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        }
+      }
+    );
+  }, { scope: containerRef });
 
   return (
     <section id="insights" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-secondary overflow-hidden border-t border-primary/10">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl">
-            <h2 className="anim-title micro-text text-muted mb-6">Insights</h2>
-            <h3 className="font-editorial text-[var(--text-fluid-h2)] text-primary leading-[0.85] tracking-tighter uppercase">
+            <h2 className="anim-element micro-text text-muted mb-6">Insights</h2>
+            <h3 className="anim-element font-editorial text-[var(--text-fluid-h2)] text-primary leading-[0.85] tracking-tighter uppercase">
               Conhecimento que <br/><span className="italic text-accent">protege e orienta</span>.
             </h3>
           </div>
@@ -44,9 +65,9 @@ export function Insights() {
           </button>
         </div>
 
-        <div className="anim-stagger-container grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
           {articles.map((article, i) => (
-            <div key={i} className="anim-stagger-item group cursor-pointer flex flex-col">
+            <div key={i} className="anim-element group cursor-pointer flex flex-col">
               <div className="relative aspect-[4/5] overflow-hidden mb-8 border border-primary/10">
                 <img 
                   src={article.image} 

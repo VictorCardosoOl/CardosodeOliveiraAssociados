@@ -6,11 +6,9 @@
 import React, { Suspense } from 'react';
 import { SmoothScrollWrapper } from "./components/layout/SmoothScrollWrapper";
 import { Navbar } from "./components/layout/Navbar";
-import { SideNav } from "./components/layout/SideNav";
 import { Hero } from "./components/sections/Hero";
 import { Footer } from "./components/layout/Footer";
 import { ActiveSectionProvider } from "./context/ActiveSectionContext";
-import { ScrollProgressBar } from "./components/ui/ScrollProgressBar";
 import { ErrorBoundary } from "./components/common/ErrorBoundary";
 
 // Lazy Loading: O React só carrega estes ficheiros quando forem necessários
@@ -28,9 +26,7 @@ export default function App() {
     <ErrorBoundary>
       <ActiveSectionProvider>
         <SmoothScrollWrapper>
-          <ScrollProgressBar />
           <Navbar />
-          <SideNav />
           <main>
             {/* O Hero carrega de imediato para não atrasar a primeira impressão */}
             <Hero />

@@ -159,7 +159,8 @@ export function Hero() {
               src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop" 
               alt="Advogada Especialista" 
               className="w-full h-full object-cover origin-top will-change-transform"
-              loading="lazy"
+              loading="eager"
+              fetchPriority="high"
             />
             <div className="absolute inset-0 bg-accent/10 mix-blend-multiply pointer-events-none"></div>
           </div>

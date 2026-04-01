@@ -1,10 +1,31 @@
 import { useRef } from "react";
-import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function About() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  usePremiumAnimation(containerRef);
+  useGSAP(() => {
+    const elements = gsap.utils.toArray('.anim-element');
+    
+    gsap.fromTo(elements, 
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        }
+      }
+    );
+  }, { scope: containerRef });
 
   return (
     <section id="o-escritorio" ref={containerRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10 overflow-hidden">
@@ -14,14 +35,14 @@ export function About() {
           
           {/* Left Column */}
           <div className="lg:col-span-6 lg:sticky lg:top-32 flex flex-col h-full">
-            <h2 className="anim-title anim-fade-up font-editorial text-[var(--text-fluid-h2)] text-primary leading-[0.85] tracking-tighter uppercase mb-8">
+            <h2 className="anim-element font-editorial text-[var(--text-fluid-h2)] text-primary leading-[0.85] tracking-tighter uppercase mb-8">
               Uma advocacia<br />
               <span className="italic text-accent">feminina</span><br />
               e moderna.
             </h2>
             
             {/* Stats / Highlight */}
-            <div className="anim-fade-up mt-auto pt-12 border-t border-primary/10 grid grid-cols-2 gap-8">
+            <div className="anim-element mt-auto pt-12 border-t border-primary/10 grid grid-cols-2 gap-8">
               <div>
                 <span className="block font-editorial text-5xl text-primary mb-2">15+</span>
                 <span className="micro-text text-muted">Anos de<br/>Experiência</span>
@@ -35,7 +56,7 @@ export function About() {
 
           {/* Right Column */}
           <div className="lg:col-span-6 mt-16 lg:mt-0">
-            <div className="anim-image-wrapper relative w-full aspect-[3/4] mb-24 overflow-hidden shadow-2xl">
+            <div className="anim-element relative w-full aspect-[3/4] mb-24 overflow-hidden shadow-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1200&auto=format&fit=crop" 
                 alt="Escritório de Advocacia" 
@@ -46,11 +67,11 @@ export function About() {
             </div>
 
             <div className="pl-0 md:pl-12">
-              <p className="anim-fade-up micro-text text-muted mb-16 max-w-md">
+              <p className="anim-element micro-text text-muted mb-16 max-w-md">
                 Simplificar as complexidades do direito. Proporcionar tranquilidade aos nossos clientes. Fomentar o crescimento e o sucesso aliviando pressões jurídicas com dedicação total e soluções sob medida.
               </p>
 
-              <h4 className="anim-fade-up micro-text text-primary mb-12 flex items-center gap-4">
+              <h4 className="anim-element micro-text text-primary mb-12 flex items-center gap-4">
                 Como Trabalhamos
                 <span className="flex-1 h-[1px] bg-primary/10"></span>
               </h4>
@@ -61,7 +82,7 @@ export function About() {
                   { num: "02", title: "Atendimento", desc: "Contato direto e pessoal com a fundadora em todas as etapas." },
                   { num: "03", title: "Resultado", desc: "Foco incansável na resolução eficiente e favorável do seu caso." }
                 ].map((item, i) => (
-                  <div key={i} className="anim-fade-up group flex flex-col sm:flex-row sm:items-start gap-6 sm:gap-12 py-10 border-b border-primary/10 hover:bg-primary/5 transition-colors">
+                  <div key={i} className="anim-element group flex flex-col sm:flex-row sm:items-start gap-6 sm:gap-12 py-10 border-b border-primary/10 hover:bg-primary/5 transition-colors">
                     <span className="font-editorial text-2xl text-accent/50 italic pt-1">{item.num}</span>
                     <div className="flex-1">
                       <h5 className="font-editorial text-3xl text-primary mb-3 uppercase tracking-tighter group-hover:text-accent transition-colors">{item.title}</h5>

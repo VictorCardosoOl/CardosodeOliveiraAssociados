@@ -1,9 +1,12 @@
-import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
 import Lenis from "lenis";
 import { ArrowRight, X } from "lucide-react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const cases = [
   {
@@ -246,24 +249,41 @@ export function AreasDeAtuacao() {
   const selectedItem = cases.find(c => c.id === selectedId);
   const sectionRef = useRef<HTMLElement>(null);
 
-  usePremiumAnimation(sectionRef);
+  useGSAP(() => {
+    const elements = gsap.utils.toArray('.anim-element');
+    
+    gsap.fromTo(elements, 
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        }
+      }
+    );
+  }, { scope: sectionRef });
 
   return (
     <section id="areas-de-atuacao" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10">
       <div className="container">
         <div className="mb-16 md:mb-24">
-          <span className="anim-stagger-item micro-text text-muted block mb-6">
+          <span className="anim-element micro-text text-muted block mb-6">
             Áreas de Foco
           </span>
-          <h2 className="anim-title anim-stagger-item text-[var(--text-fluid-h2)] font-editorial leading-[0.85] tracking-tighter uppercase max-w-4xl">
+          <h2 className="anim-element text-[var(--text-fluid-h2)] font-editorial leading-[0.85] tracking-tighter uppercase max-w-4xl">
             Soluções jurídicas<br/>
             <span className="italic text-accent">sob medida</span> para suas necessidades.
           </h2>
         </div>
 
-        <div className="anim-stagger-container grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
           {cases.map((item) => (
-            <div key={item.id} className={`anim-stagger-item ${item.colSpan}`}>
+            <div key={item.id} className={`anim-element ${item.colSpan}`}>
               <CardItem 
                 item={item} 
                 onClick={() => setSelectedId(item.id)} 

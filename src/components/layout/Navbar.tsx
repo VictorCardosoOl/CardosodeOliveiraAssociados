@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { useActiveSection } from "@/context/ActiveSectionContext";
+import gsap from "gsap";
 
 const navItems = [
   { name: "Início", href: "#inicio" },
@@ -17,16 +18,49 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollDirection, isAtTop } = useScrollDirection();
   const { activeSection } = useActiveSection();
+  const headerRef = useRef<HTMLElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Visible at top, or when scrolling up, or if mobile menu is open
   const isVisible = isAtTop || scrollDirection === "up" || isMobileMenuOpen;
 
+  useEffect(() => {
+    if (headerRef.current) {
+      gsap.to(headerRef.current, {
+        yPercent: isVisible ? 0 : -100,
+        opacity: isVisible ? 1 : 0,
+        duration: 0.5,
+        ease: "power3.out"
+      });
+    }
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (mobileMenuRef.current) {
+      if (isMobileMenuOpen) {
+        gsap.to(mobileMenuRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power3.out",
+          pointerEvents: "auto"
+        });
+      } else {
+        gsap.to(mobileMenuRef.current, {
+          y: -20,
+          opacity: 0,
+          duration: 0.4,
+          ease: "power3.in",
+          pointerEvents: "none"
+        });
+      }
+    }
+  }, [isMobileMenuOpen]);
+
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out flex flex-col",
-        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
-      )}
+      ref={headerRef}
+      className="fixed top-0 left-0 w-full z-50 flex flex-col"
     >
       {/* Main Navbar */}
       <div className={cn(
@@ -85,10 +119,8 @@ export function Navbar() {
 
       {/* Mobile Nav Overlay */}
       <div
-        className={cn(
-          "fixed inset-x-0 top-full bg-secondary border-b border-primary/10 shadow-xl p-8 flex flex-col gap-6 transition-all duration-500 lg:hidden",
-          isMobileMenuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-8 pointer-events-none"
-        )}
+        ref={mobileMenuRef}
+        className="fixed inset-x-0 top-full bg-secondary border-b border-primary/10 shadow-xl p-8 flex flex-col gap-6 lg:hidden opacity-0 -translate-y-8 pointer-events-none"
       >
         {navItems.map((item) => {
           const isActive = activeSection === item.href.replace('#', '') || (item.href === '#inicio' && isAtTop);

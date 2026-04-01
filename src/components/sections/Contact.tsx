@@ -1,9 +1,13 @@
 import { useRef } from "react";
-import { usePremiumAnimation } from "@/hooks/usePremiumAnimation";
 import { Mail, MapPin, Phone, ArrowRight } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Fix for default marker icon in react-leaflet
 import icon from "leaflet/dist/images/marker-icon.png";
@@ -20,7 +24,24 @@ L.Marker.prototype.options.icon = DefaultIcon;
 export function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  usePremiumAnimation(containerRef);
+  useGSAP(() => {
+    const elements = gsap.utils.toArray('.anim-element');
+    
+    gsap.fromTo(elements, 
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        }
+      }
+    );
+  }, { scope: containerRef });
 
   return (
     <section id="contato" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
@@ -29,12 +50,12 @@ export function Contact() {
           <div className="inline-flex items-center gap-2 border border-secondary/20 text-secondary px-6 py-2 micro-text mb-12 w-fit">
             <span>Contato</span>
           </div>
-          <h3 className="anim-title font-editorial text-[clamp(3rem,6vw,6rem)] leading-[0.85] tracking-tighter uppercase mb-16">
+          <h3 className="anim-element font-editorial text-[clamp(3rem,6vw,6rem)] leading-[0.85] tracking-tighter uppercase mb-16">
             Vamos <br/><span className="italic text-secondary">conversar</span> sobre o seu caso.
           </h3>
           
-          <div className="anim-stagger-container space-y-12">
-            <div className="anim-stagger-item flex items-start gap-6 group">
+          <div className="space-y-12">
+            <div className="anim-element flex items-start gap-6 group">
               <div className="border border-secondary/20 p-4 group-hover:bg-secondary group-hover:border-secondary transition-colors duration-500">
                 <Phone className="text-secondary group-hover:text-primary transition-colors duration-500" size={24} strokeWidth={1} />
               </div>
@@ -44,7 +65,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="anim-stagger-item flex items-start gap-6 group">
+            <div className="anim-element flex items-start gap-6 group">
               <div className="border border-secondary/20 p-4 group-hover:bg-secondary group-hover:border-secondary transition-colors duration-500">
                 <Mail className="text-secondary group-hover:text-primary transition-colors duration-500" size={24} strokeWidth={1} />
               </div>
@@ -54,7 +75,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="anim-stagger-item flex items-start gap-6 group">
+            <div className="anim-element flex items-start gap-6 group">
               <div className="border border-secondary/20 p-4 group-hover:bg-secondary group-hover:border-secondary transition-colors duration-500">
                 <MapPin className="text-secondary group-hover:text-primary transition-colors duration-500" size={24} strokeWidth={1} />
               </div>
@@ -81,7 +102,7 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="lg:col-span-6 anim-fade-up bg-secondary p-8 md:p-12 lg:p-16 border border-primary/10">
+        <div className="lg:col-span-6 anim-element bg-secondary p-8 md:p-12 lg:p-16 border border-primary/10">
           <h4 className="font-editorial text-4xl text-primary uppercase tracking-tighter mb-12">Envie uma mensagem</h4>
           <form className="space-y-10">
             <div className="space-y-4">
