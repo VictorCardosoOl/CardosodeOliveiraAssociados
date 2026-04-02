@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, FormEvent } from "react";
 import { Mail, MapPin, Phone, ArrowRight } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -6,14 +6,14 @@ import L from "leaflet";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { z } from "zod";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Fix for default marker icon in react-leaflet
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
-let DefaultIcon = L.icon({
+const DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
   iconSize: [25, 41],
@@ -21,15 +21,27 @@ let DefaultIcon = L.icon({
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
+const contactFormSchema = z.object({
+  fullName: z.string().min(3, "Nome deve ter no mínimo 3 caracteres").max(100, "Nome muito longo"),
+  email: z.string().email("E-mail inválido"),
+  message: z.string().min(10, "Mensagem deve ter no mínimo 10 caracteres").max(1000, "Mensagem muito longa"),
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
+
 export function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [formData, setFormData] = useState<ContactFormData>({ fullName: "", email: "", message: "" });
+  const [formErrors, setFormErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   useGSAP(() => {
-    const elements = gsap.utils.toArray('.anim-element');
+    const animatedElements = gsap.utils.toArray<HTMLElement>('.anim-element');
     
-    elements.forEach((el: any) => {
-      if (!el) return;
-      gsap.fromTo(el, 
+    animatedElements.forEach((element) => {
+      if (!element) return;
+      gsap.fromTo(element, 
         { y: 30, opacity: 0 },
         {
           y: 0,
@@ -37,13 +49,54 @@ export function Contact() {
           duration: 1.2,
           ease: "expo.out",
           scrollTrigger: {
-            trigger: el,
+            trigger: element,
             start: "top 85%",
           }
         }
       );
     });
   }, { scope: containerRef });
+
+  const handleInputChange = (field: keyof ContactFormData, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (formErrors[field]) {
+      setFormErrors((prev) => ({ ...prev, [field]: undefined }));
+    }
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setFormErrors({});
+
+    try {
+      const validatedData = contactFormSchema.parse(formData);
+      
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      
+      // In a real scenario, you would send `validatedData` to your backend here.
+      console.info("Form submitted successfully", validatedData);
+      setSubmitStatus("success");
+      setFormData({ fullName: "", email: "", message: "" });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
+        error.issues.forEach((err) => {
+          if (err.path[0]) {
+            fieldErrors[err.path[0] as keyof ContactFormData] = err.message;
+          }
+        });
+        setFormErrors(fieldErrors);
+      } else {
+        console.error("Unexpected error submitting form", error);
+        setSubmitStatus("error");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section data-scroll-section id="contato" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
@@ -106,33 +159,65 @@ export function Contact() {
 
         <div className="lg:col-span-6 anim-element bg-secondary p-8 md:p-12 lg:p-16 border border-primary/10">
           <h4 className="font-editorial text-4xl text-primary uppercase tracking-tighter mb-12">Envie uma mensagem</h4>
-          <form className="space-y-10">
+          
+          {submitStatus === "success" && (
+            <div className="mb-8 p-4 bg-green-50/10 border border-green-500/50 text-green-700 font-sans text-sm">
+              Mensagem enviada com sucesso. Retornaremos em breve.
+            </div>
+          )}
+          
+          {submitStatus === "error" && (
+            <div className="mb-8 p-4 bg-red-50/10 border border-red-500/50 text-red-700 font-sans text-sm">
+              Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-10" noValidate>
             <div className="space-y-4">
-              <label className="micro-text text-muted">Nome Completo</label>
+              <label htmlFor="fullName" className="micro-text text-muted">Nome Completo</label>
               <input 
+                id="fullName"
                 type="text" 
+                value={formData.fullName}
+                onChange={(e) => handleInputChange("fullName", e.target.value)}
                 className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors font-light text-lg"
                 placeholder="Como podemos te chamar?"
+                disabled={isSubmitting}
               />
+              {formErrors.fullName && <p className="text-red-500 text-xs font-sans mt-1">{formErrors.fullName}</p>}
             </div>
             <div className="space-y-4">
-              <label className="micro-text text-muted">E-mail</label>
+              <label htmlFor="email" className="micro-text text-muted">E-mail</label>
               <input 
+                id="email"
                 type="email" 
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
                 className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors font-light text-lg"
                 placeholder="seu@email.com"
+                disabled={isSubmitting}
               />
+              {formErrors.email && <p className="text-red-500 text-xs font-sans mt-1">{formErrors.email}</p>}
             </div>
             <div className="space-y-4">
-              <label className="micro-text text-muted">Mensagem</label>
+              <label htmlFor="message" className="micro-text text-muted">Mensagem</label>
               <textarea 
+                id="message"
                 rows={4}
+                value={formData.message}
+                onChange={(e) => handleInputChange("message", e.target.value)}
                 className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors resize-none font-light text-lg"
                 placeholder="Descreva brevemente sua necessidade..."
+                disabled={isSubmitting}
               />
+              {formErrors.message && <p className="text-red-500 text-xs font-sans mt-1">{formErrors.message}</p>}
             </div>
-            <button className="group w-full flex items-center justify-between border border-primary text-primary px-8 py-6 hover:bg-primary hover:text-secondary transition-all duration-500 mt-12">
-              <span className="micro-text">Enviar Mensagem</span>
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="group w-full flex items-center justify-between border border-primary text-primary px-8 py-6 hover:bg-primary hover:text-secondary transition-all duration-500 mt-12 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span className="micro-text">{isSubmitting ? "Enviando..." : "Enviar Mensagem"}</span>
               <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" strokeWidth={1} />
             </button>
           </form>
