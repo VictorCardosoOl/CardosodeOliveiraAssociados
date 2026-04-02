@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState } from 'react';
-import LocomotiveScroll from 'locomotive-scroll';
+import Lenis from 'lenis';
 
 interface SmoothScrollContextType {
-  scroll: LocomotiveScroll | null;
-  setScroll: (scroll: LocomotiveScroll | null) => void;
+  scroll: Lenis | null;
+  setScroll: (scroll: Lenis | null) => void;
 }
 
 const SmoothScrollContext = createContext<SmoothScrollContextType>({
@@ -12,7 +12,7 @@ const SmoothScrollContext = createContext<SmoothScrollContextType>({
 });
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
-  const [scroll, setScroll] = useState<LocomotiveScroll | null>(null);
+  const [scroll, setScroll] = useState<Lenis | null>(null);
 
   return (
     <SmoothScrollContext.Provider value={{ scroll, setScroll }}>

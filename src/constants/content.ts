@@ -1,4 +1,6 @@
-export const SITE_CONTENT = {
+import { SiteContent } from '../types';
+
+export const SITE_CONTENT: SiteContent = {
   navigation: [
     { name: 'Início', href: '#inicio' },
     { name: 'O Escritório', href: '#o-escritorio' },
@@ -8,8 +10,8 @@ export const SITE_CONTENT = {
     { name: 'Contato', href: '#contato' },
   ],
   hero: {
-    title: "Visão Singular.",
-    subtitle: "Liderança no direito",
+    title: "Visão<br /><span class=\"italic text-accent\">Singular.</span>",
+    subtitle: "Liderança feminina no direito",
     cta: "Falar com Especialista"
   }
 };

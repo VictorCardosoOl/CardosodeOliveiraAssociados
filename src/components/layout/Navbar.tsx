@@ -1,19 +1,12 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { useActiveSection } from "@/context/ActiveSectionContext";
 import { useSmoothScroll } from "@/context/SmoothScrollContext";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
-const navItems = [
-  { name: "Início", href: "#inicio" },
-  { name: "O Escritório", href: "#o-escritorio" },
-  { name: "Áreas de Atuação", href: "#areas-de-atuacao" },
-  { name: "Profissionais", href: "#profissionais" },
-  { name: "Insights", href: "#insights" },
-  { name: "Contato", href: "#contato" },
-];
+import { SITE_CONTENT } from "@/constants/content";
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,10 +24,15 @@ export function Navbar() {
     setIsMobileMenuOpen(false);
     if (scroll) {
       scroll.scrollTo(href);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
-  useEffect(() => {
+  useGSAP(() => {
     if (headerRef.current) {
       gsap.to(headerRef.current, {
         yPercent: isVisible ? 0 : -100,
@@ -45,7 +43,7 @@ export function Navbar() {
     }
   }, [isVisible]);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (mobileMenuRef.current) {
       if (isMobileMenuOpen) {
         gsap.to(mobileMenuRef.current, {
@@ -88,7 +86,7 @@ export function Navbar() {
 
           {/* Center/Right: Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {navItems.map((item) => {
+            {SITE_CONTENT.navigation.map((item) => {
               const isActive = activeSection === item.href.replace('#', '') || (item.href === '#inicio' && isAtTop);
               return (
                 <a
@@ -133,7 +131,7 @@ export function Navbar() {
         ref={mobileMenuRef}
         className="fixed inset-x-0 top-full bg-secondary border-b border-primary/10 shadow-xl p-8 flex flex-col gap-6 lg:hidden opacity-0 -translate-y-8 pointer-events-none"
       >
-        {navItems.map((item) => {
+        {SITE_CONTENT.navigation.map((item) => {
           const isActive = activeSection === item.href.replace('#', '') || (item.href === '#inicio' && isAtTop);
           return (
             <a

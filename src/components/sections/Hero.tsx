@@ -4,6 +4,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useSmoothScroll } from "../../context/SmoothScrollContext";
+import { SITE_CONTENT } from "@/constants/content";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,11 @@ export function Hero() {
     e.preventDefault();
     if (scroll) {
       scroll.scrollTo(href);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -137,14 +143,11 @@ export function Hero() {
         
         {/* Left Column: Text */}
         <div className="col-span-12 lg:col-span-7 flex flex-col justify-end pb-12 z-10">
-          <h1 className="hero-title font-editorial text-[var(--text-fluid-hero)] text-primary leading-[0.85] tracking-tighter uppercase mb-8">
-            Visão<br />
-            <span className="italic text-accent">Singular.</span>
-          </h1>
+          <h1 className="hero-title font-editorial text-[var(--text-fluid-hero)] text-primary leading-[0.85] tracking-tighter uppercase mb-8" dangerouslySetInnerHTML={{ __html: SITE_CONTENT.hero.title }} />
           
           <div className="flex flex-col gap-6 max-w-md">
             <h2 className="hero-subtitle micro-text text-primary">
-              Liderança feminina no direito
+              {SITE_CONTENT.hero.subtitle}
             </h2>
             
             <p className="hero-fade micro-text text-muted">
@@ -156,7 +159,7 @@ export function Hero() {
               onClick={(e) => handleNavClick(e, "#contato")}
               className="hero-fade inline-flex items-center justify-center gap-2 border border-primary text-primary px-8 py-4 font-sans text-[10px] tracking-[0.2em] uppercase hover:bg-primary hover:text-secondary transition-colors duration-500 w-fit"
             >
-              Falar com Especialista
+              {SITE_CONTENT.hero.cta}
             </a>
           </div>
         </div>

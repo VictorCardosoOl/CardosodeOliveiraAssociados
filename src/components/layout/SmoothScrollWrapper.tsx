@@ -1,95 +1,56 @@
 import { ReactNode, useEffect, useRef } from "react";
-import LocomotiveScroll from "locomotive-scroll";
-import "locomotive-scroll/dist/locomotive-scroll.css";
+import Lenis from "lenis";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useSmoothScroll } from "../../context/SmoothScrollContext";
 
 gsap.registerPlugin(ScrollTrigger);
-gsap.config({ force3D: true });
-
-// Global ScrollTrigger configurations for Locomotive Scroll
-ScrollTrigger.config({ 
-  ignoreMobileResize: true,
-});
 
 interface SmoothScrollWrapperProps {
   children: ReactNode;
 }
 
 export function SmoothScrollWrapper({ children }: SmoothScrollWrapperProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const locoScrollRef = useRef<LocomotiveScroll | null>(null);
   const { setScroll } = useSmoothScroll();
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (prefersReducedMotion || !scrollRef.current) {
+    if (prefersReducedMotion) {
       return; 
     }
 
-    const locoScroll = new LocomotiveScroll({
-      el: scrollRef.current,
-      smooth: true,
-      multiplier: 1,
-      class: "is-reveal",
-      lerp: 0.08,
-      smartphone: {
-        smooth: true,
-      },
-      tablet: {
-        smooth: true,
-      }
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
     });
 
-    locoScrollRef.current = locoScroll;
-    setScroll(locoScroll);
+    setScroll(lenis as any);
 
-    // Sync ScrollTrigger with Locomotive Scroll
-    locoScroll.on("scroll", ScrollTrigger.update);
+    lenis.on("scroll", ScrollTrigger.update);
 
-    ScrollTrigger.scrollerProxy("#scroll-container", {
-      scrollTop(value) {
-        return arguments.length
-          ? locoScroll.scrollTo(value as number, { duration: 0, disableLerp: true })
-          : locoScroll.scroll.instance.scroll.y;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-      pinType: scrollRef.current.style.transform ? "transform" : "fixed",
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
     });
 
-    ScrollTrigger.defaults({ scroller: "#scroll-container" });
-
-    // Refresh ScrollTrigger and Locomotive Scroll
-    const refreshLoco = () => locoScroll.update();
-    ScrollTrigger.addEventListener("refresh", refreshLoco);
-    ScrollTrigger.refresh();
-
-    // ResizeObserver to update locoScroll when content changes
-    const resizeObserver = new ResizeObserver(() => {
-      locoScroll.update();
-      ScrollTrigger.refresh();
-    });
-    resizeObserver.observe(scrollRef.current);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      resizeObserver.disconnect();
-      ScrollTrigger.removeEventListener("refresh", refreshLoco);
-      locoScroll.destroy();
+      gsap.ticker.remove((time) => {
+        lenis.raf(time * 1000);
+      });
+      lenis.destroy();
       setScroll(null);
     };
   }, [setScroll]);
 
   return (
-    <div ref={scrollRef} id="scroll-container" data-scroll-container>
+    <div>
       {children}
     </div>
   );

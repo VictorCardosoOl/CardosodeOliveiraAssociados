@@ -16,6 +16,11 @@ export function Footer() {
     e.preventDefault();
     if (scroll) {
       scroll.scrollTo(href);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
