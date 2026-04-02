@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
   const { scroll } = useSmoothScroll();
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -29,53 +30,53 @@ export function Hero() {
     if (!containerRef.current) return;
 
     const mm = gsap.matchMedia();
-    const titleSplit = new SplitType('.hero-title', { types: 'words' });
+    const titleSplit = new SplitType('.hero-title', { types: 'words, chars' });
     const subtitleSplit = new SplitType('.hero-subtitle', { types: 'words' });
 
     mm.add("(prefers-reduced-motion: reduce)", () => {
       gsap.set(".hero-fade, .hero-image-wrapper", { opacity: 1, y: 0, clipPath: 'none' });
-      gsap.set(titleSplit.words, { opacity: 1, y: 0 });
+      gsap.set(titleSplit.chars, { opacity: 1, y: 0 });
       gsap.set(subtitleSplit.words, { opacity: 1, y: 0 });
     });
 
     mm.add("(min-width: 1024px)", () => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
 
       gsap.set('.hero-image-wrapper', { clipPath: 'inset(100% 0% 0% 0%)' });
-      gsap.set(imageRef.current, { scale: 1.1 });
-      gsap.set('.hero-fade', { opacity: 0, y: 50 });
+      gsap.set(imageRef.current, { scale: 1.15 });
+      gsap.set('.hero-fade', { opacity: 0, y: 40 });
 
       tl.to('.hero-image-wrapper', {
         clipPath: 'inset(0% 0% 0% 0%)',
-        duration: 1.8,
+        duration: 2,
         ease: "power4.inOut"
       })
       .to(imageRef.current, {
         scale: 1,
-        duration: 1.8,
+        duration: 2,
         ease: "power4.inOut"
       }, "<")
-      .from(titleSplit.words, {
-        y: 80,
+      .from(titleSplit.chars, {
+        y: 100,
         opacity: 0,
         duration: 1.2,
-        stagger: 0.05,
-        ease: "expo.out"
-      }, "-=1.2")
-      .from(subtitleSplit.words, {
-        y: 30,
-        opacity: 0,
-        duration: 1,
         stagger: 0.02,
         ease: "expo.out"
-      }, "-=0.8")
+      }, "-=1.4")
+      .from(subtitleSplit.words, {
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.04,
+        ease: "expo.out"
+      }, "-=1.0")
       .to('.hero-fade', {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 1.2,
         stagger: 0.1,
         ease: "expo.out"
-      }, "-=0.8");
+      }, "-=1.0");
 
       // Parallax Effect
       gsap.to(imageRef.current, {
@@ -88,52 +89,76 @@ export function Hero() {
           scrub: true
         }
       });
+
+      // Magnetic Button
+      const btn = buttonRef.current;
+      if (btn) {
+        const xTo = gsap.quickTo(btn, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
+        const yTo = gsap.quickTo(btn, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
+
+        const handleMouseMove = (e: MouseEvent) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - (rect.left + rect.width / 2);
+          const y = e.clientY - (rect.top + rect.height / 2);
+          xTo(x * 0.4);
+          yTo(y * 0.4);
+        };
+
+        const handleMouseLeave = () => {
+          xTo(0);
+          yTo(0);
+        };
+
+        btn.addEventListener("mousemove", handleMouseMove);
+        btn.addEventListener("mouseleave", handleMouseLeave);
+
+        return () => {
+          btn.removeEventListener("mousemove", handleMouseMove);
+          btn.removeEventListener("mouseleave", handleMouseLeave);
+        };
+      }
     });
 
     mm.add("(max-width: 1023px)", () => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       gsap.set('.hero-image-wrapper', { clipPath: 'inset(100% 0% 0% 0%)' });
-      gsap.set(imageRef.current, { scale: 1.1 });
-      gsap.set('.hero-fade', { opacity: 0, y: 30 });
+      gsap.set(imageRef.current, { scale: 1.05 });
+      gsap.set('.hero-fade', { opacity: 0, y: 20 });
 
       tl.to('.hero-image-wrapper', {
         clipPath: 'inset(0% 0% 0% 0%)',
         duration: 1.5,
-        ease: "power4.inOut"
+        ease: "power3.inOut"
       })
       .to(imageRef.current, {
         scale: 1,
         duration: 1.5,
-        ease: "power4.inOut"
+        ease: "power3.inOut"
       }, "<")
       .from(titleSplit.words, {
         y: 40,
         opacity: 0,
         duration: 1,
-        stagger: 0.05,
-        ease: "expo.out"
+        stagger: 0.05
       }, "-=1")
       .from(subtitleSplit.words, {
         y: 20,
         opacity: 0,
         duration: 1,
-        stagger: 0.05,
-        ease: "expo.out"
+        stagger: 0.05
       }, "-=0.8")
       .to('.hero-fade', {
         opacity: 1,
         y: 0,
         duration: 1,
-        stagger: 0.1,
-        ease: "expo.out"
+        stagger: 0.1
       }, "-=0.8");
     });
 
     return () => {
       titleSplit.revert();
       subtitleSplit.revert();
-      mm.revert();
     };
   }, { scope: containerRef });
 
@@ -154,13 +179,16 @@ export function Hero() {
               Comandado por mulheres, nosso escritório entrega resultados que impulsionam o seu crescimento. Atendimento exclusivo e personalizado para demandas complexas.
             </p>
 
-            <a 
-              href="#contato"
-              onClick={(e) => handleNavClick(e, "#contato")}
-              className="hero-fade inline-flex items-center justify-center gap-2 border border-primary text-primary px-8 py-4 font-sans text-[10px] tracking-[0.2em] uppercase hover:bg-primary hover:text-secondary transition-colors duration-500 w-fit"
-            >
-              {SITE_CONTENT.hero.cta}
-            </a>
+            <div className="hero-fade w-fit mt-4">
+              <a 
+                ref={buttonRef}
+                href="#contato"
+                onClick={(e) => handleNavClick(e, "#contato")}
+                className="inline-flex items-center justify-center gap-2 border border-primary text-primary px-8 py-4 font-sans text-[10px] tracking-[0.2em] uppercase hover:bg-primary hover:text-secondary transition-colors duration-500 will-change-transform"
+              >
+                {SITE_CONTENT.hero.cta}
+              </a>
+            </div>
           </div>
         </div>
 
