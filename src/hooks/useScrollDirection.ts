@@ -1,39 +1,51 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { useSmoothScroll } from "../context/SmoothScrollContext";
 
 export function useScrollDirection() {
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(null);
   const [isAtTop, setIsAtTop] = useState(true);
-  const lastScrollY = useRef(0);
-  const ticking = useRef(false);
+  const { scroll } = useSmoothScroll();
 
   useEffect(() => {
-    const updateScrollDirection = () => {
-      const scrollY = window.scrollY;
+    if (!scroll) {
+      // Fallback for native scroll if Locomotive is not ready or disabled
+      let lastScrollY = window.scrollY;
+      let ticking = false;
 
-      // Check if at top
-      setIsAtTop(scrollY < 10);
+      const updateScrollDirection = () => {
+        const scrollY = window.scrollY;
+        setIsAtTop(scrollY < 10);
+        if (Math.abs(scrollY - lastScrollY) < 5) {
+          ticking = false;
+          return;
+        }
+        setScrollDirection(scrollY > lastScrollY ? "down" : "up");
+        lastScrollY = scrollY > 0 ? scrollY : 0;
+        ticking = false;
+      };
 
-      // Determine direction
-      if (Math.abs(scrollY - lastScrollY.current) < 5) {
-        ticking.current = false;
-        return;
-      }
+      const onScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateScrollDirection);
+          ticking = true;
+        }
+      };
 
-      setScrollDirection(scrollY > lastScrollY.current ? "down" : "up");
-      lastScrollY.current = scrollY > 0 ? scrollY : 0;
-      ticking.current = false;
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    }
+
+    const handleScroll = (args: any) => {
+      setIsAtTop(args.scroll.y < 10);
+      setScrollDirection(args.direction === "down" ? "down" : "up");
     };
 
-    const onScroll = () => {
-      if (!ticking.current) {
-        window.requestAnimationFrame(updateScrollDirection);
-        ticking.current = true;
-      }
-    };
+    scroll.on("scroll", handleScroll);
 
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    return () => {
+      scroll.off("scroll", handleScroll);
+    };
+  }, [scroll]);
 
   return { scrollDirection, isAtTop };
 }

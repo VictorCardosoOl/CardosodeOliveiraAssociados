@@ -3,12 +3,21 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
+import { useSmoothScroll } from "../../context/SmoothScrollContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const { scroll } = useSmoothScroll();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (scroll) {
+      scroll.scrollTo(href);
+    }
+  };
 
   useGSAP(() => {
     if (!containerRef.current) return;
@@ -123,7 +132,7 @@ export function Hero() {
   }, { scope: containerRef });
 
   return (
-    <section id="inicio" ref={containerRef} className="relative min-h-[100svh] flex flex-col bg-secondary overflow-hidden pt-32 pb-16">
+    <section data-scroll-section id="inicio" ref={containerRef} className="relative min-h-[100svh] flex flex-col bg-secondary overflow-hidden pt-32 pb-16">
       <div className="container flex-1 grid grid-cols-12 gap-8 items-end">
         
         {/* Left Column: Text */}
@@ -144,6 +153,7 @@ export function Hero() {
 
             <a 
               href="#contato"
+              onClick={(e) => handleNavClick(e, "#contato")}
               className="hero-fade inline-flex items-center justify-center gap-2 border border-primary text-primary px-8 py-4 font-sans text-[10px] tracking-[0.2em] uppercase hover:bg-primary hover:text-secondary transition-colors duration-500 w-fit"
             >
               Falar com Especialista

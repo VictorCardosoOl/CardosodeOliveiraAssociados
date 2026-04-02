@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
-import Lenis from "lenis";
 import { ArrowRight, X } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -108,7 +107,6 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const modalContainerRef = useRef<HTMLDivElement>(null);
   const modalContentRef = useRef<HTMLDivElement>(null);
-  const scopedLenisRef = useRef<any>(null);
   const [shouldRender, setShouldRender] = useState(isOpen);
 
   useLayoutEffect(() => {
@@ -129,29 +127,13 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
           "-=0.3"
         );
 
-      // Lenis Setup
-      let rafId: number;
-      const timer = setTimeout(() => {
-        if (modalContainerRef.current && modalContentRef.current) {
-            const scopedLenis = new Lenis({
-                wrapper: modalContainerRef.current,
-                content: modalContentRef.current,
-                lerp: 0.08,
-            });
-            scopedLenisRef.current = scopedLenis;
-            
-            function raf(time: number) {
-                scopedLenis.raf(time);
-                rafId = requestAnimationFrame(raf);
-            }
-            rafId = requestAnimationFrame(raf);
-        }
-      }, 500);
+      // Modal Scroll Setup (Native)
+      if (modalContainerRef.current) {
+        modalContainerRef.current.scrollTo(0, 0);
+      }
 
       return () => {
-        clearTimeout(timer);
-        if (rafId) cancelAnimationFrame(rafId);
-        scopedLenisRef.current?.destroy();
+        // Cleanup if needed
       };
     } else if (shouldRender && !isOpen) {
       const tl = gsap.timeline({
@@ -163,8 +145,6 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
       
       tl.to(modalRef.current, { y: 50, opacity: 0, scale: 0.98, duration: 0.4, ease: "power2.in" })
         .to(overlayRef.current, { opacity: 0, duration: 0.3 }, "-=0.2");
-      
-      scopedLenisRef.current?.destroy();
     }
   }, [isOpen, shouldRender]);
 
@@ -187,7 +167,7 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
             isDark ? 'bg-primary text-secondary' : 'bg-secondary text-primary'
           }`}
         >
-          {/* Container de Scroll para o Lenis */}
+          {/* Modal Scroll Container */}
           <div ref={modalContainerRef} className="h-full w-full overflow-y-auto">
              <div ref={modalContentRef} className="min-h-full flex flex-col">
                 <div className="p-8 md:p-16 lg:p-24 flex-1 flex flex-col">
@@ -254,6 +234,7 @@ export function AreasDeAtuacao() {
     const elements = gsap.utils.toArray('.anim-element');
     
     elements.forEach((el: any) => {
+      if (!el) return;
       gsap.fromTo(el, 
         { y: 30, opacity: 0 },
         {
@@ -271,7 +252,7 @@ export function AreasDeAtuacao() {
   }, { scope: sectionRef });
 
   return (
-    <section id="areas-de-atuacao" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10">
+    <section data-scroll-section id="areas-de-atuacao" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10">
       <div className="container">
         <div className="mb-16 md:mb-24">
           <span className="anim-element micro-text text-muted block mb-6">

@@ -20,6 +20,7 @@ export function Professionals() {
     const elements = gsap.utils.toArray('.anim-element');
     
     elements.forEach((el: any) => {
+      if (!el) return;
       gsap.fromTo(el, 
         { y: 30, opacity: 0 },
         {
@@ -37,7 +38,7 @@ export function Professionals() {
   }, { scope: containerRef });
 
   return (
-    <section id="profissionais" className="py-[var(--spacing-section-y)] bg-secondary overflow-hidden border-t border-primary/10">
+    <section data-scroll-section id="profissionais" className="py-[var(--spacing-section-y)] bg-secondary overflow-hidden border-t border-primary/10">
       <div className="container" ref={containerRef}>
         
         <div className="bg-primary flex flex-col lg:flex-row shadow-2xl">

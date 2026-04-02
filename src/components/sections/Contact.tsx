@@ -28,6 +28,7 @@ export function Contact() {
     const elements = gsap.utils.toArray('.anim-element');
     
     elements.forEach((el: any) => {
+      if (!el) return;
       gsap.fromTo(el, 
         { y: 30, opacity: 0 },
         {
@@ -45,7 +46,7 @@ export function Contact() {
   }, { scope: containerRef });
 
   return (
-    <section id="contato" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
+    <section data-scroll-section id="contato" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-primary text-secondary overflow-hidden">
       <div className="container grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
         <div className="lg:col-span-6">
           <div className="inline-flex items-center gap-2 border border-secondary/20 text-secondary px-6 py-2 micro-text mb-12 w-fit">

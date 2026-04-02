@@ -12,6 +12,7 @@ export function About() {
     const elements = gsap.utils.toArray('.anim-element');
     
     elements.forEach((el: any) => {
+      if (!el) return;
       gsap.fromTo(el, 
         { y: 30, opacity: 0 },
         {
@@ -29,7 +30,7 @@ export function About() {
   }, { scope: containerRef });
 
   return (
-    <section id="o-escritorio" ref={containerRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10 overflow-hidden">
+    <section data-scroll-section id="o-escritorio" ref={containerRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10 overflow-hidden">
       <div className="container">
         
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">

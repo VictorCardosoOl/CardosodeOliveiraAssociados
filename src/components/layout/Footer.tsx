@@ -3,17 +3,27 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useSmoothScroll } from "../../context/SmoothScrollContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
+  const { scroll } = useSmoothScroll();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (scroll) {
+      scroll.scrollTo(href);
+    }
+  };
 
   useGSAP(() => {
     const elements = gsap.utils.toArray('.anim-element');
     
     elements.forEach((el: any) => {
+      if (!el) return;
       gsap.fromTo(el, 
         { y: 30, opacity: 0 },
         {
@@ -31,7 +41,7 @@ export function Footer() {
   }, { scope: footerRef });
 
   return (
-    <footer ref={footerRef} className="relative bg-footer text-primary pt-[var(--spacing-section-y)] pb-12 md:pb-24 overflow-hidden border-t border-primary/10">
+    <footer data-scroll-section ref={footerRef} className="relative bg-footer text-primary pt-[var(--spacing-section-y)] pb-12 md:pb-24 overflow-hidden border-t border-primary/10">
 
       {/* Background Typography */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none select-none z-0 flex justify-center items-end opacity-[0.03]">
@@ -74,7 +84,7 @@ export function Footer() {
                 01451-000
               </p>
             </div>
-            <a href="#contato" className="group flex items-center gap-4 text-primary hover:text-accent transition-colors w-fit mt-auto border-b border-primary/20 pb-2">
+            <a href="#contato" onClick={(e) => handleNavClick(e, "#contato")} className="group flex items-center gap-4 text-primary hover:text-accent transition-colors w-fit mt-auto border-b border-primary/20 pb-2">
               <span className="micro-text">Fale com um especialista</span>
               <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" strokeWidth={1} />
             </a>
@@ -109,7 +119,7 @@ export function Footer() {
                 { name: 'Profissionais', href: '#profissionais' },
                 { name: 'Insights', href: '#insights' }
               ].map((item) => (
-                <a key={item.name} href={item.href} className="text-sm font-light text-muted hover:text-primary hover:translate-x-2 transition-all w-fit">
+                <a key={item.name} href={item.href} onClick={(e) => handleNavClick(e, item.href)} className="text-sm font-light text-muted hover:text-primary hover:translate-x-2 transition-all w-fit">
                   {item.name}
                 </a>
               ))}

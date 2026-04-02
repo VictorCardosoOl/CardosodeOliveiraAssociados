@@ -34,6 +34,7 @@ export function Insights() {
     const elements = gsap.utils.toArray('.anim-element');
     
     elements.forEach((el: any) => {
+      if (!el) return;
       gsap.fromTo(el, 
         { y: 30, opacity: 0 },
         {
@@ -51,7 +52,7 @@ export function Insights() {
   }, { scope: containerRef });
 
   return (
-    <section id="insights" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-secondary overflow-hidden border-t border-primary/10">
+    <section data-scroll-section id="insights" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-secondary overflow-hidden border-t border-primary/10">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
           <div className="max-w-2xl">
@@ -66,9 +67,9 @@ export function Insights() {
           </button>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid md:grid-cols-3 gap-y-16 md:gap-y-0 md:divide-x divide-primary/10">
           {articles.map((article, i) => (
-            <div key={i} className="anim-element group cursor-pointer flex flex-col">
+            <div key={i} className="anim-element group cursor-pointer flex flex-col md:px-8 lg:px-12 first:pl-0 last:pr-0">
               <div className="relative aspect-[4/5] overflow-hidden mb-8 border border-primary/10">
                 <img 
                   src={article.image} 
@@ -78,20 +79,20 @@ export function Insights() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-accent/5 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0" />
-                <div className="absolute top-6 left-6 bg-secondary px-4 py-2 border border-primary/10">
-                  <span className="micro-text text-primary">{article.category}</span>
+                <div className="absolute top-4 left-4 bg-secondary px-3 py-1.5 border border-primary/10">
+                  <span className="font-sans text-[10px] uppercase tracking-widest text-primary/70 font-medium">{article.category}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-3 text-muted micro-text mb-4">
-                <Calendar size={12} strokeWidth={1} />
+              <div className="flex items-center gap-2 text-muted/60 font-sans text-[10px] uppercase tracking-widest mb-4">
+                <Calendar size={12} strokeWidth={1.5} />
                 <span>{article.date}</span>
               </div>
-              <h4 className="font-editorial text-2xl lg:text-3xl text-primary mb-6 leading-tight uppercase tracking-tighter group-hover:text-accent transition-colors duration-300">
+              <h4 className="font-editorial text-3xl lg:text-4xl text-primary mb-6 leading-[1.1] uppercase tracking-tighter group-hover:text-accent transition-colors duration-300">
                 {article.title}
               </h4>
               <div className="flex items-center gap-2 text-accent mt-auto opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0">
-                <span className="micro-text">Ler Artigo</span>
-                <ArrowRight size={14} strokeWidth={1} />
+                <span className="font-sans text-[10px] uppercase tracking-widest font-medium">Ler Artigo</span>
+                <ArrowRight size={14} strokeWidth={1.5} />
               </div>
             </div>
           ))}

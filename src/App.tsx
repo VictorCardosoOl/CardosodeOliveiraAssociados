@@ -14,25 +14,28 @@ import { Insights } from "./components/sections/Insights";
 import { Contact } from "./components/sections/Contact";
 import { Footer } from "./components/layout/Footer";
 import { ActiveSectionProvider } from "./context/ActiveSectionContext";
+import { SmoothScrollProvider } from "./context/SmoothScrollContext";
 import { ErrorBoundary } from "./components/common/ErrorBoundary";
 
 export default function App() {
   return (
     <ErrorBoundary>
-      <ActiveSectionProvider>
-        <SmoothScrollWrapper>
+      <SmoothScrollProvider>
+        <ActiveSectionProvider>
           <Navbar />
-          <main>
-            <Hero />
-            <About />
-            <AreasDeAtuacao />
-            <Professionals />
-            <Insights />
-            <Contact />
-          </main>
-          <Footer />
-        </SmoothScrollWrapper>
-      </ActiveSectionProvider>
+          <SmoothScrollWrapper>
+            <main>
+              <Hero />
+              <About />
+              <AreasDeAtuacao />
+              <Professionals />
+              <Insights />
+              <Contact />
+            </main>
+            <Footer />
+          </SmoothScrollWrapper>
+        </ActiveSectionProvider>
+      </SmoothScrollProvider>
     </ErrorBoundary>
   );
 }

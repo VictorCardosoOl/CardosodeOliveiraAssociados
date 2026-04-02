@@ -1,14 +1,16 @@
 import { ReactNode, useEffect, useRef } from "react";
-import Lenis from "lenis";
+import LocomotiveScroll from "locomotive-scroll";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useSmoothScroll } from "../../context/SmoothScrollContext";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.config({ force3D: true });
 
-// Global ScrollTrigger configurations for smoother experience
+// Global ScrollTrigger configurations for Locomotive Scroll
 ScrollTrigger.config({ 
-  ignoreMobileResize: true, // Prevents address bar jumps on mobile
+  ignoreMobileResize: true,
 });
 
 interface SmoothScrollWrapperProps {
@@ -16,39 +18,79 @@ interface SmoothScrollWrapperProps {
 }
 
 export function SmoothScrollWrapper({ children }: SmoothScrollWrapperProps) {
-  const lenisRef = useRef<Lenis | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const locoScrollRef = useRef<LocomotiveScroll | null>(null);
+  const { setScroll } = useSmoothScroll();
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion || !scrollRef.current) {
       return; 
     }
 
-    const lenis = new Lenis({
-      lerp: 0.08, // The "secret sauce" for buttery smooth momentum scroll
-      smoothWheel: true,
-      wheelMultiplier: 1,
+    const locoScroll = new LocomotiveScroll({
+      el: scrollRef.current,
+      smooth: true,
+      multiplier: 1,
+      class: "is-reveal",
+      lerp: 0.08,
+      smartphone: {
+        smooth: true,
+      },
+      tablet: {
+        smooth: true,
+      }
     });
 
-    lenisRef.current = lenis;
+    locoScrollRef.current = locoScroll;
+    setScroll(locoScroll);
 
-    // Sync ScrollTrigger with Lenis
-    lenis.on("scroll", ScrollTrigger.update);
+    // Sync ScrollTrigger with Locomotive Scroll
+    locoScroll.on("scroll", ScrollTrigger.update);
 
-    // Use GSAP ticker for the render loop to ensure perfect sync with animations
-    const updateLenis = (time: number) => {
-      lenis.raf(time * 1000);
-    };
-    
-    gsap.ticker.add(updateLenis);
-    gsap.ticker.lagSmoothing(0);
+    ScrollTrigger.scrollerProxy("#scroll-container", {
+      scrollTop(value) {
+        return arguments.length
+          ? locoScroll.scrollTo(value as number, { duration: 0, disableLerp: true })
+          : locoScroll.scroll.instance.scroll.y;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+      pinType: scrollRef.current.style.transform ? "transform" : "fixed",
+    });
+
+    ScrollTrigger.defaults({ scroller: "#scroll-container" });
+
+    // Refresh ScrollTrigger and Locomotive Scroll
+    const refreshLoco = () => locoScroll.update();
+    ScrollTrigger.addEventListener("refresh", refreshLoco);
+    ScrollTrigger.refresh();
+
+    // ResizeObserver to update locoScroll when content changes
+    const resizeObserver = new ResizeObserver(() => {
+      locoScroll.update();
+      ScrollTrigger.refresh();
+    });
+    resizeObserver.observe(scrollRef.current);
 
     return () => {
-      lenis.destroy();
-      gsap.ticker.remove(updateLenis);
+      resizeObserver.disconnect();
+      ScrollTrigger.removeEventListener("refresh", refreshLoco);
+      locoScroll.destroy();
+      setScroll(null);
     };
-  }, []);
+  }, [setScroll]);
 
-  return <>{children}</>;
+  return (
+    <div ref={scrollRef} id="scroll-container" data-scroll-container>
+      {children}
+    </div>
+  );
 }

@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { useActiveSection } from "@/context/ActiveSectionContext";
+import { useSmoothScroll } from "@/context/SmoothScrollContext";
 import gsap from "gsap";
 
 const navItems = [
@@ -18,11 +19,20 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollDirection, isAtTop } = useScrollDirection();
   const { activeSection } = useActiveSection();
+  const { scroll } = useSmoothScroll();
   const headerRef = useRef<HTMLElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Visible at top, or when scrolling up, or if mobile menu is open
   const isVisible = isAtTop || scrollDirection === "up" || isMobileMenuOpen;
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    if (scroll) {
+      scroll.scrollTo(href);
+    }
+  };
 
   useEffect(() => {
     if (headerRef.current) {
@@ -71,7 +81,7 @@ export function Navbar() {
           
           {/* Left: Logo */}
           <div className="flex-shrink-0">
-            <a href="#inicio" className="font-editorial text-2xl md:text-3xl text-primary tracking-tighter uppercase whitespace-nowrap">
+            <a href="#inicio" onClick={(e) => handleNavClick(e, "#inicio")} className="font-editorial text-2xl md:text-3xl text-primary tracking-tighter uppercase whitespace-nowrap">
               Tayna C. B. Oliveira
             </a>
           </div>
@@ -84,6 +94,7 @@ export function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={cn(
                     "micro-text relative py-2 transition-colors duration-300",
                     isActive ? "font-semibold text-primary" : "text-primary/70 hover:text-primary"
@@ -128,7 +139,7 @@ export function Navbar() {
             <a
               key={item.name}
               href={item.href}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, item.href)}
               className={cn(
                 "font-editorial text-3xl uppercase tracking-tighter transition-colors",
                 isActive ? "text-accent" : "text-primary hover:text-accent"
