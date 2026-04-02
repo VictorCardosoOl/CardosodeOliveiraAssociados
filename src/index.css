@@ -11,6 +11,7 @@
   --font-sans: "Montserrat", sans-serif;
   --font-editorial: "Cormorant Garamond", serif;
 
+  --breakpoint-2xl: 1536px;
   --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;
 
@@ -22,22 +23,22 @@
   --text-fluid-h4: clamp(1.5rem, 4vw, 4rem);
   --text-fluid-p: clamp(10px, 0.9vw, 11px);
 
-  --spacing-section-y: clamp(6rem, 12vw, 10rem);
+  --spacing-section-y: clamp(8rem, 16vw, 14rem);
 }
 
 @layer base {
   .container {
-    @apply mx-auto px-6 md:px-12 lg:px-16 2xl:px-20 3xl:px-24 4xl:px-32;
+    @apply mx-auto px-6 md:px-12 lg:px-16 2xl:px-24 3xl:px-32 4xl:px-40;
     width: 100%;
   }
 
   @media (min-width: 640px) { .container { max-width: 640px; } }
   @media (min-width: 768px) { .container { max-width: 768px; } }
   @media (min-width: 1024px) { .container { max-width: 1024px; } }
-  @media (min-width: 1280px) { .container { max-width: 1240px; } }
-  @media (min-width: 1536px) { .container { max-width: 1480px; } }
-  @media (min-width: 1920px) { .container { max-width: 1840px; } }
-  @media (min-width: 2560px) { .container { max-width: 2440px; } }
+  @media (min-width: 1280px) { .container { max-width: 1280px; } }
+  @media (min-width: 1536px) { .container { max-width: 1536px; } }
+  @media (min-width: 1920px) { .container { max-width: 1800px; } }
+  @media (min-width: 2560px) { .container { max-width: 2400px; } }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-editorial);

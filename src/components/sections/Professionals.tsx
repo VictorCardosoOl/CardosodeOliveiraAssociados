@@ -54,7 +54,7 @@ export function Professionals() {
             </h3>
             <p className="anim-element micro-text text-secondary/70 mb-10">{professional.role}</p>
             
-            <p className="anim-element micro-text normal-case tracking-normal leading-relaxed text-secondary/70 mb-12 max-w-md">
+            <p className="anim-element micro-text normal-case tracking-normal leading-relaxed text-secondary/70 mb-12 max-w-md lg:max-w-lg 2xl:max-w-xl">
               {professional.bio}
             </p>
             

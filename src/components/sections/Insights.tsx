@@ -55,7 +55,7 @@ export function Insights() {
     <section data-scroll-section id="insights" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-secondary overflow-hidden border-t border-primary/10">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl lg:max-w-4xl 2xl:max-w-5xl">
             <h2 className="anim-element micro-text text-muted mb-6">Insights</h2>
             <h3 className="anim-element font-editorial text-[var(--text-fluid-h2)] text-primary leading-[0.85] tracking-tighter uppercase">
               Conhecimento que <br/><span className="italic text-accent">protege e orienta</span>.

@@ -85,7 +85,7 @@ const CardItem = ({ item, onClick, className }: CardItemProps) => {
         <h3 className="text-3xl md:text-4xl lg:text-5xl font-editorial uppercase tracking-tighter leading-[0.9] mb-4 md:mb-6">
            {item.title}
         </h3>
-        <p className={`micro-text normal-case tracking-normal leading-relaxed max-w-md ${isDark ? 'text-secondary/70' : 'text-muted'}`}>
+        <p className={`micro-text normal-case tracking-normal leading-relaxed max-w-md lg:max-w-lg 2xl:max-w-xl ${isDark ? 'text-secondary/70' : 'text-muted'}`}>
           {item.subtitle}
         </p>
       </div>
@@ -171,7 +171,7 @@ const ContentModal = ({ isOpen, onClose, selectedItem }: any) => {
           <div ref={modalContainerRef} className="h-full w-full overflow-y-auto">
              <div ref={modalContentRef} className="min-h-full flex flex-col">
                 <div className="p-8 md:p-16 lg:p-24 flex-1 flex flex-col">
-                  <div className="max-w-4xl mx-auto w-full mt-12 md:mt-0">
+                  <div className="max-w-4xl 2xl:max-w-5xl 3xl:max-w-6xl mx-auto w-full mt-12 md:mt-0">
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 md:gap-3 mb-8 md:mb-12">
                       {selectedItem.tags.map((tag: string, i: number) => (
@@ -258,7 +258,7 @@ export function AreasDeAtuacao() {
           <span className="anim-element micro-text text-muted block mb-6">
             Áreas de Foco
           </span>
-          <h2 className="anim-element text-[var(--text-fluid-h2)] font-editorial leading-[0.85] tracking-tighter uppercase max-w-4xl">
+          <h2 className="anim-element text-[var(--text-fluid-h2)] font-editorial leading-[0.85] tracking-tighter uppercase max-w-4xl 2xl:max-w-6xl 3xl:max-w-7xl">
             Soluções jurídicas<br/>
             <span className="italic text-accent">sob medida</span> para suas necessidades.
           </h2>

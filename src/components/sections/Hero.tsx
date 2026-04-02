@@ -170,7 +170,7 @@ export function Hero() {
         <div className="col-span-12 lg:col-span-7 flex flex-col justify-end pb-12 z-10">
           <h1 className="hero-title font-editorial text-[var(--text-fluid-hero)] text-primary leading-[0.85] tracking-tighter uppercase mb-8" dangerouslySetInnerHTML={{ __html: SITE_CONTENT.hero.title }} />
           
-          <div className="flex flex-col gap-6 max-w-md">
+          <div className="flex flex-col gap-6 max-w-md lg:max-w-lg 2xl:max-w-xl">
             <h2 className="hero-subtitle micro-text text-primary">
               {SITE_CONTENT.hero.subtitle}
             </h2>

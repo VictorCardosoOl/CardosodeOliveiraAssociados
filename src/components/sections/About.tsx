@@ -69,7 +69,7 @@ export function About() {
             </div>
 
             <div className="pl-0 md:pl-12">
-              <p className="anim-element micro-text text-muted mb-16 max-w-md">
+              <p className="anim-element micro-text text-muted mb-16 max-w-md lg:max-w-lg 2xl:max-w-xl">
                 Simplificar as complexidades do direito. Proporcionar tranquilidade aos nossos clientes. Fomentar o crescimento e o sucesso aliviando pressões jurídicas com dedicação total e soluções sob medida.
               </p>
 

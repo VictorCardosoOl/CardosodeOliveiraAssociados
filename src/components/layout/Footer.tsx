@@ -73,7 +73,7 @@ export function Footer() {
             <p className="font-editorial italic text-2xl text-primary/80 mb-6">
               Visão singular no direito.
             </p>
-            <p className="text-sm leading-relaxed font-light max-w-xs text-muted">
+            <p className="text-sm leading-relaxed font-light max-w-xs lg:max-w-sm 2xl:max-w-md text-muted">
               Advocacia feminina focada em resultados, excelência e atendimento exclusivo para demandas complexas.
             </p>
           </div>
