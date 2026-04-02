@@ -30,7 +30,7 @@ export function Hero() {
     if (!containerRef.current) return;
 
     const mm = gsap.matchMedia();
-    const titleSplit = new SplitType('.hero-title', { types: 'words, chars' });
+    const titleSplit = new SplitType('.hero-title', { types: 'words,chars' });
     const subtitleSplit = new SplitType('.hero-subtitle', { types: 'words' });
 
     mm.add("(prefers-reduced-motion: reduce)", () => {

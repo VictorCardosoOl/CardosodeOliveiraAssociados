@@ -76,6 +76,7 @@ export function Professionals() {
                 alt={professional.name}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
               <div className="absolute inset-4 bg-accent/10 mix-blend-multiply" />
             </div>

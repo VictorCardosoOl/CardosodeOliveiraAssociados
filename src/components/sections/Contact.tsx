@@ -1,25 +1,13 @@
-import { useRef, useState, FormEvent } from "react";
-import { Mail, MapPin, Phone, ArrowRight } from "lucide-react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import { useRef, useState, FormEvent, lazy, Suspense } from "react";
+import { Mail, MapPin, Phone, ArrowRight, Loader2 } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { z } from "zod";
 
+const LocationMap = lazy(() => import('../ui/LocationMap').then(module => ({ default: module.LocationMap })));
+
 gsap.registerPlugin(ScrollTrigger);
-
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
-
-const DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
-L.Marker.prototype.options.icon = DefaultIcon;
 
 const contactFormSchema = z.object({
   fullName: z.string().min(3, "Nome deve ter no mínimo 3 caracteres").max(100, "Nome muito longo"),
@@ -73,10 +61,19 @@ export function Contact() {
     try {
       const validatedData = contactFormSchema.parse(formData);
       
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Call the real API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(validatedData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
       
-      // In a real scenario, you would send `validatedData` to your backend here.
       console.info("Form submitted successfully", validatedData);
       setSubmitStatus("success");
       setFormData({ fullName: "", email: "", message: "" });
@@ -141,18 +138,9 @@ export function Contact() {
             </div>
 
             <div className="mt-16 w-full h-64 md:h-80 relative z-0 border border-secondary/20 p-2">
-              <MapContainer center={[-23.5641095, -46.6524099]} zoom={15} scrollWheelZoom={false} className="w-full h-full z-0 grayscale contrast-125">
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={[-23.5641095, -46.6524099]}>
-                  <Popup>
-                    <span className="font-sans font-bold text-primary">Tayna C. B. Oliveira Advocacia</span><br />
-                    Av. Paulista, 1000 — 12º Andar
-                  </Popup>
-                </Marker>
-              </MapContainer>
+              <Suspense fallback={<div className="w-full h-full flex items-center justify-center bg-secondary/5"><Loader2 className="animate-spin text-secondary/50" /></div>}>
+                <LocationMap />
+              </Suspense>
             </div>
           </div>
         </div>
@@ -180,7 +168,7 @@ export function Contact() {
                 type="text" 
                 value={formData.fullName}
                 onChange={(e) => handleInputChange("fullName", e.target.value)}
-                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors font-light text-lg"
+                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors font-light text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Como podemos te chamar?"
                 disabled={isSubmitting}
               />
@@ -193,7 +181,7 @@ export function Contact() {
                 type="email" 
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
-                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors font-light text-lg"
+                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors font-light text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="seu@email.com"
                 disabled={isSubmitting}
               />
@@ -206,7 +194,7 @@ export function Contact() {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => handleInputChange("message", e.target.value)}
-                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors resize-none font-light text-lg"
+                className="w-full bg-transparent border-b border-primary/20 py-4 text-primary focus:border-primary outline-none transition-colors resize-none font-light text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Descreva brevemente sua necessidade..."
                 disabled={isSubmitting}
               />
@@ -217,8 +205,11 @@ export function Contact() {
               disabled={isSubmitting}
               className="group w-full flex items-center justify-between border border-primary text-primary px-8 py-6 hover:bg-primary hover:text-secondary transition-all duration-500 mt-12 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span className="micro-text">{isSubmitting ? "Enviando..." : "Enviar Mensagem"}</span>
-              <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" strokeWidth={1} />
+              <span className="micro-text flex items-center gap-2">
+                {isSubmitting && <Loader2 size={16} className="animate-spin" />}
+                {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
+              </span>
+              {!isSubmitting && <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" strokeWidth={1} />}
             </button>
           </form>
         </div>
