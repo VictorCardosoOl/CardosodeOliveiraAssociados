@@ -48,45 +48,45 @@ export function Hero() {
 
       tl.to('.hero-image-wrapper', {
         clipPath: 'inset(0% 0% 0% 0%)',
-        duration: 2,
+        duration: 2.2,
         ease: "power4.inOut"
       })
       .to(imageRef.current, {
         scale: 1,
-        duration: 2,
+        duration: 2.2,
         ease: "power4.inOut"
       }, "<")
       .from(titleSplit.chars, {
-        y: 100,
+        y: 120,
         opacity: 0,
-        duration: 1.2,
-        stagger: 0.02,
-        ease: "expo.out"
-      }, "-=1.4")
+        duration: 1.4,
+        stagger: 0.025,
+        ease: "power4.out"
+      }, "-=1.6")
       .from(subtitleSplit.words, {
-        y: 40,
+        y: 50,
         opacity: 0,
-        duration: 1.2,
+        duration: 1.4,
         stagger: 0.04,
-        ease: "expo.out"
-      }, "-=1.0")
+        ease: "power4.out"
+      }, "-=1.2")
       .to('.hero-fade', {
         opacity: 1,
         y: 0,
-        duration: 1.2,
-        stagger: 0.1,
-        ease: "expo.out"
-      }, "-=1.0");
+        duration: 1.4,
+        stagger: 0.15,
+        ease: "power4.out"
+      }, "-=1.2");
 
       // Parallax Effect
       gsap.to(imageRef.current, {
-        yPercent: 20,
+        yPercent: 30,
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: true
+          scrub: 0.5 // A slight scrub delay adds a buttery smooth feel with Lenis
         }
       });
 
