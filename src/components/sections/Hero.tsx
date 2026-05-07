@@ -59,34 +59,35 @@ export function Hero() {
       .from(titleSplit.chars, {
         y: 120,
         opacity: 0,
-        duration: 1.4,
-        stagger: 0.025,
+        duration: 1.6,
+        stagger: 0.02,
         ease: "power4.out"
       }, "-=1.6")
       .from(subtitleSplit.words, {
-        y: 50,
+        y: 60,
         opacity: 0,
         duration: 1.4,
-        stagger: 0.04,
+        stagger: 0.03,
         ease: "power4.out"
-      }, "-=1.2")
+      }, "-=1.4")
       .to('.hero-fade', {
         opacity: 1,
         y: 0,
         duration: 1.4,
-        stagger: 0.15,
+        stagger: 0.1,
         ease: "power4.out"
       }, "-=1.2");
 
       // Parallax Effect
       gsap.to(imageRef.current, {
-        yPercent: 30,
+        yPercent: 40,
+        scale: 1.1,
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 0.5 // A slight scrub delay adds a buttery smooth feel with Lenis
+          scrub: 1.2
         }
       });
 
@@ -128,32 +129,48 @@ export function Hero() {
 
       tl.to('.hero-image-wrapper', {
         clipPath: 'inset(0% 0% 0% 0%)',
-        duration: 1.5,
-        ease: "power3.inOut"
+        duration: 1.8,
+        ease: "power4.inOut"
       })
       .to(imageRef.current, {
         scale: 1,
-        duration: 1.5,
-        ease: "power3.inOut"
+        duration: 1.8,
+        ease: "power4.inOut"
       }, "<")
       .from(titleSplit.words, {
+        y: 60,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.03,
+        ease: "power4.out"
+      }, "-=1.2")
+      .from(subtitleSplit.words, {
         y: 40,
         opacity: 0,
-        duration: 1,
-        stagger: 0.05
-      }, "-=1")
-      .from(subtitleSplit.words, {
-        y: 20,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.05
-      }, "-=0.8")
+        duration: 1.2,
+        stagger: 0.04,
+        ease: "power4.out"
+      }, "-=1.0")
       .to('.hero-fade', {
         opacity: 1,
         y: 0,
-        duration: 1,
-        stagger: 0.1
+        duration: 1.2,
+        stagger: 0.08,
+        ease: "power4.out"
       }, "-=0.8");
+
+      // Mobile Parallax Effect
+      gsap.to(imageRef.current, {
+        yPercent: 25,
+        scale: 1.05,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.2
+        }
+      });
     });
 
     return () => {
