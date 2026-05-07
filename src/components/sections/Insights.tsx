@@ -1,10 +1,6 @@
 import { useRef } from "react";
 import { ArrowRight, Calendar } from "lucide-react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useFadeIn } from "../../hooks/useFadeIn";
 
 const articles = [
   {
@@ -29,27 +25,7 @@ const articles = [
 
 export function Insights() {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    const elements = gsap.utils.toArray('.anim-element');
-    
-    elements.forEach((el: any) => {
-      if (!el) return;
-      gsap.fromTo(el, 
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-          }
-        }
-      );
-    });
-  }, { scope: containerRef });
+  useFadeIn(containerRef);
 
   return (
     <section data-scroll-section id="insights" ref={containerRef} className="flex items-center py-[var(--spacing-section-y)] bg-secondary overflow-hidden border-t border-primary/10">

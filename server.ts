@@ -15,6 +15,17 @@ async function startServer() {
 
   app.use(express.json());
 
+  // Security Middleware (OWASP Top 10 Mitigation via CTO/Arch)
+  app.use((req, res, next) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("X-Frame-Options", "DENY");
+    res.setHeader("X-XSS-Protection", "1; mode=block");
+    res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+    // Removendo identificação do Express para dificultar fingerprinting mitigação CWE-200
+    res.removeHeader("X-Powered-By");
+    next();
+  });
+
   // API routes FIRST
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok" });

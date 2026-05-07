@@ -45,14 +45,19 @@ export function Navbar() {
 
   useGSAP(() => {
     if (mobileMenuRef.current) {
+      const links = mobileMenuRef.current.querySelectorAll("a");
       if (isMobileMenuOpen) {
         gsap.to(mobileMenuRef.current, {
           y: 0,
           opacity: 1,
-          duration: 0.5,
-          ease: "power3.out",
+          duration: 0.6,
+          ease: "power4.out",
           pointerEvents: "auto"
         });
+        gsap.fromTo(links,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, ease: "power4.out", stagger: 0.05, delay: 0.1 }
+        );
       } else {
         gsap.to(mobileMenuRef.current, {
           y: -20,

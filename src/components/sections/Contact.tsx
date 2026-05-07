@@ -1,13 +1,9 @@
 import { useRef, useState, FormEvent, lazy, Suspense } from "react";
 import { Mail, MapPin, Phone, ArrowRight, Loader2 } from "lucide-react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { z } from "zod";
+import { useFadeIn } from "../../hooks/useFadeIn";
 
 const LocationMap = lazy(() => import('../ui/LocationMap').then(module => ({ default: module.LocationMap })));
-
-gsap.registerPlugin(ScrollTrigger);
 
 const contactFormSchema = z.object({
   fullName: z.string().min(3, "Nome deve ter no mínimo 3 caracteres").max(100, "Nome muito longo"),
@@ -23,27 +19,8 @@ export function Contact() {
   const [formErrors, setFormErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-
-  useGSAP(() => {
-    const animatedElements = gsap.utils.toArray<HTMLElement>('.anim-element');
-    
-    animatedElements.forEach((element) => {
-      if (!element) return;
-      gsap.fromTo(element, 
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: element,
-            start: "top 85%",
-          }
-        }
-      );
-    });
-  }, { scope: containerRef });
+  
+  useFadeIn(containerRef);
 
   const handleInputChange = (field: keyof ContactFormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));

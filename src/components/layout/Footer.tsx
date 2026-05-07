@@ -1,16 +1,13 @@
 import { ArrowRight, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { useSmoothScroll } from "../../context/SmoothScrollContext";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useFadeIn } from "../../hooks/useFadeIn";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
   const { scroll } = useSmoothScroll();
+  useFadeIn(footerRef);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -23,27 +20,6 @@ export function Footer() {
       }
     }
   };
-
-  useGSAP(() => {
-    const elements = gsap.utils.toArray('.anim-element');
-    
-    elements.forEach((el: any) => {
-      if (!el) return;
-      gsap.fromTo(el, 
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-          }
-        }
-      );
-    });
-  }, { scope: footerRef });
 
   return (
     <footer data-scroll-section ref={footerRef} className="relative bg-footer text-primary pt-[var(--spacing-section-y)] pb-12 md:pb-24 overflow-hidden border-t border-primary/10">

@@ -1,12 +1,8 @@
 import { useState, useRef, lazy, Suspense } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { CardItem } from "../ui/CardItem";
+import { useFadeIn } from "../../hooks/useFadeIn";
 
 const ContentModal = lazy(() => import('../ui/ContentModal').then(module => ({ default: module.ContentModal })));
-
-gsap.registerPlugin(ScrollTrigger);
 
 const cases = [
   {
@@ -55,27 +51,7 @@ export function AreasDeAtuacao() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selectedItem = cases.find(c => c.id === selectedId);
   const sectionRef = useRef<HTMLElement>(null);
-
-  useGSAP(() => {
-    const elements = gsap.utils.toArray('.anim-element');
-    
-    elements.forEach((el: any) => {
-      if (!el) return;
-      gsap.fromTo(el, 
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-          }
-        }
-      );
-    });
-  }, { scope: sectionRef });
+  useFadeIn(sectionRef);
 
   return (
     <section data-scroll-section id="areas-de-atuacao" ref={sectionRef} className="py-[var(--spacing-section-y)] bg-secondary border-t border-primary/10">
